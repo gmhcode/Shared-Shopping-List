@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QD7-ym-OEQ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -8,6 +8,35 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Main Root View Controller-->
+        <scene sceneID="aij-QE-zRp">
+            <objects>
+                <viewController id="QD7-ym-OEQ" customClass="MainRootViewController" customModule="Shared_Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UPH-Fv-bgc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7g-OG-GnJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="embed" id="WKp-cx-jXI"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="h7g-OG-GnJ" firstAttribute="top" secondItem="UPH-Fv-bgc" secondAttribute="top" id="5dN-wi-VSS"/>
+                            <constraint firstAttribute="bottom" secondItem="h7g-OG-GnJ" secondAttribute="bottom" id="Goc-wJ-xcb"/>
+                            <constraint firstItem="h7g-OG-GnJ" firstAttribute="leading" secondItem="SE5-1N-ZVU" secondAttribute="leading" id="dCI-Yz-gjZ"/>
+                            <constraint firstItem="h7g-OG-GnJ" firstAttribute="trailing" secondItem="SE5-1N-ZVU" secondAttribute="trailing" id="xQt-kO-Jvi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SE5-1N-ZVU"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YVb-Fd-IjX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1010.144927536232" y="-281.25"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -27,13 +56,13 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gUp-uC-aJ7">
                                     <size key="itemSize" width="374" height="61"/>
-                                    <size key="headerReferenceSize" width="50" height="69"/>
+                                    <size key="headerReferenceSize" width="50" height="46"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="HmN-z6-2ga" customClass="MainCollectionViewCell" customModule="Shared_Shopping_List" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="69" width="374" height="61"/>
+                                        <rect key="frame" x="0.0" y="46" width="374" height="61"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7hf-rY-AtS">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="61"/>
@@ -53,7 +82,6 @@
                                                 <constraint firstItem="ajv-IR-xjH" firstAttribute="width" secondItem="7hf-rY-AtS" secondAttribute="width" multiplier="0.957219" id="zf0-7k-8W0"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" red="0.94204586739999996" green="0.22641716219999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <size key="customSize" width="374" height="61"/>
                                         <connections>
                                             <outlet property="shoppingListTitleLabel" destination="ajv-IR-xjH" id="pNu-nB-UsW"/>
@@ -61,11 +89,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="listTypeHeaderView" id="FRE-mu-GtE" customClass="SectionHeaderView" customModule="Shared_Shopping_List" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="69"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="46"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9A-SR-Onv">
-                                            <rect key="frame" x="30" y="8" width="314" height="53"/>
+                                            <rect key="frame" x="30" y="5.5" width="314" height="35"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -104,7 +132,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-413.04347826086962" y="-329.46428571428572"/>
+            <point key="canvasLocation" x="71" y="-276"/>
+        </scene>
+        <!--Main Drawer View Controller-->
+        <scene sceneID="iPW-5g-U09">
+            <objects>
+                <viewController storyboardIdentifier="MainDrawerViewController" id="bV3-PG-5St" customClass="MainDrawerViewController" customModule="Shared_Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yPO-WT-bJ2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HtF-3U-HPT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1010" y="489"/>
         </scene>
     </scenes>
 </document>

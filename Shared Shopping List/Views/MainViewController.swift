@@ -12,9 +12,11 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+
     struct MainViewModel {
         var collectionViewDataSource = [1,2,3,4,5,6,7,8,9]
         var listTypes = ["Shopping Lists"]
+        ///Datasource
         var lists : [List] = [List(title: "Home List"),List(title: "Home List"),List(title: "Home List"),List(title: "Home List"),List(title: "Home List"),List(title: "Home List"),List(title: "Home List")]
     }
     var mainViewModel : MainViewModel?
@@ -22,7 +24,16 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setViewModel()
+        setupCollectionView()
+        
+    }
+    
+    func setViewModel() {
         mainViewModel = MainViewModel()
+    }
+    func setupCollectionView(){
+        ///Makes the collectionView headers sticky
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.sectionHeadersPinToVisibleBounds = true
         }
@@ -30,6 +41,7 @@ class MainViewController: UIViewController {
         collectionView.dataSource = self
         
     }
+    
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -47,6 +59,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? MainCollectionViewCell
         
         cell?.shoppingListTitle = mainViewModel?.lists[indexPath.row].title
+        
+        cell?.layer.borderWidth = 1
         
         return cell ?? UICollectionViewCell()
     }

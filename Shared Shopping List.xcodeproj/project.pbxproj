@@ -20,6 +20,8 @@
 		9093567F24AC2BC2009E2F1E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093567E24AC2BC2009E2F1E /* MainViewModel.swift */; };
 		90A0CE9A24AC2F5500F0BC4B /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CE9924AC2F5500F0BC4B /* List.swift */; };
 		90A0CE9C24AC30BB00F0BC4B /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CE9B24AC30BB00F0BC4B /* MainCollectionViewCell.swift */; };
+		90A0CE9E24AD674A00F0BC4B /* MainRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CE9D24AD674A00F0BC4B /* MainRootViewController.swift */; };
+		90A0CEA124AD6C7500F0BC4B /* MainDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CEA024AD6C7500F0BC4B /* MainDrawerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		9093567E24AC2BC2009E2F1E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		90A0CE9924AC2F5500F0BC4B /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		90A0CE9B24AC30BB00F0BC4B /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		90A0CE9D24AD674A00F0BC4B /* MainRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRootViewController.swift; sourceTree = "<group>"; };
+		90A0CEA024AD6C7500F0BC4B /* MainDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDrawerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,9 +139,11 @@
 		9020301D24AC257D00A9D357 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				90A0CE9F24AD6C4700F0BC4B /* DrawerVIews */,
 				90021C5724AC2DC600EFBC4B /* Cells */,
 				90202FFB24AC16ED00A9D357 /* MainViewController.swift */,
 				90202FFD24AC16ED00A9D357 /* Main.storyboard */,
+				90A0CE9D24AD674A00F0BC4B /* MainRootViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -163,6 +169,14 @@
 				9093567C24AC2B4A009E2F1E /* GlobalConstants.swift */,
 			);
 			path = GlobalColors;
+			sourceTree = "<group>";
+		};
+		90A0CE9F24AD6C4700F0BC4B /* DrawerVIews */ = {
+			isa = PBXGroup;
+			children = (
+				90A0CEA024AD6C7500F0BC4B /* MainDrawerViewController.swift */,
+			);
+			path = DrawerVIews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,7 +280,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90A0CEA124AD6C7500F0BC4B /* MainDrawerViewController.swift in Sources */,
 				9093567F24AC2BC2009E2F1E /* MainViewModel.swift in Sources */,
+				90A0CE9E24AD674A00F0BC4B /* MainRootViewController.swift in Sources */,
 				90A0CE9C24AC30BB00F0BC4B /* MainCollectionViewCell.swift in Sources */,
 				90A0CE9A24AC2F5500F0BC4B /* List.swift in Sources */,
 				90202FFC24AC16ED00A9D357 /* MainViewController.swift in Sources */,
