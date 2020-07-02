@@ -134,19 +134,80 @@
             </objects>
             <point key="canvasLocation" x="71" y="-276"/>
         </scene>
-        <!--Main Drawer View Controller-->
+        <!--Drawer Container View Controller-->
         <scene sceneID="iPW-5g-U09">
             <objects>
-                <viewController storyboardIdentifier="MainDrawerViewController" id="bV3-PG-5St" customClass="MainDrawerViewController" customModule="Shared_Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DrawerContainerViewController" id="bV3-PG-5St" customClass="DrawerContainerViewController" customModule="Shared_Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yPO-WT-bJ2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFu-pZ-7RQ">
+                                <rect key="frame" x="0.0" y="56.5" width="414" height="839.5"/>
+                                <connections>
+                                    <segue destination="AVQ-i0-ARC" kind="embed" id="2xc-Gx-GnP"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xT-n9-3Cy" customClass="ShoppingButton" customModule="Shared_Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="167" y="4.5" width="80" height="47"/>
+                                <state key="normal" backgroundImage="chevron.up" catalog="system"/>
+                                <connections>
+                                    <action selector="ArrowButton:" destination="5fx-a8-DPc" eventType="touchUpInside" id="cY4-SB-QOR"/>
+                                    <action selector="arrowButton:" destination="5fx-a8-DPc" eventType="touchUpInside" id="Sqr-AS-1td"/>
+                                    <action selector="arrowButtonTapped:" destination="bV3-PG-5St" eventType="touchUpInside" id="DI6-DX-d3b"/>
+                                    <action selector="arrowButtonTapped:" destination="AVQ-i0-ARC" eventType="touchUpInside" id="PCf-Vy-sEr"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cFu-pZ-7RQ" firstAttribute="top" secondItem="3xT-n9-3Cy" secondAttribute="bottom" id="1qC-Tw-821"/>
+                            <constraint firstItem="3xT-n9-3Cy" firstAttribute="centerX" secondItem="lOG-E5-cl7" secondAttribute="centerX" id="4D0-xf-DvB"/>
+                            <constraint firstItem="3xT-n9-3Cy" firstAttribute="height" secondItem="yPO-WT-bJ2" secondAttribute="height" multiplier="0.063058" id="CTW-4n-Mxt"/>
+                            <constraint firstItem="3xT-n9-3Cy" firstAttribute="width" secondItem="yPO-WT-bJ2" secondAttribute="width" multiplier="0.193237" id="IOz-SV-t4i"/>
+                            <constraint firstAttribute="bottom" secondItem="cFu-pZ-7RQ" secondAttribute="bottom" id="Lmk-Eq-ggw"/>
+                            <constraint firstAttribute="trailing" secondItem="cFu-pZ-7RQ" secondAttribute="trailing" id="ROa-bD-n5d"/>
+                            <constraint firstItem="3xT-n9-3Cy" firstAttribute="top" secondItem="yPO-WT-bJ2" secondAttribute="top" id="dsd-AR-ZtE"/>
+                            <constraint firstItem="cFu-pZ-7RQ" firstAttribute="leading" secondItem="yPO-WT-bJ2" secondAttribute="leading" id="wAo-lW-KOV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lOG-E5-cl7"/>
                     </view>
+                    <connections>
+                        <outlet property="arrowButton" destination="3xT-n9-3Cy" id="pbx-gK-bS2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HtF-3U-HPT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1010" y="489"/>
+            <point key="canvasLocation" x="-1010.144927536232" y="488.83928571428567"/>
+        </scene>
+        <!--Main Drawer View Controller-->
+        <scene sceneID="Btc-4i-AuT">
+            <objects>
+                <viewController storyboardIdentifier="MainDrawerViewController" id="AVQ-i0-ARC" customClass="MainDrawerViewController" customModule="Shared_Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lI5-sR-Lyn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="839.5"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsA-fG-Alw">
+                                <rect key="frame" x="105" y="176" width="204" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="UpX-fO-NFS"/>
+                    </view>
+                    <connections>
+                        <outlet property="arrowButton" destination="3xT-n9-3Cy" id="3DT-jN-21L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bIG-o4-4O7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="5fx-a8-DPc" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="69.565217391304358" y="489.50892857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="chevron.up" catalog="system" width="128" height="72"/>
+    </resources>
 </document>

@@ -22,6 +22,8 @@
 		90A0CE9C24AC30BB00F0BC4B /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CE9B24AC30BB00F0BC4B /* MainCollectionViewCell.swift */; };
 		90A0CE9E24AD674A00F0BC4B /* MainRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CE9D24AD674A00F0BC4B /* MainRootViewController.swift */; };
 		90A0CEA124AD6C7500F0BC4B /* MainDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CEA024AD6C7500F0BC4B /* MainDrawerViewController.swift */; };
+		90A0CEA324AD7F5C00F0BC4B /* DrawerContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CEA224AD7F5C00F0BC4B /* DrawerContainerViewController.swift */; };
+		90A0CEA524AD874500F0BC4B /* RotatableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CEA424AD874500F0BC4B /* RotatableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		90A0CE9B24AC30BB00F0BC4B /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		90A0CE9D24AD674A00F0BC4B /* MainRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRootViewController.swift; sourceTree = "<group>"; };
 		90A0CEA024AD6C7500F0BC4B /* MainDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDrawerViewController.swift; sourceTree = "<group>"; };
+		90A0CEA224AD7F5C00F0BC4B /* DrawerContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerContainerViewController.swift; sourceTree = "<group>"; };
+		90A0CEA424AD874500F0BC4B /* RotatableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,7 @@
 		9020301D24AC257D00A9D357 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				90A0CEA624AD8AE300F0BC4B /* CustomViews */,
 				90A0CE9F24AD6C4700F0BC4B /* DrawerVIews */,
 				90021C5724AC2DC600EFBC4B /* Cells */,
 				90202FFB24AC16ED00A9D357 /* MainViewController.swift */,
@@ -175,8 +180,17 @@
 			isa = PBXGroup;
 			children = (
 				90A0CEA024AD6C7500F0BC4B /* MainDrawerViewController.swift */,
+				90A0CEA224AD7F5C00F0BC4B /* DrawerContainerViewController.swift */,
 			);
 			path = DrawerVIews;
+			sourceTree = "<group>";
+		};
+		90A0CEA624AD8AE300F0BC4B /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				90A0CEA424AD874500F0BC4B /* RotatableView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,7 +299,9 @@
 				90A0CE9E24AD674A00F0BC4B /* MainRootViewController.swift in Sources */,
 				90A0CE9C24AC30BB00F0BC4B /* MainCollectionViewCell.swift in Sources */,
 				90A0CE9A24AC2F5500F0BC4B /* List.swift in Sources */,
+				90A0CEA324AD7F5C00F0BC4B /* DrawerContainerViewController.swift in Sources */,
 				90202FFC24AC16ED00A9D357 /* MainViewController.swift in Sources */,
+				90A0CEA524AD874500F0BC4B /* RotatableView.swift in Sources */,
 				90202FF824AC16ED00A9D357 /* AppDelegate.swift in Sources */,
 				9020302124AC262A00A9D357 /* SectionHeaderView.swift in Sources */,
 				9020300224AC16ED00A9D357 /* Shared_Shopping_List.xcdatamodeld in Sources */,

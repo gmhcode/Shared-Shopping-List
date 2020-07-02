@@ -15,7 +15,7 @@ class MainRootViewController: UIViewController {
     lazy var topDrawerTarget = self.view.frame.maxY * 0.55
     lazy var bottomDrawerTarget = self.view.frame.maxY * 0.9
     var drawerIsOpen = false
-    var mainDrawerViewController = MainDrawerViewController()
+    var drawerContainerViewController = DrawerContainerViewController()
     
     
     override func viewDidLoad() {
@@ -42,13 +42,16 @@ class MainRootViewController: UIViewController {
 
 extension MainRootViewController {
     
+  
+    
+    
     func setupViewControllers(){
-        mainDrawerViewController = {
+        drawerContainerViewController = {
             // Load Storyboard
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             
             // Instantiate View Controller
-            let viewController = storyboard.instantiateViewController(withIdentifier: "MainDrawerViewController") as! MainDrawerViewController
+            let viewController = storyboard.instantiateViewController(withIdentifier: "DrawerContainerViewController") as! DrawerContainerViewController
             
             // Add View Controller as Child View Controller
             viewController.view.frame = drawerView.bounds
@@ -68,7 +71,7 @@ extension MainRootViewController {
     func setDrawerFunctionality(){
         drawerView = createDrawerView()
         setupViewControllers()
-        drawerView.addSubview(mainDrawerViewController.view)
+        drawerView.addSubview(drawerContainerViewController.view)
         self.view.addSubview(drawerView)
         
         drawerPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureActivated))
@@ -89,7 +92,7 @@ extension MainRootViewController {
         let frame = CGRect(x: x, y: y, width: width, height: height)
         
         let drawerView = UIView(frame: frame)
-        drawerView.backgroundColor = .clear
+        drawerView.backgroundColor = .blue
         
         return drawerView
     }
@@ -101,16 +104,19 @@ extension MainRootViewController {
           case .began:
               
               panDrawer(withPanPoint: CGPoint(x: drawerView.center.x, y: drawerView.center.y + drawerPanGestureRecognizer.translation(in: drawerView).y))
+              
               drawerPanGestureRecognizer.setTranslation(CGPoint.zero, in: drawerView)
             
           case .changed:
             
               panDrawer(withPanPoint: CGPoint(x: drawerView.center.x, y: drawerView.center.y + drawerPanGestureRecognizer.translation(in: drawerView).y))
+              
               drawerPanGestureRecognizer.setTranslation(CGPoint.zero, in: drawerView)
             
           case .ended:
             
               drawerPanGestureRecognizer.setTranslation(CGPoint.zero, in: drawerView)
+              
               panDidEnd()
               
           default:
