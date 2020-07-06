@@ -9,7 +9,7 @@
 import UIKit
 
 class MainRootViewController: UIViewController {
-
+    
     var drawerView : UIView!
     var drawerPanGestureRecognizer : UIPanGestureRecognizer!
     lazy var topDrawerTarget = self.view.frame.maxY * 0.55
@@ -20,30 +20,15 @@ class MainRootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setDrawerFunctionality()
         openDrawer()
         
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension MainRootViewController {
-    
-  
-    
     
     func setupViewControllers(){
         drawerContainerViewController = {
@@ -61,7 +46,6 @@ extension MainRootViewController {
             viewController.view.layer.masksToBounds = true
             
             self.addChild(viewController)
-            //                   viewController.delegate = self
             
             return viewController
         }()
@@ -98,46 +82,46 @@ extension MainRootViewController {
     }
     
     @objc func panGestureActivated(_ sender: UIPanGestureRecognizer) {
-          
-          switch drawerPanGestureRecognizer.state {
+        
+        switch drawerPanGestureRecognizer.state {
             
-          case .began:
-              
-              panDrawer(withPanPoint: CGPoint(x: drawerView.center.x, y: drawerView.center.y + drawerPanGestureRecognizer.translation(in: drawerView).y))
-              
-              drawerPanGestureRecognizer.setTranslation(CGPoint.zero, in: drawerView)
+        case .began:
             
-          case .changed:
+            panDrawer(withPanPoint: CGPoint(x: drawerView.center.x, y: drawerView.center.y + drawerPanGestureRecognizer.translation(in: drawerView).y))
             
-              panDrawer(withPanPoint: CGPoint(x: drawerView.center.x, y: drawerView.center.y + drawerPanGestureRecognizer.translation(in: drawerView).y))
-              
-              drawerPanGestureRecognizer.setTranslation(CGPoint.zero, in: drawerView)
+            drawerPanGestureRecognizer.setTranslation(CGPoint.zero, in: drawerView)
             
-          case .ended:
+        case .changed:
             
-              drawerPanGestureRecognizer.setTranslation(CGPoint.zero, in: drawerView)
-              
-              panDidEnd()
-              
-          default:
-              return
-          }
-      }
+            panDrawer(withPanPoint: CGPoint(x: drawerView.center.x, y: drawerView.center.y + drawerPanGestureRecognizer.translation(in: drawerView).y))
+            
+            drawerPanGestureRecognizer.setTranslation(CGPoint.zero, in: drawerView)
+            
+        case .ended:
+            
+            drawerPanGestureRecognizer.setTranslation(CGPoint.zero, in: drawerView)
+            
+            panDidEnd()
+            
+        default:
+            return
+        }
+    }
     
     
     fileprivate func panDrawer(withPanPoint panPoint: CGPoint) {
         
         if drawerView.frame.maxY < self.view.frame.maxY * 1.3 {
-               
-               // the /2 slows down then ability for the user to keep swiping past a certain point
-               drawerView.center.y += drawerPanGestureRecognizer.translation(in: drawerView).y / 100
-               
-           } else {
-
-               drawerView.center.y += drawerPanGestureRecognizer.translation(in: drawerView).y
             
-           }
-       }
+            // the /2 slows down then ability for the user to keep swiping past a certain point
+            drawerView.center.y += drawerPanGestureRecognizer.translation(in: drawerView).y / 100
+            
+        } else {
+            
+            drawerView.center.y += drawerPanGestureRecognizer.translation(in: drawerView).y
+            
+        }
+    }
     
     
     fileprivate func panDidEnd() {
@@ -159,9 +143,9 @@ extension MainRootViewController {
         
         // Sets target locations of views & then animates.
         let target = topDrawerTarget
-
+        
         self.userInteractionAnimate(view: drawerView, edge: drawerView.frame.minY, to: target, velocity: drawerPanGestureRecognizer.velocity(in: drawerView).y) {[weak self] (complete) in
-//            self?.tabViewController?.addressSearchViewController.dismissKeyboard()
+            //            self?.tabViewController?.addressSearchViewController.dismissKeyboard()
             self?.drawerIsOpen = true
         }
         
@@ -172,22 +156,22 @@ extension MainRootViewController {
         let target = bottomDrawerTarget
         
         self.userInteractionAnimate(view: drawerView, edge: drawerView.frame.minY, to: target, velocity: drawerPanGestureRecognizer.velocity(in: drawerView).y) {[weak self] (complete) in
-//            self?.tabViewController?.addressSearchViewController.dismissKeyboard()
+            //            self?.tabViewController?.addressSearchViewController.dismissKeyboard()
             self?.drawerIsOpen = false
         }
     }
     
     fileprivate func userInteractionAnimate(view: UIView, edge: CGFloat, to target: CGFloat, velocity: CGFloat, completion: @escaping (Bool?) -> Void) {
         let distanceToTranslate = target - edge
-//        let bannerView = adController.bannerView
+        //        let bannerView = adController.bannerView
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.97, initialSpringVelocity: abs(velocity) * 0.01, options: .curveEaseOut , animations: {
             
             //Sets view to new location (target
             view.frame =  view.frame.offsetBy(dx: 0, dy: distanceToTranslate)
-//            bannerView.frame = bannerView.frame.offsetBy(dx: 0, dy: distanceToTranslate)
+            //            bannerView.frame = bannerView.frame.offsetBy(dx: 0, dy: distanceToTranslate)
             
         }, completion: { (success) in
-
+            
             completion(true)
         })
     }

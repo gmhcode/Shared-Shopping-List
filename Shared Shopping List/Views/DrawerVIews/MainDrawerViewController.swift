@@ -8,25 +8,19 @@
 
 import UIKit
 
-@objc protocol DrawerVC {
-    var arrowButton: ShoppingButton! { get }
-    @objc func arrowButtonTapped(_ sender: Any)
-}
-extension DrawerVC {
-    
-}
 
-class MainDrawerViewController: UIViewController, DrawerVC {
 
-    
+class MainDrawerViewController: UIViewController{
+
+
     @IBOutlet weak var arrowButton : ShoppingButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
     }
-    
+
     @IBAction func arrowButtonTapped(_ sender: Any) {
         self.arrowButton.rotate()
     }
@@ -34,13 +28,13 @@ class MainDrawerViewController: UIViewController, DrawerVC {
 
     /*
      // MARK: - Navigation
-     
+
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destination.
      // Pass the selected object to the new view controller.
      }
      */
-    
+
 }
 

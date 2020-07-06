@@ -8,5 +8,5 @@
 
 import UIKit
 struct ColorConstants {
-    static let borderColor = #colorLiteral(red: 0, green: 1, blue: 0.4783790112, alpha: 1)
+    static let borderColor = #colorLiteral(red: 0, green: 1, blue: 0.4784313725, alpha: 1)
 }

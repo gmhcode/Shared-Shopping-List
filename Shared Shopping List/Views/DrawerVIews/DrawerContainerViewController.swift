@@ -10,7 +10,7 @@ import UIKit
 
 class DrawerContainerViewController: UIViewController {
 
-    @IBOutlet weak var arrowButton: ShoppingButton!
+    @IBOutlet weak var arrowButton: DrawerButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

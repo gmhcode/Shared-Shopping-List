@@ -24,6 +24,10 @@
 		90A0CEA124AD6C7500F0BC4B /* MainDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CEA024AD6C7500F0BC4B /* MainDrawerViewController.swift */; };
 		90A0CEA324AD7F5C00F0BC4B /* DrawerContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CEA224AD7F5C00F0BC4B /* DrawerContainerViewController.swift */; };
 		90A0CEA524AD874500F0BC4B /* RotatableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CEA424AD874500F0BC4B /* RotatableView.swift */; };
+		90C0389724B2B964004C62F9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0389624B2B964004C62F9 /* User.swift */; };
+		90C0389924B2B9CB004C62F9 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0389824B2B9CB004C62F9 /* Group.swift */; };
+		90C0389B24B2C756004C62F9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0389A24B2C756004C62F9 /* Item.swift */; };
+		90C0389D24B2CD6A004C62F9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0389C24B2CD6A004C62F9 /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,10 @@
 		90A0CEA024AD6C7500F0BC4B /* MainDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDrawerViewController.swift; sourceTree = "<group>"; };
 		90A0CEA224AD7F5C00F0BC4B /* DrawerContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerContainerViewController.swift; sourceTree = "<group>"; };
 		90A0CEA424AD874500F0BC4B /* RotatableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatableView.swift; sourceTree = "<group>"; };
+		90C0389624B2B964004C62F9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		90C0389824B2B9CB004C62F9 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		90C0389A24B2C756004C62F9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		90C0389C24B2CD6A004C62F9 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				90A0CE9924AC2F5500F0BC4B /* List.swift */,
+				90C0389624B2B964004C62F9 /* User.swift */,
+				90C0389824B2B9CB004C62F9 /* Group.swift */,
+				90C0389A24B2C756004C62F9 /* Item.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -149,6 +160,7 @@
 				90202FFB24AC16ED00A9D357 /* MainViewController.swift */,
 				90202FFD24AC16ED00A9D357 /* Main.storyboard */,
 				90A0CE9D24AD674A00F0BC4B /* MainRootViewController.swift */,
+				90C0389C24B2CD6A004C62F9 /* ListViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -294,12 +306,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90C0389D24B2CD6A004C62F9 /* ListViewController.swift in Sources */,
 				90A0CEA124AD6C7500F0BC4B /* MainDrawerViewController.swift in Sources */,
 				9093567F24AC2BC2009E2F1E /* MainViewModel.swift in Sources */,
 				90A0CE9E24AD674A00F0BC4B /* MainRootViewController.swift in Sources */,
+				90C0389924B2B9CB004C62F9 /* Group.swift in Sources */,
+				90C0389B24B2C756004C62F9 /* Item.swift in Sources */,
 				90A0CE9C24AC30BB00F0BC4B /* MainCollectionViewCell.swift in Sources */,
 				90A0CE9A24AC2F5500F0BC4B /* List.swift in Sources */,
 				90A0CEA324AD7F5C00F0BC4B /* DrawerContainerViewController.swift in Sources */,
+				90C0389724B2B964004C62F9 /* User.swift in Sources */,
 				90202FFC24AC16ED00A9D357 /* MainViewController.swift in Sources */,
 				90A0CEA524AD874500F0BC4B /* RotatableView.swift in Sources */,
 				90202FF824AC16ED00A9D357 /* AppDelegate.swift in Sources */,

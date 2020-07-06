@@ -9,15 +9,15 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
-
+    
     struct MainViewModel {
         var collectionViewDataSource = [1,2,3,4,5,6,7,8,9]
         var listTypes = ["Shopping Lists"]
         ///Datasource
-        var lists : [List] = [List(title: "Home List"),List(title: "Home List"),List(title: "Home List"),List(title: "Home List"),List(title: "Home List"),List(title: "Home List"),List(title: "Home List")]
+        var lists : [List] = [List(title: "Home List", listMaster: "Person"),List(title: "Home List", listMaster: "Person"),List(title: "Home List", listMaster: "Person"),List(title: "Home List", listMaster: "Person"),List(title: "Home List", listMaster: "Person"),List(title: "Home List", listMaster: "Person"),List(title: "Home List", listMaster: "Person")]
     }
     var mainViewModel : MainViewModel?
     
@@ -49,7 +49,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         guard let mainViewModel = mainViewModel else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return 0 }
-
+        
         return mainViewModel.lists.count
     }
     
@@ -75,7 +75,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         return sectionHeaderView
     }
-
+    
 }
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     

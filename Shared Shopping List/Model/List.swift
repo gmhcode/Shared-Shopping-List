@@ -9,8 +9,12 @@
 import Foundation
 
 class List {
+    
     var title : String
-    init(title: String) {
+    var listMaster: String
+    
+    init(title: String, listMaster: String) {
         self.title = title
+        self.listMaster = listMaster
     }
 }

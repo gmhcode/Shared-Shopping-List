@@ -36,13 +36,44 @@ extension Rotatable {
 }
 class ShoppingButton: UIButton, Rotatable {
     var isPointingUp: Bool = true
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    func initialize() {
+        self.layer.borderWidth = 1
+        self.layer.borderColor = ColorConstants.borderColor.cgColor
     }
-    */
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initialize()
 
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        initialize()
+    }
+    
 }
+class DrawerButton: UIButton, Rotatable {
+    var isPointingUp: Bool = true
+    
+    func initialize() {
+//        self.layer.borderWidth = 1
+//        self.layer.borderColor = ColorConstants.borderColor.cgColor
+        self.tintColor = ColorConstants.borderColor
+//        self.backgroundColor = ColorConstants.borderColor
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initialize()
+
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        initialize()
+    }
+    
+}
+
