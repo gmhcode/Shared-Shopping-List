@@ -10,9 +10,8 @@ import UIKit
 protocol MainRootVCDelegate: class {
     
 }
-class MainRootViewController: UIViewController {
+class MainRootViewController: UINavigationController {
     
-    @IBOutlet weak var continerView: UIView!
     var drawerView : UIView!
     var drawerPanGestureRecognizer : UIPanGestureRecognizer!
     lazy var topDrawerTarget = self.view.frame.maxY * 0.55
@@ -24,7 +23,7 @@ class MainRootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        MainRootViewController.mainRootVC = self
+//        MainRootViewController.mainRootVC = self
         setDrawerFunctionality()
         openDrawer()
     }
@@ -47,7 +46,7 @@ extension MainRootViewController {
             viewController.view.layer.borderColor = #colorLiteral(red: 0.2134257277, green: 0.2134257277, blue: 0.2134257277, alpha: 1)
             viewController.view.layer.masksToBounds = true
             
-            self.addChild(viewController)
+//            self.addChild(viewController)
             
             return viewController
         }()
@@ -57,6 +56,7 @@ extension MainRootViewController {
     func setDrawerFunctionality(){
         drawerView = createDrawerView()
         setupViewControllers()
+        
         drawerView.addSubview(drawerContainerViewController.view)
         self.view.addSubview(drawerView)
         
