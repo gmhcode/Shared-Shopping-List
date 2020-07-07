@@ -28,6 +28,8 @@
 		90C0389924B2B9CB004C62F9 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0389824B2B9CB004C62F9 /* Group.swift */; };
 		90C0389B24B2C756004C62F9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0389A24B2C756004C62F9 /* Item.swift */; };
 		90C0389D24B2CD6A004C62F9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0389C24B2CD6A004C62F9 /* ListViewController.swift */; };
+		90C0389F24B4C99C004C62F9 /* testyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0389E24B4C99C004C62F9 /* testyViewController.swift */; };
+		90C038A224B4DE55004C62F9 /* testTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C038A124B4DE55004C62F9 /* testTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		90C0389824B2B9CB004C62F9 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		90C0389A24B2C756004C62F9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		90C0389C24B2CD6A004C62F9 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		90C0389E24B4C99C004C62F9 /* testyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testyViewController.swift; sourceTree = "<group>"; };
+		90C038A124B4DE55004C62F9 /* testTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 		90202FF624AC16ED00A9D357 /* Shared Shopping List */ = {
 			isa = PBXGroup;
 			children = (
+				90C038A024B4DE40004C62F9 /* TestViews */,
 				9093567B24AC2AFD009E2F1E /* GlobalColors */,
 				9020301F24AC259E00A9D357 /* Controller */,
 				9020301E24AC258900A9D357 /* ViewModel */,
@@ -161,6 +166,7 @@
 				90202FFD24AC16ED00A9D357 /* Main.storyboard */,
 				90A0CE9D24AD674A00F0BC4B /* MainRootViewController.swift */,
 				90C0389C24B2CD6A004C62F9 /* ListViewController.swift */,
+				90C0389E24B4C99C004C62F9 /* testyViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,6 +209,14 @@
 				90A0CEA424AD874500F0BC4B /* RotatableView.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		90C038A024B4DE40004C62F9 /* TestViews */ = {
+			isa = PBXGroup;
+			children = (
+				90C038A124B4DE55004C62F9 /* testTableViewController.swift */,
+			);
+			path = TestViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +328,7 @@
 				90C0389B24B2C756004C62F9 /* Item.swift in Sources */,
 				90A0CE9C24AC30BB00F0BC4B /* MainCollectionViewCell.swift in Sources */,
 				90A0CE9A24AC2F5500F0BC4B /* List.swift in Sources */,
+				90C0389F24B4C99C004C62F9 /* testyViewController.swift in Sources */,
 				90A0CEA324AD7F5C00F0BC4B /* DrawerContainerViewController.swift in Sources */,
 				90C0389724B2B964004C62F9 /* User.swift in Sources */,
 				90202FFC24AC16ED00A9D357 /* MainViewController.swift in Sources */,
@@ -322,6 +337,7 @@
 				9020302124AC262A00A9D357 /* SectionHeaderView.swift in Sources */,
 				9020300224AC16ED00A9D357 /* Shared_Shopping_List.xcdatamodeld in Sources */,
 				9093567D24AC2B4A009E2F1E /* GlobalConstants.swift in Sources */,
+				90C038A224B4DE55004C62F9 /* testTableViewController.swift in Sources */,
 				90202FFA24AC16ED00A9D357 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
