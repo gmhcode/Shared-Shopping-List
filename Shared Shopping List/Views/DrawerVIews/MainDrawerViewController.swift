@@ -22,7 +22,7 @@ class MainDrawerViewController: UIViewController{
     }
 
     @IBAction func arrowButtonTapped(_ sender: Any) {
-        self.arrowButton.rotate()
+        
     }
 
 

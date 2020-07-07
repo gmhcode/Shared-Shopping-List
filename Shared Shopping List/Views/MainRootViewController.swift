@@ -7,24 +7,26 @@
 //
 
 import UIKit
-
+protocol MainRootVCDelegate: class {
+    
+}
 class MainRootViewController: UIViewController {
     
+    @IBOutlet weak var continerView: UIView!
     var drawerView : UIView!
     var drawerPanGestureRecognizer : UIPanGestureRecognizer!
     lazy var topDrawerTarget = self.view.frame.maxY * 0.55
     lazy var bottomDrawerTarget = self.view.frame.maxY * 0.9
     var drawerIsOpen = false
     var drawerContainerViewController = DrawerContainerViewController()
-    
+    static var mainRootVC : MainRootViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
+        MainRootViewController.mainRootVC = self
         setDrawerFunctionality()
         openDrawer()
-        
     }
 }
 
@@ -94,13 +96,11 @@ extension MainRootViewController {
         case .changed:
             
             panDrawer(withPanPoint: CGPoint(x: drawerView.center.x, y: drawerView.center.y + drawerPanGestureRecognizer.translation(in: drawerView).y))
-            
             drawerPanGestureRecognizer.setTranslation(CGPoint.zero, in: drawerView)
             
         case .ended:
             
             drawerPanGestureRecognizer.setTranslation(CGPoint.zero, in: drawerView)
-            
             panDidEnd()
             
         default:
@@ -117,9 +117,7 @@ extension MainRootViewController {
             drawerView.center.y += drawerPanGestureRecognizer.translation(in: drawerView).y / 100
             
         } else {
-            
             drawerView.center.y += drawerPanGestureRecognizer.translation(in: drawerView).y
-            
         }
     }
     
