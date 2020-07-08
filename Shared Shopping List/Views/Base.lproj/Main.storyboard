@@ -8,38 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Root View Controller-->
-        <scene sceneID="aij-QE-zRp">
-            <objects>
-                <viewController id="QD7-ym-OEQ" customClass="MainRootViewController" customModule="Shared_Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UPH-Fv-bgc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7g-OG-GnJ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="embed" id="WKp-cx-jXI"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="h7g-OG-GnJ" firstAttribute="top" secondItem="UPH-Fv-bgc" secondAttribute="top" id="5dN-wi-VSS"/>
-                            <constraint firstAttribute="bottom" secondItem="h7g-OG-GnJ" secondAttribute="bottom" id="Goc-wJ-xcb"/>
-                            <constraint firstItem="h7g-OG-GnJ" firstAttribute="leading" secondItem="SE5-1N-ZVU" secondAttribute="leading" id="dCI-Yz-gjZ"/>
-                            <constraint firstItem="h7g-OG-GnJ" firstAttribute="trailing" secondItem="SE5-1N-ZVU" secondAttribute="trailing" id="xQt-kO-Jvi"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="SE5-1N-ZVU"/>
-                    </view>
-                    <connections>
-                        <outlet property="continerView" destination="h7g-OG-GnJ" id="A63-hQ-yK6"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YVb-Fd-IjX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1010.144927536232" y="-281.25"/>
-        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -136,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="71" y="-276"/>
+            <point key="canvasLocation" x="68" y="-281"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="98S-sc-J9U">
@@ -185,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qj6-L1-rVm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="826.08695652173924" y="-128.57142857142856"/>
+            <point key="canvasLocation" x="1283" y="-281"/>
         </scene>
         <!--Drawer Container View Controller-->
         <scene sceneID="iPW-5g-U09">
@@ -316,7 +284,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oU5-Nq-c5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="654"/>
+            <point key="canvasLocation" x="1486" y="509"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="SGW-70-FKh">
@@ -332,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iop-4p-UM9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2603" y="670"/>
+            <point key="canvasLocation" x="2312" y="509"/>
         </scene>
         <!--Main Root View Controller-->
         <scene sceneID="fej-f5-bA1">
@@ -348,12 +316,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S9-01-Zom" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="939" y="654"/>
+            <point key="canvasLocation" x="-1123" y="-281"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="LhQ-oJ-a0f"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.up" catalog="system" width="128" height="72"/>
     </resources>

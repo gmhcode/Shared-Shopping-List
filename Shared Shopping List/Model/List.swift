@@ -10,11 +10,17 @@ import Foundation
 
 class List {
     
-    var title : String
-    var listMaster: String
-    
-    init(title: String, listMaster: String) {
+    init(title: String, listMaster: User, group: Group, items: [Item]) {
         self.title = title
         self.listMaster = listMaster
+        self.group = group
+        self.items = items
     }
+    
+    
+    var title : String
+    var listMaster: User
+    var group : Group
+    var items : [Item]
+   
 }

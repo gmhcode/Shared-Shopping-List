@@ -17,7 +17,9 @@ class MainViewController: UIViewController {
         var collectionViewDataSource = [1,2,3,4,5,6,7,8,9]
         var listTypes = ["Shopping Lists"]
         ///Datasource
-        var lists : [List] = [List(title: "Home List", listMaster: "Person"),List(title: "Home List", listMaster: "Person"),List(title: "Home List", listMaster: "Person"),List(title: "Home List", listMaster: "Person"),List(title: "Home List", listMaster: "Person"),List(title: "Home List", listMaster: "Person"),List(title: "Home List", listMaster: "Person")]
+        var lists : [List] = []
+            
+//            [List(title: "Home List", listMaster: TestFunctions.users["Greg"]!),List(title: "Home List", listMaster: TestFunctions.users["Greg"]!),List(title: "Home List", listMaster: TestFunctions.users["Greg"]!),List(title: "Home List", listMaster: TestFunctions.users["Greg"]!),List(title: "Home List", listMaster: TestFunctions.users["Greg"]!),List(title: "Home List", listMaster: TestFunctions.users["Greg"]!),List(title: "Home List", listMaster: TestFunctions.users["Greg"]!)]
     }
     var mainViewModel : MainViewModel?
     

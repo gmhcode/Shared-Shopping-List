@@ -10,13 +10,17 @@ import Foundation
 
 class User {
     
-    var name : String
-    var email : String
-    var id : String
-    
-    init(name: String, email: String, id : String) {
+    init(name: String, email: String, id: String, groups: [Group]) {
         self.name = name
         self.email = email
         self.id = id
+        self.groups = groups
     }
+    
+    
+    var name : String
+    var email : String
+    let id : String
+    var groups : [Group]
+
 }

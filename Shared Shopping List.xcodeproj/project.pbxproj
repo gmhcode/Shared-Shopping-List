@@ -16,6 +16,11 @@
 		9020300724AC16F100A9D357 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9020300524AC16F100A9D357 /* LaunchScreen.storyboard */; };
 		9020301224AC16F200A9D357 /* Shared_Shopping_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9020301124AC16F200A9D357 /* Shared_Shopping_ListTests.swift */; };
 		9020302124AC262A00A9D357 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9020302024AC262A00A9D357 /* SectionHeaderView.swift */; };
+		90894C0824B562BB006AFC40 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0724B562BB006AFC40 /* TestData.swift */; };
+		90894C0A24B563E3006AFC40 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0924B563E3006AFC40 /* UserController.swift */; };
+		90894C0C24B566AA006AFC40 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0B24B566AA006AFC40 /* ListController.swift */; };
+		90894C0E24B566BE006AFC40 /* GroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0D24B566BE006AFC40 /* GroupController.swift */; };
+		90894C1024B566DC006AFC40 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0F24B566DC006AFC40 /* ItemController.swift */; };
 		9093567D24AC2B4A009E2F1E /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093567C24AC2B4A009E2F1E /* GlobalConstants.swift */; };
 		9093567F24AC2BC2009E2F1E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093567E24AC2BC2009E2F1E /* MainViewModel.swift */; };
 		90A0CE9A24AC2F5500F0BC4B /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CE9924AC2F5500F0BC4B /* List.swift */; };
@@ -56,6 +61,11 @@
 		9020301124AC16F200A9D357 /* Shared_Shopping_ListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared_Shopping_ListTests.swift; sourceTree = "<group>"; };
 		9020301324AC16F200A9D357 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9020302024AC262A00A9D357 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		90894C0724B562BB006AFC40 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		90894C0924B563E3006AFC40 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		90894C0B24B566AA006AFC40 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
+		90894C0D24B566BE006AFC40 /* GroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupController.swift; sourceTree = "<group>"; };
+		90894C0F24B566DC006AFC40 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		9093567C24AC2B4A009E2F1E /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		9093567E24AC2BC2009E2F1E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		90A0CE9924AC2F5500F0BC4B /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
@@ -120,7 +130,7 @@
 		90202FF624AC16ED00A9D357 /* Shared Shopping List */ = {
 			isa = PBXGroup;
 			children = (
-				90C038A024B4DE40004C62F9 /* TestViews */,
+				90C038A024B4DE40004C62F9 /* Test */,
 				9093567B24AC2AFD009E2F1E /* GlobalColors */,
 				9020301F24AC259E00A9D357 /* Controller */,
 				9020301E24AC258900A9D357 /* ViewModel */,
@@ -182,6 +192,10 @@
 		9020301F24AC259E00A9D357 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				90894C0924B563E3006AFC40 /* UserController.swift */,
+				90894C0B24B566AA006AFC40 /* ListController.swift */,
+				90894C0D24B566BE006AFC40 /* GroupController.swift */,
+				90894C0F24B566DC006AFC40 /* ItemController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -211,12 +225,13 @@
 			path = CustomViews;
 			sourceTree = "<group>";
 		};
-		90C038A024B4DE40004C62F9 /* TestViews */ = {
+		90C038A024B4DE40004C62F9 /* Test */ = {
 			isa = PBXGroup;
 			children = (
 				90C038A124B4DE55004C62F9 /* testTableViewController.swift */,
+				90894C0724B562BB006AFC40 /* TestData.swift */,
 			);
-			path = TestViews;
+			path = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,14 +335,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90894C0E24B566BE006AFC40 /* GroupController.swift in Sources */,
 				90C0389D24B2CD6A004C62F9 /* ListViewController.swift in Sources */,
 				90A0CEA124AD6C7500F0BC4B /* MainDrawerViewController.swift in Sources */,
 				9093567F24AC2BC2009E2F1E /* MainViewModel.swift in Sources */,
+				90894C1024B566DC006AFC40 /* ItemController.swift in Sources */,
+				90894C0824B562BB006AFC40 /* TestData.swift in Sources */,
 				90A0CE9E24AD674A00F0BC4B /* MainRootViewController.swift in Sources */,
 				90C0389924B2B9CB004C62F9 /* Group.swift in Sources */,
 				90C0389B24B2C756004C62F9 /* Item.swift in Sources */,
 				90A0CE9C24AC30BB00F0BC4B /* MainCollectionViewCell.swift in Sources */,
 				90A0CE9A24AC2F5500F0BC4B /* List.swift in Sources */,
+				90894C0C24B566AA006AFC40 /* ListController.swift in Sources */,
 				90C0389F24B4C99C004C62F9 /* testyViewController.swift in Sources */,
 				90A0CEA324AD7F5C00F0BC4B /* DrawerContainerViewController.swift in Sources */,
 				90C0389724B2B964004C62F9 /* User.swift in Sources */,
@@ -337,6 +356,7 @@
 				9020302124AC262A00A9D357 /* SectionHeaderView.swift in Sources */,
 				9020300224AC16ED00A9D357 /* Shared_Shopping_List.xcdatamodeld in Sources */,
 				9093567D24AC2B4A009E2F1E /* GlobalConstants.swift in Sources */,
+				90894C0A24B563E3006AFC40 /* UserController.swift in Sources */,
 				90C038A224B4DE55004C62F9 /* testTableViewController.swift in Sources */,
 				90202FFA24AC16ED00A9D357 /* SceneDelegate.swift in Sources */,
 			);

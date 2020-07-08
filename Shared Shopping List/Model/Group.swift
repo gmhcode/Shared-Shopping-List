@@ -9,14 +9,19 @@
 import Foundation
 
 class Group {
+    init(name: String, id: String, password: String, masterUser: User, lists: [List]) {
+        self.name = name
+        self.id = id
+        self.password = password
+        self.masterUser = masterUser
+        self.lists = lists
+    }
+    
     
     var name : String
     var id : String
-    var lists : String
-    
-    internal init(name: String, id: String, lists: String) {
-        self.name = name
-        self.id = id
-        self.lists = lists
-    }
+    var password : String
+    var masterUser : User
+    var lists : [List]
+
 }
