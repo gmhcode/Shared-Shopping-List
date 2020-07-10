@@ -14,12 +14,11 @@ class MainViewController: UIViewController {
     
     
     struct MainViewModel {
-        var collectionViewDataSource = [1,2,3,4,5,6,7,8,9]
         var listTypes = ["Shopping Lists"]
         ///Datasource
         var lists : [List] = []
-            
-//            [List(title: "Home List", listMaster: TestFunctions.users["Greg"]!),List(title: "Home List", listMaster: TestFunctions.users["Greg"]!),List(title: "Home List", listMaster: TestFunctions.users["Greg"]!),List(title: "Home List", listMaster: TestFunctions.users["Greg"]!),List(title: "Home List", listMaster: TestFunctions.users["Greg"]!),List(title: "Home List", listMaster: TestFunctions.users["Greg"]!),List(title: "Home List", listMaster: TestFunctions.users["Greg"]!)]
+//            UserController.currentUser?.groups.values.compactMap({$0.lists}).reduce([],+) ?? []
+        
     }
     var mainViewModel : MainViewModel?
     
@@ -43,7 +42,6 @@ class MainViewController: UIViewController {
         collectionView.dataSource = self
         
     }
-    
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {

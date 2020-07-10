@@ -10,8 +10,8 @@ import Foundation
 class ItemController {
     static let shared = ItemController()
 //    var items = [String:Item]()
-    static func createItem(name: String, store: String, userSent: User) -> Item {
-        let item = Item(name: name, store: store, userSent: userSent)
+    static func createItem(name: String, store: String, userSent: User, list: List) -> Item {
+        let item = Item(name: name, store: store, userSent: userSent, list: list)
         return item
     }
     

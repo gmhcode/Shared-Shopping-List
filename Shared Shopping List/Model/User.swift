@@ -8,19 +8,19 @@
 
 import Foundation
 
-class User {
-    
-    init(name: String, email: String, id: String, groups: [Group]) {
-        self.name = name
-        self.email = email
-        self.id = id
-        self.groups = groups
-    }
-    
-    
-    var name : String
-    var email : String
-    let id : String
-    var groups : [Group]
-
-}
+//class User {
+//    
+//    init(name: String, email: String, id: String, groups: [String:Group]) {
+//        self.name = name
+//        self.email = email
+//        self.id = id
+//        self.groups = groups
+//    }
+//    
+//    
+//    var name : String
+//    var email : String
+//    let id : String
+//    var groups : [String:Group]
+//
+//}

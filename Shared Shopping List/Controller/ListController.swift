@@ -12,8 +12,8 @@ class ListController {
     static let shared = ListController()
     var lists = [String:List]()
     
-    static func createList(title: String, listMaster: User, group: Group, items: [Item]) -> List {
-        let list = List(title: title, listMaster: listMaster, group: group, items: items)
+    static func createList(title: String, listMaster: User, groupID: String, items: [Item]) -> List {
+        let list = List(title: title, listMaster: listMaster, groupID: groupID, items: items)
         return list
     }
 //    

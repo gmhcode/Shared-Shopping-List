@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Group Name-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Shared_Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -97,7 +97,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hU5-Qc-dEq"/>
+                    <navigationItem key="navigationItem" title="Group Name" id="hU5-Qc-dEq">
+                        <barButtonItem key="rightBarButtonItem" title="Group List" id="7ig-MC-4vt"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="dEy-WD-irv" id="uKW-UW-3dd"/>
                     </connections>
