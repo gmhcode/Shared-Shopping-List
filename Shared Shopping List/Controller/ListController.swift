@@ -13,7 +13,10 @@ class ListController {
     var lists = [String:List]()
     
     static func createList(title: String, listMaster: User, groupID: String, items: [Item]) -> List {
-        let list = List(title: title, listMaster: listMaster, groupID: groupID, items: items)
+        let persistentManager = PersistenceManager.shared
+        let list = List(context: persistentManager.context)
+        
+//        let list = List(title: title, listMaster: listMaster, groupID: groupID, items: items)
         return list
     }
 //    

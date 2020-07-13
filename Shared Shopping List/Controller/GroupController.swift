@@ -10,8 +10,13 @@ import Foundation
 class GroupController {
     static let shared = GroupController()
     
-    static func createGroup(name: String, id: String, password: String, masterUser: User, lists: [List]) -> Group {
-        let group = Group(name: name, id: id, password: password, masterUser: masterUser, lists: lists)
+    static func createGroup(name: String, id: String, password: String, masterUser: User) -> Group {
+        let persistentManager = PersistenceManager.shared
+        let group = Group(context: persistentManager.context)
+        group.id = UUID()
+        group.masterUserID = masterUser.id
+        group.name = name
+        group.password = password
         return group
     }
 //    
