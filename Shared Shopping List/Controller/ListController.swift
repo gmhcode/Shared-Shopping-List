@@ -8,10 +8,11 @@
 
 import Foundation
 import CoreData
+
+
 class ListController {
     
     static let shared = ListController()
-    var lists = [String:List]()
     
     @discardableResult static func createList(title: String, listMaster: User) -> List {
         
@@ -21,16 +22,18 @@ class ListController {
         list.id = UUID()
         list.listMasterID = listMaster.id
         list.title = title
-        
+        persistentManager.saveContext()
         return list
     }
     
     ///Gets the List from the entered ID
     static func getList(id: UUID) -> List? {
+        
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<List> = List.fetchRequest()
         let predicate = NSPredicate(format: "id == %@", id as CVarArg)
         request.predicate = predicate
+        
         do {
             let list = try persistentManager.context.fetch(request)
             if list.count > 0 {
@@ -61,12 +64,18 @@ class ListController {
         persistentManager.saveContext()
     }
     
-
     ///Change the list's title
     static func changeName(id:UUID, newTitle: String) {
         guard let list = getList(id: id) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         let persistentManager = PersistenceManager.shared
         list.title = newTitle
+        persistentManager.saveContext()
+    }
+    
+    static func changeListOwner(listID: UUID, newOwner: User) {
+        let persistentManager = PersistenceManager.shared
+        let list = getList(id: listID)
+        list?.listMasterID = newOwner.id
         persistentManager.saveContext()
     }
     
