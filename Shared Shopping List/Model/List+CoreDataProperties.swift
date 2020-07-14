@@ -18,7 +18,6 @@ extension List {
     }
     @NSManaged public var id: UUID
     @NSManaged public var title: String
-    @NSManaged public var listMasterID: String
-    @NSManaged public var groupID: String
+    @NSManaged public var listMasterID: UUID
 
 }

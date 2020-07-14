@@ -22,15 +22,12 @@
 		9038DA5E24BD264900E6216D /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038DA5C24BD264900E6216D /* Item+CoreDataProperties.swift */; };
 		9070BA7924BD27D1006101D1 /* List+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9070BA7724BD27D1006101D1 /* List+CoreDataClass.swift */; };
 		9070BA7A24BD27D1006101D1 /* List+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9070BA7824BD27D1006101D1 /* List+CoreDataProperties.swift */; };
-		9070BA8124BD28F1006101D1 /* Group+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9070BA7F24BD28F1006101D1 /* Group+CoreDataClass.swift */; };
-		9070BA8224BD28F1006101D1 /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9070BA8024BD28F1006101D1 /* Group+CoreDataProperties.swift */; };
 		907B830124B7F7150098FCF0 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B830024B7F7150098FCF0 /* PersistenceManager.swift */; };
 		907B830424B7FDF00098FCF0 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B830224B7FDEF0098FCF0 /* User+CoreDataClass.swift */; };
 		907B830524B7FDF00098FCF0 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B830324B7FDF00098FCF0 /* User+CoreDataProperties.swift */; };
 		90894C0824B562BB006AFC40 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0724B562BB006AFC40 /* TestData.swift */; };
 		90894C0A24B563E3006AFC40 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0924B563E3006AFC40 /* UserController.swift */; };
 		90894C0C24B566AA006AFC40 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0B24B566AA006AFC40 /* ListController.swift */; };
-		90894C0E24B566BE006AFC40 /* GroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0D24B566BE006AFC40 /* GroupController.swift */; };
 		90894C1024B566DC006AFC40 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0F24B566DC006AFC40 /* ItemController.swift */; };
 		9093567D24AC2B4A009E2F1E /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093567C24AC2B4A009E2F1E /* GlobalConstants.swift */; };
 		9093567F24AC2BC2009E2F1E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093567E24AC2BC2009E2F1E /* MainViewModel.swift */; };
@@ -74,15 +71,12 @@
 		9038DA5C24BD264900E6216D /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9070BA7724BD27D1006101D1 /* List+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9070BA7824BD27D1006101D1 /* List+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		9070BA7F24BD28F1006101D1 /* Group+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataClass.swift"; sourceTree = "<group>"; };
-		9070BA8024BD28F1006101D1 /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		907B830024B7F7150098FCF0 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		907B830224B7FDEF0098FCF0 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		907B830324B7FDF00098FCF0 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		90894C0724B562BB006AFC40 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		90894C0924B563E3006AFC40 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		90894C0B24B566AA006AFC40 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
-		90894C0D24B566BE006AFC40 /* GroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupController.swift; sourceTree = "<group>"; };
 		90894C0F24B566DC006AFC40 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		9093567C24AC2B4A009E2F1E /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		9093567E24AC2BC2009E2F1E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -172,8 +166,6 @@
 		9020301C24AC257200A9D357 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9070BA7F24BD28F1006101D1 /* Group+CoreDataClass.swift */,
-				9070BA8024BD28F1006101D1 /* Group+CoreDataProperties.swift */,
 				9070BA7724BD27D1006101D1 /* List+CoreDataClass.swift */,
 				9070BA7824BD27D1006101D1 /* List+CoreDataProperties.swift */,
 				9038DA5B24BD264900E6216D /* Item+CoreDataClass.swift */,
@@ -214,7 +206,6 @@
 			children = (
 				90894C0924B563E3006AFC40 /* UserController.swift */,
 				90894C0B24B566AA006AFC40 /* ListController.swift */,
-				90894C0D24B566BE006AFC40 /* GroupController.swift */,
 				90894C0F24B566DC006AFC40 /* ItemController.swift */,
 				907B830024B7F7150098FCF0 /* PersistenceManager.swift */,
 			);
@@ -357,7 +348,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9038DA5D24BD264900E6216D /* Item+CoreDataClass.swift in Sources */,
-				90894C0E24B566BE006AFC40 /* GroupController.swift in Sources */,
 				907B830124B7F7150098FCF0 /* PersistenceManager.swift in Sources */,
 				90C0389D24B2CD6A004C62F9 /* ListViewController.swift in Sources */,
 				90A0CEA124AD6C7500F0BC4B /* MainDrawerViewController.swift in Sources */,
@@ -365,7 +355,6 @@
 				90894C1024B566DC006AFC40 /* ItemController.swift in Sources */,
 				9070BA7A24BD27D1006101D1 /* List+CoreDataProperties.swift in Sources */,
 				9038DA5E24BD264900E6216D /* Item+CoreDataProperties.swift in Sources */,
-				9070BA8124BD28F1006101D1 /* Group+CoreDataClass.swift in Sources */,
 				90894C0824B562BB006AFC40 /* TestData.swift in Sources */,
 				90A0CE9E24AD674A00F0BC4B /* MainRootViewController.swift in Sources */,
 				90A0CE9C24AC30BB00F0BC4B /* MainCollectionViewCell.swift in Sources */,
@@ -379,7 +368,6 @@
 				907B830524B7FDF00098FCF0 /* User+CoreDataProperties.swift in Sources */,
 				90202FFC24AC16ED00A9D357 /* MainViewController.swift in Sources */,
 				90A0CEA524AD874500F0BC4B /* RotatableView.swift in Sources */,
-				9070BA8224BD28F1006101D1 /* Group+CoreDataProperties.swift in Sources */,
 				90202FF824AC16ED00A9D357 /* AppDelegate.swift in Sources */,
 				9020302124AC262A00A9D357 /* SectionHeaderView.swift in Sources */,
 				9020300224AC16ED00A9D357 /* Shared_Shopping_List.xcdatamodeld in Sources */,
