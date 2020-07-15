@@ -125,6 +125,4 @@ class Shared_Shopping_ListTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
-    
 }
