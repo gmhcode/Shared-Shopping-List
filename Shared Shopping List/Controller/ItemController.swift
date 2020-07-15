@@ -9,8 +9,9 @@
 import Foundation
 import CoreData
 class ItemController {
+    
     static let shared = ItemController()
-//    var items = [String:Item]()
+
     static func createItem(name: String, store: String, userSent: User, list: List) -> Item {
         
         let persistentManager = PersistenceManager.shared
@@ -20,6 +21,7 @@ class ItemController {
         item.store = store
         item.userSentId = userSent.id
         item.listID = list.id
+        item.id = UUID()
         
         persistentManager.saveContext()
         return item
@@ -54,11 +56,20 @@ class ItemController {
     }
     
     ///Deletes list with the entered ID
-    static func deleteList(id:UUID) {
+    static func deleteItem(id:UUID) {
         let persistentManager = PersistenceManager.shared
         let item = getItem(id: id)
         if item != nil {
             persistentManager.delete(item!)
+        }
+        persistentManager.saveContext()
+    }
+    static func deleteAllItems() {
+        let persistentManager = PersistenceManager.shared
+        let item = getAllItem()
+        
+        for i in item {
+            persistentManager.delete(i)
         }
         persistentManager.saveContext()
     }
@@ -71,6 +82,7 @@ class ItemController {
         persistentManager.saveContext()
     }
     
+    ///Update the name and store of the Item of the entered ID
     static func updateItem(name: String, store: String, id: UUID) {
         let persistentManager = PersistenceManager.shared
         guard let item = getItem(id: id) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}

@@ -21,5 +21,6 @@ extension Item {
     @NSManaged public var store: String
     @NSManaged public var userSentId: UUID
     @NSManaged public var name: String
+    @NSManaged public var id: UUID
 
 }
