@@ -19,9 +19,9 @@ class ItemController {
         
         item.name = name
         item.store = store
-        item.userSentId = userSent.id
-        item.listID = list.id
-        item.id = UUID()
+        item.userSentId = userSent.uuid
+        item.listID = list.uuid
+        item.uuid = UUID().uuidString
         
         persistentManager.saveContext()
         return item

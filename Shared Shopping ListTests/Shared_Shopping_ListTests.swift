@@ -26,15 +26,15 @@ class Shared_Shopping_ListTests: XCTestCase {
         let lists = ListController.getAllLists()
         XCTAssertTrue(lists.count > 0)
         lists.forEach { (list) in
-            ListController.deleteList(id: list.id)
+            ListController.deleteList(id: list.uuid)
         }
     }
     // Test changeTitle func
     func testChangeListTitle() {
         
         let list = ListController.createList(title: "testList", listMaster: user)
-        ListController.changeName(id: list.id, newTitle: "newListTitle")
-        let newListWithTitle = ListController.getList(id: list.id)
+        ListController.changeName(id: list.uuid, newTitle: "newListTitle")
+        let newListWithTitle = ListController.getList(id: list.uuid)
         XCTAssertTrue(newListWithTitle?.title == "newListTitle")
         
     }
@@ -45,7 +45,7 @@ class Shared_Shopping_ListTests: XCTestCase {
         ListController.createList(title: "testList", listMaster: user)
         let lists = ListController.getAllLists()
         lists.forEach { (list) in
-            ListController.deleteList(id: list.id)
+            ListController.deleteList(id: list.uuid)
         }
         let remainingLists = ListController.getAllLists()
         print(remainingLists)
@@ -65,8 +65,8 @@ class Shared_Shopping_ListTests: XCTestCase {
     func testGetList() {
         
         let list1 = ListController.createList(title: "testList", listMaster: user)
-        let list = ListController.getList(id: list1.id)
-        XCTAssertTrue(list1.id == list?.id)
+        let list = ListController.getList(id: list1.uuid)
+        XCTAssertTrue(list1.uuid == list?.uuid)
         
     }
     
@@ -75,7 +75,7 @@ class Shared_Shopping_ListTests: XCTestCase {
         
         let user = UserController.createUser(name: "testUser1", email: "testEmail1")
         let item = ItemController.createItem(name: "testItem1", store: "testStore1", userSent: user, list: ListController.createList(title: "testList1", listMaster: user))
-        XCTAssertTrue(ItemController.getItem(id: item.id)?.id == item.id)
+        XCTAssertTrue(ItemController.getItem(id: item.uuid)?.uuid == item.uuid)
         ItemController.deleteAllItems()
         
     }
@@ -85,8 +85,8 @@ class Shared_Shopping_ListTests: XCTestCase {
         
         let user = UserController.createUser(name: "testUser1", email: "testEmail1")
         let item = ItemController.createItem(name: "testItem1", store: "testStore1", userSent: user, list: ListController.createList(title: "testList1", listMaster: user))
-        ItemController.changeName(id: item.id, newName: "newItemNameTest1")
-        XCTAssertTrue(ItemController.getItem(id: item.id)?.name == "newItemNameTest1")
+        ItemController.changeName(id: item.uuid, newName: "newItemNameTest1")
+        XCTAssertTrue(ItemController.getItem(id: item.uuid)?.name == "newItemNameTest1")
         ItemController.deleteAllItems()
         
     }
@@ -96,7 +96,7 @@ class Shared_Shopping_ListTests: XCTestCase {
         
         let user = UserController.createUser(name: "testUser1", email: "testEmail1")
         let item = ItemController.createItem(name: "testItem1", store: "testStore1", userSent: user, list: ListController.createList(title: "testList1", listMaster: user))
-        ItemController.deleteItem(id: item.id)
+        ItemController.deleteItem(id: item.uuid)
         XCTAssertTrue(ItemController.getAllItem() == [])
         ItemController.deleteAllItems()
         
@@ -112,7 +112,7 @@ class Shared_Shopping_ListTests: XCTestCase {
         
         let user = UserController.createUser(name: "testUser1", email: "testEmail1")
         let item = ItemController.createItem(name: "testItem1", store: "testStore1", userSent: user, list: ListController.createList(title: "testList1", listMaster: user))
-        XCTAssertTrue(ItemController.getItem(id: item.id)?.id == item.id)
+        XCTAssertTrue(ItemController.getItem(id: item.uuid)?.uuid == item.uuid)
         ItemController.deleteAllItems()
         
     }

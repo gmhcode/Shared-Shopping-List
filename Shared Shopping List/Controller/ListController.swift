@@ -19,8 +19,8 @@ class ListController {
         let persistentManager = PersistenceManager.shared
         let list = List(context: persistentManager.context)
         
-        list.id = UUID()
-        list.listMasterID = listMaster.id
+        list.uuid = UUID().uuidString
+        list.listMasterID = listMaster.uuid
         list.title = title
         persistentManager.saveContext()
         return list
@@ -75,7 +75,7 @@ class ListController {
     static func changeListOwner(listID: UUID, newOwner: User) {
         let persistentManager = PersistenceManager.shared
         let list = getList(id: listID)
-        list?.listMasterID = newOwner.id
+        list?.listMasterID = newOwner.uuid
         persistentManager.saveContext()
     }
     

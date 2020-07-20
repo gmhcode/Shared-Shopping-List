@@ -18,7 +18,7 @@ class UserController {
         let user = User(context: persistentManager.context)
         user.name = name
         user.email = email
-        user.id = UUID()
+        user.uuid = UUID().uuidString
         persistentManager.saveContext()
         return user
     }

@@ -17,10 +17,10 @@ extension Item {
         return NSFetchRequest<Item>(entityName: "Item")
     }
 
-    @NSManaged public var listID: UUID
+    @NSManaged public var listID: String
     @NSManaged public var store: String
-    @NSManaged public var userSentId: UUID
+    @NSManaged public var userSentId: String
     @NSManaged public var name: String
-    @NSManaged public var id: UUID
+    @NSManaged public var uuid: String
 
 }
