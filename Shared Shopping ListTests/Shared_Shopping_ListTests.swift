@@ -21,7 +21,6 @@ class Shared_Shopping_ListTests: XCTestCase {
     
     // Create List works
     func testCreateList() {
-        
         ListController.createList(title: "testList", listMaster: user)
         let lists = ListController.getAllLists()
         XCTAssertTrue(lists.count > 0)
@@ -56,7 +55,7 @@ class Shared_Shopping_ListTests: XCTestCase {
     /// Test List Failure
     func testGetListFailure() {
         
-        let list = ListController.getList(id: UUID())
+        let list = ListController.getList(id: UUID().uuidString)
         XCTAssertFalse(list != nil)
         
     }
@@ -104,7 +103,7 @@ class Shared_Shopping_ListTests: XCTestCase {
     
     ///Test Get Item Failure
     func testGetItemFailure() {
-        XCTAssertTrue(ItemController.getItem(id: UUID()) == nil)
+        XCTAssertTrue(ItemController.getItem(id: UUID().uuidString) == nil)
     }
     
     ///Test Get Item

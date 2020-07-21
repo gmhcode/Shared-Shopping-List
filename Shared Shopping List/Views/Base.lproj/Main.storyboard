@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DRc-HO-eyJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DRc-HO-eyJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -157,6 +157,30 @@
             </objects>
             <point key="canvasLocation" x="1283" y="-281"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="HtB-3F-677">
+            <objects>
+                <viewController id="OUy-Wk-UBn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tgJ-rs-kHb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FBp-vj-ncl">
+                                <rect key="frame" x="20" y="88" width="158" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="HyM-rB-6wu"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zd2-lR-JMb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0yN-9s-df1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1923.1884057971015" y="480.80357142857139"/>
+        </scene>
         <!--Drawer Container View Controller-->
         <scene sceneID="iPW-5g-U09">
             <objects>
@@ -171,9 +195,9 @@
                                     <segue destination="AVQ-i0-ARC" kind="embed" id="2xc-Gx-GnP"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xT-n9-3Cy" customClass="ShoppingButton" customModule="Shared_Shopping_List" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xT-n9-3Cy" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="167" y="4.5" width="80" height="47"/>
-                                <color key="tintColor" red="0.0" green="1" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" backgroundImage="chevron.up" catalog="system"/>
                                 <connections>
                                     <action selector="ArrowButton:" destination="5fx-a8-DPc" eventType="touchUpInside" id="cY4-SB-QOR"/>
@@ -198,6 +222,7 @@
                     </view>
                     <connections>
                         <outlet property="arrowButton" destination="3xT-n9-3Cy" id="pbx-gK-bS2"/>
+                        <segue destination="OUy-Wk-UBn" kind="show" identifier="toTestVC" id="mFQ-aY-l0j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HtF-3U-HPT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -218,7 +243,7 @@
                                 <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ah-8R-lOY">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ah-8R-lOY" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="13" y="144" width="159" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

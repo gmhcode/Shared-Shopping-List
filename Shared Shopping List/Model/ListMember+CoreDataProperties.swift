@@ -17,7 +17,7 @@ extension ListMember {
         return NSFetchRequest<ListMember>(entityName: "ListMember")
     }
 
-    @NSManaged public var listID: UUID
-    @NSManaged public var userID: UUID
+    @NSManaged public var listID: String
+    @NSManaged public var userID: String
 
 }

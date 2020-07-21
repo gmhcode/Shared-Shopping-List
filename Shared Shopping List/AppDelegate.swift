@@ -21,6 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let user = UserController.createUser(name: "greg", email: "greg@gmail.com", id: "1", groups: [])
 //        UserController.currentUser = TestFunctions.users["Greg"]
 //        UserController.shared.deleteUser(user: user)
+//        UIButton.appearance().layer.borderWidth = 1
+//        UIButton.appearance().layer.borderColor = ColorConstants.borderColor.cgColor
+//        //        self.layer.borderColor = ColorConstants.borderColor.cgColor
+        let user = UserController.createUser(name: "greg1", email: "greg@email")
+        UserController.currentUser = user
+        DrawerButton.appearance().tintColor = ColorConstants.borderColor
+//        UserController.BackEnd.shared.createUser(user: user)
         
         
         return true

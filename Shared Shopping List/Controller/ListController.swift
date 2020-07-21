@@ -27,11 +27,11 @@ class ListController {
     }
     
     ///Gets the List from the entered ID
-    static func getList(id: UUID) -> List? {
+    static func getList(id: String) -> List? {
         
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<List> = List.fetchRequest()
-        let predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        let predicate = NSPredicate(format: "uuid == %@", id as CVarArg)
         request.predicate = predicate
         
         do {
@@ -55,7 +55,7 @@ class ListController {
     }
     
     ///Deletes list with the entered ID
-    static func deleteList(id:UUID) {
+    static func deleteList(id:String) {
         let persistentManager = PersistenceManager.shared
         let list = getList(id: id)
         if list != nil {
@@ -65,14 +65,14 @@ class ListController {
     }
     
     ///Change the list's title
-    static func changeName(id:UUID, newTitle: String) {
+    static func changeName(id:String, newTitle: String) {
         guard let list = getList(id: id) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         let persistentManager = PersistenceManager.shared
         list.title = newTitle
         persistentManager.saveContext()
     }
     
-    static func changeListOwner(listID: UUID, newOwner: User) {
+    static func changeListOwner(listID: String, newOwner: User) {
         let persistentManager = PersistenceManager.shared
         let list = getList(id: listID)
         list?.listMasterID = newOwner.uuid

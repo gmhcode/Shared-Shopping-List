@@ -58,10 +58,9 @@ class DrawerButton: UIButton, Rotatable {
     var isPointingUp: Bool = true
     
     func initialize() {
+        
 //        self.layer.borderWidth = 1
 //        self.layer.borderColor = ColorConstants.borderColor.cgColor
-        self.tintColor = ColorConstants.borderColor
-//        self.backgroundColor = ColorConstants.borderColor
     }
     
     override init(frame: CGRect) {

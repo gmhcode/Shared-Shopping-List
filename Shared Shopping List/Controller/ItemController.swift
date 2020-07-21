@@ -28,11 +28,11 @@ class ItemController {
     }
     
     ///Gets the List from the entered ID
-    static func getItem(id: UUID) -> Item? {
+    static func getItem(id: String) -> Item? {
         
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Item> = Item.fetchRequest()
-        let predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        let predicate = NSPredicate(format: "uuid == %@", id as CVarArg)
         request.predicate = predicate
         
         do {
@@ -56,7 +56,7 @@ class ItemController {
     }
     
     ///Deletes list with the entered ID
-    static func deleteItem(id:UUID) {
+    static func deleteItem(id:String) {
         let persistentManager = PersistenceManager.shared
         let item = getItem(id: id)
         if item != nil {
@@ -75,7 +75,7 @@ class ItemController {
     }
     
     ///Change the list's title
-    static func changeName(id:UUID, newName: String) {
+    static func changeName(id:String, newName: String) {
         guard let item = getItem(id: id) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         let persistentManager = PersistenceManager.shared
         item.name = newName
@@ -83,7 +83,7 @@ class ItemController {
     }
     
     ///Update the name and store of the Item of the entered ID
-    static func updateItem(name: String, store: String, id: UUID) {
+    static func updateItem(name: String, store: String, id: String) {
         let persistentManager = PersistenceManager.shared
         guard let item = getItem(id: id) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         

@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 class UserController {
-    static let shared = UserController()
     static var currentUser : User?
     
     static func createUser(name:String, email: String) -> User {
@@ -24,11 +23,11 @@ class UserController {
     }
     
     ///Gets the List from the entered ID
-    static func getUser(id: UUID) -> User? {
+    static func getUser(id: String) -> User? {
         
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<User> = User.fetchRequest()
-        let predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        let predicate = NSPredicate(format: "uuid == %@", id as CVarArg)
         request.predicate = predicate
         
         do {
@@ -52,7 +51,7 @@ class UserController {
     }
     
     ///Deletes list with the entered ID
-    static func deleteUser(id:UUID) {
+    static func deleteUser(id:String) {
         let persistentManager = PersistenceManager.shared
         let user = getUser(id: id)
         if user != nil {
@@ -60,6 +59,7 @@ class UserController {
         }
         persistentManager.saveContext()
     }
+    
     static func deleteAllUsers() {
         let persistentManager = PersistenceManager.shared
         let item = getAllUsers()
@@ -71,7 +71,7 @@ class UserController {
     }
     
     ///Change the list's title
-    static func changeName(id:UUID, newName: String) {
+    static func changeName(id:String, newName: String) {
         guard let user = getUser(id: id) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         let persistentManager = PersistenceManager.shared
         user.name = newName
@@ -79,7 +79,7 @@ class UserController {
     }
     
     ///Update the name and store of the Item of the entered ID
-    static func updateUser(name: String, id: UUID, email: String) {
+    static func updateUser(name: String, id: String, email: String) {
         let persistentManager = PersistenceManager.shared
         guard let user = getUser(id: id) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         
@@ -89,4 +89,45 @@ class UserController {
         persistentManager.saveContext()
     }
     
+    struct BackEnd {
+        
+        static var testUsers: [User] = []
+        static var shared = UserController.BackEnd()
+        var url = URL(string: "http://localhost:8081/")
+        
+        
+        mutating func createUser(user: User) {
+            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            url.appendPathComponent("user")
+            
+            let params : [String:Any] = getParams(user: user)
+            
+            
+            do {
+                let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
+                let request = BackEndUtils.requestGenerate(url: url, method: "POST", body: requestBody)
+                URLSession.shared.dataTask(with: request) { (data, res, er) in
+                    if let er = er {
+                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                        return
+                    }
+                    
+                    if let response = res, let data = data  {
+                        print("Create User Response", response, BackEndUtils.convertDataToJson(data: data))
+                    }
+                    
+                }.resume()
+                
+            } catch let err {
+                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
+            }
+            
+        }
+        
+        func getParams(user: User) -> [String:Any] {
+            let params : [String:Any] = ["name":user.name,"email":user.email,"uuid":user.uuid]
+            return params
+        }
+        
+    }
 }
