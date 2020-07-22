@@ -89,14 +89,14 @@ class UserController {
         persistentManager.saveContext()
     }
     
-    struct BackEnd {
+    class BackEnd {
         
-        static var testUsers: [User] = []
+        static var testUsers: [String : User] = [:]
         static var shared = UserController.BackEnd()
         var url = URL(string: "http://localhost:8081/")
         
-        
-        mutating func createUser(user: User) {
+
+        func createUser(user: User) {
             guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             url.appendPathComponent("user")
             
@@ -106,6 +106,7 @@ class UserController {
             do {
                 let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
                 let request = BackEndUtils.requestGenerate(url: url, method: "POST", body: requestBody)
+                
                 URLSession.shared.dataTask(with: request) { (data, res, er) in
                     if let er = er {
                         print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
@@ -121,7 +122,51 @@ class UserController {
             } catch let err {
                 print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
             }
+        }
+        
+        func updateUser(user: User) {
+            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            url.appendPathComponent("user")
             
+            let params : [String:Any] = getParams(user: user)
+            
+            
+            do {
+                let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
+                let request = BackEndUtils.requestGenerate(url: url, method: "PUT", body: requestBody)
+                URLSession.shared.dataTask(with: request) { (data, res, er) in
+                    if let er = er {
+                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                        return
+                    }
+                    
+                    if let response = res, let data = data  {
+                        print("Create User Response", response, BackEndUtils.convertDataToJson(data: data))
+                    }
+                    
+                }.resume()
+                
+            } catch let err {
+                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
+            }
+        }
+        
+        func deleteAllUsers() {
+            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            url.appendPathComponent("users")
+            
+            let request = BackEndUtils.requestGenerate(url: url, method: "DELETE", body: nil)
+            URLSession.shared.dataTask(with: request) { (data, res, er) in
+                if let er = er {
+                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                    return
+                }
+                
+                if let response = res, let data = data  {
+                    print("Create User Response", response, BackEndUtils.convertDataToJson(data: data))
+                }
+                
+            }.resume()
         }
         
         func getParams(user: User) -> [String:Any] {

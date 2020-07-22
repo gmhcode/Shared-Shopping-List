@@ -38,6 +38,7 @@
 		90A0CEA124AD6C7500F0BC4B /* MainDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CEA024AD6C7500F0BC4B /* MainDrawerViewController.swift */; };
 		90A0CEA324AD7F5C00F0BC4B /* DrawerContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CEA224AD7F5C00F0BC4B /* DrawerContainerViewController.swift */; };
 		90A0CEA524AD874500F0BC4B /* RotatableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CEA424AD874500F0BC4B /* RotatableView.swift */; };
+		90BB9B2C24C7D94400B87479 /* TestingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB9B2B24C7D94400B87479 /* TestingVC.swift */; };
 		90C0389D24B2CD6A004C62F9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0389C24B2CD6A004C62F9 /* ListViewController.swift */; };
 		90C0389F24B4C99C004C62F9 /* testyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0389E24B4C99C004C62F9 /* testyViewController.swift */; };
 		90C038A224B4DE55004C62F9 /* testTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C038A124B4DE55004C62F9 /* testTableViewController.swift */; };
@@ -90,6 +91,7 @@
 		90A0CEA024AD6C7500F0BC4B /* MainDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDrawerViewController.swift; sourceTree = "<group>"; };
 		90A0CEA224AD7F5C00F0BC4B /* DrawerContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerContainerViewController.swift; sourceTree = "<group>"; };
 		90A0CEA424AD874500F0BC4B /* RotatableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatableView.swift; sourceTree = "<group>"; };
+		90BB9B2B24C7D94400B87479 /* TestingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingVC.swift; sourceTree = "<group>"; };
 		90C0389C24B2CD6A004C62F9 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		90C0389E24B4C99C004C62F9 /* testyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testyViewController.swift; sourceTree = "<group>"; };
 		90C038A124B4DE55004C62F9 /* testTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testTableViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				90C038A124B4DE55004C62F9 /* testTableViewController.swift */,
 				900D027724C6538200EF5B13 /* TestBackendCalls.swift */,
 				90894C0724B562BB006AFC40 /* TestData.swift */,
+				90BB9B2B24C7D94400B87479 /* TestingVC.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9038DA5D24BD264900E6216D /* Item+CoreDataClass.swift in Sources */,
+				90BB9B2C24C7D94400B87479 /* TestingVC.swift in Sources */,
 				907B830124B7F7150098FCF0 /* PersistenceManager.swift in Sources */,
 				90C0389D24B2CD6A004C62F9 /* ListViewController.swift in Sources */,
 				90A0CEA124AD6C7500F0BC4B /* MainDrawerViewController.swift in Sources */,

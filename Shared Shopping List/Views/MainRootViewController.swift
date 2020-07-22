@@ -7,9 +7,7 @@
 //
 
 import UIKit
-protocol MainRootVCDelegate: class {
-    
-}
+
 class MainRootViewController: UINavigationController {
     
     var drawerView : UIView!
@@ -23,7 +21,7 @@ class MainRootViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//        MainRootViewController.mainRootVC = self
+        MainRootViewController.mainRootVC = self
         setDrawerFunctionality()
         openDrawer()
     }

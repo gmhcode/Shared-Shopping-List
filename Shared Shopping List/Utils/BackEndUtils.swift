@@ -30,4 +30,17 @@ struct BackEndUtils {
         }
         return [:]
     }
+    
+    
+    enum RequestMethod : String {
+        case update = "PUT"
+        case post = "POST"
+        case get = "GET"
+        case delete = "DELETE"
+    }
+    
+    enum PathComponent: String {
+        case user = "user"
+    }
+    
 }

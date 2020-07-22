@@ -25,7 +25,10 @@ class MainDrawerViewController: UIViewController{
         TestBackEndFuncs.callUsers()
     }
 
-
+    @IBAction func testingVCButtonTapped(_ sender: Any) {
+        MainRootViewController.mainRootVC?.performSegue(withIdentifier: "toTestingVC", sender: self)
+    }
+    
     /*
      // MARK: - Navigation
 
