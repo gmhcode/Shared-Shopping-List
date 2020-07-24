@@ -32,13 +32,13 @@ class TestingVC: UIViewController {
 
         case 1:
             funcNames = ["createItem","updateItem","deleteItem","deleteAllLists"]
-            break
+            
         case 2:
             funcNames = ["createUser","updateUser","deleteAllUsers"]
-            break
+            
         default:
             funcNames = ["createListMember","updateListMemver","deleteListMember"]
-            break
+            
         }
 
         tableView.reloadData()
