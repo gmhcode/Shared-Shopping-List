@@ -63,7 +63,15 @@ class ListController {
         }
         persistentManager.saveContext()
     }
-    
+    static func deleteAllLists() {
+        let persistentManager = PersistenceManager.shared
+        let lists = getAllLists()
+        
+        for i in lists {
+            persistentManager.delete(i)
+        }
+        persistentManager.saveContext()
+    }
     ///Change the list's title
     static func changeName(id:String, newTitle: String) {
         guard let list = getList(id: id) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}

@@ -12,12 +12,13 @@ import CoreData
 class UserController {
     static var currentUser : User?
     
-    static func createUser(name:String, email: String) -> User {
+    static func createUser(name:String, email: String, uuid: String) -> User {
         let persistentManager = PersistenceManager.shared
         let user = User(context: persistentManager.context)
         user.name = name
         user.email = email
-        user.uuid = UUID().uuidString
+        user.uuid = uuid
+//            UUID().uuidString
         persistentManager.saveContext()
         return user
     }

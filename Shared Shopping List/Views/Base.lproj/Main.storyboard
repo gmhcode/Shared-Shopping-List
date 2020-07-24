@@ -222,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0yN-9s-df1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1923.1884057971015" y="480.80357142857139"/>
+            <point key="canvasLocation" x="-2561" y="509"/>
         </scene>
         <!--Drawer Container View Controller-->
         <scene sceneID="iPW-5g-U09">
@@ -269,7 +269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HtF-3U-HPT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1010.144927536232" y="488.83928571428567"/>
+            <point key="canvasLocation" x="-445" y="1217"/>
         </scene>
         <!--Main Drawer View Controller-->
         <scene sceneID="Btc-4i-AuT">
@@ -280,7 +280,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rv7-3g-3CE">
-                                <rect key="frame" x="98" y="28" width="202" height="75"/>
+                                <rect key="frame" x="106" y="10" width="202" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="TestingVC"/>
@@ -289,41 +289,71 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ah-8R-lOY" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="13" y="144" width="159" height="48"/>
+                                <rect key="frame" x="0.0" y="65" width="159" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="topLeftButtonTapped:" destination="AVQ-i0-ARC" eventType="touchUpInside" id="qaT-5M-nad"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="slP-Yy-r6e" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="125" width="159" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Button"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="slP-Yy-r6e">
-                                <rect key="frame" x="13" y="210" width="159" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yd9-vk-gBL" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="214" y="65" width="159" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="topRightButtonTapped:" destination="AVQ-i0-ARC" eventType="touchUpInside" id="4fC-or-5bZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjh-kk-9eS" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="214" y="125" width="159" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Button"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yd9-vk-gBL">
-                                <rect key="frame" x="227" y="144" width="159" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h92-qy-W5e" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="181" width="159" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Button"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjh-kk-9eS">
-                                <rect key="frame" x="227" y="210" width="159" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTP-da-xwH" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="214" y="181" width="159" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Button"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="UpX-fO-NFS"/>
                     </view>
                     <connections>
                         <outlet property="arrowButton" destination="3xT-n9-3Cy" id="3DT-jN-21L"/>
+                        <outlet property="bottomLeftButton" destination="h92-qy-W5e" id="1dp-nN-fx4"/>
+                        <outlet property="bottomRightButton" destination="BTP-da-xwH" id="UAY-ea-7zI"/>
+                        <outlet property="middleLeftButton" destination="slP-Yy-r6e" id="uz7-Kd-TY5"/>
+                        <outlet property="middleRIghtButton" destination="Xjh-kk-9eS" id="RIf-ZL-djg"/>
+                        <outlet property="topLeftButton" destination="4ah-8R-lOY" id="Tab-T5-q6l"/>
+                        <outlet property="topRightButton" destination="Yd9-vk-gBL" id="hG3-mN-kK8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIG-o4-4O7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="5fx-a8-DPc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="69.565217391304358" y="489.50892857142856"/>
+            <point key="canvasLocation" x="1173.913043478261" y="1216.7410714285713"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="6eA-vy-aE8">
@@ -384,7 +414,7 @@
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="LhQ-oJ-a0f"/>
-                        <segue destination="OUy-Wk-UBn" kind="presentation" identifier="toTestingVC" id="DUk-z8-QZ2"/>
+                        <segue destination="OUy-Wk-UBn" kind="show" identifier="toTestingVC" id="DUk-z8-QZ2"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S9-01-Zom" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

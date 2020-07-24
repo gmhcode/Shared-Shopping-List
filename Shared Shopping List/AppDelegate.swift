@@ -24,7 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UIButton.appearance().layer.borderWidth = 1
 //        UIButton.appearance().layer.borderColor = ColorConstants.borderColor.cgColor
 //        //        self.layer.borderColor = ColorConstants.borderColor.cgColor
-        let user = UserController.createUser(name: "greg1", email: "greg@email")
+        
+        UserController.deleteAllUsers()
+        ListController.deleteAllLists()
+        ItemController.deleteAllItems()
+        
+        
+        let user = UserController.createUser(name: "greg1", email: "greg@email", uuid: "1234")
         UserController.currentUser = user
         DrawerButton.appearance().tintColor = ColorConstants.borderColor
 //        UserController.BackEnd.shared.createUser(user: user)

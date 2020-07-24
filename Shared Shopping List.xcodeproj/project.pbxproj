@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		900D027824C6538200EF5B13 /* TestBackendCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900D027724C6538200EF5B13 /* TestBackendCalls.swift */; };
-		900D027A24C6795300EF5B13 /* UserBackEndController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900D027924C6795300EF5B13 /* UserBackEndController.swift */; };
 		90202FF824AC16ED00A9D357 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90202FF724AC16ED00A9D357 /* AppDelegate.swift */; };
 		90202FFA24AC16ED00A9D357 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90202FF924AC16ED00A9D357 /* SceneDelegate.swift */; };
 		90202FFC24AC16ED00A9D357 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90202FFB24AC16ED00A9D357 /* MainViewController.swift */; };
@@ -57,7 +56,6 @@
 
 /* Begin PBXFileReference section */
 		900D027724C6538200EF5B13 /* TestBackendCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBackendCalls.swift; sourceTree = "<group>"; };
-		900D027924C6795300EF5B13 /* UserBackEndController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBackEndController.swift; sourceTree = "<group>"; };
 		90202FF424AC16ED00A9D357 /* Shared Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shared Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90202FF724AC16ED00A9D357 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90202FF924AC16ED00A9D357 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 				90894C0B24B566AA006AFC40 /* ListController.swift */,
 				90894C0F24B566DC006AFC40 /* ItemController.swift */,
 				907B830024B7F7150098FCF0 /* PersistenceManager.swift */,
-				900D027924C6795300EF5B13 /* UserBackEndController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -398,7 +395,6 @@
 				90894C0A24B563E3006AFC40 /* UserController.swift in Sources */,
 				90C038A224B4DE55004C62F9 /* testTableViewController.swift in Sources */,
 				90202FFA24AC16ED00A9D357 /* SceneDelegate.swift in Sources */,
-				900D027A24C6795300EF5B13 /* UserBackEndController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
