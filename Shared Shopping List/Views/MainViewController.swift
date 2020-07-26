@@ -53,7 +53,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return mainViewModel.lists.count
     }
     
-    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? MainCollectionViewCell
@@ -71,7 +73,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "listTypeHeaderView", for: indexPath) as? SectionHeaderView,
             let mainViewModel = mainViewModel else { return UICollectionReusableView() }
         
-        sectionHeaderView.listType = mainViewModel.listTypes[indexPath.section]
+        sectionHeaderView.listType = mainViewModel.listTypes[0]
         
         return sectionHeaderView
     }

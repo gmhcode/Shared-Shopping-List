@@ -22,3 +22,9 @@ extension User {
     @NSManaged public var email: String
     
 }
+
+class CodableUser : Codable {
+    let uuid : String
+    let name : String
+    let email : String
+}

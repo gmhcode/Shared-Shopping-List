@@ -28,9 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserController.deleteAllUsers()
         ListController.deleteAllLists()
         ItemController.deleteAllItems()
-        
+//        ListController.BackEnd.shared.deleteAllLists()
         
         let user = UserController.createUser(name: "greg1", email: "greg@email", uuid: "1234")
+        let list = ListController.createList(title: "testList1", listMaster: user, uuid: "1234")
+        ListController.shared.list = list
         UserController.currentUser = user
         DrawerButton.appearance().tintColor = ColorConstants.borderColor
 //        UserController.BackEnd.shared.createUser(user: user)

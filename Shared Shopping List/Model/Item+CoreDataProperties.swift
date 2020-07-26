@@ -24,3 +24,11 @@ extension Item {
     @NSManaged public var uuid: String
 
 }
+
+class CodableItem : Codable {
+    let listID : String
+    let store : String
+    let userSentId : String
+    let name : String
+    let uuid : String
+}

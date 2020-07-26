@@ -21,3 +21,9 @@ extension List {
     @NSManaged public var listMasterID: String
 
 }
+
+class CodableList : Codable {
+    let uuid : String
+    let title : String
+    let listMasterID : String
+}

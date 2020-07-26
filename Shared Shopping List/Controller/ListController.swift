@@ -11,15 +11,15 @@ import CoreData
 
 
 class ListController {
-    
+    var list : List?
     static let shared = ListController()
     
-    @discardableResult static func createList(title: String, listMaster: User) -> List {
+    @discardableResult static func createList(title: String, listMaster: User, uuid: String ) -> List {
         
         let persistentManager = PersistenceManager.shared
         let list = List(context: persistentManager.context)
         
-        list.uuid = UUID().uuidString
+        list.uuid = uuid
         list.listMasterID = listMaster.uuid
         list.title = title
         persistentManager.saveContext()
@@ -85,6 +85,117 @@ class ListController {
         let list = getList(id: listID)
         list?.listMasterID = newOwner.uuid
         persistentManager.saveContext()
+    }
+    
+    struct BackEnd {
+        var url = URL(string: "http://localhost:8081/")
+        static var shared = ListController.BackEnd()
+        
+        func createList(list: List) {
+            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            url.appendPathComponent(BackEndUtils.PathComponent.list.rawValue)
+            
+            let params : [String:Any] = getParams(list: list)
+            
+            
+            do {
+                let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
+                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.post.rawValue, body: requestBody)
+                
+                URLSession.shared.dataTask(with: request) { (data, res, er) in
+                    if let er = er {
+                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                        return
+                    }
+                    
+                    if let response = res, let data = data  {
+                        print("Create List Response", response, BackEndUtils.convertDataToJson(data: data))
+                    }
+                    
+                }.resume()
+                
+            } catch let err {
+                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
+            }
+        }
+        
+        func updateList(list: List) {
+            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            url.appendPathComponent(BackEndUtils.PathComponent.list.rawValue)
+            
+            let params : [String:Any] = getParams(list: list)
+            
+            
+            do {
+                let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
+                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.update.rawValue, body: requestBody)
+                URLSession.shared.dataTask(with: request) { (data, res, er) in
+                    if let er = er {
+                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                        return
+                    }
+                    
+                    if let response = res, let data = data  {
+                        print("Create User Response", response, BackEndUtils.convertDataToJson(data: data))
+                    }
+                    
+                }.resume()
+                
+            } catch let err {
+                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
+            }
+        }
+        
+        func deleteAllLists() {
+            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            url.appendPathComponent(BackEndUtils.PathComponent.lists.rawValue)
+            
+            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.delete.rawValue, body: nil)
+            URLSession.shared.dataTask(with: request) { (data, res, er) in
+                if let er = er {
+                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                    return
+                }
+                
+                if let response = res, let data = data  {
+                    print("Delete All Lists Response", response, BackEndUtils.convertDataToJson(data: data))
+                }
+                
+            }.resume()
+        }
+        
+        func getAllLists(completion: @escaping([CodableList])->()) {
+            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion([]); return}
+            url.appendPathComponent(BackEndUtils.PathComponent.lists.rawValue)
+            
+            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
+            URLSession.shared.dataTask(with: request) { (data, res, er) in
+                if let er = er {
+                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                    completion([])
+                    return
+                }
+                
+                if let data = data  {
+                    do {
+                        let lists = try JSONDecoder().decode([CodableList].self, from: data)
+                        completion(lists)
+                    } catch let error {
+                        print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription)")
+                    }
+                } else {
+                    completion([])
+                }
+                
+            }.resume()
+            
+        }
+        func getParams(list: List) -> [String:Any] {
+            let params : [String:Any] = ["uuid":list.uuid,"title":list.title,"listMasterID":list.listMasterID]
+            return params
+        }
+        
+        
     }
     
 }

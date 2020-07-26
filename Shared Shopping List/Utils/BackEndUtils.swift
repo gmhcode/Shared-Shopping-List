@@ -20,7 +20,7 @@ struct BackEndUtils {
     static func convertDataToJson(data: Data) -> [String:Any] {
         do {
             if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                print("data",json)
+                print("data \(#file) \(#line) ",json)
                 return json
             }
         }catch let er{
@@ -41,6 +41,12 @@ struct BackEndUtils {
     
     enum PathComponent: String {
         case user = "user"
+        case users = "users"
+        case list = "list"
+        case lists = "lists"
+        case item = "item"
+        case items = "items"
+        
     }
     
 }

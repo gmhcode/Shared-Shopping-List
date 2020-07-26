@@ -92,5 +92,33 @@ class ItemController {
         
         persistentManager.saveContext()
     }
-
+    struct BackEnd {
+        var url = URL(string: "http://localhost:8081/")
+        static var shared = ItemController.BackEnd()
+        
+        func callItems(completion: @escaping([CodableItem])->()) {
+            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion([]);return}
+            url.appendPathComponent(BackEndUtils.PathComponent.items.rawValue)
+            
+            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
+            
+            URLSession.shared.dataTask(with: request) { (data, res, error) in
+                if let error = error {
+                    print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription) : \(#file) \(#line)")
+                    return
+                }
+                
+                guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion([]);return}
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let items = try jsonDecoder.decode([CodableItem].self, from: data)
+                    print("items", items)
+                    completion(items)
+                }catch let er{
+                    
+                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                }
+            }
+        }
+    }
 }

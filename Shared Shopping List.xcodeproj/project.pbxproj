@@ -17,6 +17,7 @@
 		9020300724AC16F100A9D357 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9020300524AC16F100A9D357 /* LaunchScreen.storyboard */; };
 		9020301224AC16F200A9D357 /* Shared_Shopping_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9020301124AC16F200A9D357 /* Shared_Shopping_ListTests.swift */; };
 		9020302124AC262A00A9D357 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9020302024AC262A00A9D357 /* SectionHeaderView.swift */; };
+		902BE26324CA8887008C9E59 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902BE26224CA8887008C9E59 /* NotificationController.swift */; };
 		9038DA5124BD24C100E6216D /* ListMember+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038DA4D24BD24C100E6216D /* ListMember+CoreDataClass.swift */; };
 		9038DA5224BD24C100E6216D /* ListMember+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038DA4E24BD24C100E6216D /* ListMember+CoreDataProperties.swift */; };
 		9038DA5D24BD264900E6216D /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038DA5B24BD264900E6216D /* Item+CoreDataClass.swift */; };
@@ -26,7 +27,6 @@
 		907B830124B7F7150098FCF0 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B830024B7F7150098FCF0 /* PersistenceManager.swift */; };
 		907B830424B7FDF00098FCF0 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B830224B7FDEF0098FCF0 /* User+CoreDataClass.swift */; };
 		907B830524B7FDF00098FCF0 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B830324B7FDF00098FCF0 /* User+CoreDataProperties.swift */; };
-		90894C0824B562BB006AFC40 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0724B562BB006AFC40 /* TestData.swift */; };
 		90894C0A24B563E3006AFC40 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0924B563E3006AFC40 /* UserController.swift */; };
 		90894C0C24B566AA006AFC40 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0B24B566AA006AFC40 /* ListController.swift */; };
 		90894C1024B566DC006AFC40 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0F24B566DC006AFC40 /* ItemController.swift */; };
@@ -69,6 +69,7 @@
 		9020301124AC16F200A9D357 /* Shared_Shopping_ListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared_Shopping_ListTests.swift; sourceTree = "<group>"; };
 		9020301324AC16F200A9D357 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9020302024AC262A00A9D357 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		902BE26224CA8887008C9E59 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		9038DA4D24BD24C100E6216D /* ListMember+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListMember+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9038DA4E24BD24C100E6216D /* ListMember+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListMember+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9038DA5B24BD264900E6216D /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -78,7 +79,6 @@
 		907B830024B7F7150098FCF0 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		907B830224B7FDEF0098FCF0 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		907B830324B7FDF00098FCF0 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		90894C0724B562BB006AFC40 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		90894C0924B563E3006AFC40 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		90894C0B24B566AA006AFC40 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
 		90894C0F24B566DC006AFC40 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
@@ -249,7 +249,6 @@
 			children = (
 				90C038A124B4DE55004C62F9 /* testTableViewController.swift */,
 				900D027724C6538200EF5B13 /* TestBackendCalls.swift */,
-				90894C0724B562BB006AFC40 /* TestData.swift */,
 				90BB9B2B24C7D94400B87479 /* TestingVC.swift */,
 			);
 			path = Test;
@@ -259,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				90FB0C1124C682E80064236D /* BackEndUtils.swift */,
+				902BE26224CA8887008C9E59 /* NotificationController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -366,6 +366,7 @@
 			files = (
 				9038DA5D24BD264900E6216D /* Item+CoreDataClass.swift in Sources */,
 				90BB9B2C24C7D94400B87479 /* TestingVC.swift in Sources */,
+				902BE26324CA8887008C9E59 /* NotificationController.swift in Sources */,
 				907B830124B7F7150098FCF0 /* PersistenceManager.swift in Sources */,
 				90C0389D24B2CD6A004C62F9 /* ListViewController.swift in Sources */,
 				90A0CEA124AD6C7500F0BC4B /* MainDrawerViewController.swift in Sources */,
@@ -373,7 +374,6 @@
 				90894C1024B566DC006AFC40 /* ItemController.swift in Sources */,
 				9070BA7A24BD27D1006101D1 /* List+CoreDataProperties.swift in Sources */,
 				9038DA5E24BD264900E6216D /* Item+CoreDataProperties.swift in Sources */,
-				90894C0824B562BB006AFC40 /* TestData.swift in Sources */,
 				90FB0C1224C682E80064236D /* BackEndUtils.swift in Sources */,
 				90A0CE9E24AD674A00F0BC4B /* MainRootViewController.swift in Sources */,
 				90A0CE9C24AC30BB00F0BC4B /* MainCollectionViewCell.swift in Sources */,

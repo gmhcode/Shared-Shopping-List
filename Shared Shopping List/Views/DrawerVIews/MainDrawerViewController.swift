@@ -23,9 +23,11 @@ class MainDrawerViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(userNotification(n:)), name: Notification.Name.init("User"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(listNotification(n:)), name: Notification.Name.init("List"), object: nil)
-        // Do any additional setup after loading the view.
+        
+        NotificationController.addObserver(selfClass: self, selector: #selector(userNotification(n:)), name:.user)
+        
+         NotificationController.addObserver(selfClass: self, selector: #selector(listNotification(n:)), name:.list)
+
     }
 
     @IBAction func arrowButtonTapped(_ sender: Any) {
@@ -37,17 +39,16 @@ class MainDrawerViewController: UIViewController{
     }
     
     @IBAction func topRightButtonTapped(_ sender: Any) {
-//        NotificationCenter.default.post(name: Notification.Name.init("List"), object: nil)
         
-        NotificationCenter.default.post(name: Notification.Name.init("List"), object: nil, userInfo: ["list":ListController.createList(title: "TestList1", listMaster: UserController.currentUser!)])
+        NotificationController.post(name: .list, userInfo: ["list":ListController.createList(title: "TestList1", listMaster: UserController.currentUser!, uuid: "12345")])
     }
     
     @IBAction func topLeftButtonTapped(_ sender: Any) {
-
-        NotificationCenter.default.post(name: Notification.Name.init("User"), object: nil, userInfo: ["user":UserController.currentUser])
+        
+        NotificationController.post(name: .user, userInfo: ["user":UserController.currentUser!])
+        
+       
     }
-    
-    
     
     
     
@@ -57,28 +58,19 @@ class MainDrawerViewController: UIViewController{
         middleLeftButton.setTitle("updateList", for: .normal)
         middleRIghtButton.setTitle("getList", for: .normal)
         let list = n.userInfo?["list"] as? List
-        print(list?.title)
+        print(list!.title)
         
     }
+    
     @objc func userNotification(n:Notification) {
         topLeftButton.setTitle("createUser", for: .normal)
         topRightButton.setTitle("deleteUser", for: .normal)
         middleLeftButton.setTitle("updateUser", for: .normal)
         middleRIghtButton.setTitle("getUser", for: .normal)
         let user = n.userInfo?["user"] as? User
-        print(user?.name)
+        print(user!.name)
 
     }
-    
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
 
 }
 
