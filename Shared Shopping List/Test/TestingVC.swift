@@ -18,7 +18,7 @@ class TestingVC: UIViewController {
     class TestingVCViewModel {
         
         static let shared = TestingVCViewModel()
-        
+        ///used as test user names
         var testUserCount = 0
         var testItemCount = 0
         var testListCount = 0
@@ -50,6 +50,14 @@ class TestingVC: UIViewController {
                 self.items = items
             }
         }
+        
+        func createList() {
+            guard let selectedUser = selectedUser else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            
+//            ListController.BackEnd.shared.createList(list: list)
+
+        }
+        
     }
     
     
