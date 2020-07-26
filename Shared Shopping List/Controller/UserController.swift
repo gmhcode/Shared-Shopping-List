@@ -96,7 +96,7 @@ class UserController {
         static var shared = UserController.BackEnd()
         var url = URL(string: "http://localhost:8081/")
         
-        func callUsers() {
+        func callUsers(completion: @escaping ([CodableUser]) -> ()) {
             //http://192.168.1.225:8081/listMembers
             let url = URL(string: "http://localhost:8081/users")!
             
@@ -104,18 +104,18 @@ class UserController {
             request.httpMethod = "GET"
             
             URLSession.shared.dataTask(with: request) { (data, res, er) in
+                guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion([]); return}
+
                 do {
-                    if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [[String: Any]] {
-                        print(" Call User 🎯",json)
-                    }
+                    let jsonDecoder = JSONDecoder()
+                    let users = try jsonDecoder.decode([CodableUser].self, from: data)
+                    completion(users)
                 }catch let er{
                     
                     print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                    completion([])
                 }
-                
             }.resume()
-
-            
         }
 
         func createUser(user: User) {

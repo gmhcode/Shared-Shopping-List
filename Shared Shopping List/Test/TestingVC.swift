@@ -9,38 +9,79 @@
 import UIKit
 
 class TestingVC: UIViewController {
-
+    
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var userTableView: UITableView!
+    
+    let viewModel = TestingVCViewModel()
+    
+    class TestingVCViewModel {
+        
+        static let shared = TestingVCViewModel()
+        
+        var testUserCount = 0
+        var testItemCount = 0
+        var testListCount = 0
+        
+        var selectedUser : CodableUser?
+        var selectedList : CodableList?
+        var selectedItem : CodableItem?
+        
+        var users : [CodableUser] = []
+        var lists : [CodableList] = []
+        var items : [CodableItem] = []
+        
+        
+        func fetchAllUsers(completion:@escaping()->()) {
+            UserController.BackEnd.shared.callUsers { (users) in
+                self.users = users
+                completion()
+            }
+        }
+        
+        func fetchAllLists(completion:@escaping()->()) {
+            ListController.BackEnd.shared.getAllLists { (lists) in
+                self.lists = lists
+            }
+        }
+        
+        func fetchAllItems(completion:@escaping()->()){
+            ItemController.BackEnd.shared.callItems { (items) in
+                self.items = items
+            }
+        }
+    }
     
     
     var funcNames : [String] = ["createUser","updateUser","deleteAllUsers"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         listTableView.delegate = self
         listTableView.dataSource = self
         userTableView.delegate = self
         userTableView.dataSource = self
-       
+        
+        viewModel.fetchAllLists { [weak self] in
+            DispatchQueue.main.async {
+                self?.listTableView.reloadData()
+            }
+        }
+        viewModel.fetchAllUsers { [weak self] in
+            DispatchQueue.main.async {
+                self?.userTableView.reloadData()
+            }
+        }
+        viewModel.fetchAllItems {
+            
+        }
     }
-
-    
-//    @IBAction func segmentChanged(_ sender: Any) {
-//
-//        switch segmentControl.selectedSegmentIndex {
-//        case 0:
-//            funcNames = ["createList","updateList","deleteList","joinList","deleteAllLists"]
-//        case 1:
-//            funcNames = ["createItem","updateItem","deleteItem","deleteAllLists"]
-//        case 2:
-//            funcNames = ["createUser","updateUser","deleteAllUsers"]
-//        default:
-//            funcNames = ["createListMember","updateListMemver","deleteListMember"]
-//        }
-//        tableView.reloadData()
-//    }
 }
+
+
 extension TestingVC : UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -51,13 +92,24 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == listTableView {
-            return 1
+            return viewModel.lists.count
         } else {
-            return 1
+            return viewModel.users.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if tableView == listTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "listTableCell", for: indexPath)
+            cell.textLabel?.text = viewModel.lists[indexPath.row].title
+            return cell
+        } else if tableView == userTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "userTableCell", for: indexPath)
+            cell.textLabel?.text = viewModel.users[indexPath.row].name
+            return cell
+        }
+        
         return UITableViewCell()
     }
     
