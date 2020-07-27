@@ -26,7 +26,7 @@ class MainDrawerViewController: UIViewController{
         
         NotificationController.addObserver(selfClass: self, selector: #selector(userNotification(n:)), name:.user)
         
-         NotificationController.addObserver(selfClass: self, selector: #selector(listNotification(n:)), name:.list)
+        NotificationController.addObserver(selfClass: self, selector: #selector(listNotification(n:)), name:.list)
 
     }
 
