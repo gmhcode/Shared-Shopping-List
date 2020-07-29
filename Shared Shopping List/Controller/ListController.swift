@@ -16,6 +16,10 @@ class ListController {
     
     @discardableResult static func createList(title: String, listMaster: User, uuid: String ) -> List {
         
+        if let list = getList(id: uuid) {
+            return list
+        }
+        
         let persistentManager = PersistenceManager.shared
         let list = List(context: persistentManager.context)
         
@@ -194,8 +198,6 @@ class ListController {
             let params : [String:Any] = ["uuid":list.uuid,"title":list.title,"listMasterID":list.listMasterID]
             return params
         }
-        
-        
     }
     
 }
