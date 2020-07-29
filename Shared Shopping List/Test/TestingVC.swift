@@ -24,11 +24,11 @@ class TestingVC: UIViewController {
         var testListCount = 0
         
         var selectedUser : CodableUser?
-        var selectedList : CodableList?
+        var selectedList : List?
         var selectedItem : CodableItem?
         
         var users : [CodableUser] = []
-        var lists : [CodableList] = []
+        var lists : [List] = []
         var items : [CodableItem] = []
         
         

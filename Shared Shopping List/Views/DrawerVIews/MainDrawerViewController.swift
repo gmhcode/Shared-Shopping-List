@@ -40,7 +40,7 @@ class MainDrawerViewController: UIViewController{
     
     @IBAction func topRightButtonTapped(_ sender: Any) {
         
-        NotificationController.post(name: .list, userInfo: ["list":ListController.createList(title: "TestList1", listMaster: UserController.currentUser!, uuid: "12345")])
+        NotificationController.post(name: .list, userInfo: ["list":ListController.createList(title: "TestList1", listMasterID: UserController.currentUser!.uuid, uuid: "12345")])
     }
     
     @IBAction func topLeftButtonTapped(_ sender: Any) {

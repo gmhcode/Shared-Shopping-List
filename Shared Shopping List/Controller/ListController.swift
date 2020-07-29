@@ -14,7 +14,7 @@ class ListController {
     var list : List?
     static let shared = ListController()
     
-    @discardableResult static func createList(title: String, listMaster: User, uuid: String ) -> List {
+    @discardableResult static func createList(title: String, listMasterID: String, uuid: String ) -> List {
         
         if let list = getList(id: uuid) {
             return list
@@ -24,7 +24,7 @@ class ListController {
         let list = List(context: persistentManager.context)
         
         list.uuid = uuid
-        list.listMasterID = listMaster.uuid
+        list.listMasterID = uuid
         list.title = title
         persistentManager.saveContext()
         return list
@@ -168,7 +168,7 @@ class ListController {
             }.resume()
         }
         
-        func getAllLists(completion: @escaping([CodableList])->()) {
+        func getAllLists(completion: @escaping([List])->()) {
             guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion([]); return}
             url.appendPathComponent(BackEndUtils.PathComponent.lists.rawValue)
             
@@ -182,8 +182,13 @@ class ListController {
                 
                 if let data = data  {
                     do {
-                        let lists = try JSONDecoder().decode([CodableList].self, from: data)
-                        completion(lists)
+                        if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:AnyObject]] {
+                            if let lists = self.parseFetchedLists(lists: json){
+                                completion(lists)
+                            }
+                            completion([])
+                            print("🎾 resulting json",json)
+                        }
                     } catch let error {
                         print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription)")
                     }
@@ -194,6 +199,28 @@ class ListController {
             }.resume()
             
         }
+        
+        func parseFetchedLists(lists: [[String:AnyObject]]) -> [List]? {
+            guard !lists.isEmpty else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
+            var returningLists : [List] = []
+            
+            for i in lists {
+                guard let uuid = i["uuid"] as? String,
+                    let listMasterID = i["listMasterID"] as? String,
+                    let title = i["title"] as? String else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
+                let fetchedList = ListController.createList(title: title, listMasterID: listMasterID, uuid: uuid)
+                returningLists.append(fetchedList)
+                
+//                list.uuid = uuid
+//                list.listMasterID = listMaster.uuid
+//                list.title = title
+            }
+            if returningLists.isEmpty {
+                return nil
+            }
+            return returningLists
+        }
+        
         func getParams(list: List) -> [String:Any] {
             let params : [String:Any] = ["uuid":list.uuid,"title":list.title,"listMasterID":list.listMasterID]
             return params
