@@ -35,6 +35,9 @@ class MainDrawerViewController: UIViewController{
     }
 
     @IBAction func testingVCButtonTapped(_ sender: Any) {
+        if MainRootViewController.mainRootVC?.visibleViewController is TestingVC {
+            return
+        }
         MainRootViewController.mainRootVC?.performSegue(withIdentifier: "toTestingVC", sender: self)
     }
     
@@ -49,8 +52,6 @@ class MainDrawerViewController: UIViewController{
         
        
     }
-    
-    
     
     @objc func listNotification(n:Notification){
         topLeftButton.setTitle("createList", for: .normal)
