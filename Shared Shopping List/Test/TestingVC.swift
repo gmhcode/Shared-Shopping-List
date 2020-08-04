@@ -23,39 +23,42 @@ class TestingVC: UIViewController {
         var testItemCount = 0
         var testListCount = 0
         
-        var selectedUser : CodableUser?
+        var selectedUser : User?
         var selectedList : List?
-        var selectedItem : CodableItem?
+        var selectedItem : User?
         
-        var users : [CodableUser] = []
+        var users : [User] = []
         var lists : [List] = []
-        var items : [CodableItem] = []
+        var items : [User] = []
         
         
         func fetchAllUsers(completion:@escaping()->()) {
-            UserController.BackEnd.shared.callUsers { (users) in
+            UserController.BackEnd.shared.callAllUsers { (users) in
+                guard let users = users else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
                 self.users = users
                 completion()
             }
         }
         
         func fetchAllLists(completion:@escaping()->()) {
-            ListController.BackEnd.shared.getAllLists { (lists) in
+            ListController.BackEnd.shared.callAllLists { (lists) in
+                guard let lists = lists else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
                 self.lists = lists
+                completion()
             }
         }
         
         func fetchAllItems(completion:@escaping()->()){
-            ItemController.BackEnd.shared.callItems { (items) in
-                self.items = items
+            ItemController.BackEnd.shared.callAllItems { (items) in
+//                self.items = items
+                completion()
             }
         }
         
         func createList() {
-            guard let selectedUser = selectedUser else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            
-//            ListController.BackEnd.shared.createList(list: list)
-
+            guard let selectedUser = selectedUser else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return }
         }
         
     }
@@ -65,8 +68,6 @@ class TestingVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         listTableView.delegate = self
         listTableView.dataSource = self
@@ -78,11 +79,14 @@ class TestingVC: UIViewController {
                 self?.listTableView.reloadData()
             }
         }
+        
         viewModel.fetchAllUsers { [weak self] in
+            print("AllUsers🛳", self?.viewModel.users)
             DispatchQueue.main.async {
                 self?.userTableView.reloadData()
             }
         }
+        
         viewModel.fetchAllItems {
             
         }
@@ -91,13 +95,16 @@ class TestingVC: UIViewController {
 
 
 extension TestingVC : UITableViewDataSource, UITableViewDelegate {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let header = getHeader(tableView: tableView)
         return header
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == listTableView {
             return viewModel.lists.count

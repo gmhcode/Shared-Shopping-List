@@ -13,12 +13,17 @@ class UserController {
     static var currentUser : User?
     
     static func createUser(name:String, email: String, uuid: String) -> User {
+        
+        if let list = getUser(id: uuid) {
+            return list
+        }
+        
         let persistentManager = PersistenceManager.shared
         let user = User(context: persistentManager.context)
         user.name = name
         user.email = email
         user.uuid = uuid
-//            UUID().uuidString
+        //            UUID().uuidString
         persistentManager.saveContext()
         return user
     }
@@ -96,7 +101,27 @@ class UserController {
         static var shared = UserController.BackEnd()
         var url = URL(string: "http://localhost:8081/")
         
-        func callUsers(completion: @escaping ([CodableUser]) -> ()) {
+        func parseFetchedUsers(users: [[String:AnyObject]]) -> [User]? {
+            guard !users.isEmpty else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
+            var returningUsers : [User] = []
+            
+            for i in users {
+                guard let uuid = i["uuid"] as? String,
+                    let name = i["name"] as? String,
+                    let email = i["email"] as? String else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); continue}
+                let fetchedUser = UserController.createUser(name: name, email: email, uuid: uuid)
+                
+                returningUsers.append(fetchedUser)
+                
+            }
+            
+            if returningUsers.isEmpty {
+                return nil
+            }
+            return returningUsers
+        }
+        
+        func callAllUsers(completion: @escaping ([User]?) -> ()) {
             //http://192.168.1.225:8081/listMembers
             let url = URL(string: "http://localhost:8081/users")!
             
@@ -104,20 +129,25 @@ class UserController {
             request.httpMethod = "GET"
             
             URLSession.shared.dataTask(with: request) { (data, res, er) in
-                guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion([]); return}
-
+                guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
+                
                 do {
-                    let jsonDecoder = JSONDecoder()
-                    let users = try jsonDecoder.decode([CodableUser].self, from: data)
-                    completion(users)
+                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:AnyObject]] {
+                        if let users = self.parseFetchedUsers(users: json){
+                            completion(users)
+//                            print("🛳 users",json)
+                            return
+                        }
+                    }
+                    completion(nil)
                 }catch let er{
                     
                     print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-                    completion([])
+                    completion(nil)
                 }
             }.resume()
         }
-
+        
         func createUser(user: User) {
             guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             url.appendPathComponent(BackEndUtils.PathComponent.user.rawValue)

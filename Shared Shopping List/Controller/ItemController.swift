@@ -98,7 +98,7 @@ class ItemController {
         var url = URL(string: "http://localhost:8081/")
         static var shared = ItemController.BackEnd()
         
-        func callItems(completion: @escaping ([CodableItem]) -> () ) {
+        func callAllItems(completion: @escaping ([CodableItem]) -> () ) {
             guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion([]); return}
             url.appendPathComponent(BackEndUtils.PathComponent.items.rawValue)
             

@@ -164,19 +164,18 @@ class ListController {
                 if let response = res, let data = data  {
                     print("Delete All Lists Response", response, BackEndUtils.convertDataToJson(data: data))
                 }
-                
             }.resume()
         }
         
-        func getAllLists(completion: @escaping([List])->()) {
-            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion([]); return}
+        func callAllLists(completion: @escaping([List]?)->()) {
+            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
             url.appendPathComponent(BackEndUtils.PathComponent.lists.rawValue)
             
             let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
             URLSession.shared.dataTask(with: request) { (data, res, er) in
                 if let er = er {
                     print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-                    completion([])
+                    completion(nil)
                     return
                 }
                 
@@ -186,20 +185,20 @@ class ListController {
                             if let lists = self.parseFetchedLists(lists: json){
                                 completion(lists)
                             }
-                            completion([])
-                            print("🎾 resulting json",json)
+                            completion(nil)
+                            print("🎾 resulting Lists",json)
                         }
                     } catch let error {
                         print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription)")
                     }
                 } else {
-                    completion([])
+                    completion(nil)
                 }
                 
             }.resume()
             
         }
-        
+        ///Goes through all the fetched lists, creates them with listController, then returns them in the returning array.
         func parseFetchedLists(lists: [[String:AnyObject]]) -> [List]? {
             guard !lists.isEmpty else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
             var returningLists : [List] = []
@@ -211,10 +210,8 @@ class ListController {
                 let fetchedList = ListController.createList(title: title, listMasterID: listMasterID, uuid: uuid)
                 returningLists.append(fetchedList)
                 
-//                list.uuid = uuid
-//                list.listMasterID = listMaster.uuid
-//                list.title = title
             }
+            
             if returningLists.isEmpty {
                 return nil
             }
