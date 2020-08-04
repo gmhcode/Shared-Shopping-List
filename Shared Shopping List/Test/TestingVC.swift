@@ -29,7 +29,7 @@ class TestingVC: UIViewController {
         
         var users : [User] = []
         var lists : [List] = []
-        var items : [User] = []
+        var items : [Item] = []
         
         
         func fetchAllUsers(completion:@escaping()->()) {
@@ -52,13 +52,17 @@ class TestingVC: UIViewController {
         
         func fetchAllItems(completion:@escaping()->()){
             ItemController.BackEnd.shared.callAllItems { (items) in
-//                self.items = items
+                guard let items = items else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
+                self.items = items
                 completion()
             }
         }
         
-        func createList() {
-            guard let selectedUser = selectedUser else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return }
+        func createList(user: User) {
+            let list = ListController.createList(title: "NewList1", listMasterID: user.uuid, uuid: String(Int.random(in: 1...1000)))
+                                                 
+            ListController.BackEnd.shared.createList(list: list)
         }
         
     }
@@ -75,20 +79,21 @@ class TestingVC: UIViewController {
         userTableView.dataSource = self
         
         viewModel.fetchAllLists { [weak self] in
+            print("AllLists 🇨🇭", self?.viewModel.users as Any)
             DispatchQueue.main.async {
                 self?.listTableView.reloadData()
             }
         }
         
         viewModel.fetchAllUsers { [weak self] in
-            print("AllUsers🛳", self?.viewModel.users)
+            print("AllUsers 🛳", self?.viewModel.users as Any)
             DispatchQueue.main.async {
                 self?.userTableView.reloadData()
             }
         }
         
-        viewModel.fetchAllItems {
-            
+        viewModel.fetchAllItems { [weak self] in
+            print("ALLItems 🇸🇰", self?.viewModel.items as Any)
         }
     }
 }

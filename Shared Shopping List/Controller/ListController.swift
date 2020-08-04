@@ -95,7 +95,7 @@ class ListController {
         var url = URL(string: "http://localhost:8081/")
         static var shared = ListController.BackEnd()
         
-        func createList(list: List) {
+        func createList(list: List, completion:@escaping()->()) {
             guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             url.appendPathComponent(BackEndUtils.PathComponent.list.rawValue)
             
@@ -178,28 +178,25 @@ class ListController {
                     completion(nil)
                     return
                 }
+                guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
                 
-                if let data = data  {
-                    do {
-                        if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:AnyObject]] {
-                            if let lists = self.parseFetchedLists(lists: json){
-                                completion(lists)
-                            }
-                            completion(nil)
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
+                        if let lists = self.parseFetchedLists(lists: json) {
                             print("🎾 resulting Lists",json)
+                            completion(lists)
+                            return
                         }
-                    } catch let error {
-                        print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription)")
                     }
-                } else {
                     completion(nil)
+                } catch let error {
+                    print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription)")
                 }
-                
             }.resume()
             
         }
         ///Goes through all the fetched lists, creates them with listController, then returns them in the returning array.
-        func parseFetchedLists(lists: [[String:AnyObject]]) -> [List]? {
+        func parseFetchedLists(lists: [[String:Any]]) -> [List]? {
             guard !lists.isEmpty else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
             var returningLists : [List] = []
             
@@ -223,5 +220,4 @@ class ListController {
             return params
         }
     }
-    
 }

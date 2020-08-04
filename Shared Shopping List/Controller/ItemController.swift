@@ -11,16 +11,20 @@ import CoreData
 class ItemController {
     
     static let shared = ItemController()
-
-    static func createItem(name: String, store: String, userSent: User, list: List) -> Item {
+    
+    static func createItem(name: String, store: String, userSentID: String, listID: String, uuid: String) -> Item {
+        
+        if let i = getItem(id: uuid){
+            return i
+        }
         
         let persistentManager = PersistenceManager.shared
         let item = Item(context: persistentManager.context)
         
         item.name = name
         item.store = store
-        item.userSentId = userSent.uuid
-        item.listID = list.uuid
+        item.userSentId = userSentID
+        item.listID = listID
         item.uuid = UUID().uuidString
         
         persistentManager.saveContext()
@@ -98,7 +102,30 @@ class ItemController {
         var url = URL(string: "http://localhost:8081/")
         static var shared = ItemController.BackEnd()
         
-        func callAllItems(completion: @escaping ([CodableItem]) -> () ) {
+        func parseFetchedItems(items: [[String:Any]]) -> [Item]? {
+            guard !items.isEmpty else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
+            var returningItems : [Item] = []
+            
+            for i in items {
+                guard let uuid = i["uuid"] as? String,
+                    let store = i["store"] as? String,
+                    let name = i["name"] as? String,
+                    let userSent = i["userSentId"] as? String,
+                    let listID = i["listID"] as? String else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); continue}
+                
+                let fetchedItem = ItemController.createItem(name: name, store: store, userSentID: userSent, listID: listID, uuid: uuid)
+                
+                returningItems.append(fetchedItem)
+                
+            }
+            
+            if returningItems.isEmpty {
+                return nil
+            }
+            return returningItems
+        }
+        
+        func callAllItems(completion: @escaping ([Item]?) -> () ) {
             guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion([]); return}
             url.appendPathComponent(BackEndUtils.PathComponent.items.rawValue)
             
@@ -112,14 +139,18 @@ class ItemController {
                 
                 guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion([]); return }
                 do {
-                    let jsonDecoder = JSONDecoder()
-                    let items = try jsonDecoder.decode([CodableItem].self, from: data)
-                    print("items", items)
-                    completion(items)
-                }catch let er{
+                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
+                        if let items = self.parseFetchedItems(items: json) {
+                            print("🇸🇾 Items JSON",json)
+                            completion(items)
+                            return
+                        }
+                    }
+                }catch let er {
                     
                     print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
                 }
+                completion(nil)
             }.resume()
         }
     }

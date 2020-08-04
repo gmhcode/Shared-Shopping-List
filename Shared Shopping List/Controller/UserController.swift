@@ -101,7 +101,7 @@ class UserController {
         static var shared = UserController.BackEnd()
         var url = URL(string: "http://localhost:8081/")
         
-        func parseFetchedUsers(users: [[String:AnyObject]]) -> [User]? {
+        func parseFetchedUsers(users: [[String:Any]]) -> [User]? {
             guard !users.isEmpty else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
             var returningUsers : [User] = []
             
@@ -132,7 +132,7 @@ class UserController {
                 guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
                 
                 do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:AnyObject]] {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
                         if let users = self.parseFetchedUsers(users: json){
                             completion(users)
 //                            print("🛳 users",json)
