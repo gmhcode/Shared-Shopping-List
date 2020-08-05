@@ -43,14 +43,13 @@ class MainDrawerViewController: UIViewController{
     
     @IBAction func topRightButtonTapped(_ sender: Any) {
         
-        NotificationController.post(name: .list, userInfo: ["list":ListController.createList(title: "TestList1", listMasterID: UserController.currentUser!.uuid, uuid: "12345")])
+        NotificationController.post(name: .list, userInfo: ["list": ListController.createList(title: "TestList1", listMasterID: UserController.currentUser!.uuid, uuid: "12345")])
     }
     
     @IBAction func topLeftButtonTapped(_ sender: Any) {
         
-        NotificationController.post(name: .user, userInfo: ["user":UserController.currentUser!])
+        NotificationController.post(name: .user, userInfo: ["user": UserController.currentUser!])
         
-       
     }
     
     @objc func listNotification(n:Notification){
@@ -59,7 +58,7 @@ class MainDrawerViewController: UIViewController{
         middleLeftButton.setTitle("updateList", for: .normal)
         middleRIghtButton.setTitle("getList", for: .normal)
         let list = n.userInfo?["list"] as? List
-        print(list!.title)
+//        print(list!.title)
         
     }
     
@@ -69,7 +68,7 @@ class MainDrawerViewController: UIViewController{
         middleLeftButton.setTitle("updateUser", for: .normal)
         middleRIghtButton.setTitle("getUser", for: .normal)
         let user = n.userInfo?["user"] as? User
-        print(user!.name)
+//        print(user!.name)
 
     }
 

@@ -20,15 +20,7 @@ class DrawerContainerViewController: UIViewController {
     
     @IBAction func arrowButtonTapped(_ sender: Any) {
         arrowButton.rotate()
-//        UserController.BackEnd.shared.callUsers { (users) in
-//            print(users)
-//        }
-//
-//        
-//        ItemController.BackEnd.shared.callItems { (items) in
-//            print("ITEMS    ", items)
-//        }
-//        ListController.BackEnd.shared.createList(list: ListController.shared.list!)
+
         
     }
 

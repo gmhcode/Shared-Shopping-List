@@ -166,10 +166,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="yYZ-ug-5tm">
-                                <rect key="frame" x="20" y="20" width="374" height="468"/>
+                                <rect key="frame" x="20" y="20" width="374" height="250"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y9M-nk-dVx">
-                                        <rect key="frame" x="0.0" y="0.0" width="174" height="468"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="174" height="250"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listTableCell" textLabel="4MF-RK-H5o" style="IBUITableViewCellStyleDefault" id="TDP-43-2eS">
@@ -192,7 +192,7 @@
                                         </prototypes>
                                     </tableView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xJZ-Xj-ZhD">
-                                        <rect key="frame" x="200" y="0.0" width="174" height="468"/>
+                                        <rect key="frame" x="200" y="0.0" width="174" height="250"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userTableCell" textLabel="UkC-KS-0aX" style="IBUITableViewCellStyleDefault" id="Tj7-Gl-8T6">
@@ -220,18 +220,46 @@
                                     <constraint firstItem="y9M-nk-dVx" firstAttribute="width" secondItem="yYZ-ug-5tm" secondAttribute="width" multiplier="0.465241" id="zrC-Ck-RpA"/>
                                 </constraints>
                             </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gaR-LP-Ogx">
+                                <rect key="frame" x="20" y="278" width="177" height="309"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="itemTableCell" textLabel="T6K-wm-8Vf" style="IBUITableViewCellStyleDefault" id="ntj-tK-chB">
+                                        <rect key="frame" x="0.0" y="28" width="177" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ntj-tK-chB" id="XcS-9O-4he">
+                                            <rect key="frame" x="0.0" y="0.0" width="177" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="T6K-wm-8Vf">
+                                                    <rect key="frame" x="16" y="0.0" width="145" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="yYZ-ug-5tm" firstAttribute="height" secondItem="tgJ-rs-kHb" secondAttribute="height" multiplier="0.296912" id="73h-Qb-zwO"/>
                             <constraint firstItem="yYZ-ug-5tm" firstAttribute="top" secondItem="HyM-rB-6wu" secondAttribute="top" constant="20" id="8i6-q8-wh2"/>
                             <constraint firstItem="yYZ-ug-5tm" firstAttribute="width" secondItem="tgJ-rs-kHb" secondAttribute="width" multiplier="0.903382" id="CLz-0U-5LM"/>
+                            <constraint firstItem="gaR-LP-Ogx" firstAttribute="width" secondItem="tgJ-rs-kHb" secondAttribute="width" multiplier="0.427536" id="KY7-xh-drh"/>
                             <constraint firstItem="yYZ-ug-5tm" firstAttribute="centerX" secondItem="tgJ-rs-kHb" secondAttribute="centerX" id="MvI-HS-Ewn"/>
-                            <constraint firstItem="yYZ-ug-5tm" firstAttribute="height" secondItem="tgJ-rs-kHb" secondAttribute="height" multiplier="0.555819" id="X4d-if-BPZ"/>
+                            <constraint firstItem="gaR-LP-Ogx" firstAttribute="top" secondItem="HyM-rB-6wu" secondAttribute="top" constant="278" id="fp7-Wf-2af"/>
+                            <constraint firstItem="gaR-LP-Ogx" firstAttribute="leading" secondItem="HyM-rB-6wu" secondAttribute="leading" constant="20" id="gQv-0w-Hob"/>
+                            <constraint firstItem="gaR-LP-Ogx" firstAttribute="height" secondItem="tgJ-rs-kHb" secondAttribute="height" multiplier="0.243468" constant="104" id="z3a-W6-r8f"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HyM-rB-6wu"/>
                     </view>
                     <navigationItem key="navigationItem" id="zd2-lR-JMb"/>
                     <connections>
+                        <outlet property="itemTableView" destination="gaR-LP-Ogx" id="YvF-ya-gVW"/>
                         <outlet property="listTableView" destination="y9M-nk-dVx" id="Ykz-Po-bZH"/>
                         <outlet property="userTableView" destination="xJZ-Xj-ZhD" id="nxg-Yq-g8j"/>
                     </connections>
@@ -292,7 +320,7 @@
             <objects>
                 <viewController storyboardIdentifier="MainDrawerViewController" id="AVQ-i0-ARC" customClass="MainDrawerViewController" customModule="Shared_Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lI5-sR-Lyn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="839"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="839.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rv7-3g-3CE">
