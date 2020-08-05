@@ -36,7 +36,7 @@ class TestingVC: UIViewController {
         func fetchAllUsers(completion:@escaping()->()) {
             UserController.BackEnd.shared.callAllUsers { (users) in
                 guard let users = users else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-
+                
                 self.users = users
                 completion()
             }
@@ -45,7 +45,7 @@ class TestingVC: UIViewController {
         func fetchAllLists(completion:@escaping()->()) {
             ListController.BackEnd.shared.callAllLists { (lists) in
                 guard let lists = lists else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-
+                
                 self.lists = lists
                 completion()
             }
@@ -54,7 +54,7 @@ class TestingVC: UIViewController {
         func fetchAllItems(completion:@escaping()->()){
             ItemController.BackEnd.shared.callAllItems { (items) in
                 guard let items = items else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-
+                
                 self.items = items
                 completion()
             }
@@ -62,7 +62,7 @@ class TestingVC: UIViewController {
         
         func createList(user: User) {
             let list = ListController.createList(title: "NewList1", listMasterID: user.uuid, uuid: String(Int.random(in: 1...1000)))
-                                                 
+            
             ListController.BackEnd.shared.createList(list: list, completion: {
                 
             })
@@ -74,7 +74,8 @@ class TestingVC: UIViewController {
     var funcNames : [String] = ["createUser","updateUser","deleteAllUsers"]
     var state : TestState = .none {
         didSet {
-            
+            stateSelected(state: state)
+            reloadAll()
         }
     }
     
@@ -109,6 +110,24 @@ class TestingVC: UIViewController {
             print("ALLItems 🇸🇰", self.viewModel.items as Any)
         }
     }
+    
+    func reloadAll() {
+        userTableView.reloadData()
+        itemTableView.reloadData()
+        listTableView.reloadData()
+    }
+    
+    @objc func userHeaderTapped(sender: UIButton) {
+        state = .userHeaderSelected
+    }
+    
+    @objc func listHeaderTapped(sender: UIButton) {
+        state = .listsHeaderSelected
+    }
+    
+    @objc func itemHeaderTapped(sender: UIButton) {
+        state = .itemsHeaderSelected
+    }
 }
 
 
@@ -123,27 +142,18 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
         return headerTitle
     }
     
-    @objc func userHeaderTapped(sender: UIButton) {
-
-        print("Hit3")
-
-    }
-    @objc func listHeaderTapped(sender: UIButton) {
-
-        print("Hit2")
-
-    }
-    @objc func itemHeaderTapped(sender: UIButton) {
-  
-        print("hit4")
-    }
+    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
+        
         let headerButton: UIButton = UIButton()
         let headerTitle = getHeader(tableView: tableView)
+        let colors = headerColor(state: state, tableView: tableView)
+        
         headerButton.setTitle(headerTitle, for: .normal)
-        headerButton.setTitleColor(.black, for: .normal)
+        headerButton.setTitleColor(colors.0, for: .normal)
+        headerButton.backgroundColor = colors.1
+        
         if headerTitle == "Users" {
             headerButton.addTarget(self, action: #selector(userHeaderTapped), for: .touchUpInside)
         } else if headerTitle == "Lists" {
@@ -153,7 +163,7 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
         }
         
         let headerView: UIView = UIView()
-
+        
         headerView.addSubview(headerButton)
         headerButton.translatesAutoresizingMaskIntoConstraints = false
         headerButton.leadingAnchor.constraint(equalTo: headerView.leadingAnchor).isActive = true
@@ -163,7 +173,7 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
         
         return headerView
     }
-
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == listTableView {
@@ -192,7 +202,6 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
             cell.textLabel?.text = viewModel.items[indexPath.row].name
             return cell
         }
-        
         return UITableViewCell()
     }
     
@@ -218,11 +227,28 @@ extension TestingVC {
         case .listsHeaderSelected:
             NotificationController.post(name: .list, userInfo: [:])
             break
+        case .itemsHeaderSelected:
+            NotificationController.post(name: .item, userInfo: [:])
         case .none:
             break
+        }
+    }
+    
+    func headerColor(state: TestState, tableView: UITableView) -> (UIColor,UIColor) {
+        switch (state,tableView) {
+        case (.userHeaderSelected,userTableView):
+            return (UIColor.black,UIColor.white)
+            
+        case (.listsHeaderSelected, listTableView):
+            return (UIColor.black,UIColor.white)
+            
+        case (.itemsHeaderSelected, itemTableView):
+            return (UIColor.black,UIColor.white)
+            
         default:
             break
         }
+        return (UIColor.white, UIColor.black)
     }
     
     enum TestState {

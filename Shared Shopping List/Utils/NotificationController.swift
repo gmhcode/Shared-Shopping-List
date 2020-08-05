@@ -25,5 +25,6 @@ class NotificationController {
     enum ClassNames : String {
         case list = "List"
         case user = "User"
+        case item = "Item"
     }
 }
