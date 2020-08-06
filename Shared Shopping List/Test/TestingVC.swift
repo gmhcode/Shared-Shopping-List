@@ -60,6 +60,30 @@ class TestingVC: UIViewController {
             }
         }
         
+        func fetchItems(for list: List, completion: @escaping()->()) {
+//            ItemController.BackEnd.shared
+        }
+        
+        func fetchUsers(for list: List, completion: @escaping()->()) {
+            
+        }
+        
+        func fetchLists(for user: User, completion: @escaping()->()) {
+            
+        }
+        
+        func fetchItems(for user: User, completion: @escaping()->()) {
+            
+        }
+        
+        func fetchUser(for item: Item, completion: @escaping()->()) {
+            
+        }
+        
+        func fetchList(for item: Item, completion: @escaping()->()) {
+            
+        }
+        
         func createList(user: User) {
             let list = ListController.createList(title: "NewList1", listMasterID: user.uuid, uuid: String(Int.random(in: 1...1000)))
             
@@ -68,6 +92,18 @@ class TestingVC: UIViewController {
             })
         }
         
+        func listSelected(state : TestState) {
+            switch state {
+            case .userHeaderSelected:
+                break
+            case .listsHeaderSelected:
+                break
+            case .itemsHeaderSelected:
+                break
+            case .none:
+                break
+            }
+        }
     }
     
     
@@ -205,6 +241,27 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch tableView {
+        case itemTableView:
+            
+            break
+        case userTableView:
+            break
+        case listTableView:
+            if state == .listsHeaderSelected {
+                
+            }
+            break
+        default:
+            break
+        }
+    }
+
+}
+
+extension TestingVC {
+    
     func getHeader(tableView : UITableView) -> String {
         if tableView == listTableView {
             return "Lists"
@@ -215,9 +272,6 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
         }
         return "Cant get TableVIew"
     }
-}
-
-extension TestingVC {
     
     func stateSelected(state: TestState) {
         switch state {

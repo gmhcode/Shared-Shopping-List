@@ -123,10 +123,20 @@ class UserController {
         
         func callAllUsers(completion: @escaping ([User]?) -> ()) {
             //http://192.168.1.225:8081/listMembers
-            let url = URL(string: "http://localhost:8081/users")!
+            var preUrl = URL(string: "http://localhost:8081/users")!
+            var url = preUrl
+//            var preUrl = URL(string: "http://localhost:8081/users/query")!
+            
+//            let query = URLQueryItem(name: "foo", value: "bar")
+//
+//            var components = URLComponents(url: preUrl, resolvingAgainstBaseURL: true)
+//            components?.queryItems = [query]
+//            var url = components?.url
+            
             
             var request = URLRequest(url: url)
-            request.httpMethod = "GET"
+            
+            request.httpMethod = BackEndUtils.RequestMethod.get.rawValue
             
             URLSession.shared.dataTask(with: request) { (data, res, er) in
                 guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
