@@ -61,7 +61,7 @@ class TestingVC: UIViewController {
         }
         
         func fetchItems(for list: List, completion: @escaping()->()) {
-//            ItemController.BackEnd.shared
+
         }
         
         func fetchUsers(for list: List, completion: @escaping()->()) {

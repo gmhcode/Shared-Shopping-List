@@ -195,6 +195,7 @@ class ListController {
             }.resume()
             
         }
+        
         ///Goes through all the fetched lists, creates them with listController, then returns them in the returning array.
         func parseFetchedLists(lists: [[String:Any]]) -> [List]? {
             guard !lists.isEmpty else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}

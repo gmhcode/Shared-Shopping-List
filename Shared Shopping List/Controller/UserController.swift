@@ -121,12 +121,46 @@ class UserController {
             return returningUsers
         }
         
+        
+        func getUsersWithList(list: List, completion:@escaping ([User]?) ->()) {
+            let preUrl = URL(string: "http://localhost:8081/users/query")!
+            
+            let query = URLQueryItem(name: "listID", value: list.uuid)
+
+            var components = URLComponents(url: preUrl, resolvingAgainstBaseURL: true)
+            components?.queryItems = [query]
+            guard let url = components?.url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
+
+            var request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
+            
+            URLSession.shared.dataTask(with: request) { (data, res, error) in
+                if let error = error {
+                    print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription) : \(#file) \(#line)")
+                    completion(nil)
+                    return
+                }
+                guard let data = data else {completion(nil); return}
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
+                        if let users = self.parseFetchedUsers(users: json) {
+                            completion(users)
+                            return
+                        }
+                    }
+                }catch let er{
+                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                }
+              completion(nil)
+            }.resume()
+            
+        }
+        
         func callAllUsers(completion: @escaping ([User]?) -> ()) {
             //http://192.168.1.225:8081/listMembers
-            var preUrl = URL(string: "http://localhost:8081/users")!
-            var url = preUrl
-//            var preUrl = URL(string: "http://localhost:8081/users/query")!
+            var url = URL(string: "http://localhost:8081/users")! 
             
+//            var preUrl = URL(string: "http://localhost:8081/users/query")!
+//
 //            let query = URLQueryItem(name: "foo", value: "bar")
 //
 //            var components = URLComponents(url: preUrl, resolvingAgainstBaseURL: true)
