@@ -19,6 +19,7 @@ class TestingVC: UIViewController {
     class TestingVCViewModel {
         
         static let shared = TestingVCViewModel()
+        var vc : TestingVC?
         ///used as test user names
         var testUserCount = 0
         var testItemCount = 0
@@ -31,7 +32,7 @@ class TestingVC: UIViewController {
         var users : [User] = []
         var lists : [List] = []
         var items : [Item] = []
-        
+
         
         func fetchAllUsers(completion:@escaping()->()) {
             UserController.BackEnd.shared.callAllUsers { (users) in
@@ -65,20 +66,28 @@ class TestingVC: UIViewController {
         }
         
         func fetchUsers(for list: List, completion: @escaping()->()) {
-            
+            UserController.BackEnd.shared.getUsersWithList(list: list) { (users) in
+                guard let users = users else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                self.users = users
+                
+                print("USERS: 🇸🇩",users)
+                completion()
+            }
         }
         
         func fetchLists(for user: User, completion: @escaping()->()) {
-            
+            ListController.BackEnd.shared.getListsWithUser(user: user) { (lists) in
+                guard let lists = lists else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                self.lists = lists
+                print("LISTS: 🇸🇩",lists)
+                completion()
+            }
         }
         
         func fetchItems(for user: User, completion: @escaping()->()) {
             
         }
         
-        func fetchUser(for item: Item, completion: @escaping()->()) {
-            
-        }
         
         func fetchList(for item: Item, completion: @escaping()->()) {
             
@@ -92,16 +101,39 @@ class TestingVC: UIViewController {
             })
         }
         
-        func listSelected(state : TestState) {
+        func listSelected(state : TestState, list: List, completion: @escaping()->()) {
             switch state {
             case .userHeaderSelected:
-                break
+                if selectedUser != nil {
+                    
+                }
+                
             case .listsHeaderSelected:
-                break
+                fetchUsers(for: list) {
+                    self.vc?.reloadAll()
+                    completion()
+                }
             case .itemsHeaderSelected:
                 break
             case .none:
                 break
+            }
+        }
+        
+        func loadTables(completion: @escaping ()->()) {
+            fetchAllLists {
+                print("AllLists 🇨🇭", self.lists as Any)
+                
+                self.fetchAllUsers {
+                    print("AllUsers 🛳", self.users as Any)
+                    
+                    self.fetchAllItems {
+                        
+                        print("ALLItems 🇸🇰", self.items as Any)
+                        self.vc?.reloadAll()
+                        completion()
+                    }
+                }
             }
         }
     }
@@ -111,7 +143,7 @@ class TestingVC: UIViewController {
     var state : TestState = .none {
         didSet {
             stateSelected(state: state)
-            reloadAll()
+            viewModel.loadTables {}
         }
     }
     
@@ -124,33 +156,21 @@ class TestingVC: UIViewController {
         userTableView.dataSource = self
         itemTableView.delegate = self
         itemTableView.dataSource = self
-        
-        viewModel.fetchAllLists {
-            print("AllLists 🇨🇭", self.viewModel.users as Any)
-            DispatchQueue.main.async {
-                self.listTableView.reloadData()
-            }
+        viewModel.vc = self
+        viewModel.loadTables {
+            self.reloadAll()
         }
         
-        viewModel.fetchAllUsers {
-            print("AllUsers 🛳", self.viewModel.users as Any)
-            DispatchQueue.main.async {
-                self.userTableView.reloadData()
-            }
-        }
-        
-        viewModel.fetchAllItems {
-            DispatchQueue.main.async {
-                self.itemTableView.reloadData()
-            }
-            print("ALLItems 🇸🇰", self.viewModel.items as Any)
-        }
+       
     }
     
     func reloadAll() {
-        userTableView.reloadData()
-        itemTableView.reloadData()
-        listTableView.reloadData()
+        DispatchQueue.main.async {
+            self.userTableView.reloadData()
+            self.itemTableView.reloadData()
+            self.listTableView.reloadData()
+        }
+        
     }
     
     @objc func userHeaderTapped(sender: UIButton) {
@@ -244,12 +264,11 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch tableView {
         case itemTableView:
-            
             break
         case userTableView:
             break
         case listTableView:
-            if state == .listsHeaderSelected {
+            viewModel.listSelected(state: state, list: viewModel.lists[indexPath.row]) {
                 
             }
             break
@@ -257,7 +276,6 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
             break
         }
     }
-
 }
 
 extension TestingVC {
@@ -291,7 +309,7 @@ extension TestingVC {
     func headerColor(state: TestState, tableView: UITableView) -> (UIColor,UIColor) {
         switch (state,tableView) {
         case (.userHeaderSelected,userTableView):
-            return (UIColor.black,UIColor.white)
+            return (UIColor.black,UIColor.gray)
             
         case (.listsHeaderSelected, listTableView):
             return (UIColor.black,UIColor.white)

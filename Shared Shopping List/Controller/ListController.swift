@@ -150,6 +150,39 @@ class ListController {
             }
         }
         
+        func getListsWithUser(user: User, completion:@escaping ([List]?) ->()) {
+            let preUrl = URL(string: "http://localhost:8081/lists/query")!
+            
+            let query = URLQueryItem(name: "userID", value: user.uuid)
+
+            var components = URLComponents(url: preUrl, resolvingAgainstBaseURL: true)
+            components?.queryItems = [query]
+            guard let url = components?.url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
+
+            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
+            
+            URLSession.shared.dataTask(with: request) { (data, res, error) in
+                if let error = error {
+                    print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription) : \(#file) \(#line)")
+                    completion(nil)
+                    return
+                }
+                guard let data = data else {completion(nil); return}
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
+                        if let lists = self.parseFetchedLists(lists: json) {
+                            completion(lists)
+                            return
+                        }
+                    }
+                }catch let er{
+                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                }
+              completion(nil)
+            }.resume()
+        }
+        
+        
         func deleteAllLists() {
             guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             url.appendPathComponent(BackEndUtils.PathComponent.lists.rawValue)
@@ -172,6 +205,8 @@ class ListController {
             url.appendPathComponent(BackEndUtils.PathComponent.lists.rawValue)
             
             let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
+            
+            
             URLSession.shared.dataTask(with: request) { (data, res, er) in
                 if let er = er {
                     print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")

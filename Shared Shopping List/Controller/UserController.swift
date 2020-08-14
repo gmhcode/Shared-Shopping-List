@@ -112,7 +112,6 @@ class UserController {
                 let fetchedUser = UserController.createUser(name: name, email: email, uuid: uuid)
                 
                 returningUsers.append(fetchedUser)
-                
             }
             
             if returningUsers.isEmpty {
@@ -121,7 +120,7 @@ class UserController {
             return returningUsers
         }
         
-        
+        //NEED TO TEST
         func getUsersWithList(list: List, completion:@escaping ([User]?) ->()) {
             let preUrl = URL(string: "http://localhost:8081/users/query")!
             
@@ -131,7 +130,7 @@ class UserController {
             components?.queryItems = [query]
             guard let url = components?.url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
 
-            var request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
+            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
             
             URLSession.shared.dataTask(with: request) { (data, res, error) in
                 if let error = error {
@@ -152,8 +151,11 @@ class UserController {
                 }
               completion(nil)
             }.resume()
-            
         }
+        
+        
+        
+        
         
         func callAllUsers(completion: @escaping ([User]?) -> ()) {
             //http://192.168.1.225:8081/listMembers
