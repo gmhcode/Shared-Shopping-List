@@ -33,7 +33,7 @@ class TestingVC: UIViewController {
         var lists : [List] = []
         var items : [Item] = []
 
-        
+        // MARK: - Fetch All Users
         func fetchAllUsers(completion:@escaping()->()) {
             UserController.BackEnd.shared.callAllUsers { (users) in
                 guard let users = users else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
@@ -42,7 +42,7 @@ class TestingVC: UIViewController {
                 completion()
             }
         }
-        
+        // MARK: - Fetch All Lists
         func fetchAllLists(completion:@escaping()->()) {
             ListController.BackEnd.shared.callAllLists { (lists) in
                 guard let lists = lists else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
@@ -51,7 +51,7 @@ class TestingVC: UIViewController {
                 completion()
             }
         }
-        
+        // MARK: - Fetch All Items
         func fetchAllItems(completion:@escaping([Item]?)->()){
             ItemController.BackEnd.shared.callAllItems { (items) in
                 completion(items)
@@ -62,6 +62,7 @@ class TestingVC: UIViewController {
 
         }
         
+        // MARK: - Fetch Users For List
         func fetchUsers(for list: List, completion: @escaping([User]?)->()) {
             UserController.BackEnd.shared.getUsersWithList(list: list) { (users) in
                 guard let users = users else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
@@ -72,24 +73,25 @@ class TestingVC: UIViewController {
             }
         }
         
-        func fetchLists(for user: User, completion: @escaping()->()) {
+        // MARK: - Fetch Lists For User
+        func fetchLists(for user: User, completion: @escaping([List]?)->()) {
             ListController.BackEnd.shared.getListsWithUser(user: user) { (lists) in
                 guard let lists = lists else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-                self.lists = lists
                 print("LISTS: 🇸🇩",lists)
-                completion()
+                completion(lists)
             }
         }
         
+        // MARK: - Fetch Items For User
         func fetchItems(for user: User, completion: @escaping()->()) {
             
         }
         
-        
+        // MARK: - Fetch List For Item
         func fetchList(for item: Item, completion: @escaping()->()) {
             
         }
-        
+        // MARK: - Create List
         func createList(user: User) {
             let list = ListController.createList(title: "NewList1", listMasterID: user.uuid, uuid: String(Int.random(in: 1...1000)))
             
@@ -97,7 +99,28 @@ class TestingVC: UIViewController {
                 
             })
         }
+        func userSelected(state: TestState, user: User, completion: @escaping()->()) {
+            
+            switch state {
+            case .userHeaderSelected:
+                fetchLists(for: user) { lists in
+                    guard let lists = lists else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                    self.lists = lists
+                    
+                }
+                
+            case .listsHeaderSelected:
+                
+                break
+            case .itemsHeaderSelected:
+                break
+            case .none:
+                break
+            }
+            
+        }
         
+        // MARK: - List Selected
         func listSelected(state : TestState, list: List, completion: @escaping()->()) {
             switch state {
             case .userHeaderSelected:
@@ -128,7 +151,7 @@ class TestingVC: UIViewController {
                     guard let users = users else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 
                     if self.selectedItem != nil {
-                        self.users = users.filter({$0.uuid == self.selectedItem?.userSentId })
+                        self.users = users.filter({$0.uuid == self.selectedItem?.userSentId})
                     }
                 }
                 break
@@ -136,7 +159,7 @@ class TestingVC: UIViewController {
                 break
             }
         }
-        
+        // MARK: - Load Tables
         func loadTables(completion: @escaping ()->()) {
             fetchAllLists {
                 print("AllLists 🇨🇭", self.lists as Any)
@@ -165,7 +188,7 @@ class TestingVC: UIViewController {
             viewModel.loadTables {}
         }
     }
-    
+    // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -182,7 +205,7 @@ class TestingVC: UIViewController {
         
        
     }
-    
+    // MARK: - Reload All
     func reloadAll() {
         DispatchQueue.main.async {
             self.userTableView.reloadData()
@@ -191,15 +214,15 @@ class TestingVC: UIViewController {
         }
         
     }
-    
+    // MARK: - User Header Tapped
     @objc func userHeaderTapped(sender: UIButton) {
         state = .userHeaderSelected
     }
-    
+    // MARK: - List Header Tapped
     @objc func listHeaderTapped(sender: UIButton) {
         state = .listsHeaderSelected
     }
-    
+    // MARK: - Item Header Tapped
     @objc func itemHeaderTapped(sender: UIButton) {
         state = .itemsHeaderSelected
     }
@@ -218,7 +241,7 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     
-    
+    // MARK: - View For Header In Section
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerButton: UIButton = UIButton()
@@ -260,7 +283,7 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
         }
         return 0
     }
-    
+    // MARK: - Cell For Row At
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if tableView == listTableView {
@@ -279,7 +302,7 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
         }
         return UITableViewCell()
     }
-    
+    // MARK: - Did Select Row At
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch tableView {
         case itemTableView:
@@ -311,7 +334,7 @@ extension TestingVC {
         }
         return "Cant get TableVIew"
     }
-    
+    // MARK: - State Selected
     func stateSelected(state: TestState) {
         switch state {
         case .userHeaderSelected:

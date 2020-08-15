@@ -9,27 +9,61 @@
 import Foundation
 class TestBackEndFuncs {
     
+    func createTestData() {
+        
+    }
     
-    static func callUsers() {
-        //http://192.168.1.225:8081/listMembers
-        let url = URL(string: "http://192.168.1.225:8081/listMembers")!
+//    func createLists() {
+//        let list1 = ListController.createList(title: <#T##String#>, listMasterID: <#T##String#>, uuid: <#T##String#>)
+//        let list2 = ListController.createList(title: <#T##String#>, listMasterID: <#T##String#>, uuid: <#T##String#>)
+//        let list3 = ListController.createList(title: <#T##String#>, listMasterID: <#T##String#>, uuid: <#T##String#>)
+//
+//    }
+    
+    func createLists(users: [User]) {
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
+        let listCount = 3
         
-        URLSession.shared.dataTask(with: request) { (data, res, er) in
-            do {
-                if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [[String: Any]] {
-                    print("data",json)
-                }
-            }catch let er{
-                
-                print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-            }
+        for (userIndex,user) in users.enumerated() {
             
-        }.resume()
-
+            for (listIndex,list) in [0...listCount].enumerated() {
+                
+                let list = ListController.createList(title: "\(user.name)'s list \(listIndex)", listMasterID: user.uuid, uuid: "\(user.name)ID\(listIndex)")
+                ListController.BackEnd.shared.createList(list: list) {
+                    
+                }
+            }
+        }
+    }
+    
+    class Gregs {
         
+        static func createGreg() {
+            let user = UserController.createUser(name: "Greg", email: "greg@greg.com", uuid: "gregid")
+            UserController.BackEnd.shared.createUser(user: user)
+        }
+        
+        static func createGregsLists() {
+            let list1 = ListController.createList(title: <# #>, listMasterID: <#T##String#>, uuid: <#T##String#>)
+            let list2 = ListController.createList(title: <#T##String#>, listMasterID: <#T##String#>, uuid: <#T##String#>)
+            let list3 = ListController.createList(title: <#T##String#>, listMasterID: <#T##String#>, uuid: <#T##String#>)
+            
+            
+            
+        }
+    }
+    class Miriams {
+        
+    }
+    class Moms {
+        
+    }
+    class Dads {
+        
+    }
+    
+    func deleteTestData() {
+        BackEndUtils.deleteWholeDatabase()
     }
     
     

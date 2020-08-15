@@ -97,7 +97,6 @@ class UserController {
     
     struct BackEnd {
         
-        static var testUsers: [String : User] = [:]
         static var shared = UserController.BackEnd()
         var url = URL(string: "http://localhost:8081/")
         

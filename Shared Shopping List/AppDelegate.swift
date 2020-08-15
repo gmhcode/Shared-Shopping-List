@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserController.deleteAllUsers()
         ListController.deleteAllLists()
         ItemController.deleteAllItems()
+        BackEndUtils.deleteWholeDatabase()
         let user = UserController.createUser(name: "greg1", email: "greg@email", uuid: "1234")
         UserController.BackEnd.shared.createUser(user: user)
 //        ListController.BackEnd.shared.deleteAllLists()

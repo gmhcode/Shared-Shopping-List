@@ -31,7 +31,6 @@ class MainDrawerViewController: UIViewController{
     }
 
     @IBAction func arrowButtonTapped(_ sender: Any) {
-        TestBackEndFuncs.callUsers()
     }
 
     @IBAction func testingVCButtonTapped(_ sender: Any) {
