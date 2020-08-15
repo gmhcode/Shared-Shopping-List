@@ -27,7 +27,7 @@ class TestingVC: UIViewController {
         
         var selectedUser : User?
         var selectedList : List?
-        var selectedItem : User?
+        var selectedItem : Item?
         
         var users : [User] = []
         var lists : [List] = []
@@ -52,12 +52,9 @@ class TestingVC: UIViewController {
             }
         }
         
-        func fetchAllItems(completion:@escaping()->()){
+        func fetchAllItems(completion:@escaping([Item]?)->()){
             ItemController.BackEnd.shared.callAllItems { (items) in
-                guard let items = items else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-                
-                self.items = items
-                completion()
+                completion(items)
             }
         }
         
@@ -65,13 +62,13 @@ class TestingVC: UIViewController {
 
         }
         
-        func fetchUsers(for list: List, completion: @escaping()->()) {
+        func fetchUsers(for list: List, completion: @escaping([User]?)->()) {
             UserController.BackEnd.shared.getUsersWithList(list: list) { (users) in
                 guard let users = users else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-                self.users = users
+//                self.users = users
                 
                 print("USERS: 🇸🇩",users)
-                completion()
+                completion(users)
             }
         }
         
@@ -105,15 +102,35 @@ class TestingVC: UIViewController {
             switch state {
             case .userHeaderSelected:
                 if selectedUser != nil {
-                    
+                    fetchAllItems {items in
+                        guard let items = items else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(); return}
+                        self.items = items.filter({$0.userSentId == self.selectedUser?.uuid && $0.listID == list.uuid})
+                        self.vc?.reloadAll()
+                        completion()
+                    }
                 }
                 
             case .listsHeaderSelected:
-                fetchUsers(for: list) {
+                
+                fetchUsers(for: list) {users in
+                    guard let users = users else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                    self.users = users
                     self.vc?.reloadAll()
                     completion()
                 }
+                fetchItems(for: list) {
+                    self.vc?.reloadAll()
+                    completion()
+                }
+                
             case .itemsHeaderSelected:
+                fetchUsers(for: list) {users in
+                    guard let users = users else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
+                    if self.selectedItem != nil {
+                        self.users = users.filter({$0.uuid == self.selectedItem?.userSentId })
+                    }
+                }
                 break
             case .none:
                 break
@@ -127,9 +144,11 @@ class TestingVC: UIViewController {
                 self.fetchAllUsers {
                     print("AllUsers 🛳", self.users as Any)
                     
-                    self.fetchAllItems {
-                        
+                    self.fetchAllItems { items in
+                        guard let items = items else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
                         print("ALLItems 🇸🇰", self.items as Any)
+                        self.items = items
                         self.vc?.reloadAll()
                         completion()
                     }
@@ -264,8 +283,10 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch tableView {
         case itemTableView:
+            
             break
         case userTableView:
+            viewModel.selectedUser = viewModel.users[indexPath.row]
             break
         case listTableView:
             viewModel.listSelected(state: state, list: viewModel.lists[indexPath.row]) {
