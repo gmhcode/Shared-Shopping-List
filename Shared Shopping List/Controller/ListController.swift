@@ -26,6 +26,7 @@ class ListController {
         list.uuid = uuid
         list.listMasterID = uuid
         list.title = title
+        ListMemberController.createListMember(listID: list.uuid, userID: list.listMasterID)
         persistentManager.saveContext()
         return list
     }
@@ -231,6 +232,10 @@ class ListController {
             
         }
         
+        func addUser(to list: List, user: User, completion:@escaping(List?)->()) {
+            
+            
+        }
         ///Goes through all the fetched lists, creates them with listController, then returns them in the returning array.
         func parseFetchedLists(lists: [[String:Any]]) -> [List]? {
             guard !lists.isEmpty else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}

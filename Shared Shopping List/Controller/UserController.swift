@@ -193,8 +193,8 @@ class UserController {
             }.resume()
         }
         
-        func createUser(user: User) {
-            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+        func createUser(user: User,completion:@escaping(User?)->()) {
+            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil);return}
             url.appendPathComponent(BackEndUtils.PathComponent.user.rawValue)
             
             let params : [String:Any] = getParams(user: user)
@@ -207,17 +207,20 @@ class UserController {
                 URLSession.shared.dataTask(with: request) { (data, res, er) in
                     if let er = er {
                         print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                        completion(nil)
                         return
                     }
                     
                     if let response = res, let data = data  {
                         print("Create User Response", BackEndUtils.convertDataToJson(data: data))
+                        completion(user)
                     }
-                    
+                    completion(nil)
                 }.resume()
                 
             } catch let err {
                 print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
+                completion(nil)
             }
         }
         

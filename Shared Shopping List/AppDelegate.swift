@@ -30,7 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ItemController.deleteAllItems()
         BackEndUtils.deleteWholeDatabase()
         let user = UserController.createUser(name: "greg1", email: "greg@email", uuid: "1234")
-        UserController.BackEnd.shared.createUser(user: user)
+        UserController.BackEnd.shared.createUser(user: user, completion: {user in
+            
+        })
 //        ListController.BackEnd.shared.deleteAllLists()
         
         

@@ -19,5 +19,6 @@ extension ListMember {
 
     @NSManaged public var listID: String
     @NSManaged public var userID: String
+    @NSManaged public var uuid: String
 
 }

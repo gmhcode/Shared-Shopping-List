@@ -32,6 +32,7 @@
 		90894C1024B566DC006AFC40 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0F24B566DC006AFC40 /* ItemController.swift */; };
 		9093567D24AC2B4A009E2F1E /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093567C24AC2B4A009E2F1E /* GlobalConstants.swift */; };
 		9093567F24AC2BC2009E2F1E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093567E24AC2BC2009E2F1E /* MainViewModel.swift */; };
+		9095D41524E8B21500BD9E20 /* ListMemberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9095D41424E8B21500BD9E20 /* ListMemberController.swift */; };
 		90A0CE9C24AC30BB00F0BC4B /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CE9B24AC30BB00F0BC4B /* MainCollectionViewCell.swift */; };
 		90A0CE9E24AD674A00F0BC4B /* MainRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CE9D24AD674A00F0BC4B /* MainRootViewController.swift */; };
 		90A0CEA124AD6C7500F0BC4B /* MainDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0CEA024AD6C7500F0BC4B /* MainDrawerViewController.swift */; };
@@ -84,6 +85,7 @@
 		90894C0F24B566DC006AFC40 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		9093567C24AC2B4A009E2F1E /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		9093567E24AC2BC2009E2F1E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		9095D41424E8B21500BD9E20 /* ListMemberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMemberController.swift; sourceTree = "<group>"; };
 		90A0CE9B24AC30BB00F0BC4B /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		90A0CE9D24AD674A00F0BC4B /* MainRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRootViewController.swift; sourceTree = "<group>"; };
 		90A0CEA024AD6C7500F0BC4B /* MainDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDrawerViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				90894C0B24B566AA006AFC40 /* ListController.swift */,
 				90894C0F24B566DC006AFC40 /* ItemController.swift */,
 				907B830024B7F7150098FCF0 /* PersistenceManager.swift */,
+				9095D41424E8B21500BD9E20 /* ListMemberController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				90FB0C1224C682E80064236D /* BackEndUtils.swift in Sources */,
 				90A0CE9E24AD674A00F0BC4B /* MainRootViewController.swift in Sources */,
 				90A0CE9C24AC30BB00F0BC4B /* MainCollectionViewCell.swift in Sources */,
+				9095D41524E8B21500BD9E20 /* ListMemberController.swift in Sources */,
 				9038DA5224BD24C100E6216D /* ListMember+CoreDataProperties.swift in Sources */,
 				9038DA5124BD24C100E6216D /* ListMember+CoreDataClass.swift in Sources */,
 				90894C0C24B566AA006AFC40 /* ListController.swift in Sources */,

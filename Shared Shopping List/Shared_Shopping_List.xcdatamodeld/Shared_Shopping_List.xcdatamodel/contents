@@ -15,6 +15,7 @@
     <entity name="ListMember" representedClassName=".ListMember" syncable="YES">
         <attribute name="listID" attributeType="String"/>
         <attribute name="userID" attributeType="String"/>
+        <attribute name="uuid" attributeType="String"/>
     </entity>
     <entity name="User" representedClassName=".User" syncable="YES">
         <attribute name="email" attributeType="String"/>
@@ -24,7 +25,7 @@
     <elements>
         <element name="Item" positionX="-54" positionY="18" width="128" height="118"/>
         <element name="List" positionX="-54" positionY="27" width="128" height="88"/>
-        <element name="ListMember" positionX="-63" positionY="9" width="128" height="73"/>
+        <element name="ListMember" positionX="-63" positionY="9" width="128" height="88"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="88"/>
     </elements>
 </model>
