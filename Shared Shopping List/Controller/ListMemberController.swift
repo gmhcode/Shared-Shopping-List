@@ -9,9 +9,9 @@
 import Foundation
 import CoreData
 class ListMemberController {
-
-    @discardableResult static func createListMember(listID: String, userID: String) -> ListMember {
-        let uuid = userID + listID
+    
+    @discardableResult static func createListMember(listID: String, userID: String, uuid: String?) -> ListMember {
+        let uuid = (uuid != nil ? uuid : userID + listID ) ?? ""
         if let listMember = getListMember(id: uuid) {
             return listMember
         }
@@ -61,11 +61,12 @@ class ListMemberController {
                         completion(nil)
                         return
                     }
-                
+                    
                     guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil);return}
                     let json = BackEndUtils.convertDataToJson(data: data)
-
-                
+                    let listMember = self.parseFetchedListMembers(listMembers: [json])
+                    
+                    completion(listMember?[0])
                 }.resume()
             } catch let er {
                 print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
@@ -73,34 +74,34 @@ class ListMemberController {
             }
         }
         
-//        func parseFetchedListMembers(listMembers: [[String:Any]]) -> [ListMember]? {
-//            guard !listMember.isEmpty else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
-//            var returningLists : [List] = []
-//            
-//            for i in listMember {
-//                guard let uuid = i["uuid"] as? String,
-//                    let listMasterID = i["listMasterID"] as? String,
-//                    let title = i["title"] as? String else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
-//                let fetchedList = ListController.createList(title: title, listMasterID: listMasterID, uuid: uuid)
-//                returningLists.append(fetchedList)
-//                
-//            }
-//            
-//            if returningLists.isEmpty {
-//                return nil
-//            }
-//            return returningLists
-//        }
-       
+        func parseFetchedListMembers(listMembers: [[String:Any]]) -> [ListMember]? {
+            guard !listMembers.isEmpty else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
+            var returningLists : [ListMember] = []
+            
+            for i in listMembers {
+                guard let uuid = i["uuid"] as? String,
+                    let userID = i["userID"] as? String,
+                    let listID = i["listID"] as? String else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
+                let fetchedListMember = ListMemberController.createListMember(listID: listID, userID: userID, uuid: uuid)
+                returningLists.append(fetchedListMember)
+                
+            }
+            
+            if returningLists.isEmpty {
+                return nil
+            }
+            return returningLists
+        }
+        
         func getParams(listMember: ListMember) -> [String:Any] {
             let params : [String:Any] = ["listID":listMember.listID,"userID":listMember.userID,"uuid":listMember.uuid]
             return params
         }
     }
     
-//    type ListMember struct {
-//        ListID string `json:"listID" gorm:"column:listID"`
-//        UserID string `json:"userID" gorm:"column:userID"`
-//        UUID   string `json:"uuid" gorm:"primary_key"`
-//    }
+    //    type ListMember struct {
+    //        ListID string `json:"listID" gorm:"column:listID"`
+    //        UserID string `json:"userID" gorm:"column:userID"`
+    //        UUID   string `json:"uuid" gorm:"primary_key"`
+    //    }
 }
