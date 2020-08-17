@@ -26,7 +26,7 @@ class ListController {
         list.uuid = uuid
         list.listMasterID = uuid
         list.title = title
-        ListMemberController.createListMember(listID: list.uuid, userID: list.listMasterID)
+        ListMemberController.createListMember(listID: list.uuid, userID: list.listMasterID, uuid: nil)
         persistentManager.saveContext()
         return list
     }
@@ -259,6 +259,13 @@ class ListController {
         func getParams(list: List) -> [String:Any] {
             let params : [String:Any] = ["uuid":list.uuid,"title":list.title,"listMasterID":list.listMasterID]
             return params
+        }
+        func getParams(for lists: [List]) -> [[String:Any]] {
+            var returningArray: [[String:Any]] = []
+            for list in lists {
+                returningArray.append(getParams(list: list))
+            }
+            return returningArray
         }
     }
 }

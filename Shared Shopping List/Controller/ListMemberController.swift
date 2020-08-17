@@ -48,6 +48,34 @@ class ListMemberController {
     struct BackEnd {
         static let shared = BackEnd()
         
+        func getListMembers(for lists: [List], completion: @escaping ([ListMember]?)->()) {
+            let url = URL(string: "http://localhost:8081/listMembers/withLists")!
+            
+            let convertedLists = ListController.BackEnd.shared.getParams(for: lists)
+            
+            do {
+                let requestBody = try JSONSerialization.data(withJSONObject: convertedLists, options: .init())
+                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: requestBody)
+                
+                URLSession.shared.dataTask(with: request) { (data, res, er) in
+                    if let er = er {
+                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                        completion(nil)
+                        return
+                    }
+                    
+                    guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil);return}
+                    let json = BackEndUtils.convertDataToJson(data: data)
+                    let listMembers = self.parseFetchedListMembers(listMembers: [json])
+                    
+                    completion(listMembers)
+                }.resume()
+            } catch let er {
+                print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                completion(nil)
+            }
+        }
+        
         func addListMember(listMember: ListMember, completion: @escaping(ListMember?)->()) {
             let url = URL(string: "http://localhost:8081/listMember")!
             let convertedLM = getParams(listMember: listMember)
