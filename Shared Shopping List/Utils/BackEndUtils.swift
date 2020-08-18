@@ -31,16 +31,17 @@ struct BackEndUtils {
         return [:]
     }
     
-    static func deleteWholeDatabase() {
+    static func deleteWholeDatabase(completion:@escaping()->()) {
         let preUrl = URL(string: "http://localhost:8081/deleteAll")!
         let request = requestGenerate(url: preUrl, method: "DELETE", body: nil)
         URLSession.shared.dataTask(with: request) { (data, res, er) in
             if let error = er {
                 print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription) : \(#file) \(#line)")
+                completion()
                 return
             }
+            completion()
         }.resume()
-        URLSession.shared.dataTask(with: request)
     }
     
     enum RequestMethod : String {

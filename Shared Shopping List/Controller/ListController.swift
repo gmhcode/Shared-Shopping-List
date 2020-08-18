@@ -31,6 +31,26 @@ class ListController {
         return list
     }
     
+    ///FrondEnd And BackEnd
+    static func addMemberToList(list: List, newMember: User,completion:@escaping ()->()){
+        
+        
+        if ListMemberController.getListMember(id: newMember.uuid+list.uuid) != nil {
+            return
+        }
+        
+        let persistentManager = PersistenceManager.shared
+
+        let listMember = ListMemberController.createListMember(listID: list.uuid, userID: newMember.uuid, uuid: nil)
+        ListMemberController.BackEnd.shared.addListMember(listMember: listMember) { (lm) in
+            guard lm != nil else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion();return}
+            completion()
+
+        }
+        persistentManager.saveContext()
+    }
+    
+    
     ///Gets the List from the entered ID
     static func getList(id: String) -> List? {
         

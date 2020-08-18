@@ -25,19 +25,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UIButton.appearance().layer.borderColor = ColorConstants.borderColor.cgColor
 //        //        self.layer.borderColor = ColorConstants.borderColor.cgColor
         
-        UserController.deleteAllUsers()
-        ListController.deleteAllLists()
-        ItemController.deleteAllItems()
-        BackEndUtils.deleteWholeDatabase()
-        let user = UserController.createUser(name: "greg1", email: "greg@email", uuid: "1234")
-        UserController.BackEnd.shared.createUser(user: user, completion: {user in
-            
-        })
+        let testClass = TestBackEndFuncs()
+        testClass.deleteAllDataFromDatabases {
+            testClass.createTestData()
+        }
+        
+        
+        
+        
+//        BackEndUtils.deleteWholeDatabase()
+        
+//        let user = UserController.createUser(name: "greg1", email: "greg@email", uuid: "1234")
+//        UserController.BackEnd.shared.createUser(user: user, completion: {user in
+//
+//        })
 //        ListController.BackEnd.shared.deleteAllLists()
         
         
         
-        UserController.currentUser = user
+//        UserController.currentUser = user
         DrawerButton.appearance().tintColor = ColorConstants.borderColor
 //        UserController.BackEnd.shared.createUser(user: user)
         
