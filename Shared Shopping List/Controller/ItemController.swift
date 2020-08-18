@@ -125,8 +125,41 @@ class ItemController {
             return returningItems
         }
         
-        
-        
+        func getParams(item: Item) -> [String:Any] {
+            let params : [String:Any] = ["listID":item.listID,"store":item.store,"userSentId":item.userSentId,"name":item.name,"uuid":item.uuid]
+            return params
+        }
+
+        func createItem(item: Item, completion:@escaping()->()) {
+            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(); return}
+            url.appendPathComponent(BackEndUtils.PathComponent.item.rawValue)
+            
+            let params : [String:Any] = getParams(item: item)
+            
+            
+            do {
+                let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
+                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.post.rawValue, body: requestBody)
+                
+                URLSession.shared.dataTask(with: request) { (data, res, er) in
+                    if let er = er {
+                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                        completion()
+                        return
+                    }
+                    
+                    if let response = res, let data = data  {
+                        print("Create List Response", response, BackEndUtils.convertDataToJson(data: data))
+                        completion()
+                    }
+                    
+                }.resume()
+                
+            } catch let err {
+                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
+                completion()
+            }
+        }
         
         func callAllItems(completion: @escaping ([Item]?) -> () ) {
             guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion([]); return}

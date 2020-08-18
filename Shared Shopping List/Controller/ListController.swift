@@ -24,7 +24,7 @@ class ListController {
         let list = List(context: persistentManager.context)
         
         list.uuid = uuid
-        list.listMasterID = uuid
+        list.listMasterID = listMasterID
         list.title = title
         ListMemberController.createListMember(listID: list.uuid, userID: list.listMasterID, uuid: nil)
         persistentManager.saveContext()
@@ -117,7 +117,7 @@ class ListController {
         static var shared = ListController.BackEnd()
         
         func createList(list: List, completion:@escaping()->()) {
-            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(); return}
             url.appendPathComponent(BackEndUtils.PathComponent.list.rawValue)
             
             let params : [String:Any] = getParams(list: list)
@@ -130,17 +130,20 @@ class ListController {
                 URLSession.shared.dataTask(with: request) { (data, res, er) in
                     if let er = er {
                         print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                        completion()
                         return
                     }
                     
                     if let response = res, let data = data  {
                         print("Create List Response", response, BackEndUtils.convertDataToJson(data: data))
+                        completion()
                     }
                     
                 }.resume()
                 
             } catch let err {
                 print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
+                completion()
             }
         }
         
