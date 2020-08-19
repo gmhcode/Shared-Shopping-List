@@ -100,6 +100,13 @@ class UserController {
         static var shared = UserController.BackEnd()
         var url = URL(string: "http://localhost:8081/")
         
+        func createUserFrontAndBack(name:String, email: String, uuid: String,completion:@escaping (User)->()) {
+            let user = UserController.createUser(name: name, email: email, uuid: uuid)
+            UserController.BackEnd.shared.createUser(user: user) { (_) in
+                completion(user)
+            }
+        }
+        
         func parseFetchedUsers(users: [[String:Any]]) -> [User]? {
             guard !users.isEmpty else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
             var returningUsers : [User] = []

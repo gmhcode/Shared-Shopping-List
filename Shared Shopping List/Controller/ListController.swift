@@ -14,7 +14,7 @@ class ListController {
     var list : List?
     static let shared = ListController()
     
-    @discardableResult static func createList(title: String, listMasterID: String, uuid: String ) -> List {
+    @discardableResult static func createList(title: String, listMasterID: String, uuid: String) -> List {
         
         if let list = getList(id: uuid) {
             return list
@@ -32,7 +32,7 @@ class ListController {
     }
     
     ///FrondEnd And BackEnd
-    static func addMemberToList(list: List, newMember: User,completion:@escaping ()->()){
+    static func addMemberToListFrontAndBack(list: List, newMember: User,completion:@escaping ()->()){
         
         
         if ListMemberController.getListMember(id: newMember.uuid+list.uuid) != nil {
@@ -113,8 +113,16 @@ class ListController {
     }
     
     struct BackEnd {
+        
         var url = URL(string: "http://localhost:8081/")
         static var shared = ListController.BackEnd()
+        
+        func createListFrontAndBack(title: String, listMasterID: String, uuid: String,completion:@escaping(List)->()) {
+            let list = ListController.createList(title: title, listMasterID: listMasterID, uuid: uuid)
+            createList(list: list) {
+                completion(list)
+            }
+        }
         
         func createList(list: List, completion:@escaping()->()) {
             guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(); return}

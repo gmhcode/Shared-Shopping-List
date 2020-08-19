@@ -74,10 +74,10 @@ class TestBackEndFuncs {
                     let list1ID = listsDict[user]![0]
                     let list2ID = listsDict[user]![1]
                     
-                    ListController.addMemberToList(list: list1ID, newMember: i) {
+                    ListController.addMemberToListFrontAndBack(list: list1ID, newMember: i) {
                         
                     }
-                    ListController.addMemberToList(list: list2ID, newMember: i) {
+                    ListController.addMemberToListFrontAndBack(list: list2ID, newMember: i) {
                         
                     }
                 }
@@ -92,10 +92,9 @@ class TestBackEndFuncs {
             for list in lists {
                 let newNum = counter + 1
                 counter = newNum > 2 ? 0 : newNum
-                let item = ItemController.createItem(name: "Item \(counter) \(i.name)", store: stores[counter], userSentID: i.uuid, listID: list.uuid, uuid: UUID().uuidString)
-                ItemController.BackEnd.shared.createItem(item: item) {
+                _ = ItemController.BackEnd.shared.createItemFrontAndBack(name: "Item \(counter)\(i.name)", store: stores[counter], userSentID: i.uuid, listID: list.uuid, uuid: UUID().uuidString, completion: { item in
                     
-                }
+                })
                 counter += 1
             }
             
@@ -103,39 +102,47 @@ class TestBackEndFuncs {
     }
     
     func createGreg(completion:@escaping(User)->())  {
-        let user = UserController.createUser(name: "Greg", email: "greg@greg.com", uuid: "gregid")
-        UserController.BackEnd.shared.createUser(user: user, completion: {user in
-            guard let user = user else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            
+        UserController.BackEnd.shared.createUserFrontAndBack(name: "Greg", email: "greg@greg.com", uuid: "gregid", completion: {user in
             completion(user)
         })
+//        UserController.BackEnd.shared.createUser(user: user, completion: {user in
+//            guard let user = user else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//
+//            completion(user)
+//        })
     }
     
     func createMiriam(completion:@escaping(User)->())  {
-        let user = UserController.createUser(name: "Miriam", email: "Miriam@Miriam.com", uuid: "Miriamid")
-        UserController.BackEnd.shared.createUser(user: user, completion: {user in
-            guard let user = user else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            
+        UserController.BackEnd.shared.createUserFrontAndBack(name: "Miriam", email: "Miriam@Miriam.com", uuid: "Miriamid", completion: {user in
             completion(user)
         })
+//        UserController.BackEnd.shared.createUser(user: user, completion: {user in
+//            guard let user = user else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//
+//
+//        })
     }
     
     func createMom(completion:@escaping(User)->())  {
-        let user = UserController.createUser(name: "Mom", email: "Mom@Mom.com", uuid: "Momid")
-        UserController.BackEnd.shared.createUser(user: user, completion: {user in
-            guard let user = user else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            
+        _ = UserController.BackEnd.shared.createUserFrontAndBack(name: "Mom", email: "Mom@Mom.com", uuid: "Momid", completion: {user in
             completion(user)
         })
+//        UserController.BackEnd.shared.createUser(user: user, completion: {user in
+//            guard let user = user else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//
+//            completion(user)
+//        })
     }
     
     func createDad(completion:@escaping(User)->())  {
-        let user = UserController.createUser(name: "Dad", email: "Dad@Dad.com", uuid: "Dadid")
-        UserController.BackEnd.shared.createUser(user: user, completion: {user in
-            guard let user = user else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            
+        _ = UserController.BackEnd.shared.createUserFrontAndBack(name: "Dad", email: "Dad@Dad.com", uuid: "Dadid", completion: {user in
             completion(user)
         })
+//        UserController.BackEnd.shared.createUser(user: user, completion: {user in
+//            guard let user = user else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//
+//            completion(user)
+//        })
     }
     
     

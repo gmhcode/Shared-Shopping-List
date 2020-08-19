@@ -102,6 +102,13 @@ class ItemController {
         var url = URL(string: "http://localhost:8081/")
         static var shared = ItemController.BackEnd()
         
+        func createItemFrontAndBack(name: String, store: String, userSentID: String, listID: String, uuid: String, completion: @escaping(Item)->()) {
+            let item = ItemController.createItem(name: name, store: store, userSentID: userSentID, listID: listID, uuid: uuid)
+            createItem(item: item) {
+                completion(item)
+            }
+            
+        }
         func parseFetchedItems(items: [[String:Any]]) -> [Item]? {
             guard !items.isEmpty else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
             var returningItems : [Item] = []
