@@ -30,7 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             testClass.createTestData()
         }
         
-        
+        func tpt(i:Int,o:Int){
+            i+i
+        }
         
         
 //        BackEndUtils.deleteWholeDatabase()
