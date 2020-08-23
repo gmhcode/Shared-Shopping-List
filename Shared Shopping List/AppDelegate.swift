@@ -16,24 +16,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        TestFunctions()
-        
-//        let user = UserController.createUser(name: "greg", email: "greg@gmail.com", id: "1", groups: [])
-//        UserController.currentUser = TestFunctions.users["Greg"]
-//        UserController.shared.deleteUser(user: user)
-//        UIButton.appearance().layer.borderWidth = 1
-//        UIButton.appearance().layer.borderColor = ColorConstants.borderColor.cgColor
-//        //        self.layer.borderColor = ColorConstants.borderColor.cgColor
+
         
         let testClass = TestBackEndFuncs()
-        testClass.deleteAllDataFromDatabases {
-            testClass.createTestData()
-        }
+        
+        UserController.deleteAllUsers()
+        ListController.deleteAllLists()
+        ItemController.deleteAllItems()
+        
+            
         
         
         
         
-//        BackEndUtils.deleteWholeDatabase()
+        //dispatchgroup enter
+        BackEndUtils.deleteWholeDatabase(completion: {
+            //dispatchgroup exit
+        })
+        
+        //dispatchGroup execute
+        testClass.createTestData()
+        
+        
         
 //        let user = UserController.createUser(name: "greg1", email: "greg@email", uuid: "1234")
 //        UserController.BackEnd.shared.createUser(user: user, completion: {user in

@@ -12,36 +12,46 @@ class TestBackEndFuncs {
     func createTestData() {
         
         
-        var userArray :[User] = []
-        createGreg { (user) in
-            userArray.append(user)
-            self.createMiriam { (miriam) in
-                userArray.append(miriam)
-                self.createMom { (mom) in
-                    userArray.append(mom)
-                    self.createDad { (dad) in
-                        userArray.append(dad)
-                        self.createListsAndAddUsers(userArray: userArray)
-                    }
-                }
-            }
-        }
+        var userArray : [User] = []
+        
+        let greg = createGreg()
+        let miriam = createMiriam()
+        let mom = createMom()
+        let dad = createDad()
+        userArray = [greg,miriam,mom,dad]
+        self.createListsAndAddUsers(userArray: userArray)
+        
+        
+//        createGreg { (user) in
+//            userArray.append(user)
+//            self.createMiriam { (miriam) in
+//                userArray.append(miriam)
+//                self.createMom { (mom) in
+//                    userArray.append(mom)
+//                    self.createDad { (dad) in
+//                        userArray.append(dad)
+//                        self.createListsAndAddUsers(userArray: userArray)
+//                    }
+//                }
+//            }
+//        }
     }
     
 
     func createListsAndAddUsers(userArray:[User]){
-        self.createLists(users: userArray) {listDict in
+        let listDict = createLists(users: userArray)
             let array = ListController.getAllLists()
 //            let array = listDict.values.map({$0}).reduce([], +)
             
             self.addExtraUsersToLists(listsDict: listDict)
             self.populateItems(users: userArray, lists: array)
-        }
+            
+        
     }
     
-    func createLists(users: [User], completion:@escaping ([User : [List]] )->()){
+    func createLists(users: [User]) -> [User : [List]] {
         
-        ListController.BackEnd.shared.deleteAllLists()
+//        ListController.BackEnd.shared.deleteAllLists()
         ListController.deleteAllLists()
         let listCount = 3
         var listsDict : [User : [List]] = [:]
@@ -51,19 +61,13 @@ class TestBackEndFuncs {
             for (listIndex,_) in (0...listCount).enumerated() {
                 print("listIndex: ", listIndex)
                 let list = ListController.createList(title: "\(user.name)'s list \(listIndex)", listMasterID: user.uuid, uuid: "\(user.name)ID\(listIndex)")
-                ListController.BackEnd.shared.createList(list: list) {
-                    //if we are on the last user and on the last list index, completion
-                    if user.uuid == users.last?.uuid && listIndex == listCount {
-                        completion(listsDict)
-                    }
-                }
                 
                 listArray.append(list)
                 listsDict[user] = listArray
                 print(listArray)
             }
-        
         }
+        return listsDict
     }
     
     func addExtraUsersToLists(listsDict: [User : [List]]) {
@@ -93,18 +97,23 @@ class TestBackEndFuncs {
                 let newNum = counter + 1
                 counter = newNum > 2 ? 0 : newNum
                 _ = ItemController.BackEnd.shared.createItemFrontAndBack(name: "Item \(counter)\(i.name)", store: stores[counter], userSentID: i.uuid, listID: list.uuid, uuid: UUID().uuidString, completion: { item in
-                    
+
                 })
+//                ItemController.createItem(name: "Item \(counter)\(i.name)", store: stores[counter], userSentID: i.uuid, listID: list.uuid, uuid: UUID().uuidString)
+                
+//                print(item.name)
                 counter += 1
             }
-            
         }
     }
     
-    func createGreg(completion:@escaping(User)->())  {
-        UserController.BackEnd.shared.createUserFrontAndBack(name: "Greg", email: "greg@greg.com", uuid: "gregid", completion: {user in
-            completion(user)
-        })
+    func createGreg() -> User {
+        
+        let user = UserController.createUser(name: "Greg", email: "greg@greg.com", uuid: "gregid")
+        return user
+//        UserController.BackEnd.shared.createUserFrontAndBack(name: "Greg", email: "greg@greg.com", uuid: "gregid", completion: {user in
+//            completion(user)
+//        })
 //        UserController.BackEnd.shared.createUser(user: user, completion: {user in
 //            guard let user = user else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 //
@@ -112,10 +121,13 @@ class TestBackEndFuncs {
 //        })
     }
     
-    func createMiriam(completion:@escaping(User)->())  {
-        UserController.BackEnd.shared.createUserFrontAndBack(name: "Miriam", email: "Miriam@Miriam.com", uuid: "Miriamid", completion: {user in
-            completion(user)
-        })
+    func createMiriam() -> User {
+        let user = UserController.createUser(name: "Miriam", email: "Miriam@Miriam.com", uuid: "Miriamid")
+        return user
+        
+//        UserController.BackEnd.shared.createUserFrontAndBack(name: "Miriam", email: "Miriam@Miriam.com", uuid: "Miriamid", completion: {user in
+//            completion(user)
+//        })
 //        UserController.BackEnd.shared.createUser(user: user, completion: {user in
 //            guard let user = user else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 //
@@ -123,10 +135,14 @@ class TestBackEndFuncs {
 //        })
     }
     
-    func createMom(completion:@escaping(User)->())  {
-        _ = UserController.BackEnd.shared.createUserFrontAndBack(name: "Mom", email: "Mom@Mom.com", uuid: "Momid", completion: {user in
-            completion(user)
-        })
+    func createMom() -> User {
+        
+        let user = UserController.createUser(name: "Mom", email: "Mom@Mom.com", uuid: "Momid")
+        return user
+        
+//        _ = UserController.BackEnd.shared.createUserFrontAndBack(name: "Mom", email: "Mom@Mom.com", uuid: "Momid", completion: {user in
+//            completion(user)
+//        })
 //        UserController.BackEnd.shared.createUser(user: user, completion: {user in
 //            guard let user = user else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 //
@@ -134,10 +150,11 @@ class TestBackEndFuncs {
 //        })
     }
     
-    func createDad(completion:@escaping(User)->())  {
-        _ = UserController.BackEnd.shared.createUserFrontAndBack(name: "Dad", email: "Dad@Dad.com", uuid: "Dadid", completion: {user in
-            completion(user)
-        })
+    func createDad() -> User {
+        
+        let user = UserController.createUser(name: "Mom", email: "Mom@Mom.com", uuid: "Momid")
+        return user
+        
 //        UserController.BackEnd.shared.createUser(user: user, completion: {user in
 //            guard let user = user else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 //
@@ -148,10 +165,6 @@ class TestBackEndFuncs {
     
     func deleteAllDataFromDatabases(completion:@escaping()->()) {
         BackEndUtils.deleteWholeDatabase(completion: {
-            
-            UserController.deleteAllUsers()
-            ListController.deleteAllLists()
-            ItemController.deleteAllItems()
             completion()
         })
         

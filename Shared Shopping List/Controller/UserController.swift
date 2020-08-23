@@ -102,9 +102,10 @@ class UserController {
         
         func createUserFrontAndBack(name:String, email: String, uuid: String,completion:@escaping (User)->()) {
             let user = UserController.createUser(name: name, email: email, uuid: uuid)
-            UserController.BackEnd.shared.createUser(user: user) { (_) in
-                completion(user)
-            }
+//            UserController.BackEnd.shared.createUser(user: user) { (_) in
+//                completion(user)
+//            }
+            completion(user)
         }
         
         func parseFetchedUsers(users: [[String:Any]]) -> [User]? {

@@ -42,11 +42,11 @@ class ListController {
         let persistentManager = PersistenceManager.shared
 
         let listMember = ListMemberController.createListMember(listID: list.uuid, userID: newMember.uuid, uuid: nil)
-        ListMemberController.BackEnd.shared.addListMember(listMember: listMember) { (lm) in
-            guard lm != nil else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion();return}
-            completion()
-
-        }
+//        ListMemberController.BackEnd.shared.addListMember(listMember: listMember) { (lm) in
+//            guard lm != nil else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion();return}
+//            completion()
+//
+//        }
         persistentManager.saveContext()
     }
     
@@ -119,9 +119,9 @@ class ListController {
         
         func createListFrontAndBack(title: String, listMasterID: String, uuid: String,completion:@escaping(List)->()) {
             let list = ListController.createList(title: title, listMasterID: listMasterID, uuid: uuid)
-            createList(list: list) {
-                completion(list)
-            }
+//            createList(list: list) {
+//                completion(list)
+//            }
         }
         
         func createList(list: List, completion:@escaping()->()) {
