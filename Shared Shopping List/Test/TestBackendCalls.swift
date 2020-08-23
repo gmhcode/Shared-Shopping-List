@@ -142,9 +142,7 @@ class TestBackEndFuncs {
     func deleteAllDataFromDatabases(completion:@escaping()->()) {
         BackEndUtils.deleteWholeDatabase(completion: {
             
-            UserController.deleteAllUsers()
-            ListController.deleteAllLists()
-            ItemController.deleteAllItems()
+            
             completion()
         })
         
