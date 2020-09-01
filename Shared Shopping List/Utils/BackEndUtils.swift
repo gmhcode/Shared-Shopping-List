@@ -62,3 +62,23 @@ struct BackEndUtils {
     }
     
 }
+protocol DataFetcher {
+    var url : URL { get set }
+    var getParams : (Any) -> [String:Any] { get set }
+}
+extension DataFetcher {
+    func getItems<T>(queryItems: [URLQueryItem], pathComponents: [String], requestMethod: BackEndUtils.RequestMethod) -> [T] {
+        
+        
+        
+        return []
+    }
+    private func requestGenerate(url: URL, method: String, body: Data?) -> URLRequest{
+        var request = URLRequest(url: url)
+        request.httpMethod = method
+        request.httpBody = body
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
+        return request
+    }
+    
+}
