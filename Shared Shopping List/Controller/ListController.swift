@@ -117,7 +117,13 @@ class ListController {
         static var shared = ListController.BackEnd()
         
         func createList(list: List, completion:@escaping()->()) {
-//            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(); return}
+            
+            networkCall(objectToSend: list, queryItems: [], pathComponents: [BackEndUtils.PathComponent.list.rawValue], requestMethod: .post) { (lists) in
+
+                print("createList: ", lists as Any)
+                completion()
+            }
+//           guard var url = theurl else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(); return}
 //            url.appendPathComponent(BackEndUtils.PathComponent.list.rawValue)
 //
 //            let params : [String:Any] = getParams(list: list)
@@ -145,10 +151,15 @@ class ListController {
 //                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
 //                completion()
 //            }
-            completion()
+//            completion()
         }
 
         func updateList(list: List) {
+            
+            
+            networkCall(objectToSend: list, queryItems: [], pathComponents: [BackEndUtils.PathComponent.list.rawValue], requestMethod: .update) { (lists) in
+                print("update ", lists as Any)
+            }
 //            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 //            url.appendPathComponent(BackEndUtils.PathComponent.list.rawValue)
 //
@@ -176,6 +187,14 @@ class ListController {
         }
 
         func getListsWithUser(user: User, completion:@escaping ([List]?) ->()) {
+            
+            let query = URLQueryItem(name: "userID", value: user.uuid)
+            
+            networkCall(objectToSend: nil, queryItems: [query], pathComponents: [BackEndUtils.PathComponent.lists.rawValue], requestMethod: .get) { (lists) in
+                print(lists as Any)
+                completion(lists)
+                
+            }
 //            let preUrl = URL(string: "http://localhost:8081/lists/query")!
 //
 //            let query = URLQueryItem(name: "userID", value: user.uuid)
@@ -205,11 +224,14 @@ class ListController {
 //                }
 //              completion(nil)
 //            }.resume()
-            completion(nil)
+//            completion(nil)
         }
 
 
         func deleteAllLists() {
+            networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.lists.rawValue], requestMethod: .delete) { (lists) in
+                print(lists as Any)
+            }
 //            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 //            url.appendPathComponent(BackEndUtils.PathComponent.lists.rawValue)
 //
@@ -228,10 +250,9 @@ class ListController {
         }
 
         func callAllLists(completion: @escaping([List]?)->()) {
-            networkCall(queryItems: [], pathComponents: ["lists"], requestMethod: .get) { (lists) in
+            networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.lists.rawValue], requestMethod: .get) { (lists) in
                 completion(lists)
             }
-
         }
 
         func addUser(to list: List, user: User, completion:@escaping(List?)->()) {
@@ -258,7 +279,9 @@ class ListController {
             return returningLists
         }
         
-        private func getParams(list: List) -> [String:Any] {
+        private func getParams(list: List?) -> [String:Any] {
+            guard let list = list else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return [:]}
+
             let params : [String:Any] = ["uuid":list.uuid,"title":list.title,"listMasterID":list.listMasterID]
             return params
         }
@@ -274,6 +297,8 @@ class ListController {
     }
 }
 extension ListController.BackEnd : BackEndRequester {
+
+    
     
     typealias MyType = List
     
@@ -281,7 +306,7 @@ extension ListController.BackEnd : BackEndRequester {
         return parseFetchedLists
     }
     
-    var getParameters: ([List]) -> [[String : Any]] {
+    var getParameters: (List?) -> [String : Any] {
         return getParams
     }
     

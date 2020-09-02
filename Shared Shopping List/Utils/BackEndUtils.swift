@@ -66,17 +66,21 @@ struct BackEndUtils {
 protocol BackEndRequester {
     associatedtype MyType
     var url : URL { get }
-    var getParameters : ([MyType]) -> [[String:Any]] { get }
+    var getParameters : (MyType?) -> [String:Any] { get }
     var parseFetched: ([[String:Any]]) -> [MyType]? { get }
 }
 
 
 extension BackEndRequester {
-    func networkCall(queryItems: [URLQueryItem], pathComponents: [String], requestMethod: BackEndUtils.RequestMethod, completion:@escaping ([MyType]?)->()) {
+    func networkCall(objectToSend: MyType?, queryItems: [URLQueryItem], pathComponents: [String], requestMethod: BackEndUtils.RequestMethod, completion:@escaping ([MyType]?)->()) {
         
         guard let url = createUrl(queryItems: queryItems, pathComponents: pathComponents) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
         
-        let request = requestGenerate(url: url, method: requestMethod.rawValue, body: nil)
+        //Build request
+        let params = getParameters(objectToSend)
+        let requestBody = params.isEmpty ? nil : try? JSONSerialization.data(withJSONObject: params, options: .init())
+        let request = requestGenerate(url: url, method: requestMethod.rawValue, body: requestBody)
+        
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -87,7 +91,7 @@ extension BackEndRequester {
             if response != nil {
                 print("Server response: ",response as Any)
             }
-            guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
+            guard let data = data else {print("❇️♊️>>>\(#file) \(#line): , for Type 🇧🇱  \(String(describing: MyType.self)) guard let failed<<<"); completion(nil); return}
             
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
@@ -97,7 +101,7 @@ extension BackEndRequester {
                     }
                 }
             }catch let er{
-                print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line) , for Type 🇧🇱  \(String(describing: MyType.self))")
             }
             completion(nil)
             return

@@ -73,7 +73,6 @@ class UserController {
         for i in item {
             persistentManager.delete(i)
         }
-        print("asd")
         persistentManager.saveContext()
     }
     
