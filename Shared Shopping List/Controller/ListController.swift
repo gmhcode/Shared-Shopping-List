@@ -113,124 +113,127 @@ class ListController {
     }
     
     struct BackEnd {
-        var url = URL(string: "http://localhost:8081/")
+        var theurl = URL(string: "http://localhost:8081/")
         static var shared = ListController.BackEnd()
         
         func createList(list: List, completion:@escaping()->()) {
-            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(); return}
-            url.appendPathComponent(BackEndUtils.PathComponent.list.rawValue)
-            
-            let params : [String:Any] = getParams(list: list)
-            
-            
-            do {
-                let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
-                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.post.rawValue, body: requestBody)
-                
-                URLSession.shared.dataTask(with: request) { (data, res, er) in
-                    if let er = er {
-                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-                        completion()
-                        return
-                    }
-                    
-                    if let response = res, let data = data  {
-                        print("Create List Response", response, BackEndUtils.convertDataToJson(data: data))
-                        completion()
-                    }
-                    
-                }.resume()
-                
-            } catch let err {
-                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
-                completion()
-            }
+//            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(); return}
+//            url.appendPathComponent(BackEndUtils.PathComponent.list.rawValue)
+//
+//            let params : [String:Any] = getParams(list: list)
+//
+//
+//            do {
+//                let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
+//                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.post.rawValue, body: requestBody)
+//
+//                URLSession.shared.dataTask(with: request) { (data, res, er) in
+//                    if let er = er {
+//                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+//                        completion()
+//                        return
+//                    }
+//
+//                    if let response = res, let data = data  {
+//                        print("Create List Response", response, BackEndUtils.convertDataToJson(data: data))
+//                        completion()
+//                    }
+//
+//                }.resume()
+//
+//            } catch let err {
+//                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
+//                completion()
+//            }
+            completion()
         }
-        
+
         func updateList(list: List) {
-            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            url.appendPathComponent(BackEndUtils.PathComponent.list.rawValue)
-            
-            let params : [String:Any] = getParams(list: list)
-            
-            
-            do {
-                let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
-                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.update.rawValue, body: requestBody)
-                URLSession.shared.dataTask(with: request) { (data, res, er) in
-                    if let er = er {
-                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-                        return
-                    }
-                    
-                    if let response = res, let data = data  {
-                        print("Create User Response", response, BackEndUtils.convertDataToJson(data: data))
-                    }
-                    
-                }.resume()
-                
-            } catch let err {
-                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
-            }
+//            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//            url.appendPathComponent(BackEndUtils.PathComponent.list.rawValue)
+//
+//            let params : [String:Any] = getParams(list: list)
+//
+//
+//            do {
+//                let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
+//                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.update.rawValue, body: requestBody)
+//                URLSession.shared.dataTask(with: request) { (data, res, er) in
+//                    if let er = er {
+//                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+//                        return
+//                    }
+//
+//                    if let response = res, let data = data  {
+//                        print("Create User Response", response, BackEndUtils.convertDataToJson(data: data))
+//                    }
+//
+//                }.resume()
+//
+//            } catch let err {
+//                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
+//            }
         }
-        
+
         func getListsWithUser(user: User, completion:@escaping ([List]?) ->()) {
-            let preUrl = URL(string: "http://localhost:8081/lists/query")!
-            
-            let query = URLQueryItem(name: "userID", value: user.uuid)
-
-            var components = URLComponents(url: preUrl, resolvingAgainstBaseURL: true)
-            components?.queryItems = [query]
-            guard let url = components?.url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
-
-            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
-            
-            URLSession.shared.dataTask(with: request) { (data, res, error) in
-                if let error = error {
-                    print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription) : \(#file) \(#line)")
-                    completion(nil)
-                    return
-                }
-                guard let data = data else {completion(nil); return}
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
-                        if let lists = self.parseFetchedLists(lists: json) {
-                            completion(lists)
-                            return
-                        }
-                    }
-                }catch let er{
-                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-                }
-              completion(nil)
-            }.resume()
+//            let preUrl = URL(string: "http://localhost:8081/lists/query")!
+//
+//            let query = URLQueryItem(name: "userID", value: user.uuid)
+//
+//            var components = URLComponents(url: preUrl, resolvingAgainstBaseURL: true)
+//            components?.queryItems = [query]
+//            guard let url = components?.url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
+//
+//            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
+//
+//            URLSession.shared.dataTask(with: request) { (data, res, error) in
+//                if let error = error {
+//                    print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription) : \(#file) \(#line)")
+//                    completion(nil)
+//                    return
+//                }
+//                guard let data = data else {completion(nil); return}
+//                do {
+//                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
+//                        if let lists = self.parseFetchedLists(lists: json) {
+//                            completion(lists)
+//                            return
+//                        }
+//                    }
+//                }catch let er{
+//                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+//                }
+//              completion(nil)
+//            }.resume()
+            completion(nil)
         }
-        
-        
+
+
         func deleteAllLists() {
-            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            url.appendPathComponent(BackEndUtils.PathComponent.lists.rawValue)
+//            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//            url.appendPathComponent(BackEndUtils.PathComponent.lists.rawValue)
+//
+//            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.delete.rawValue, body: nil)
+//            URLSession.shared.dataTask(with: request) { (data, res, er) in
+//                if let er = er {
+//                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+//                    return
+//                }
+//
+//                if let response = res, let data = data  {
+//                    print("Delete All Lists Response", response, BackEndUtils.convertDataToJson(data: data))
+//                }
+//            }.resume()
             
-            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.delete.rawValue, body: nil)
-            URLSession.shared.dataTask(with: request) { (data, res, er) in
-                if let er = er {
-                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-                    return
-                }
-                
-                if let response = res, let data = data  {
-                    print("Delete All Lists Response", response, BackEndUtils.convertDataToJson(data: data))
-                }
-            }.resume()
         }
-        
+
         func callAllLists(completion: @escaping([List]?)->()) {
-            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
-            url.appendPathComponent(BackEndUtils.PathComponent.lists.rawValue)
-            
+//            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
+//            url.appendPathComponent(BackEndUtils.PathComponent.lists.rawValue)
+
             let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
-            
-            
+
+
             URLSession.shared.dataTask(with: request) { (data, res, er) in
                 if let er = er {
                     print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
@@ -238,7 +241,7 @@ class ListController {
                     return
                 }
                 guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
-                
+
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
                         if let lists = self.parseFetchedLists(lists: json) {
@@ -252,37 +255,39 @@ class ListController {
                     print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription)")
                 }
             }.resume()
-            
+            completion(nil)
+
         }
-        
+
         func addUser(to list: List, user: User, completion:@escaping(List?)->()) {
-            
+
             
         }
         ///Goes through all the fetched lists, creates them with listController, then returns them in the returning array.
         func parseFetchedLists(lists: [[String:Any]]) -> [List]? {
             guard !lists.isEmpty else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
             var returningLists : [List] = []
-            
+
             for i in lists {
                 guard let uuid = i["uuid"] as? String,
                     let listMasterID = i["listMasterID"] as? String,
                     let title = i["title"] as? String else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
                 let fetchedList = ListController.createList(title: title, listMasterID: listMasterID, uuid: uuid)
                 returningLists.append(fetchedList)
-                
+
             }
-            
+
             if returningLists.isEmpty {
                 return nil
             }
             return returningLists
         }
         
-        func getParams(list: List) -> [String:Any] {
+        private func getParams(list: List) -> [String:Any] {
             let params : [String:Any] = ["uuid":list.uuid,"title":list.title,"listMasterID":list.listMasterID]
             return params
         }
+        
         func getParams(for lists: [List]) -> [[String:Any]] {
             var returningArray: [[String:Any]] = []
             for list in lists {
@@ -290,5 +295,28 @@ class ListController {
             }
             return returningArray
         }
+        
     }
+}
+extension ListController.BackEnd : BackEndRequester {
+    
+    typealias MyType = List
+    
+    var parseFetched: ([[String : Any]]) -> [List]? {
+        return parseFetchedLists
+    }
+    
+    var getParameters: ([List]) -> [[String : Any]] {
+        return getParams
+    }
+    
+    var url: URL {
+        return URL(string: "http://localhost:8081/")!
+    }
+    
+    
+    
+
+    
+    
 }
