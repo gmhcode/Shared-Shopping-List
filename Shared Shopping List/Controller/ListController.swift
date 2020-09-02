@@ -228,34 +228,9 @@ class ListController {
         }
 
         func callAllLists(completion: @escaping([List]?)->()) {
-//            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
-//            url.appendPathComponent(BackEndUtils.PathComponent.lists.rawValue)
-
-            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
-
-
-            URLSession.shared.dataTask(with: request) { (data, res, er) in
-                if let er = er {
-                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-                    completion(nil)
-                    return
-                }
-                guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
-
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
-                        if let lists = self.parseFetchedLists(lists: json) {
-                            print("🎾 resulting Lists",json)
-                            completion(lists)
-                            return
-                        }
-                    }
-                    completion(nil)
-                } catch let error {
-                    print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription)")
-                }
-            }.resume()
-            completion(nil)
+            networkCall(queryItems: [], pathComponents: ["lists"], requestMethod: .get) { (lists) in
+                completion(lists)
+            }
 
         }
 
@@ -313,10 +288,4 @@ extension ListController.BackEnd : BackEndRequester {
     var url: URL {
         return URL(string: "http://localhost:8081/")!
     }
-    
-    
-    
-
-    
-    
 }

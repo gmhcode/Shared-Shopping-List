@@ -24,15 +24,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UIButton.appearance().layer.borderWidth = 1
 //        UIButton.appearance().layer.borderColor = ColorConstants.borderColor.cgColor
 //        //        self.layer.borderColor = ColorConstants.borderColor.cgColor
-        UserController.deleteAllUsers()
-        ListController.deleteAllLists()
-        ItemController.deleteAllItems()
+//        UserController.deleteAllUsers()
+//        ListController.deleteAllLists()
+//        ItemController.deleteAllItems()
         
-        let testClass = TestBackEndFuncs()
-        testClass.deleteAllDataFromDatabases {
-            testClass.createTestData()
+//        let testClass = TestBackEndFuncs()
+//        testClass.deleteAllDataFromDatabases {
+//            testClass.createTestData()
+//        }
+        ListController.BackEnd.shared.callAllLists { (list) in
+            print(list)
         }
-        
         
         
         

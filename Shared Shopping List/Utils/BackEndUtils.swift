@@ -80,19 +80,19 @@ extension BackEndRequester {
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription) : \(#file) \(#line)")
+                print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription) : \(#file) \(#line), for Type 🇧🇱  \(String(describing: MyType.self))")
                 completion(nil)
                 return
             }
             if response != nil {
-                print(response as Any)
+                print("Server response: ",response as Any)
             }
             guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
             
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
-                    if let lists = self.parseFetched(json) {
-                        completion(lists)
+                    if let objects = self.parseFetched(json) {
+                        completion(objects)
                         return
                     }
                 }
@@ -107,7 +107,7 @@ extension BackEndRequester {
     private func createUrl(queryItems: [URLQueryItem], pathComponents: [String]) -> URL? {
         var preUrl = self.url
         pathComponents.forEach({preUrl.appendPathComponent($0)})
-        var componentes = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        var componentes = URLComponents(url: preUrl, resolvingAgainstBaseURL: true)
         componentes?.queryItems = queryItems
         return componentes?.url
     }
