@@ -51,7 +51,7 @@ class TestBackEndFuncs {
             for (listIndex,_) in (0...listCount).enumerated() {
                 print("listIndex: ", listIndex)
                 let list = ListController.createList(title: "\(user.name)'s list \(listIndex)", listMasterID: user.uuid, uuid: "\(user.name)ID\(listIndex)")
-                ListController.BackEnd.shared.createList(list: list) {
+                ListController.BackEnd.shared.createList(list: list) {_ in 
                     //if we are on the last user and on the last list index, completion
                     if user.uuid == users.last?.uuid && listIndex == listCount {
                         completion(listsDict)

@@ -116,12 +116,13 @@ class ListController {
         var theurl = URL(string: "http://localhost:8081/")
         static var shared = ListController.BackEnd()
         
-        func createList(list: List, completion:@escaping()->()) {
+        func createList(list: List, completion:@escaping(List)->()) {
             
             networkCall(objectToSend: list, queryItems: [], pathComponents: [BackEndUtils.PathComponent.list.rawValue], requestMethod: .post) { (lists) in
+                guard let list = lists?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 
-                print("createList: ", lists as Any)
-                completion()
+                print("createList: ", list as Any)
+                completion(list)
             }
 //           guard var url = theurl else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(); return}
 //            url.appendPathComponent(BackEndUtils.PathComponent.list.rawValue)
@@ -154,11 +155,12 @@ class ListController {
 //            completion()
         }
 
-        func updateList(list: List) {
+        func updateList(list: List,completion:@escaping()->()) {
             
             
             networkCall(objectToSend: list, queryItems: [], pathComponents: [BackEndUtils.PathComponent.list.rawValue], requestMethod: .update) { (lists) in
                 print("update ", lists as Any)
+                completion()
             }
 //            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 //            url.appendPathComponent(BackEndUtils.PathComponent.list.rawValue)

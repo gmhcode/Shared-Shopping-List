@@ -35,7 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ListController.BackEnd.shared.callAllLists { (list) in
             print("🇬🇸 LISTS: ", list)
 //            let lists = lists
-            list?.forEach({print($0)})
+             list?.forEach({print($0)})
+            
         }
         
         

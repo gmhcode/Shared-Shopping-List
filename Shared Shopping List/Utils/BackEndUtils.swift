@@ -94,7 +94,12 @@ extension BackEndRequester {
             guard let data = data else {print("❇️♊️>>>\(#file) \(#line): , for Type 🇧🇱  \(String(describing: MyType.self)) guard let failed<<<"); completion(nil); return}
             
             do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
+                if let json = try? JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [String:Any] {
+                    if let objects = self.parseFetched([json]) {
+                        completion(objects)
+                        return
+                    }
+                }else if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
                     if let objects = self.parseFetched(json) {
                         completion(objects)
                         return
@@ -124,5 +129,4 @@ extension BackEndRequester {
         request.setValue("application/json", forHTTPHeaderField: "content-type")
         return request
     }
-    
 }
