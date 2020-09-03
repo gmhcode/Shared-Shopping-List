@@ -12,7 +12,8 @@ class TestBackEndFuncs {
     func createTestData() {
         
         
-        var userArray :[User] = []
+        var userArray: [User] = []
+        
         createGreg { (user) in
             userArray.append(user)
             self.createMiriam { (miriam) in
