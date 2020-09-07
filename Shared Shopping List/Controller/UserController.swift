@@ -98,7 +98,6 @@ class UserController {
     struct BackEnd {
         
         static var shared = UserController.BackEnd()
-        var url = URL(string: "http://localhost:8081/")
         
         func createUserFrontAndBack(name:String, email: String, uuid: String,completion:@escaping (User)->()) {
             let user = UserController.createUser(name: name, email: email, uuid: uuid)
@@ -128,35 +127,47 @@ class UserController {
         
         //NEED TO TEST
         func getUsersWithList(list: List, completion:@escaping ([User]?) ->()) {
-            let preUrl = URL(string: "http://localhost:8081/users/query")!
             
             let query = URLQueryItem(name: "listID", value: list.uuid)
-
-            var components = URLComponents(url: preUrl, resolvingAgainstBaseURL: true)
-            components?.queryItems = [query]
-            guard let url = components?.url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
-
-            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
             
-            URLSession.shared.dataTask(with: request) { (data, res, error) in
-                if let error = error {
-                    print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription) : \(#file) \(#line)")
-                    completion(nil)
-                    return
-                }
-                guard let data = data else {completion(nil); return}
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
-                        if let users = self.parseFetchedUsers(users: json) {
-                            completion(users)
-                            return
-                        }
-                    }
-                }catch let er{
-                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-                }
-              completion(nil)
-            }.resume()
+            
+            networkCall(objectToSend: nil, queryItems: [query], pathComponents: [BackEndUtils.PathComponent.users.rawValue,BackEndUtils.PathComponent.query.rawValue], requestMethod: .get) { (users) in
+                guard let user = users?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
+
+                print("getUser: ", user as Any)
+                completion(users)
+            }
+            
+            
+//            let preUrl = URL(string: "http://localhost:8081/users/query")!
+//
+//
+//
+//            var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+//            components?.queryItems = [query]
+//            guard let url = components?.url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
+//
+//            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
+//
+//            URLSession.shared.dataTask(with: request) { (data, res, error) in
+//                if let error = error {
+//                    print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription) : \(#file) \(#line)")
+//                    completion(nil)
+//                    return
+//                }
+//                guard let data = data else {completion(nil); return}
+//                do {
+//                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
+//                        if let users = self.parseFetchedUsers(users: json) {
+//                            completion(users)
+//                            return
+//                        }
+//                    }
+//                }catch let er{
+//                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+//                }
+//              completion(nil)
+//            }.resume()
         }
         
         
@@ -165,7 +176,7 @@ class UserController {
         
         func callAllUsers(completion: @escaping ([User]?) -> ()) {
             //http://192.168.1.225:8081/listMembers
-            var url = URL(string: "http://localhost:8081/users")! 
+//            var url = URL(string: "http://localhost:8081/users")!
             
 //            var preUrl = URL(string: "http://localhost:8081/users/query")!
 //
@@ -174,111 +185,159 @@ class UserController {
 //            var components = URLComponents(url: preUrl, resolvingAgainstBaseURL: true)
 //            components?.queryItems = [query]
 //            var url = components?.url
+            networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.users.rawValue], requestMethod: .get) { (users) in
+                guard (users?.first) != nil else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
+                print("callAllUsers: ", users as Any)
+            }
             
-            
-            var request = URLRequest(url: url)
-            
-            request.httpMethod = BackEndUtils.RequestMethod.get.rawValue
-            
-            URLSession.shared.dataTask(with: request) { (data, res, er) in
-                guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
-                
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
-                        if let users = self.parseFetchedUsers(users: json){
-                            completion(users)
-//                            print("🛳 users",json)
-                            return
-                        }
-                    }
-                    completion(nil)
-                }catch let er{
-                    
-                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-                    completion(nil)
-                }
-            }.resume()
+//            var request = URLRequest(url: url)
+//
+//            request.httpMethod = BackEndUtils.RequestMethod.get.rawValue
+//
+//            URLSession.shared.dataTask(with: request) { (data, res, er) in
+//                guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
+//
+//                do {
+//                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
+//                        if let users = self.parseFetchedUsers(users: json){
+//                            completion(users)
+////                            print("🛳 users",json)
+//                            return
+//                        }
+//                    }
+//                    completion(nil)
+//                }catch let er{
+//
+//                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+//                    completion(nil)
+//                }
+//            }.resume()
         }
         
         func createUser(user: User,completion:@escaping(User?)->()) {
-            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil);return}
-            url.appendPathComponent(BackEndUtils.PathComponent.user.rawValue)
-            
-            let params : [String:Any] = getParams(user: user)
-            
-            
-            do {
-                let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
-                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.post.rawValue, body: requestBody)
-                
-                URLSession.shared.dataTask(with: request) { (data, res, er) in
-                    if let er = er {
-                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-                        completion(nil)
-                        return
-                    }
-                    
-                    if let response = res, let data = data  {
-                        print("Create User Response", BackEndUtils.convertDataToJson(data: data))
-                        completion(user)
-                    }
-                    completion(nil)
-                }.resume()
-                
-            } catch let err {
-                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
-                completion(nil)
+//            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil);return}
+            networkCall(objectToSend: user, queryItems: [], pathComponents: [BackEndUtils.PathComponent.user.rawValue], requestMethod: .post) { (users) in
+                guard let user = users?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
+
+                print("createUser: ", user as Any)
+                completion(user)
             }
+            
+            
+            
+            
+//            var url = self.url
+//            url.appendPathComponent(BackEndUtils.PathComponent.user.rawValue)
+//
+//            let params : [String:Any] = getParams(user: user)
+//
+//
+//            do {
+//                let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
+//                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.post.rawValue, body: requestBody)
+//
+//                URLSession.shared.dataTask(with: request) { (data, res, er) in
+//                    if let er = er {
+//                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+//                        completion(nil)
+//                        return
+//                    }
+//
+//                    if let response = res, let data = data  {
+//                        print("Create User Response", BackEndUtils.convertDataToJson(data: data))
+//                        completion(user)
+//                    }
+//                    completion(nil)
+//                }.resume()
+//
+//            } catch let err {
+//                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
+//                completion(nil)
+//            }
         }
         
         func updateUser(user: User) {
-            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            url.appendPathComponent(BackEndUtils.PathComponent.user.rawValue)
+//            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//            var url = self.url
+//            url.appendPathComponent(BackEndUtils.PathComponent.user.rawValue)
+
             
-            let params : [String:Any] = getParams(user: user)
-            
-            
-            do {
-                let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
-                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.update.rawValue, body: requestBody)
-                URLSession.shared.dataTask(with: request) { (data, res, er) in
-                    if let er = er {
-                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-                        return
-                    }
-                    
-                    if let response = res, let data = data  {
-                        print("Update User Response 🚘", BackEndUtils.convertDataToJson(data: data))
-                    }
-                    
-                }.resume()
-                
-            } catch let err {
-                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
+            networkCall(objectToSend: user, queryItems: [], pathComponents: [BackEndUtils.PathComponent.users.rawValue], requestMethod: .update) { (users) in
+                guard let user = users?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
+                print("updateUser: ", user as Any)
             }
+
+//            do {
+//                let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
+//                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.update.rawValue, body: requestBody)
+//                URLSession.shared.dataTask(with: request) { (data, res, er) in
+//                    if let er = er {
+//                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+//                        return
+//                    }
+//
+//                    if let response = res, let data = data  {
+//                        print("Update User Response 🚘", BackEndUtils.convertDataToJson(data: data))
+//                    }
+//
+//                }.resume()
+//
+//            } catch let err {
+//                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
+//            }
         }
         
         func deleteAllUsers() {
-            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            url.appendPathComponent(BackEndUtils.PathComponent.users.rawValue)
             
-            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.delete.rawValue, body: nil)
-            URLSession.shared.dataTask(with: request) { (data, res, er) in
-                if let er = er {
-                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-                    return
-                }
-                
-                if let response = res, let data = data  {
-                    print("Create User Response", BackEndUtils.convertDataToJson(data: data))
-                }
-                
-            }.resume()
+            networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.users.rawValue], requestMethod: .delete) { (users) in
+                guard let user = users?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
+                print("deleteAllUsers: ", users as Any)
+            }
+            
+            
+//            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//            var url = self.url
+//            url.appendPathComponent(BackEndUtils.PathComponent.users.rawValue)
+//
+//            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.delete.rawValue, body: nil)
+//            URLSession.shared.dataTask(with: request) { (data, res, er) in
+//                if let er = er {
+//                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+//                    return
+//                }
+//
+//                if let response = res, let data = data  {
+//                    print("Create User Response", BackEndUtils.convertDataToJson(data: data))
+//                }
+//
+//            }.resume()
         }
         
-        func getParams(user: User) -> [String:Any] {
+        func getParams(user: User?) -> [String:Any] {
+            guard let user = user else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return [:]}
             let params : [String:Any] = ["name":user.name,"email":user.email,"uuid":user.uuid]
             return params
         }
     }
+}
+extension UserController.BackEnd : BackEndRequester {
+    
+    var parseFetched: ([[String : Any]]) -> [User]? {
+        return parseFetchedUsers
+    }
+    
+    var getParameters: (User?) -> [String : Any] {
+        return getParams
+    }
+    
+    var url: URL {
+        return URL(string: "http://localhost:8081/")!
+    }
+    typealias MyType = User
+    
+    
+    
 }

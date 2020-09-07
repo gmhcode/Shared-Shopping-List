@@ -95,7 +95,7 @@ class TestingVC: UIViewController {
         func createList(user: User) {
             let list = ListController.createList(title: "NewList1", listMasterID: user.uuid, uuid: String(Int.random(in: 1...1000)))
             
-            ListController.BackEnd.shared.createList(list: list, completion: {
+            ListController.BackEnd.shared.createList(list: list, completion: {_ in 
                 
             })
         }

@@ -12,7 +12,8 @@ class TestBackEndFuncs {
     func createTestData() {
         
         
-        var userArray :[User] = []
+        var userArray: [User] = []
+        
         createGreg { (user) in
             userArray.append(user)
             self.createMiriam { (miriam) in
@@ -51,7 +52,7 @@ class TestBackEndFuncs {
             for (listIndex,_) in (0...listCount).enumerated() {
                 print("listIndex: ", listIndex)
                 let list = ListController.createList(title: "\(user.name)'s list \(listIndex)", listMasterID: user.uuid, uuid: "\(user.name)ID\(listIndex)")
-                ListController.BackEnd.shared.createList(list: list) {
+                ListController.BackEnd.shared.createList(list: list) {_ in 
                     //if we are on the last user and on the last list index, completion
                     if user.uuid == users.last?.uuid && listIndex == listCount {
                         completion(listsDict)
@@ -149,9 +150,7 @@ class TestBackEndFuncs {
     func deleteAllDataFromDatabases(completion:@escaping()->()) {
         BackEndUtils.deleteWholeDatabase(completion: {
             
-            UserController.deleteAllUsers()
-            ListController.deleteAllLists()
-            ItemController.deleteAllItems()
+            
             completion()
         })
         

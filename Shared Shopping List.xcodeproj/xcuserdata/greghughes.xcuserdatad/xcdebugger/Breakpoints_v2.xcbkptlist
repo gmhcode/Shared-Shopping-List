@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "B424C2FD-A353-4A14-819F-110040CDA70B"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5BEF6DB1-32D9-4867-9A9F-86E51BC28BB2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping List/Model/Group+CoreDataProperties.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "7"
+            endingLineNumber = "7"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F5D35030-7210-4415-9DC7-3D24061C4817"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping List/Views/DrawerVIews/MainDrawerViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "arrowButtonTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1EE690DC-5BF4-4E34-B5C1-B2AC20B13E49"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping List/Views/CustomViews/RotatableView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "init(frame:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            uuid = "F905A885-07FF-46B2-B537-A3F848D3D9F6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            breakpointStackSelectionBehavior = "1"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "872BECBC-AABB-47D1-A685-0DB380EC7F14"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping List/Test/TestBackendCalls.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "createListsAndAddUsers(userArray:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "872BECBC-AABB-47D1-A685-0DB380EC7F14 - d6ac5f596aac6738"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Shared_Shopping_List.TestBackEndFuncs.createListsAndAddUsers(userArray: Swift.Array&lt;Shared_Shopping_List.User&gt;) -&gt; ()"
+                  moduleName = "Shared Shopping List"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/greghughes/Desktop/Shared%20Shopping%20List/Shared%20Shopping%20List/Test/TestBackendCalls.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "122">
+               </Location>
+               <Location
+                  uuid = "872BECBC-AABB-47D1-A685-0DB380EC7F14 - 8540acfa32f14bf8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Dictionary&lt;Shared_Shopping_List.User, Swift.Array&lt;Shared_Shopping_List.List&gt;&gt;) -&gt; () in Shared_Shopping_List.TestBackEndFuncs.createListsAndAddUsers(userArray: Swift.Array&lt;Shared_Shopping_List.User&gt;) -&gt; ()"
+                  moduleName = "Shared Shopping List"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/greghughes/Desktop/Shared%20Shopping%20List/Shared%20Shopping%20List/Test/TestBackendCalls.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "46">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "74C8B6E8-B6C2-41B4-A56C-8F1960003CD8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping List/Controller/ListController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
+            landmarkName = "getParams(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "93BFED1B-B798-4FA0-A985-4DA5BF2F849E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping List/Controller/ListController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
+            landmarkName = "getParams(list:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6BAE6C87-872F-4B53-8692-C9AE20F063A0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping List/Controller/UserController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "getUsersWithList(list:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9449B631-5D5C-4F33-8711-BA176EE413D1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping List/Utils/BackEndUtils.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "networkCall(objectToSend:queryItems:pathComponents:requestMethod:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9449B631-5D5C-4F33-8711-BA176EE413D1 - 621a8e75e3d82038"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Shared_Shopping_List):Shared_Shopping_List.BackEndRequester.networkCall(objectToSend: Swift.Optional&lt;A.MyType&gt;, queryItems: Swift.Array&lt;Foundation.URLQueryItem&gt;, pathComponents: Swift.Array&lt;Swift.String&gt;, requestMethod: Shared_Shopping_List.BackEndUtils.RequestMethod, completion: (Swift.Optional&lt;Swift.Array&lt;A.MyType&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Shared Shopping List"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/greghughes/Desktop/Shared%20Shopping%20List/Shared%20Shopping%20List/Utils/BackEndUtils.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "523">
+               </Location>
+               <Location
+                  uuid = "9449B631-5D5C-4F33-8711-BA176EE413D1 - 621a8e75e3d82038"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Shared_Shopping_List):Shared_Shopping_List.BackEndRequester.networkCall(objectToSend: Swift.Optional&lt;A.MyType&gt;, queryItems: Swift.Array&lt;Foundation.URLQueryItem&gt;, pathComponents: Swift.Array&lt;Swift.String&gt;, requestMethod: Shared_Shopping_List.BackEndUtils.RequestMethod, completion: (Swift.Optional&lt;Swift.Array&lt;A.MyType&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Shared Shopping List"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/greghughes/Desktop/Shared%20Shopping%20List/Shared%20Shopping%20List/Utils/BackEndUtils.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "2427">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F3B939CC-10A7-475C-A17B-7185085D56D2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping List/Controller/UserController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "callAllUsers(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
