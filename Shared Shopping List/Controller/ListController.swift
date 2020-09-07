@@ -116,15 +116,15 @@ class ListController {
         var theurl = URL(string: "http://localhost:8081/")
         static var shared = ListController.BackEnd()
         
-        func createList(list: List, completion:@escaping(List)->()) {
+        func createList(list: List, completion:@escaping(List?)->()) {
             
             networkCall(objectToSend: list, queryItems: [], pathComponents: [BackEndUtils.PathComponent.list.rawValue], requestMethod: .post) { (lists) in
-                guard let list = lists?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                guard let list = lists?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
 
                 print("createList: ", list as Any)
                 completion(list)
             }
-//           guard var url = theurl else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(); return}
+//           guard var url = theurl else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
 //            url.appendPathComponent(BackEndUtils.PathComponent.list.rawValue)
 //
 //            let params : [String:Any] = getParams(list: list)
@@ -137,22 +137,23 @@ class ListController {
 //                URLSession.shared.dataTask(with: request) { (data, res, er) in
 //                    if let er = er {
 //                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-//                        completion()
+//                        completion(nil)
 //                        return
 //                    }
 //
 //                    if let response = res, let data = data  {
 //                        print("Create List Response", response, BackEndUtils.convertDataToJson(data: data))
-//                        completion()
+//                        completion(nil)
+//                        return
 //                    }
 //
 //                }.resume()
 //
 //            } catch let err {
 //                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
-//                completion()
+//                
 //            }
-//            completion()
+//            completion(nil)
         }
 
         func updateList(list: List,completion:@escaping()->()) {
@@ -188,7 +189,7 @@ class ListController {
 //            }
         }
 
-        func getListsWithUser(user: User, completion:@escaping ([List]?) ->()) {
+        func getListsWithUser(user: User, completion:@escaping (([List]?) ->())) {
             
             let query = URLQueryItem(name: "userID", value: user.uuid)
             
@@ -228,7 +229,12 @@ class ListController {
 //            }.resume()
 //            completion(nil)
         }
-
+        func deleteList(list:List,completion:@escaping()->()) {
+            networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.list.rawValue,list.uuid], requestMethod: .delete) { (lists) in
+                print(lists as Any)
+                completion()
+            }
+        }
 
         func deleteAllLists() {
             networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.lists.rawValue], requestMethod: .delete) { (lists) in

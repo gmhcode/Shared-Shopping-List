@@ -95,9 +95,7 @@ extension BackEndRequester {
             
             do {
                 if let json = try? JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [String:Any] {
-                    if json == nil {
-                        print(json)
-                    }
+                    
                     if let objects = self.parseFetched([json]) {
                         completion(objects)
                         return

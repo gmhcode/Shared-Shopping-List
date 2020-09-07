@@ -67,22 +67,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F8D33576-2286-4EB6-B542-C548EF108417"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Shared Shopping List/Controller/ListController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "addMemberToList(list:newMember:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "872BECBC-AABB-47D1-A685-0DB380EC7F14"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -138,8 +122,8 @@
             filePath = "Shared Shopping List/Controller/ListController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
             landmarkName = "getParams(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,8 +138,8 @@
             filePath = "Shared Shopping List/Controller/ListController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "getParams(list:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -163,16 +147,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A21642F3-CF2B-4AD7-BB08-E004ED7A402D"
-            shouldBeEnabled = "Yes"
+            uuid = "104B8A8A-4415-4B59-88CD-BF167D0BA170"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Shared Shopping List/Utils/BackEndUtils.swift"
+            filePath = "Shared Shopping List/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "networkCall(objectToSend:queryItems:pathComponents:requestMethod:completion:)"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
