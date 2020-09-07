@@ -26,20 +26,14 @@ class ListControllerTests: XCTestCase {
     // MARK: - Back End Tests
     func testBackEndCreateGetDelete() {
         
-
+        let theExpectation1 = expectation(description: "create list set up")
         let theExpectation2 = expectation(description: "get")
         let theExpectation3 = expectation(description: "delete")
         let list2 = ListController.createList(title: "createListTest2", listMasterID: user.uuid, uuid: "createListTest2")
 
        
-        
-        
-        
-        
-        let exp = expectation(description: "create list set up")
-        
         ListController.BackEnd.shared.createList(list: list2) { (list) in
-            exp.fulfill()
+            theExpectation1.fulfill()
             XCTAssertTrue(list?.title == "createListTest2")
             
             ListController.BackEnd.shared.getListsWithUser(user: self.user) { (list) in
@@ -62,8 +56,6 @@ class ListControllerTests: XCTestCase {
         waitForExpectations(timeout: 5) { (error) in
             ListController.BackEnd.shared.deleteAllLists()
         }
-        
-
     }
     
     

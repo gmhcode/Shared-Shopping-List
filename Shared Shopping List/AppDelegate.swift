@@ -20,34 +20,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UIButton.appearance().layer.borderWidth = 1
 //        UIButton.appearance().layer.borderColor = ColorConstants.borderColor.cgColor
 //        //        self.layer.borderColor = ColorConstants.borderColor.cgColor
-//        UserController.deleteAllUsers()
-//        ListController.deleteAllLists()
-//        ItemController.deleteAllItems()
-//        
-//        let testClass = TestBackEndFuncs()
-//        testClass.deleteAllDataFromDatabases {
-//            testClass.createTestData()
-//        }
-//        ListController.BackEnd.shared.callAllLists { (list) in
-//            print("🇬🇸 LISTS: ", list)
-////            let lists = lists
-//             list?.forEach({print($0)})
-//            
-//        }
+        //Deletes Local
+        UserController.deleteAllUsers()
+        ListController.deleteAllLists()
+        ItemController.deleteAllItems()
         
-        
-//        let list = ListController.createList(title: "createListTest2432424234", listMasterID: "123434324234", uuid: "createListTest24342424242")
-//
-//        ListController.BackEnd.shared.createList(list: list) { (list) in
-//
-//            print("list")
-//
-//        }
-        
-        
-//        UserController.currentUser = user
+        //Deletes back End
+        let testClass = TestBackEndFuncs()
+        testClass.deleteAllDataFromDatabases {
+            //Creates front and backend
+            testClass.createTestData()
+        }
+
         DrawerButton.appearance().tintColor = ColorConstants.borderColor
-//        UserController.BackEnd.shared.createUser(user: user)
         
         
         return true

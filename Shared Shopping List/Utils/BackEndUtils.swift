@@ -58,6 +58,7 @@ struct BackEndUtils {
         case lists = "lists"
         case item = "item"
         case items = "items"
+        case query = "query"
         
     }
 }
