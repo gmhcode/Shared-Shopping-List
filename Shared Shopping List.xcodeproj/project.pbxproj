@@ -30,6 +30,7 @@
 		90894C0A24B563E3006AFC40 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0924B563E3006AFC40 /* UserController.swift */; };
 		90894C0C24B566AA006AFC40 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0B24B566AA006AFC40 /* ListController.swift */; };
 		90894C1024B566DC006AFC40 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0F24B566DC006AFC40 /* ItemController.swift */; };
+		9090A8C0250701C000F997C8 /* UserControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9090A8BF250701C000F997C8 /* UserControllerTests.swift */; };
 		9093567D24AC2B4A009E2F1E /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093567C24AC2B4A009E2F1E /* GlobalConstants.swift */; };
 		9093567F24AC2BC2009E2F1E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093567E24AC2BC2009E2F1E /* MainViewModel.swift */; };
 		9095D41524E8B21500BD9E20 /* ListMemberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9095D41424E8B21500BD9E20 /* ListMemberController.swift */; };
@@ -84,6 +85,7 @@
 		90894C0924B563E3006AFC40 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		90894C0B24B566AA006AFC40 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
 		90894C0F24B566DC006AFC40 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
+		9090A8BF250701C000F997C8 /* UserControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserControllerTests.swift; sourceTree = "<group>"; };
 		9093567C24AC2B4A009E2F1E /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		9093567E24AC2BC2009E2F1E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		9095D41424E8B21500BD9E20 /* ListMemberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMemberController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				9020301124AC16F200A9D357 /* Shared_Shopping_ListTests.swift */,
 				9020301324AC16F200A9D357 /* Info.plist */,
 				904F52B6250078F60004EE99 /* ListControllerTests.swift */,
+				9090A8BF250701C000F997C8 /* UserControllerTests.swift */,
 			);
 			path = "Shared Shopping ListTests";
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9090A8C0250701C000F997C8 /* UserControllerTests.swift in Sources */,
 				904F52B7250078F60004EE99 /* ListControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -147,80 +147,112 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6BAE6C87-872F-4B53-8692-C9AE20F063A0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Shared Shopping List/Controller/UserController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "getUsersWithList(list:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9449B631-5D5C-4F33-8711-BA176EE413D1"
+            uuid = "F1D8826F-1047-4B98-B005-EE45FC4FB922"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared Shopping List/Utils/BackEndUtils.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "networkCall(objectToSend:queryItems:pathComponents:requestMethod:completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "9449B631-5D5C-4F33-8711-BA176EE413D1 - 621a8e75e3d82038"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(extension in Shared_Shopping_List):Shared_Shopping_List.BackEndRequester.networkCall(objectToSend: Swift.Optional&lt;A.MyType&gt;, queryItems: Swift.Array&lt;Foundation.URLQueryItem&gt;, pathComponents: Swift.Array&lt;Swift.String&gt;, requestMethod: Shared_Shopping_List.BackEndUtils.RequestMethod, completion: (Swift.Optional&lt;Swift.Array&lt;A.MyType&gt;&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Shared Shopping List"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/greghughes/Desktop/Shared%20Shopping%20List/Shared%20Shopping%20List/Utils/BackEndUtils.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "523">
-               </Location>
-               <Location
-                  uuid = "9449B631-5D5C-4F33-8711-BA176EE413D1 - 621a8e75e3d82038"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(extension in Shared_Shopping_List):Shared_Shopping_List.BackEndRequester.networkCall(objectToSend: Swift.Optional&lt;A.MyType&gt;, queryItems: Swift.Array&lt;Foundation.URLQueryItem&gt;, pathComponents: Swift.Array&lt;Swift.String&gt;, requestMethod: Shared_Shopping_List.BackEndUtils.RequestMethod, completion: (Swift.Optional&lt;Swift.Array&lt;A.MyType&gt;&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Shared Shopping List"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/greghughes/Desktop/Shared%20Shopping%20List/Shared%20Shopping%20List/Utils/BackEndUtils.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "2427">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F3B939CC-10A7-475C-A17B-7185085D56D2"
-            shouldBeEnabled = "Yes"
+            uuid = "21621375-EFA4-4CB8-887A-F69DC91ACC52"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping List/Utils/BackEndUtils.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "networkCall(objectToSend:queryItems:pathComponents:requestMethod:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B276B7DA-5FEA-4979-8007-A2E027377A67"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping List/Utils/BackEndUtils.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "networkCall(objectToSend:queryItems:pathComponents:requestMethod:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FCAC4AE7-21CD-4DA1-8DBC-0D97C106A202"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping ListTests/UserControllerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "testCreateGetDeleteUser()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "564C08B4-A574-4B45-B960-256589E361A0"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared Shopping List/Controller/UserController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "callAllUsers(completion:)"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "createUser(user:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1EE001B9-7CA7-4D0D-8DE2-A5EF05D9ED0F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping ListTests/UserControllerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "testCreateGetDeleteUser()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "60879D24-4071-4ABD-8C73-D01221B28BD8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping ListTests/UserControllerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "testCreateGetDeleteUser()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

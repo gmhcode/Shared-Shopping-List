@@ -125,6 +125,17 @@ class UserController {
             return returningUsers
         }
         
+        
+        func deleteUser(user:User,completion:@escaping(User?)->()) {
+            
+            networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.user.rawValue,user.uuid], requestMethod: .delete) { (users) in
+//                guard let user = users?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
+//                print("deleteUser: ", user as Any)
+                completion(nil)
+            }
+        }
+        
         //NEED TO TEST
         func getUsersWithList(list: List, completion:@escaping ([User]?) ->()) {
             
@@ -189,6 +200,7 @@ class UserController {
                 guard (users?.first) != nil else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 
                 print("callAllUsers: ", users as Any)
+                completion(users)
             }
             
 //            var request = URLRequest(url: url)
@@ -292,7 +304,7 @@ class UserController {
         func deleteAllUsers() {
             
             networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.users.rawValue], requestMethod: .delete) { (users) in
-                guard let user = users?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//                guard let user = users?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 
                 print("deleteAllUsers: ", users as Any)
             }

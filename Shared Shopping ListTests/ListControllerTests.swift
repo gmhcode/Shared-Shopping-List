@@ -13,16 +13,14 @@ class ListControllerTests: XCTestCase {
     var list : List = ListController.createList(title: "createListTest1", listMasterID: "createListTest1", uuid: "createListTest1")
     var user = UserController.createUser(name: "testUser1", email: "testUser1@email.com", uuid: "testUser1ID")
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        ListController.BackEnd.shared.deleteAllLists()
+//        ListController.BackEnd.shared.deleteAllLists()
 //        ListController.deleteAllLists()
-        
-        
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        ListController.BackEnd.shared.deleteAllLists()
     }
+    
     // MARK: - Back End Tests
     func testBackEndCreateGetDelete() {
         
@@ -109,6 +107,5 @@ class ListControllerTests: XCTestCase {
         let list1 = ListController.createList(title: "testList", listMasterID: user.uuid, uuid: "testGetListUuid")
            let list = ListController.getList(id: list1.uuid)
            XCTAssertTrue(list1.uuid == list?.uuid)
-
        }
 }

@@ -108,7 +108,7 @@ extension BackEndRequester {
                     }
                 }
             }catch let er{
-                print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line) , for Type 🇧🇱  \(String(describing: MyType.self))")
+                print("❌ There was an error in try catch \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line) , for Type 🇧🇱  \(String(describing: MyType.self))")
             }
             completion(nil)
             return
