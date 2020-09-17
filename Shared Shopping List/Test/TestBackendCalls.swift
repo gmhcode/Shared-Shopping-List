@@ -93,7 +93,7 @@ class TestBackEndFuncs {
             for list in lists {
                 let newNum = counter + 1
                 counter = newNum > 2 ? 0 : newNum
-                _ = ItemController.BackEnd.shared.createItemFrontAndBack(name: "Item \(counter)\(i.name)", store: stores[counter], userSentID: i.uuid, listID: list.uuid, uuid: UUID().uuidString, completion: { item in
+                _ = ItemController.BackEnd.shared.createItemFrontAndBack(name: "Item \(counter)\(i.name), \(list.title)", store: stores[counter], userSentID: i.uuid, listID: list.uuid, uuid: UUID().uuidString, completion: { item in
                     
                 })
                 counter += 1
@@ -148,6 +148,7 @@ class TestBackEndFuncs {
     
     
     func deleteAllDataFromDatabases(completion:@escaping()->()) {
+        
         BackEndUtils.deleteWholeDatabase(completion: {
             
             

@@ -59,6 +59,24 @@ class ItemController {
         return locations
     }
     
+    static func getItems(for list:List) -> [Item]? {
+        let persistentManager = PersistenceManager.shared
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        let predicate = NSPredicate(format: "listID == %@", list.uuid as CVarArg)
+        request.predicate = predicate
+        
+        do {
+            let items = try persistentManager.context.fetch(request)
+            if items.count > 0 {
+                return items
+            } else {
+                return nil
+            }
+        } catch  {
+            print("array could not be retrieved \(error)")
+            return nil
+        }
+    }
     ///Deletes list with the entered ID
     static func deleteItem(id:String) {
         let persistentManager = PersistenceManager.shared

@@ -58,8 +58,9 @@ class TestingVC: UIViewController {
             }
         }
         
-        func fetchItems(for list: List, completion: @escaping()->()) {
-
+        func fetchItems(for list: List, completion: @escaping([Item]?)->()) {
+            let items = ItemController.getItems(for: list)
+            completion(items)
         }
         
         // MARK: - Fetch Users For List
@@ -138,13 +139,13 @@ class TestingVC: UIViewController {
                 fetchUsers(for: list) {users in
                     guard let users = users else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
                     self.users = users
-                    self.vc?.reloadAll()
-                    completion()
+                    self.fetchItems(for: list) { items in
+                        self.items = items ?? []
+                        self.vc?.reloadAll()
+                        completion()
+                    }
                 }
-                fetchItems(for: list) {
-                    self.vc?.reloadAll()
-                    completion()
-                }
+                
                 
             case .itemsHeaderSelected:
                 fetchUsers(for: list) {users in

@@ -27,6 +27,8 @@ class MainDrawerViewController: UIViewController{
         NotificationController.addObserver(selfClass: self, selector: #selector(userNotification(n:)), name:.user)
         
         NotificationController.addObserver(selfClass: self, selector: #selector(listNotification(n:)), name:.list)
+        
+        NotificationController.addObserver(selfClass: self, selector: #selector(itemNotification(n:)), name:.item)
 
     }
 
@@ -69,6 +71,14 @@ class MainDrawerViewController: UIViewController{
         let user = n.userInfo?["user"] as? User
 //        print(user!.name)
 
+    }
+    
+    @objc func itemNotification(n:Notification) {
+        topLeftButton.setTitle("createItem", for: .normal)
+        topRightButton.setTitle("deleteItem", for: .normal)
+        middleLeftButton.setTitle("updateItem", for: .normal)
+        middleRIghtButton.setTitle("getItem", for: .normal)
+        let user = n.userInfo?["item"] as? Item
     }
 
 }
