@@ -80,7 +80,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "872BECBC-AABB-47D1-A685-0DB380EC7F14 - d6ac5f596aac6738"
+                  uuid = "872BECBC-AABB-47D1-A685-0DB380EC7F14 - d6aecca8ab31acbb"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -95,7 +95,7 @@
                   offsetFromSymbolStart = "122">
                </Location>
                <Location
-                  uuid = "872BECBC-AABB-47D1-A685-0DB380EC7F14 - 8540acfa32f14bf8"
+                  uuid = "872BECBC-AABB-47D1-A685-0DB380EC7F14 - 85423f0bf36c807b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -260,14 +260,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "F55534CD-B369-40CB-A889-FF412EF56ADF"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared Shopping List/Test/TestingVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "348"
-            endingLineNumber = "348"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
             landmarkName = "stateSelected(state:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,8 +298,8 @@
             filePath = "Shared Shopping List/Test/TestingVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "listSelected(state:list:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -308,14 +308,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "CF515656-B7E2-468E-A0BF-BDD73DB0E651"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared Shopping List/Test/TestingVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -323,16 +323,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D31F623C-6E9A-42A5-8165-E75EEAF98AE0"
+            uuid = "BBD61F34-078A-440D-B0A0-14C215AA3FDD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared Shopping List/Test/TestingVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "listSelected(state:list:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "119FFCE9-2010-4440-9C76-960C690608D6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping List/Test/TestingVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "listSelected(state:list:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UIButton.appearance().layer.borderWidth = 1
 //        UIButton.appearance().layer.borderColor = ColorConstants.borderColor.cgColor
 //        //        self.layer.borderColor = ColorConstants.borderColor.cgColor
-        //Deletes Local
+        //Deletes Local hello my name is gregory michaek hughes
         UserController.deleteAllUsers()
         ListController.deleteAllLists()
         ItemController.deleteAllItems()

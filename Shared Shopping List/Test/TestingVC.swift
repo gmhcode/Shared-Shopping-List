@@ -121,6 +121,33 @@ class TestingVC: UIViewController {
             
         }
         
+        func itemSelected(state: TestState, item: Item, completion: @escaping()->()) {
+            
+            switch state {
+            case .userHeaderSelected:
+                
+                fetchList(for: item) {
+                    //TODO: set users list to user who created this item
+                }
+                
+//                fetchLists(for: item) { lists in
+//                    guard let lists = lists else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//                    self.lists = lists.filter({$0.contains(item)})
+//
+//                }
+                
+            case .listsHeaderSelected:
+                
+                break
+            case .itemsHeaderSelected:
+                break
+            case .none:
+                break
+            }
+            
+        }
+        
+        
         // MARK: - List Selected
         func listSelected(state : TestState, list: List, completion: @escaping()->()) {
             switch state {
@@ -153,6 +180,8 @@ class TestingVC: UIViewController {
 
                     if self.selectedItem != nil {
                         self.users = users.filter({$0.uuid == self.selectedItem?.userSentId})
+                    } else {
+                        self.users = users.filter({$0.uuid == list.listMasterID})
                     }
                 }
                 break
@@ -275,7 +304,7 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == listTableView {
+             if tableView == listTableView {
             return viewModel.lists.count
         } else if tableView == userTableView {
             return viewModel.users.count
