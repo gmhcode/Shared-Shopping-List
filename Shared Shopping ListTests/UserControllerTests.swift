@@ -16,8 +16,7 @@ class UserControllerTests: XCTestCase {
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        UserController.BackEnd.shared.deleteAllUsers()
-        ListController.BackEnd.shared.deleteAllLists()
+        
     }
 
     override func tearDownWithError() throws {
@@ -30,7 +29,7 @@ class UserControllerTests: XCTestCase {
         let theExpectation2 = expectation(description: "get")
         let theExpectation3 = expectation(description: "get3")
         let theExpectation4 = expectation(description: "get1")
-         let theExpectation5 = expectation(description: "get2")
+        let theExpectation5 = expectation(description: "get2")
         
         UserController.BackEnd.shared.createUser(user: user) { (user) in
             print("🇪🇸", user as Any)
@@ -94,7 +93,12 @@ class UserControllerTests: XCTestCase {
 //            }
 //        }
         waitForExpectations(timeout: 10) { (error) in
-            UserController.BackEnd.shared.deleteAllUsers()
+            
         }
+    }
+    override class func tearDown() {
+        super.tearDown()
+        UserController.BackEnd.shared.deleteAllUsers()
+        ListController.BackEnd.shared.deleteAllLists()
     }
 }

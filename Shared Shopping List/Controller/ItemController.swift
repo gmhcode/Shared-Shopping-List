@@ -197,7 +197,21 @@ class ItemController {
         }
         
         func getItemsWithUser(user: User, completion:@escaping([Item]?)->()) {
-             
+            let userIDQuery = URLQueryItem(name: "userID", value: user.uuid)
+            let emptyValue = URLQueryItem(name: "listID", value: "")
+            
+            networkCall(objectToSend: nil, queryItems: [userIDQuery,emptyValue], pathComponents: [BackEndUtils.PathComponent.items.rawValue,BackEndUtils.PathComponent.query.rawValue], requestMethod: .get) { (items) in
+                completion(items)
+            }
+            
+        }
+        func getItemsWithList(list: List, completion:@escaping([Item]?)->()) {
+            let emptyValue = URLQueryItem(name: "userID", value: "")
+            let listIDQuery = URLQueryItem(name: "listID", value: list.uuid)
+            
+            networkCall(objectToSend: nil, queryItems: [emptyValue,listIDQuery], pathComponents: [BackEndUtils.PathComponent.items.rawValue,BackEndUtils.PathComponent.query.rawValue], requestMethod: .get) { (items) in
+                completion(items)
+            }
         }
         
         func callAllItems(completion: @escaping ([Item]?) -> () ) {

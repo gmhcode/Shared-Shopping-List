@@ -28,11 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        //Deletes back End
         let testClass = TestBackEndFuncs()
         testClass.deleteAllDataFromDatabases {
-            //Creates front and backend
-            testClass.createTestData()
+//            //Creates front and backend
+//            testClass.createTestData()
         }
-
-        DrawerButton.appearance().tintColor = ColorConstants.secondaryColor
+//
+//        DrawerButton.appearance().tintColor = ColorConstants.secondaryColor
         
         
         return true

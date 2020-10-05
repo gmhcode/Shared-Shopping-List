@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9001C6FB252BBC1D0005564F /* ItemsControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9001C6FA252BBC1D0005564F /* ItemsControllerTests.swift */; };
 		900D027824C6538200EF5B13 /* TestBackendCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900D027724C6538200EF5B13 /* TestBackendCalls.swift */; };
 		90202FF824AC16ED00A9D357 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90202FF724AC16ED00A9D357 /* AppDelegate.swift */; };
 		90202FFA24AC16ED00A9D357 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90202FF924AC16ED00A9D357 /* SceneDelegate.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9001C6FA252BBC1D0005564F /* ItemsControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsControllerTests.swift; sourceTree = "<group>"; };
 		900D027724C6538200EF5B13 /* TestBackendCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBackendCalls.swift; sourceTree = "<group>"; };
 		90202FF424AC16ED00A9D357 /* Shared Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shared Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90202FF724AC16ED00A9D357 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				9020301324AC16F200A9D357 /* Info.plist */,
 				904F52B6250078F60004EE99 /* ListControllerTests.swift */,
 				9090A8BF250701C000F997C8 /* UserControllerTests.swift */,
+				9001C6FA252BBC1D0005564F /* ItemsControllerTests.swift */,
 			);
 			path = "Shared Shopping ListTests";
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9090A8C0250701C000F997C8 /* UserControllerTests.swift in Sources */,
+				9001C6FB252BBC1D0005564F /* ItemsControllerTests.swift in Sources */,
 				904F52B7250078F60004EE99 /* ListControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

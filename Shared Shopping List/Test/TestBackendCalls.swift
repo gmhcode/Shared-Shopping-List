@@ -148,11 +148,12 @@ class TestBackEndFuncs {
     
     
     func deleteAllDataFromDatabases(completion:@escaping()->()) {
-        
         BackEndUtils.deleteWholeDatabase(completion: {
+            DispatchQueue.main.sync {
+                completion()
+            }
             
             
-            completion()
         })
         
     }
