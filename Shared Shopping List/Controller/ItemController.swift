@@ -117,12 +117,12 @@ class ItemController {
     
     
     struct BackEnd {
-        var url = URL(string: "http://localhost:8081/")
+        //        var url = BackEndUtils.currentServerUrl
         static var shared = ItemController.BackEnd()
         
         func createItemFrontAndBack(name: String, store: String, userSentID: String, listID: String, uuid: String, completion: @escaping(Item)->()) {
             let item = ItemController.createItem(name: name, store: store, userSentID: userSentID, listID: listID, uuid: uuid)
-            createItem(item: item) {
+            createItem(item: item) {_ in 
                 completion(item)
             }
             
@@ -133,10 +133,10 @@ class ItemController {
             
             for i in items {
                 guard let uuid = i["uuid"] as? String,
-                    let store = i["store"] as? String,
-                    let name = i["name"] as? String,
-                    let userSent = i["userSentId"] as? String,
-                    let listID = i["listID"] as? String else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); continue}
+                      let store = i["store"] as? String,
+                      let name = i["name"] as? String,
+                      let userSent = i["userSentId"] as? String,
+                      let listID = i["listID"] as? String else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); continue}
                 
                 let fetchedItem = ItemController.createItem(name: name, store: store, userSentID: userSent, listID: listID, uuid: uuid)
                 
@@ -150,69 +150,102 @@ class ItemController {
             return returningItems
         }
         
-        func getParams(item: Item) -> [String:Any] {
+        func getParams(item: Item?) -> [String:Any] {
+            guard let item = item else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return [:]}
+            
             let params : [String:Any] = ["listID":item.listID,"store":item.store,"userSentId":item.userSentId,"name":item.name,"uuid":item.uuid]
             return params
         }
-
-        func createItem(item: Item, completion:@escaping()->()) {
-            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(); return}
-            url.appendPathComponent(BackEndUtils.PathComponent.item.rawValue)
+        
+        func createItem(item: Item, completion:@escaping(Item?)->()) {
             
-            let params : [String:Any] = getParams(item: item)
-            
-            
-            do {
-                let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
-                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.post.rawValue, body: requestBody)
+            networkCall(objectToSend: item, queryItems: [], pathComponents: [BackEndUtils.PathComponent.item.rawValue], requestMethod: .post) { (items) in
+                guard let item = items?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
                 
-                URLSession.shared.dataTask(with: request) { (data, res, er) in
-                    if let er = er {
-                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-                        completion()
-                        return
-                    }
-                    
-                    if let response = res, let data = data  {
-                        print("Create List Response", response, BackEndUtils.convertDataToJson(data: data))
-                        completion()
-                    }
-                    
-                }.resume()
-                
-            } catch let err {
-                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
-                completion()
+                print("createList: ", items as Any)
+                completion(item)
             }
+            
+            //            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(); return}
+            //            url.appendPathComponent(BackEndUtils.PathComponent.item.rawValue)
+            //
+            //            let params : [String:Any] = getParams(item: item)
+            //
+            //
+            //            do {
+            //                let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
+            //                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.post.rawValue, body: requestBody)
+            //
+            //                URLSession.shared.dataTask(with: request) { (data, res, er) in
+            //                    if let er = er {
+            //                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+            //                        completion()
+            //                        return
+            //                    }
+            //
+            //                    if let response = res, let data = data  {
+            //                        print("Create List Response", response, BackEndUtils.convertDataToJson(data: data))
+            //                        completion()
+            //                    }
+            //
+            //                }.resume()
+            //
+            //            } catch let err {
+            //                print("❌ There was an error in \(#function) \(err) : \(err.localizedDescription) : \(#file) \(#line)")
+            //                completion()
+            //            }
         }
         
         func callAllItems(completion: @escaping ([Item]?) -> () ) {
-            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion([]); return}
-            url.appendPathComponent(BackEndUtils.PathComponent.items.rawValue)
             
-            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
+            networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.items.rawValue], requestMethod: .get) { (items) in
+                completion(items)
+            }
             
-            URLSession.shared.dataTask(with: request) { (data, res, error) in
-                if let error = error {
-                    print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription) : \(#file) \(#line)")
-                    return
-                }
-                
-                guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion([]); return }
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
-                        if let items = self.parseFetchedItems(items: json) {
-                            print("🇸🇾 Items JSON",json)
-                            completion(items)
-                            return
-                        }
-                    }
-                }catch let er {
-                    
-                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-                }
-                completion(nil)
-            }.resume()
+            
+            //            guard var url = url else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion([]); return}
+            //            url.appendPathComponent(BackEndUtils.PathComponent.items.rawValue)
+            //
+            //            let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: nil)
+            //
+            //            URLSession.shared.dataTask(with: request) { (data, res, error) in
+            //                if let error = error {
+            //                    print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription) : \(#file) \(#line)")
+            //                    return
+            //                }
+            //
+            //                guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion([]); return }
+            //                do {
+            //                    if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [[String:Any]] {
+            //                        if let items = self.parseFetchedItems(items: json) {
+            //                            print("🇸🇾 Items JSON",json)
+            //                            completion(items)
+            //                            return
+            //                        }
+            //                    }
+            //                }catch let er {
+            //
+            //                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+            //                }
+            //                completion(nil)
+            //            }.resume()
         }
     }
+}
+extension ItemController.BackEnd : BackEndRequester {
+    var url: URL {
+        return BackEndUtils.currentServerUrl!
+    }
+    
+    var getParameters: (Item?) -> [String : Any] {
+        return getParams
+    }
+    
+    var parseFetched: ([[String : Any]]) -> [Item]? {
+        return parseFetchedItems
+    }
+    
+    typealias MyType = Item
+    
+    
 }

@@ -85,11 +85,12 @@ class TestingVC: UIViewController {
         
         // MARK: - Fetch Items For User
         func fetchItems(for user: User, completion: @escaping()->()) {
-            
+//            let items = Item
         }
         
         // MARK: - Fetch List For Item
         func fetchList(for item: Item, completion: @escaping()->()) {
+            
             
         }
         // MARK: - Create List

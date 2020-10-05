@@ -61,6 +61,8 @@ struct BackEndUtils {
         case query = "query"
         
     }
+    
+    static let currentServerUrl : URL? = URL(string: "http://192.168.1.43:8081")
 }
 
 

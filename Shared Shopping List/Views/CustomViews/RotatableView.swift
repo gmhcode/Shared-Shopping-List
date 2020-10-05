@@ -39,7 +39,7 @@ class ShoppingButton: UIButton, Rotatable {
     
     func initialize() {
         self.layer.borderWidth = 1
-        self.layer.borderColor = ColorConstants.borderColor.cgColor
+        self.layer.borderColor = ColorConstants.secondaryColor.cgColor
     }
     
     override init(frame: CGRect) {

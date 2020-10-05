@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             testClass.createTestData()
         }
 
-        DrawerButton.appearance().tintColor = ColorConstants.borderColor
+        DrawerButton.appearance().tintColor = ColorConstants.secondaryColor
         
         
         return true
