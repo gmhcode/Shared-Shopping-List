@@ -346,7 +346,7 @@ extension UserController.BackEnd : BackEndRequester {
     }
     
     var url: URL {
-        return URL(string: "http://localhost:8081/")!
+        return BackEndUtils.currentServerUrl!
     }
     typealias MyType = User
     

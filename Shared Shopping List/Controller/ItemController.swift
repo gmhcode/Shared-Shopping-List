@@ -196,6 +196,10 @@ class ItemController {
             //            }
         }
         
+        func getItemsWithUser(user: User, completion:@escaping([Item]?)->()) {
+             
+        }
+        
         func callAllItems(completion: @escaping ([Item]?) -> () ) {
             
             networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.items.rawValue], requestMethod: .get) { (items) in
