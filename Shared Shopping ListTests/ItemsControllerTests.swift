@@ -15,54 +15,65 @@ class ItemsControllerTests: XCTestCase {
     var item = ItemController.createItem(name: "createUserTest1", store: "createUserTest1", userSentID: "createUserTest1", listID: "createListTest1", uuid: "createUserTest1")
     
     func testGetItemsWithList() throws {
-        let create1Expectation = expectation(description: "create1")
-        let create2Expectation = expectation(description: "create2")
         
         
-        for i in 0...20 {
-            let item = ItemController.createItem(name: "item \(i)", store: "target", userSentID: "badUserId", listID: list.uuid, uuid: "item \(i)")
-            ItemController.BackEnd.shared.createItem(item: item) { (item) in
-                if item!.name.contains("20") {
-                    create1Expectation.fulfill()
-                }
-            }
-        }
-        for i in 20...40 {
-            let item = ItemController.createItem(name: "item \(i)", store: "target", userSentID: user.uuid, listID: "badListID", uuid: "item \(i)")
-            ItemController.BackEnd.shared.createItem(item: item) { (item) in
-                if item!.name.contains("40") {
-                    create2Expectation.fulfill()
-                }
-            }
+        let deleteExpectation = expectation(description: "delete")
+        BackEndUtils.deleteWholeDatabase {
+            deleteExpectation.fulfill()
         }
         
         waitForExpectations(timeout: 10) { (_) in
+            let create1Expectation = self.expectation(description: "create1")
+            let create2Expectation = self.expectation(description: "create2")
+            
+            
+            for i in 0...20 {
+                let item = ItemController.createItem(name: "item \(i)", store: "target", userSentID: "badUserId", listID: self.list.uuid, uuid: "item \(i)")
+                ItemController.BackEnd.shared.createItem(item: item) { (item) in
+                    if item!.name.contains("20") {
+                        create1Expectation.fulfill()
+                    }
+                }
+            }
+            for i in 20...40 {
+                let item = ItemController.createItem(name: "item \(i)", store: "target", userSentID: self.user.uuid, listID: "badListID", uuid: "item \(i)")
+                ItemController.BackEnd.shared.createItem(item: item) { (item) in
+                    if item!.name.contains("40") {
+                        create2Expectation.fulfill()
+                    }
+                }
+            }
+            
+            self.waitForExpectations(timeout: 10) { (_) in
 
-            let userExpectation = self.expectation(description: "user")
-            let listExpectation = self.expectation(description: "list")
-            
-            ItemController.BackEnd.shared.getItemsWithUser(user: self.user) { (items) in
-                for it in items ?? [] {
-                    XCTAssertTrue(it.userSentId == self.user.uuid)
-                    if it.name == items!.last!.name {
-                        userExpectation.fulfill()
-                        break
+                let userExpectation = self.expectation(description: "user")
+                let listExpectation = self.expectation(description: "list")
+                
+                ItemController.BackEnd.shared.getItemsWithUser(user: self.user) { (items) in
+                    for it in items ?? [] {
+                        XCTAssertTrue(it.userSentId == self.user.uuid)
+                        if it.name == items!.last!.name {
+                            userExpectation.fulfill()
+                            break
+                        }
                     }
                 }
-            }
-            
-            
-            ItemController.BackEnd.shared.getItemsWithList(list: self.list) { (items) in
-                for it in items ?? [] {
-                    XCTAssertTrue(it.listID == self.list.uuid)
-                    
-                    if it.name == items!.last!.name {
-                        listExpectation.fulfill()
+                
+                
+                ItemController.BackEnd.shared.getItemsWithList(list: self.list) { (items) in
+                    for it in items ?? [] {
+                        XCTAssertTrue(it.listID == self.list.uuid)
+                        
+                        if it.name == items!.last!.name {
+                            listExpectation.fulfill()
+                            break
+                        }
                     }
                 }
+                self.wait(for: [userExpectation,listExpectation], timeout: 10)
             }
-            self.wait(for: [userExpectation,listExpectation], timeout: 10)
         }
+        
     }
     
     

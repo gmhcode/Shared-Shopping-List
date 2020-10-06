@@ -191,9 +191,9 @@ class ListController {
 
         func getListsWithUser(user: User, completion:@escaping (([List]?) ->())) {
             
-            let query = URLQueryItem(name: "userID", value: user.uuid)
+//            let query = URLQueryItem(name: "userID", value: user.uuid)
             
-            networkCall(objectToSend: nil, queryItems: [query], pathComponents: [BackEndUtils.PathComponent.lists.rawValue], requestMethod: .get) { (lists) in
+            networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.lists.rawValue,user.uuid], requestMethod: .get) { (lists) in
                 print(lists as Any)
                 completion(lists)
                 

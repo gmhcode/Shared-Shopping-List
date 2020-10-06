@@ -32,7 +32,7 @@ struct BackEndUtils {
     }
     
     static func deleteWholeDatabase(completion:@escaping()->()) {
-        let preUrl = URL(string: "http://localhost:8081/deleteAll")!
+        let preUrl = currentServerUrl!
         let request = requestGenerate(url: preUrl, method: "DELETE", body: nil)
         URLSession.shared.dataTask(with: request) { (data, res, er) in
             if let error = er {
