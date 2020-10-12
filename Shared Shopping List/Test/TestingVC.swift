@@ -34,7 +34,7 @@ class TestingVC: UIViewController {
         var users : [User] = []
         var lists : [List] = []
         var items : [Item] = []
-
+        
         // MARK: - Fetch All Users
         func fetchAllUsers(completion:@escaping()->()) {
             UserController.BackEnd.shared.callAllUsers { (users) in
@@ -78,7 +78,7 @@ class TestingVC: UIViewController {
         func fetchUsers(for list: List, completion: @escaping([User]?)->()) {
             UserController.BackEnd.shared.getUsersWithList(list: list) { (users) in
                 guard let users = users else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
-//                self.users = users
+                //                self.users = users
                 
                 print("USERS: 🇸🇩",users)
                 completion(users)
@@ -146,7 +146,7 @@ class TestingVC: UIViewController {
             case .userHeaderSelected:
                 
                 self.lists = lists.filter({$0.uuid == item.listID})
-
+                
             case .listsHeaderSelected:
                 
                 self.users = users.filter({$0.uuid == item.userSentId})
@@ -221,29 +221,29 @@ class TestingVC: UIViewController {
         // MARK: - Load Tables
         func loadTables(completion: @escaping ()->()) {
             
-//            let lists = ListController.getAllLists()
-//            let users = UserController.getAllUsers()
-//            let items = ItemController.getAllItem()
+            //            let lists = ListController.getAllLists()
+            //            let users = UserController.getAllUsers()
+            //            let items = ItemController.getAllItem()
             self.lists = allLists
             self.users = allUsers
             self.items = allItems
             
-//            fetchAllLists {
-//                print("AllLists 🇨🇭", self.lists as Any)
-//
-//                self.fetchAllUsers {
-//                    print("AllUsers 🛳", self.users as Any)
-//
-//                    self.fetchAllItems { [weak self] items in
-//                        guard let items = items else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
-//
-//                        print("ALLItems 🇸🇰", self?.items as Any)
-//                        self?.items = items
-//                        self?.vc?.reloadAll()
-//                        completion()
-//                    }
-//                }
-//            }
+            //            fetchAllLists {
+            //                print("AllLists 🇨🇭", self.lists as Any)
+            //
+            //                self.fetchAllUsers {
+            //                    print("AllUsers 🛳", self.users as Any)
+            //
+            //                    self.fetchAllItems { [weak self] items in
+            //                        guard let items = items else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
+            //
+            //                        print("ALLItems 🇸🇰", self?.items as Any)
+            //                        self?.items = items
+            //                        self?.vc?.reloadAll()
+            //                        completion()
+            //                    }
+            //                }
+            //            }
         }
     }
     
@@ -269,13 +269,13 @@ class TestingVC: UIViewController {
         viewModel.allUsers  = UserController.getAllUsers()
         viewModel.allLists  = ListController.getAllLists()
         viewModel.allItems = ItemController.getAllItem()
-         
-         
+        
+        
         viewModel.loadTables {
             self.reloadAll()
         }
         
-       
+        
     }
     // MARK: - Reload All
     func reloadAll() {
@@ -323,7 +323,7 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
         return headerTitle
     }
     
-        // MARK: - View For Header In Section
+    // MARK: - View For Header In Section
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerButton: UIButton = UIButton()
@@ -356,7 +356,7 @@ extension TestingVC : UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-             if tableView == listTableView {
+        if tableView == listTableView {
             return viewModel.lists.count
         } else if tableView == userTableView {
             return viewModel.users.count
