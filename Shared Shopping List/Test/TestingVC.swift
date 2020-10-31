@@ -26,13 +26,13 @@ class TestingVC: UIViewController {
         var testListCount = 0
         
         var selectedUser : User?
-        var selectedList : List?
+        var selectedList : SList?
         var selectedItem : Item?
         var allUsers : [User] = []
-        var allLists : [List] = []
+        var allLists : [SList] = []
         var allItems : [Item] = []
         var users : [User] = []
-        var lists : [List] = []
+        var lists : [SList] = []
         var items : [Item] = []
         
         // MARK: - Fetch All Users
@@ -68,14 +68,14 @@ class TestingVC: UIViewController {
             }
         }
         
-        func fetchItems(for list: List, completion: @escaping([Item]?)->()) {
+        func fetchItems(for list: SList, completion: @escaping([Item]?)->()) {
             ItemController.BackEnd.shared.getItemsWithList(list: list) { (items) in
                 completion(items)
             }
         }
         
         // MARK: - Fetch Users For List
-        func fetchUsers(for list: List, completion: @escaping([User]?)->()) {
+        func fetchUsers(for list: SList, completion: @escaping([User]?)->()) {
             UserController.BackEnd.shared.getUsersWithList(list: list) { (users) in
                 guard let users = users else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
                 //                self.users = users
@@ -86,7 +86,7 @@ class TestingVC: UIViewController {
         }
         
         // MARK: - Fetch Lists For User
-        func fetchLists(for user: User, completion: @escaping([List]?)->()) {
+        func fetchLists(for user: User, completion: @escaping([SList]?)->()) {
             ListController.BackEnd.shared.getListsWithUser(user: user) { (lists) in
                 guard let lists = lists else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
                 print("LISTS: 🇸🇩",lists)
@@ -177,7 +177,7 @@ class TestingVC: UIViewController {
         
         
         // MARK: - List Selected
-        func listSelected(state : TestState, list: List, completion: @escaping()->()) {
+        func listSelected(state : TestState, list: SList, completion: @escaping()->()) {
             switch state {
             case .userHeaderSelected:
                 

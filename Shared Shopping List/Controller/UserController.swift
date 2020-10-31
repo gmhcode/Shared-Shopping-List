@@ -137,7 +137,7 @@ class UserController {
         }
         
         //NEED TO TEST
-        func getUsersWithList(list: List, completion:@escaping ([User]?) ->()) {
+        func getUsersWithList(list: SList, completion:@escaping ([User]?) ->()) {
             
             let query = URLQueryItem(name: "listID", value: list.uuid)
             

@@ -10,7 +10,7 @@ import XCTest
 @testable import Shared_Shopping_List
 class ListControllerTests: XCTestCase {
 
-    var list : List = ListController.createList(title: "createListTest1", listMasterID: "createListTest1", uuid: "createListTest1")
+    var list : SList = ListController.createList(title: "createListTest1", listMasterID: "createListTest1", uuid: "createListTest1")
     var user = UserController.createUser(name: "testUser1", email: "testUser1@email.com", uuid: "testUser1ID")
     override func setUpWithError() throws {
 //        ListController.BackEnd.shared.deleteAllLists()

@@ -59,7 +59,7 @@ class ItemController {
         return locations
     }
     
-    static func getItems(for list:List) -> [Item]? {
+    static func getItems(for list:SList) -> [Item]? {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Item> = Item.fetchRequest()
         let predicate = NSPredicate(format: "listID == %@", list.uuid as CVarArg)
@@ -205,7 +205,7 @@ class ItemController {
             }
             
         }
-        func getItemsWithList(list: List, completion:@escaping([Item]?)->()) {
+        func getItemsWithList(list: SList, completion:@escaping([Item]?)->()) {
             let emptyValue = URLQueryItem(name: "userID", value: "")
             let listIDQuery = URLQueryItem(name: "listID", value: list.uuid)
             

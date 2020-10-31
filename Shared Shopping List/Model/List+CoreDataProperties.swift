@@ -11,10 +11,10 @@ import Foundation
 import CoreData
 
 
-extension List {
+extension SList {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<List> {
-        return NSFetchRequest<List>(entityName: "List")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<SList> {
+        return NSFetchRequest<SList>(entityName: "SList")
     }
     @NSManaged public var uuid: String
     @NSManaged public var title: String

@@ -44,6 +44,9 @@
 		90C0389D24B2CD6A004C62F9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0389C24B2CD6A004C62F9 /* ListViewController.swift */; };
 		90C0389F24B4C99C004C62F9 /* testyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0389E24B4C99C004C62F9 /* testyViewController.swift */; };
 		90C038A224B4DE55004C62F9 /* testTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C038A124B4DE55004C62F9 /* testTableViewController.swift */; };
+		90DBE4FE254CFAD800CCED55 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBE4FD254CFAD800CCED55 /* ListViewModel.swift */; };
+		90DBE502254CFAF100CCED55 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBE501254CFAF100CCED55 /* ListCell.swift */; };
+		90DBE506254CFB1C00CCED55 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBE505254CFB1C00CCED55 /* ContentView.swift */; };
 		90FB0C1224C682E80064236D /* BackEndUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB0C1124C682E80064236D /* BackEndUtils.swift */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +103,9 @@
 		90C0389C24B2CD6A004C62F9 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		90C0389E24B4C99C004C62F9 /* testyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testyViewController.swift; sourceTree = "<group>"; };
 		90C038A124B4DE55004C62F9 /* testTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testTableViewController.swift; sourceTree = "<group>"; };
+		90DBE4FD254CFAD800CCED55 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		90DBE501254CFAF100CCED55 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		90DBE505254CFB1C00CCED55 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		90FB0C1124C682E80064236D /* BackEndUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackEndUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +157,7 @@
 		90202FF624AC16ED00A9D357 /* Shared Shopping List */ = {
 			isa = PBXGroup;
 			children = (
+				90DBE4FA254CFA5300CCED55 /* SwiftUIViews */,
 				90FB0C1024C682C90064236D /* Utils */,
 				90C038A024B4DE40004C62F9 /* Test */,
 				9093567B24AC2AFD009E2F1E /* GlobalColors */,
@@ -263,6 +270,32 @@
 				90BB9B2B24C7D94400B87479 /* TestingVC.swift */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		90DBE4FA254CFA5300CCED55 /* SwiftUIViews */ = {
+			isa = PBXGroup;
+			children = (
+				90DBE4FC254CFA6B00CCED55 /* Cell */,
+				90DBE4FB254CFA6300CCED55 /* ViewModels */,
+				90DBE505254CFB1C00CCED55 /* ContentView.swift */,
+			);
+			path = SwiftUIViews;
+			sourceTree = "<group>";
+		};
+		90DBE4FB254CFA6300CCED55 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				90DBE4FD254CFAD800CCED55 /* ListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		90DBE4FC254CFA6B00CCED55 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				90DBE501254CFAF100CCED55 /* ListCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		90FB0C1024C682C90064236D /* Utils */ = {
@@ -386,10 +419,12 @@
 				9070BA7A24BD27D1006101D1 /* List+CoreDataProperties.swift in Sources */,
 				9038DA5E24BD264900E6216D /* Item+CoreDataProperties.swift in Sources */,
 				90FB0C1224C682E80064236D /* BackEndUtils.swift in Sources */,
+				90DBE502254CFAF100CCED55 /* ListCell.swift in Sources */,
 				90A0CE9E24AD674A00F0BC4B /* MainRootViewController.swift in Sources */,
 				90A0CE9C24AC30BB00F0BC4B /* MainCollectionViewCell.swift in Sources */,
 				9095D41524E8B21500BD9E20 /* ListMemberController.swift in Sources */,
 				9038DA5224BD24C100E6216D /* ListMember+CoreDataProperties.swift in Sources */,
+				90DBE506254CFB1C00CCED55 /* ContentView.swift in Sources */,
 				9038DA5124BD24C100E6216D /* ListMember+CoreDataClass.swift in Sources */,
 				90894C0C24B566AA006AFC40 /* ListController.swift in Sources */,
 				90C0389F24B4C99C004C62F9 /* testyViewController.swift in Sources */,
@@ -407,6 +442,7 @@
 				90894C0A24B563E3006AFC40 /* UserController.swift in Sources */,
 				90C038A224B4DE55004C62F9 /* testTableViewController.swift in Sources */,
 				90202FFA24AC16ED00A9D357 /* SceneDelegate.swift in Sources */,
+				90DBE4FE254CFAD800CCED55 /* ListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

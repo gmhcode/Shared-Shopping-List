@@ -58,7 +58,7 @@ class MainDrawerViewController: UIViewController{
         topRightButton.setTitle("deleteList", for: .normal)
         middleLeftButton.setTitle("updateList", for: .normal)
         middleRIghtButton.setTitle("getList", for: .normal)
-        let list = n.userInfo?["list"] as? List
+        let list = n.userInfo?["list"] as? SList
 //        print(list!.title)
         
     }

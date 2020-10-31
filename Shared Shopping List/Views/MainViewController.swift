@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     struct MainViewModel {
         var listTypes = ["Shopping Lists"]
         ///Datasource
-        var lists : [List] = []
+        var lists : [SList] = []
 //            UserController.currentUser?.groups.values.compactMap({$0.lists}).reduce([],+) ?? []
         
     }

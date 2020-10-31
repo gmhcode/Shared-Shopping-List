@@ -10,7 +10,7 @@ import XCTest
 @testable import Shared_Shopping_List
 class UserControllerTests: XCTestCase {
 
-    var list : List = ListController.createList(title: "createUserTest1", listMasterID: "createUserTest1", uuid: "createUserTest1")
+    var list : SList = ListController.createList(title: "createUserTest1", listMasterID: "createUserTest1", uuid: "createUserTest1")
     var user = UserController.createUser(name: "createUserTest1", email: "createUserTest1@email.com", uuid: "createUserTest1")
     var item = ItemController.createItem(name: "createUserTest1", store: "createUserTest1", userSentID: "createUserTest1", listID: "createUserTest1", uuid: "createUserTest1")
     

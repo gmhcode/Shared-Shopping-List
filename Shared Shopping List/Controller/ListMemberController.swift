@@ -48,7 +48,7 @@ class ListMemberController {
     struct BackEnd {
         static let shared = BackEnd()
         
-        func getListMembers(for lists: [List], completion: @escaping ([ListMember]?)->()) {
+        func getListMembers(for lists: [SList], completion: @escaping ([ListMember]?)->()) {
             let url = URL(string: "http://localhost:8081/listMembers/withLists")!
             
             let convertedLists = ListController.BackEnd.shared.getParams(for: lists)

@@ -11,17 +11,17 @@ import CoreData
 
 
 class ListController {
-    var list : List?
+    var list : SList?
     static let shared = ListController()
     
-    @discardableResult static func createList(title: String, listMasterID: String, uuid: String) -> List {
+    @discardableResult static func createList(title: String, listMasterID: String, uuid: String) -> SList {
         
         if let list = getList(id: uuid) {
             return list
         }
         
         let persistentManager = PersistenceManager.shared
-        let list = List(context: persistentManager.context)
+        let list = SList(context: persistentManager.context)
         
         list.uuid = uuid
         list.listMasterID = listMasterID
@@ -32,7 +32,7 @@ class ListController {
     }
     
     ///FrondEnd And BackEnd
-    static func addMemberToListFrontAndBack(list: List, newMember: User,completion:@escaping ()->()){
+    static func addMemberToListFrontAndBack(list: SList, newMember: User,completion:@escaping ()->()){
         
         
         if ListMemberController.getListMember(id: newMember.uuid+list.uuid) != nil {
@@ -52,10 +52,10 @@ class ListController {
     
     
     ///Gets the List from the entered ID
-    static func getList(id: String) -> List? {
+    static func getList(id: String) -> SList? {
         
         let persistentManager = PersistenceManager.shared
-        let request : NSFetchRequest<List> = List.fetchRequest()
+        let request : NSFetchRequest<SList> = SList.fetchRequest()
         let predicate = NSPredicate(format: "uuid == %@", id as CVarArg)
         request.predicate = predicate
         
@@ -73,9 +73,9 @@ class ListController {
     }
     
     ///Gets all lists
-    static func getAllLists() -> [List] {
+    static func getAllLists() -> [SList] {
         let persistentManager = PersistenceManager.shared
-        let locations = persistentManager.fetch(List.self)
+        let locations = persistentManager.fetch(SList.self)
         return locations
     }
     
@@ -116,7 +116,7 @@ class ListController {
         var theurl = URL(string: "http://localhost:8081/")
         static var shared = ListController.BackEnd()
         
-        func createList(list: List, completion:@escaping(List?)->()) {
+        func createList(list: SList, completion:@escaping(SList?)->()) {
             
             networkCall(objectToSend: list, queryItems: [], pathComponents: [BackEndUtils.PathComponent.list.rawValue], requestMethod: .post) { (lists) in
                 guard let list = lists?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
@@ -156,7 +156,7 @@ class ListController {
 //            completion(nil)
         }
 
-        func updateList(list: List,completion:@escaping()->()) {
+        func updateList(list: SList,completion:@escaping()->()) {
             
             
             networkCall(objectToSend: list, queryItems: [], pathComponents: [BackEndUtils.PathComponent.list.rawValue], requestMethod: .update) { (lists) in
@@ -189,7 +189,7 @@ class ListController {
 //            }
         }
 
-        func getListsWithUser(user: User, completion:@escaping (([List]?) ->())) {
+        func getListsWithUser(user: User, completion:@escaping (([SList]?) ->())) {
             
 //            let query = URLQueryItem(name: "userID", value: user.uuid)
             
@@ -229,7 +229,7 @@ class ListController {
 //            }.resume()
 //            completion(nil)
         }
-        func deleteList(list:List,completion:@escaping()->()) {
+        func deleteList(list:SList,completion:@escaping()->()) {
             networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.list.rawValue,list.uuid], requestMethod: .delete) { (lists) in
                 print(lists as Any)
                 completion()
@@ -257,20 +257,20 @@ class ListController {
             
         }
 
-        func callAllLists(completion: @escaping([List]?)->()) {
+        func callAllLists(completion: @escaping([SList]?)->()) {
             networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.lists.rawValue], requestMethod: .get) { (lists) in
                 completion(lists)
             }
         }
 
-        func addUser(to list: List, user: User, completion:@escaping(List?)->()) {
+        func addUser(to list: SList, user: User, completion:@escaping(SList?)->()) {
 
             
         }
         ///Goes through all the fetched lists, creates them with listController, then returns them in the returning array.
-        func parseFetchedLists(lists: [[String:Any]]) -> [List]? {
+        func parseFetchedLists(lists: [[String:Any]]) -> [SList]? {
             guard !lists.isEmpty else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
-            var returningLists : [List] = []
+            var returningLists : [SList] = []
 
             for i in lists {
                 guard let uuid = i["uuid"] as? String,
@@ -287,14 +287,14 @@ class ListController {
             return returningLists
         }
         
-        private func getParams(list: List?) -> [String:Any] {
+        private func getParams(list: SList?) -> [String:Any] {
             guard let list = list else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return [:]}
 
             let params : [String:Any] = ["uuid":list.uuid,"title":list.title,"listMasterID":list.listMasterID]
             return params
         }
         
-        func getParams(for lists: [List]) -> [[String:Any]] {
+        func getParams(for lists: [SList]) -> [[String:Any]] {
             var returningArray: [[String:Any]] = []
             for list in lists {
                 returningArray.append(getParams(list: list))
@@ -308,13 +308,13 @@ extension ListController.BackEnd : BackEndRequester {
 
     
     
-    typealias MyType = List
+    typealias MyType = SList
     
-    var parseFetched: ([[String : Any]]) -> [List]? {
+    var parseFetched: ([[String : Any]]) -> [SList]? {
         return parseFetchedLists
     }
     
-    var getParameters: (List?) -> [String : Any] {
+    var getParameters: (SList?) -> [String : Any] {
         return getParams
     }
     

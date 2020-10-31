@@ -40,15 +40,15 @@ class TestBackEndFuncs {
         }
     }
     
-    func createLists(users: [User], completion:@escaping ([User : [List]] )->()){
+    func createLists(users: [User], completion:@escaping ([User : [SList]] )->()){
         
         ListController.BackEnd.shared.deleteAllLists()
         ListController.deleteAllLists()
         let listCount = 3
-        var listsDict : [User : [List]] = [:]
+        var listsDict : [User : [SList]] = [:]
         //creates lists for each user
         for (_,user) in users.enumerated() {
-            var listArray : [List] = []
+            var listArray : [SList] = []
             for (listIndex,_) in (0...listCount).enumerated() {
                 print("listIndex: ", listIndex)
                 let list = ListController.createList(title: "\(user.name)'s list \(listIndex)", listMasterID: user.uuid, uuid: "\(user.name)ID\(listIndex)")
@@ -67,7 +67,7 @@ class TestBackEndFuncs {
         }
     }
     
-    func addExtraUsersToLists(listsDict: [User : [List]]) {
+    func addExtraUsersToLists(listsDict: [User : [SList]]) {
         //adds a user
         for user in listsDict.keys {
             for i in listsDict.keys {
@@ -86,7 +86,7 @@ class TestBackEndFuncs {
         }
     }
     
-    func populateItems(users:[User],lists:[List]) {
+    func populateItems(users:[User],lists:[SList]) {
         let stores = ["Smiths","Target","Walmart"]
         var counter = 0
         for i in users {
