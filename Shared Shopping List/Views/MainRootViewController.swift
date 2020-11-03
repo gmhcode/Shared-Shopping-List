@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftUI
 class MainRootViewController: UINavigationController {
     
     var drawerView : UIView!
@@ -17,13 +17,19 @@ class MainRootViewController: UINavigationController {
     var drawerIsOpen = false
     var drawerContainerViewController = DrawerContainerViewController()
     static var mainRootVC : MainRootViewController?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         MainRootViewController.mainRootVC = self
+        
         setDrawerFunctionality()
         openDrawer()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+//        let contentView = UIHostingController(rootView: ContentView())
+//        navigationController?.pushViewController(contentView, animated: true)
     }
 }
 

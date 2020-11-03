@@ -21,16 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UIButton.appearance().layer.borderColor = ColorConstants.borderColor.cgColor
 //        //        self.layer.borderColor = ColorConstants.borderColor.cgColor
         //Deletes Local hello my name is gregory michaek hughes
-        UserController.deleteAllUsers()
-        ListController.deleteAllLists()
-        ItemController.deleteAllItems()
-//        
-//        //Deletes back End
-        let testClass = TestBackEndFuncs()
-        testClass.deleteAllDataFromDatabases {
-//            //Creates front and backend
-            testClass.createTestData()
-        }
+//        UserController.deleteAllUsers()
+//        ListController.deleteAllLists()
+//        ItemController.deleteAllItems()
+////
+////        //Deletes back End
+//        let testClass = TestBackEndFuncs()
+//        testClass.deleteAllDataFromDatabases {
+////            //Creates front and backend
+//            testClass.createTestData()
+//        }
 //
 //        DrawerButton.appearance().tintColor = ColorConstants.secondaryColor
         

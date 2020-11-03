@@ -28,6 +28,7 @@
 		907B830124B7F7150098FCF0 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B830024B7F7150098FCF0 /* PersistenceManager.swift */; };
 		907B830424B7FDF00098FCF0 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B830224B7FDEF0098FCF0 /* User+CoreDataClass.swift */; };
 		907B830524B7FDF00098FCF0 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B830324B7FDF00098FCF0 /* User+CoreDataProperties.swift */; };
+		907D7ADF25508C7C0017508C /* SwiftUIListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907D7ADE25508C7C0017508C /* SwiftUIListViewController.swift */; };
 		90894C0A24B563E3006AFC40 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0924B563E3006AFC40 /* UserController.swift */; };
 		90894C0C24B566AA006AFC40 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0B24B566AA006AFC40 /* ListController.swift */; };
 		90894C1024B566DC006AFC40 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0F24B566DC006AFC40 /* ItemController.swift */; };
@@ -87,6 +88,7 @@
 		907B830024B7F7150098FCF0 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		907B830224B7FDEF0098FCF0 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		907B830324B7FDF00098FCF0 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		907D7ADE25508C7C0017508C /* SwiftUIListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIListViewController.swift; sourceTree = "<group>"; };
 		90894C0924B563E3006AFC40 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		90894C0B24B566AA006AFC40 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
 		90894C0F24B566DC006AFC40 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				90A0CE9F24AD6C4700F0BC4B /* DrawerVIews */,
 				90021C5724AC2DC600EFBC4B /* Cells */,
 				90202FFB24AC16ED00A9D357 /* MainViewController.swift */,
+				907D7ADE25508C7C0017508C /* SwiftUIListViewController.swift */,
 				90202FFD24AC16ED00A9D357 /* Main.storyboard */,
 				90A0CE9D24AD674A00F0BC4B /* MainRootViewController.swift */,
 				90C0389C24B2CD6A004C62F9 /* ListViewController.swift */,
@@ -436,6 +439,7 @@
 				90A0CEA524AD874500F0BC4B /* RotatableView.swift in Sources */,
 				900D027824C6538200EF5B13 /* TestBackendCalls.swift in Sources */,
 				90202FF824AC16ED00A9D357 /* AppDelegate.swift in Sources */,
+				907D7ADF25508C7C0017508C /* SwiftUIListViewController.swift in Sources */,
 				9020302124AC262A00A9D357 /* SectionHeaderView.swift in Sources */,
 				9020300224AC16ED00A9D357 /* Shared_Shopping_List.xcdatamodeld in Sources */,
 				9093567D24AC2B4A009E2F1E /* GlobalConstants.swift in Sources */,

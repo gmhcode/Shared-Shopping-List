@@ -10,33 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="Wb2-tS-eBG">
-            <objects>
-                <viewController id="4vj-tx-2JL" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HdK-U5-moc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCK-tN-4Ry">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                            </containerView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="E9K-QO-07Y"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="E9K-QO-07Y" firstAttribute="trailing" secondItem="tCK-tN-4Ry" secondAttribute="trailing" id="0eg-OU-OFI"/>
-                            <constraint firstItem="tCK-tN-4Ry" firstAttribute="leading" secondItem="E9K-QO-07Y" secondAttribute="leading" id="6eR-Yi-XKS"/>
-                            <constraint firstItem="E9K-QO-07Y" firstAttribute="bottom" secondItem="tCK-tN-4Ry" secondAttribute="bottom" id="Z3V-1c-6tD"/>
-                            <constraint firstItem="tCK-tN-4Ry" firstAttribute="top" secondItem="E9K-QO-07Y" secondAttribute="top" id="eo6-GZ-iXT"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="wvo-nY-oNz"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="thb-fg-SZa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="583" y="-1089"/>
-        </scene>
         <!--Group Name-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -487,12 +460,28 @@
                     </navigationBar>
                     <connections>
                         <segue destination="OUy-Wk-UBn" kind="show" identifier="toTestingVC" id="DUk-z8-QZ2"/>
-                        <segue destination="4vj-tx-2JL" kind="relationship" relationship="rootViewController" id="2it-H7-nmJ"/>
+                        <segue destination="dLS-T3-Due" kind="relationship" relationship="rootViewController" id="cyx-c0-BnE"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S9-01-Zom" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1136" y="-1090"/>
+        </scene>
+        <!--SwiftUI List View Controller-->
+        <scene sceneID="4N9-F5-Xh7">
+            <objects>
+                <viewController id="dLS-T3-Due" customClass="SwiftUIListViewController" customModule="Shared_Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xpp-pc-Cwx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="506-kV-RXA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="imc-DC-ywG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="miT-HJ-ZuO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="67" y="-1090"/>
         </scene>
     </scenes>
     <resources>

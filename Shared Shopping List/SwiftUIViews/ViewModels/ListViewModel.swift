@@ -19,7 +19,7 @@ class ListViewModel: ObservableObject {
     
     func fetchLists() {
         
-        let url = URL(string: "http://192.168.1.43:8081/lists")!
+        let url = URL(string: "http://192.168.1.2:8081/lists")!
 
         
         self.cancellable = URLSession.shared.dataTaskPublisher(for: url)
