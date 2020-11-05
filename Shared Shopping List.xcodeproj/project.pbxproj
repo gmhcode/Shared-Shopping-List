@@ -23,6 +23,9 @@
 		9038DA5D24BD264900E6216D /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038DA5B24BD264900E6216D /* Item+CoreDataClass.swift */; };
 		9038DA5E24BD264900E6216D /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038DA5C24BD264900E6216D /* Item+CoreDataProperties.swift */; };
 		904F52B7250078F60004EE99 /* ListControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904F52B6250078F60004EE99 /* ListControllerTests.swift */; };
+		905E142C2554A735004DDB75 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905E142B2554A735004DDB75 /* MotherView.swift */; };
+		905E14312554A8A4004DDB75 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905E14302554A8A4004DDB75 /* ViewRouter.swift */; };
+		905E14352554A941004DDB75 /* ListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905E14342554A941004DDB75 /* ListDetailView.swift */; };
 		9070BA7924BD27D1006101D1 /* List+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9070BA7724BD27D1006101D1 /* List+CoreDataClass.swift */; };
 		9070BA7A24BD27D1006101D1 /* List+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9070BA7824BD27D1006101D1 /* List+CoreDataProperties.swift */; };
 		907B830124B7F7150098FCF0 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B830024B7F7150098FCF0 /* PersistenceManager.swift */; };
@@ -83,6 +86,9 @@
 		9038DA5B24BD264900E6216D /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9038DA5C24BD264900E6216D /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		904F52B6250078F60004EE99 /* ListControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListControllerTests.swift; sourceTree = "<group>"; };
+		905E142B2554A735004DDB75 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
+		905E14302554A8A4004DDB75 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		905E14342554A941004DDB75 /* ListDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailView.swift; sourceTree = "<group>"; };
 		9070BA7724BD27D1006101D1 /* List+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9070BA7824BD27D1006101D1 /* List+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		907B830024B7F7150098FCF0 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -240,6 +246,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		905E142F2554A895004DDB75 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				905E14302554A8A4004DDB75 /* ViewRouter.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
 		9093567B24AC2AFD009E2F1E /* GlobalColors */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,9 +292,12 @@
 		90DBE4FA254CFA5300CCED55 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				905E142F2554A895004DDB75 /* Routers */,
 				90DBE4FC254CFA6B00CCED55 /* Cell */,
 				90DBE4FB254CFA6300CCED55 /* ViewModels */,
 				90DBE505254CFB1C00CCED55 /* ContentView.swift */,
+				905E14342554A941004DDB75 /* ListDetailView.swift */,
+				905E142B2554A735004DDB75 /* MotherView.swift */,
 			);
 			path = SwiftUIViews;
 			sourceTree = "<group>";
@@ -414,6 +431,7 @@
 				9038DA5D24BD264900E6216D /* Item+CoreDataClass.swift in Sources */,
 				90BB9B2C24C7D94400B87479 /* TestingVC.swift in Sources */,
 				902BE26324CA8887008C9E59 /* NotificationController.swift in Sources */,
+				905E14352554A941004DDB75 /* ListDetailView.swift in Sources */,
 				907B830124B7F7150098FCF0 /* PersistenceManager.swift in Sources */,
 				90C0389D24B2CD6A004C62F9 /* ListViewController.swift in Sources */,
 				90A0CEA124AD6C7500F0BC4B /* MainDrawerViewController.swift in Sources */,
@@ -422,12 +440,14 @@
 				9070BA7A24BD27D1006101D1 /* List+CoreDataProperties.swift in Sources */,
 				9038DA5E24BD264900E6216D /* Item+CoreDataProperties.swift in Sources */,
 				90FB0C1224C682E80064236D /* BackEndUtils.swift in Sources */,
+				905E14312554A8A4004DDB75 /* ViewRouter.swift in Sources */,
 				90DBE502254CFAF100CCED55 /* ListCell.swift in Sources */,
 				90A0CE9E24AD674A00F0BC4B /* MainRootViewController.swift in Sources */,
 				90A0CE9C24AC30BB00F0BC4B /* MainCollectionViewCell.swift in Sources */,
 				9095D41524E8B21500BD9E20 /* ListMemberController.swift in Sources */,
 				9038DA5224BD24C100E6216D /* ListMember+CoreDataProperties.swift in Sources */,
 				90DBE506254CFB1C00CCED55 /* ContentView.swift in Sources */,
+				905E142C2554A735004DDB75 /* MotherView.swift in Sources */,
 				9038DA5124BD24C100E6216D /* ListMember+CoreDataClass.swift in Sources */,
 				90894C0C24B566AA006AFC40 /* ListController.swift in Sources */,
 				90C0389F24B4C99C004C62F9 /* testyViewController.swift in Sources */,

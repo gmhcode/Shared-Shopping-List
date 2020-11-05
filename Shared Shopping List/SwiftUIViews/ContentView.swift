@@ -12,7 +12,7 @@ import Combine
 struct ContentView: View {
     
     @ObservedObject var listVM = ListViewModel()
-    
+    @EnvironmentObject var viewRouter : ViewRouter
     var body: some View {
         let color = 0.0
         List(listVM.lists.indices, id:\.self) { index in
@@ -22,13 +22,15 @@ struct ContentView: View {
             .onAppear(perform: {
                 UITableView.appearance().separatorColor = .clear
                 print("🚛",listVM.lists.count)
-            })
+            }).onTapGesture {
+                viewRouter.currentView = .view2
+            }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(ViewRouter())
     }
 }
 

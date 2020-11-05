@@ -15,7 +15,7 @@ class SwiftUIListViewController: UIViewController {
         super.viewDidLoad()
         
         let bottomConstraint = (view.frame.height * 0.8) - view.frame.height
-        let hostingView = UIHostingController(rootView: ContentView())
+        let hostingView = UIHostingController(rootView: MotherView().environmentObject(ViewRouter()))
         
         addChild(hostingView)
         view.addSubview(hostingView.view)
