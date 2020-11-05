@@ -21,6 +21,7 @@ struct ContentView: View {
             }
             .onAppear(perform: {
                 UITableView.appearance().separatorColor = .clear
+                print("🚛",listVM.lists.count)
             })
     }
 }
