@@ -18,9 +18,16 @@ struct ListDetailView: View {
     
     
     var body: some View {
-        VStack{
-            ForEach(listDetailViewModel.items) { item in
-                Text(item.name)
+//        VStack{
+//            ScrollView{
+        List {
+            ForEach(listDetailViewModel.contentDict.keys.sorted(by: >)) { key in
+                Section(header: Text(key)) {
+                    ForEach(listDetailViewModel.contentDict[key] ?? []) { val in
+                        Text(val.name)
+                        
+                    }
+                }
             }
         }
     }
@@ -28,7 +35,7 @@ struct ListDetailView: View {
 
 struct ListDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        let s = Listi(uuid: "GregID0", title: "Greg's list 0", listMasterID: "gregid")
+        let s = Listi(uuid: "GregID0", title: "Greg's list 0", listMasterID: "  ")
         ListDetailView(list: s)
     }
 }

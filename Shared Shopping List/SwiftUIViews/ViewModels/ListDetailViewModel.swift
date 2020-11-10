@@ -12,11 +12,12 @@ import Combine
 class ListDetailViewModel : ObservableObject {
     
     @Published var items: [CodableItem] = []
-    
+    @Published var contentDict : [String:[CodableItem]] = [:]
     var cancellable : AnyCancellable?
     
     init(listID:String) {
         fetchItems(by: listID)
+        
     }
     
     
@@ -32,9 +33,16 @@ class ListDetailViewModel : ObservableObject {
             })
             .catch{_ in Just([])}
             .sink(receiveCompletion: {_ in}, receiveValue: { items in
-                self.items = items
+                //                self.items = items
+                for item in items {
+                    if self.contentDict[item.store] == nil {
+                        self.contentDict[item.store] = [item]
+                    }else {
+                        self.contentDict[item.store]?.append(item)
+                    }
+                }
+                print(items.count)
             })
     }
-    
 }
 

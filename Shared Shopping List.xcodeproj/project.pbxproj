@@ -23,6 +23,7 @@
 		9038DA5D24BD264900E6216D /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038DA5B24BD264900E6216D /* Item+CoreDataClass.swift */; };
 		9038DA5E24BD264900E6216D /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038DA5C24BD264900E6216D /* Item+CoreDataProperties.swift */; };
 		9044ECDF255A1CCE0055C1BB /* ListDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044ECDE255A1CCE0055C1BB /* ListDetailViewModel.swift */; };
+		9044ECE3255A33970055C1BB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044ECE2255A33970055C1BB /* Extensions.swift */; };
 		904F52B7250078F60004EE99 /* ListControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904F52B6250078F60004EE99 /* ListControllerTests.swift */; };
 		905E142C2554A735004DDB75 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905E142B2554A735004DDB75 /* MotherView.swift */; };
 		905E14312554A8A4004DDB75 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905E14302554A8A4004DDB75 /* ViewRouter.swift */; };
@@ -88,6 +89,7 @@
 		9038DA5B24BD264900E6216D /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9038DA5C24BD264900E6216D /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9044ECDE255A1CCE0055C1BB /* ListDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewModel.swift; sourceTree = "<group>"; };
+		9044ECE2255A33970055C1BB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		904F52B6250078F60004EE99 /* ListControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListControllerTests.swift; sourceTree = "<group>"; };
 		905E142B2554A735004DDB75 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		905E14302554A8A4004DDB75 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				9020300524AC16F100A9D357 /* LaunchScreen.storyboard */,
 				9020300024AC16ED00A9D357 /* Shared_Shopping_List.xcdatamodeld */,
 				9020300824AC16F100A9D357 /* Info.plist */,
+				9044ECE2255A33970055C1BB /* Extensions.swift */,
 			);
 			path = "Shared Shopping List";
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				9038DA5E24BD264900E6216D /* Item+CoreDataProperties.swift in Sources */,
 				9044ECDF255A1CCE0055C1BB /* ListDetailViewModel.swift in Sources */,
 				90FB0C1224C682E80064236D /* BackEndUtils.swift in Sources */,
+				9044ECE3255A33970055C1BB /* Extensions.swift in Sources */,
 				905E14312554A8A4004DDB75 /* ViewRouter.swift in Sources */,
 				90DBE502254CFAF100CCED55 /* ListCell.swift in Sources */,
 				90A0CE9E24AD674A00F0BC4B /* MainRootViewController.swift in Sources */,
