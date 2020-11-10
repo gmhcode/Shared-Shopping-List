@@ -1,21 +1,22 @@
 //
-//  SwiftUIListViewController.swift
+//  SwiftUIListDetailsViewController.swift
 //  Shared Shopping List
 //
-//  Created by Greg Hughes on 11/2/20.
+//  Created by Greg Hughes on 11/9/20.
 //  Copyright © 2020 Greg Hughes. All rights reserved.
 //
 
 import UIKit
 import SwiftUI
-class SwiftUIListViewController: UIViewController {
-
+class SwiftUIListDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let bottomConstraint = (view.frame.height * 0.8) - view.frame.height
-        let hostingView = UIHostingController(rootView: MotherView().environmentObject(ViewRouter()))
+        
+        let s = Listi(uuid: "GregID0", title: "Greg's list 0", listMasterID: "gregid")
+        let hostingView = UIHostingController(rootView: ListDetailView(list: s))
         
         addChild(hostingView)
         view.addSubview(hostingView.view)

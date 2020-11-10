@@ -22,7 +22,7 @@ extension SList {
 
 }
 
-class CodableList : Codable {
+class CodableList : Codable, Identifiable {
     let uuid : String
     let title : String
     let listMasterID : String

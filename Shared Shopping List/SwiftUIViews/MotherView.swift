@@ -15,7 +15,7 @@ struct MotherView: View {
         case .view1:
             ContentView()
         case .view2:
-            ListDetailView()
+            ListDetailView(list: ListViewModel().lists[0])
         }
     }
 }

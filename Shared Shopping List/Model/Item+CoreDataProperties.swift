@@ -25,7 +25,7 @@ extension Item {
 
 }
 
-class CodableItem : Codable {
+class CodableItem : Codable, Identifiable {
     let listID : String
     let store : String
     let userSentId : String

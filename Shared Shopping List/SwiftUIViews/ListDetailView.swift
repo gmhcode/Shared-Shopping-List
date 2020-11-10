@@ -9,13 +9,26 @@
 import SwiftUI
 
 struct ListDetailView: View {
+    
+    @ObservedObject var listDetailViewModel: ListDetailViewModel
+    
+    init(list: Listi) {
+        listDetailViewModel = ListDetailViewModel(listID: list.uuid)
+    }
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            ForEach(listDetailViewModel.items) { item in
+                Text(item.name)
+            }
+        }
     }
 }
 
 struct ListDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ListDetailView()
+        let s = Listi(uuid: "GregID0", title: "Greg's list 0", listMasterID: "gregid")
+        ListDetailView(list: s)
     }
 }

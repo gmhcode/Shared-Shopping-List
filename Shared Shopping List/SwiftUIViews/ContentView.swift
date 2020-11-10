@@ -23,7 +23,8 @@ struct ContentView: View {
                 UITableView.appearance().separatorColor = .clear
                 print("🚛",listVM.lists.count)
             }).onTapGesture {
-                viewRouter.currentView = .view2
+//                viewRouter.currentView = .view2
+                SwiftUIListViewController.vc?.navigateToListDetails(listID: "123")
             }
     }
 }

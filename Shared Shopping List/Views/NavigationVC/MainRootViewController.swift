@@ -35,7 +35,7 @@ class MainRootViewController: UINavigationController {
 
 extension MainRootViewController {
     
-    func setupViewControllers(){
+    func setupViewControllers() {
         drawerContainerViewController = {
             // Load Storyboard
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
