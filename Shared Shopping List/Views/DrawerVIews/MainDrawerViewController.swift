@@ -48,8 +48,8 @@ class MainDrawerViewController: UIViewController{
     }
     
     @IBAction func topLeftButtonTapped(_ sender: Any) {
-        
-        NotificationController.post(name: .user, userInfo: ["user": UserController.currentUser!])
+        ListViewModel()
+//        NotificationController.post(name: .user, userInfo: ["user": UserController.currentUser!])
         
     }
     

@@ -9,14 +9,27 @@
 import UIKit
 import SwiftUI
 class SwiftUIListDetailsViewController: UIViewController {
-
+    var list : Listi
+    
+    init(list:Listi) {
+        self.list = list
+        super.init(nibName: nil, bundle: nil)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let bottomConstraint = (view.frame.height * 0.8) - view.frame.height
         
         let s = Listi(uuid: "GregID0", title: "Greg's list 0", listMasterID: "gregid")
-        let hostingView = UIHostingController(rootView: ListDetailView(list: s))
+        let hostingView = UIHostingController(rootView: ListDetailView(list: list))
         
         addChild(hostingView)
         view.addSubview(hostingView.view)

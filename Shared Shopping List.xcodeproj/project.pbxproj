@@ -24,6 +24,7 @@
 		9038DA5E24BD264900E6216D /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038DA5C24BD264900E6216D /* Item+CoreDataProperties.swift */; };
 		9044ECDF255A1CCE0055C1BB /* ListDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044ECDE255A1CCE0055C1BB /* ListDetailViewModel.swift */; };
 		9044ECE3255A33970055C1BB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044ECE2255A33970055C1BB /* Extensions.swift */; };
+		9044ECE8255B8C5F0055C1BB /* AddItemPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044ECE7255B8C5E0055C1BB /* AddItemPopover.swift */; };
 		904F52B7250078F60004EE99 /* ListControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904F52B6250078F60004EE99 /* ListControllerTests.swift */; };
 		905E142C2554A735004DDB75 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905E142B2554A735004DDB75 /* MotherView.swift */; };
 		905E14312554A8A4004DDB75 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905E14302554A8A4004DDB75 /* ViewRouter.swift */; };
@@ -90,6 +91,7 @@
 		9038DA5C24BD264900E6216D /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9044ECDE255A1CCE0055C1BB /* ListDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewModel.swift; sourceTree = "<group>"; };
 		9044ECE2255A33970055C1BB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9044ECE7255B8C5E0055C1BB /* AddItemPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemPopover.swift; sourceTree = "<group>"; };
 		904F52B6250078F60004EE99 /* ListControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListControllerTests.swift; sourceTree = "<group>"; };
 		905E142B2554A735004DDB75 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		905E14302554A8A4004DDB75 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
@@ -253,6 +255,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		9044ECE6255B8C1E0055C1BB /* ExperimentalViews */ = {
+			isa = PBXGroup;
+			children = (
+				9044ECE7255B8C5E0055C1BB /* AddItemPopover.swift */,
+			);
+			path = ExperimentalViews;
+			sourceTree = "<group>";
+		};
 		905E142F2554A895004DDB75 /* Routers */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +326,7 @@
 		90DBE4FA254CFA5300CCED55 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				9044ECE6255B8C1E0055C1BB /* ExperimentalViews */,
 				905E142F2554A895004DDB75 /* Routers */,
 				90DBE4FC254CFA6B00CCED55 /* Cell */,
 				90DBE4FB254CFA6300CCED55 /* ViewModels */,
@@ -491,6 +502,7 @@
 				9020302124AC262A00A9D357 /* SectionHeaderView.swift in Sources */,
 				9020300224AC16ED00A9D357 /* Shared_Shopping_List.xcdatamodeld in Sources */,
 				9093567D24AC2B4A009E2F1E /* GlobalConstants.swift in Sources */,
+				9044ECE8255B8C5F0055C1BB /* AddItemPopover.swift in Sources */,
 				90894C0A24B563E3006AFC40 /* UserController.swift in Sources */,
 				90C038A224B4DE55004C62F9 /* testTableViewController.swift in Sources */,
 				90202FFA24AC16ED00A9D357 /* SceneDelegate.swift in Sources */,

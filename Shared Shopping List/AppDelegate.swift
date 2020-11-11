@@ -17,10 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         
-//        UIButton.appearance().layer.borderWidth = 1
+        UIButton.appearance().layer.borderWidth = 1
 //        UIButton.appearance().layer.borderColor = ColorConstants.borderColor.cgColor
-//        //        self.layer.borderColor = ColorConstants.borderColor.cgColor
-        //Deletes Local hello my name is gregory michaek hughes
+        //        self.layer.borderColor = ColorConstants.borderColor.cgColor
+//        Deletes Local hello my name is gregory michaek hughes
 //        UserController.deleteAllUsers()
 //        ListController.deleteAllLists()
 //        ItemController.deleteAllItems()
@@ -31,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ////            //Creates front and backend
 //            testClass.createTestData()
 //        }
-//
-//        DrawerButton.appearance().tintColor = ColorConstants.secondaryColor
+
+        DrawerButton.appearance().tintColor = ColorConstants.secondaryColor
         
         
         return true

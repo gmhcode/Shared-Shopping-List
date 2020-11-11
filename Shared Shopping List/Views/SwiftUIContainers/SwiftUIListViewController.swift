@@ -16,6 +16,11 @@ class SwiftUIListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SwiftUIListViewController.vc = self
+        
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let bottomConstraint = (view.frame.height * 0.8) - view.frame.height
         let hostingView = UIHostingController(rootView: MotherView().environmentObject(ViewRouter()))
         
@@ -28,13 +33,10 @@ class SwiftUIListViewController: UIViewController {
         hostingView.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         hostingView.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         hostingView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: bottomConstraint).isActive = true
-
     }
     
-    
-    
-    func navigateToListDetails(listID: String) {
-        navigationController?.pushViewController(SwiftUIListDetailsViewController(), animated: true)
+    func navigateToListDetails(list: Listi) {
+        navigationController?.pushViewController(SwiftUIListDetailsViewController(list: list), animated: true)
         
     }
 

@@ -91,7 +91,7 @@ class TestBackEndFuncs {
         var counter = 0
         for i in users {
             for list in lists {
-                let newNum = counter + 1
+                let newNum = counter
                 counter = newNum > 2 ? 0 : newNum
                 _ = ItemController.BackEnd.shared.createItemFrontAndBack(name: "Item \(counter)\(i.name), \(list.title)", store: stores[counter], userSentID: i.uuid, listID: list.uuid, uuid: UUID().uuidString, completion: { item in
                     

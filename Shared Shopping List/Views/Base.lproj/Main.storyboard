@@ -325,35 +325,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="839.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rv7-3g-3CE">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rv7-3g-3CE">
                                 <rect key="frame" x="106" y="10" width="202" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="TestingVC"/>
                                 <connections>
                                     <action selector="testingVCButtonTapped:" destination="AVQ-i0-ARC" eventType="touchUpInside" id="y55-6d-b60"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ah-8R-lOY" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="65" width="159" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="topLeftButtonTapped:" destination="AVQ-i0-ARC" eventType="touchUpInside" id="qaT-5M-nad"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="slP-Yy-r6e" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="125" width="159" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yd9-vk-gBL" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="214" y="65" width="159" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yd9-vk-gBL" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="231" y="72" width="159" height="48"/>
                                 <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Button"/>
@@ -361,23 +342,35 @@
                                     <action selector="topRightButtonTapped:" destination="AVQ-i0-ARC" eventType="touchUpInside" id="4fC-or-5bZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjh-kk-9eS" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="214" y="125" width="159" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjh-kk-9eS" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="231" y="135" width="159" height="48"/>
                                 <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Button"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h92-qy-W5e" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="181" width="159" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTP-da-xwH" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="231" y="198" width="159" height="48"/>
                                 <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Button"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTP-da-xwH" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="214" y="181" width="159" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ah-8R-lOY" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="24" y="72" width="159" height="44"/>
+                                <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="topLeftButtonTapped:" destination="AVQ-i0-ARC" eventType="touchUpInside" id="qaT-5M-nad"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="slP-Yy-r6e" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="24" y="131" width="159" height="48"/>
+                                <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h92-qy-W5e" customClass="DrawerButton" customModule="Shared_Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="24" y="194" width="159" height="48"/>
                                 <color key="backgroundColor" red="0.807980001" green="0.81542605160000003" blue="0.83530443909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Button"/>
@@ -385,6 +378,36 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UpX-fO-NFS"/>
                         <color key="backgroundColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Xjh-kk-9eS" firstAttribute="width" secondItem="lI5-sR-Lyn" secondAttribute="width" multiplier="0.384058" id="1nf-fb-0jU"/>
+                            <constraint firstItem="BTP-da-xwH" firstAttribute="width" secondItem="lI5-sR-Lyn" secondAttribute="width" multiplier="0.384058" id="1x4-uv-3S5"/>
+                            <constraint firstItem="Yd9-vk-gBL" firstAttribute="height" secondItem="lI5-sR-Lyn" secondAttribute="height" multiplier="0.0571769" id="6br-Zy-Cvd"/>
+                            <constraint firstItem="Yd9-vk-gBL" firstAttribute="width" secondItem="lI5-sR-Lyn" secondAttribute="width" multiplier="0.384058" id="7SC-c1-LtC"/>
+                            <constraint firstItem="Rv7-3g-3CE" firstAttribute="centerX" secondItem="UpX-fO-NFS" secondAttribute="centerX" id="8k8-BR-LMm"/>
+                            <constraint firstItem="Rv7-3g-3CE" firstAttribute="height" secondItem="lI5-sR-Lyn" secondAttribute="height" multiplier="0.0559857" id="9j3-GP-1EJ"/>
+                            <constraint firstItem="4ah-8R-lOY" firstAttribute="centerX" secondItem="UpX-fO-NFS" secondAttribute="centerX" multiplier="0.5" id="BAT-qe-0nY"/>
+                            <constraint firstItem="h92-qy-W5e" firstAttribute="width" secondItem="lI5-sR-Lyn" secondAttribute="width" multiplier="0.384058" id="BtO-9x-xxc"/>
+                            <constraint firstItem="slP-Yy-r6e" firstAttribute="width" secondItem="lI5-sR-Lyn" secondAttribute="width" multiplier="0.384058" id="EJD-24-KZu"/>
+                            <constraint firstItem="h92-qy-W5e" firstAttribute="centerX" secondItem="UpX-fO-NFS" secondAttribute="centerX" multiplier="0.5" id="EU8-yd-6ut"/>
+                            <constraint firstItem="BTP-da-xwH" firstAttribute="centerX" secondItem="UpX-fO-NFS" secondAttribute="centerX" multiplier="1.5" id="G3i-aq-RyZ"/>
+                            <constraint firstItem="slP-Yy-r6e" firstAttribute="top" secondItem="4ah-8R-lOY" secondAttribute="bottom" constant="15" id="IeQ-4Q-0ao"/>
+                            <constraint firstItem="slP-Yy-r6e" firstAttribute="height" secondItem="lI5-sR-Lyn" secondAttribute="height" multiplier="0.0571769" id="LBj-68-cF0"/>
+                            <constraint firstItem="Rv7-3g-3CE" firstAttribute="top" secondItem="lI5-sR-Lyn" secondAttribute="top" constant="10" id="Lqp-7H-IFY"/>
+                            <constraint firstItem="Yd9-vk-gBL" firstAttribute="top" secondItem="Rv7-3g-3CE" secondAttribute="bottom" constant="15" id="Oll-g7-gSN"/>
+                            <constraint firstItem="4ah-8R-lOY" firstAttribute="width" secondItem="lI5-sR-Lyn" secondAttribute="width" multiplier="0.384058" id="PSb-DU-e7z"/>
+                            <constraint firstItem="Rv7-3g-3CE" firstAttribute="width" secondItem="lI5-sR-Lyn" secondAttribute="width" multiplier="0.487923" id="Qke-pK-RxZ"/>
+                            <constraint firstItem="BTP-da-xwH" firstAttribute="top" secondItem="Xjh-kk-9eS" secondAttribute="bottom" constant="15" id="SFB-ml-DnV"/>
+                            <constraint firstItem="4ah-8R-lOY" firstAttribute="top" secondItem="Rv7-3g-3CE" secondAttribute="bottom" constant="15" id="YaN-1R-bSc"/>
+                            <constraint firstItem="h92-qy-W5e" firstAttribute="height" secondItem="lI5-sR-Lyn" secondAttribute="height" multiplier="0.0571769" id="eaq-3t-KkB"/>
+                            <constraint firstItem="slP-Yy-r6e" firstAttribute="centerX" secondItem="UpX-fO-NFS" secondAttribute="centerX" multiplier="0.5" id="evV-kZ-ftU"/>
+                            <constraint firstItem="h92-qy-W5e" firstAttribute="top" secondItem="slP-Yy-r6e" secondAttribute="bottom" constant="15" id="mJw-Pa-deJ"/>
+                            <constraint firstItem="4ah-8R-lOY" firstAttribute="height" secondItem="lI5-sR-Lyn" secondAttribute="height" multiplier="0.0524122" id="pEF-Fh-5Qc"/>
+                            <constraint firstItem="Xjh-kk-9eS" firstAttribute="top" secondItem="Yd9-vk-gBL" secondAttribute="bottom" constant="15" id="sKw-sR-GDE"/>
+                            <constraint firstItem="Xjh-kk-9eS" firstAttribute="centerX" secondItem="UpX-fO-NFS" secondAttribute="centerX" multiplier="1.5" id="sVa-C4-jc3"/>
+                            <constraint firstItem="BTP-da-xwH" firstAttribute="height" secondItem="lI5-sR-Lyn" secondAttribute="height" multiplier="0.0571769" id="th3-M0-kJg"/>
+                            <constraint firstItem="Xjh-kk-9eS" firstAttribute="height" secondItem="lI5-sR-Lyn" secondAttribute="height" multiplier="0.0571769" id="ucW-6E-BNY"/>
+                            <constraint firstItem="Yd9-vk-gBL" firstAttribute="centerX" secondItem="UpX-fO-NFS" secondAttribute="centerX" multiplier="1.5" id="vLC-6J-4bK"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="arrowButton" destination="3xT-n9-3Cy" id="3DT-jN-21L"/>

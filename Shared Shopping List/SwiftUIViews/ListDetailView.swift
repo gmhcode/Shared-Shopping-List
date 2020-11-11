@@ -13,13 +13,11 @@ struct ListDetailView: View {
     @ObservedObject var listDetailViewModel: ListDetailViewModel
     
     init(list: Listi) {
-        listDetailViewModel = ListDetailViewModel(listID: list.uuid)
+        listDetailViewModel = ListDetailViewModel(list: list)
     }
     
     
     var body: some View {
-//        VStack{
-//            ScrollView{
         List {
             ForEach(listDetailViewModel.contentDict.keys.sorted(by: >)) { key in
                 Section(header: Text(key)) {

@@ -26,6 +26,14 @@ extension Item {
 }
 
 class CodableItem : Codable, Identifiable {
+    internal init(listID: String, store: String, userSentId: String, name: String, uuid: String) {
+        self.listID = listID
+        self.store = store
+        self.userSentId = userSentId
+        self.name = name
+        self.uuid = uuid
+    }
+    
     let listID : String
     let store : String
     let userSentId : String

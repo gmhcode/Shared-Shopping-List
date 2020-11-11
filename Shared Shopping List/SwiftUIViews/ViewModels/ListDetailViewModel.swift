@@ -15,9 +15,8 @@ class ListDetailViewModel : ObservableObject {
     @Published var contentDict : [String:[CodableItem]] = [:]
     var cancellable : AnyCancellable?
     
-    init(listID:String) {
-        fetchItems(by: listID)
-        
+    init(list:Listi) {
+        fetchItems(by: list.uuid)
     }
     
     
