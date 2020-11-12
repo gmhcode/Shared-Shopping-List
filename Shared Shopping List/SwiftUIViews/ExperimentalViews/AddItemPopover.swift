@@ -12,18 +12,25 @@ struct AddItemPopover: View {
     
     @State var storeName : String = ""
     @State var itemName : String = ""
-    
+    @State var list: String = "List Name"
     
     var body: some View {
         VStack {
+            Text(list)
+                .font(.title)
+                .padding(.bottom,10)
             HStack {
                 Text("Store")
+                    .padding(.leading)
                 Spacer()
             }
             TextField("Enter Store Name (if any)", text: $storeName)
                 .padding()
+                .padding(.bottom,30)
+            
             HStack {
                 Text("Item")
+                    .padding(.leading)
                 Spacer()
             }
             if #available(iOS 14.0, *) {
@@ -35,11 +42,20 @@ struct AddItemPopover: View {
             } else {
                 TextField("Enter Item Name", text: $itemName)
                     .padding()
-                // Fallback on earlier versions
-                
             }
-            
-            
+            Button(action: {
+                
+            }, label: {
+                HStack {
+                    Text("Add Item")
+                        .padding(20)
+                }
+            }).overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.black, lineWidth: 2)
+            )
+            .padding(.top,20)
+            Spacer()
         }
     }
 }
