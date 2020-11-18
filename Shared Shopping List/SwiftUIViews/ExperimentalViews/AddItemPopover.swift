@@ -12,11 +12,13 @@ struct AddItemPopover: View {
     
     @State var storeName : String = ""
     @State var itemName : String = ""
-    @State var list: String = "List Name"
+    @Binding var addItem : Bool
+//    @State var list: Listi
+    @ObservedObject var listDetailViewModel: ListDetailViewModel
     
     var body: some View {
             VStack {
-                Text(list)
+                Text(listDetailViewModel.list.title)
                     .font(.title)
                     .padding(.bottom,10)
                 HStack {
@@ -44,11 +46,19 @@ struct AddItemPopover: View {
                         .padding()
                 }
                 Button(action: {
+                    listDetailViewModel.writeItem(name: itemName, store: storeName, userSentID: mainUser.uuid, listID: listDetailViewModel.list.uuid, uuid: "") {_ in
+                        
+                    }
+                    
+                    addItem.toggle()
+                    
+                    
                     
                 }, label: {
                     HStack {
                         Text("Add Item")
                             .padding(20)
+                        
                     }
                 }).overlay(
                     RoundedRectangle(cornerRadius: 10)
@@ -62,6 +72,8 @@ struct AddItemPopover: View {
 
 struct AddItemPopover_Previews: PreviewProvider {
     static var previews: some View {
-        AddItemPopover()
+        let s = Listi(uuid: "GregID0", title: "Greg's list 0", listMasterID: "gregid")
+        
+        AddItemPopover(addItem: .constant(false), listDetailViewModel: ListDetailViewModel(list: s))
     }
 }

@@ -10,23 +10,24 @@ import SwiftUI
 
 struct ShoppingEditSwitches: View {
     
-    @State var isOn = true
+    @State var isShopping = true
+    @State var isEditing = false
     
     var body: some View {
         VStack {
             HStack {
                 Spacer()
                 VStack {
-                    Text("Hello")
-                    Toggle(isOn: $isOn) {
+                    Text("Go Shopping")
+                    Toggle(isOn: $isShopping) {
                         
                     }
                     .labelsHidden()
                 }
                 Spacer()
                 VStack {
-                    Text("Hello")
-                    Toggle(isOn: $isOn) {
+                    Text("Edit List")
+                    Toggle(isOn: $isEditing) {
                         
                     }
                     .labelsHidden()

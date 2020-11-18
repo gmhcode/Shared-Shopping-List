@@ -24,6 +24,12 @@ extension User {
 }
 
 class CodableUser : Codable {
+    internal init(uuid: String, name: String, email: String) {
+        self.uuid = uuid
+        self.name = name
+        self.email = email
+    }
+    
     let uuid : String
     let name : String
     let email : String

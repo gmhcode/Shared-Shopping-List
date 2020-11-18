@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+let mainUser = CodableUser(uuid: "gregid", name: "Greg", email: "greg@greg.com")
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        
         
         UIButton.appearance().layer.borderWidth = 1
 //        UIButton.appearance().layer.borderColor = ColorConstants.borderColor.cgColor

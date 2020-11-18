@@ -36,47 +36,47 @@ class MainRootViewController: UINavigationController {
 
 extension MainRootViewController {
     
-    func setupViewControllers() {
-        drawerContainerViewController = {
-            // Load Storyboard
-            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            
-            // Instantiate View Controller
-            let viewController = storyboard.instantiateViewController(withIdentifier: "DrawerContainerViewController") as! DrawerContainerViewController
-            
-            // Add View Controller as Child View Controller
-            viewController.view.frame = drawerView.bounds
-            viewController.view.layer.cornerRadius = 10
-            viewController.view.layer.borderWidth = 1
-            viewController.view.layer.borderColor = #colorLiteral(red: 0.2134257277, green: 0.2134257277, blue: 0.2134257277, alpha: 1)
-            viewController.view.layer.masksToBounds = true
-            
-//            self.addChild(viewController)
-            
-            return viewController
-        }()
-    }
 //    func setupViewControllers() {
 //        drawerContainerViewController = {
 //            // Load Storyboard
 //            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//
+//            
 //            // Instantiate View Controller
 //            let viewController = storyboard.instantiateViewController(withIdentifier: "DrawerContainerViewController") as! DrawerContainerViewController
-//
+//            
 //            // Add View Controller as Child View Controller
 //            viewController.view.frame = drawerView.bounds
 //            viewController.view.layer.cornerRadius = 10
 //            viewController.view.layer.borderWidth = 1
 //            viewController.view.layer.borderColor = #colorLiteral(red: 0.2134257277, green: 0.2134257277, blue: 0.2134257277, alpha: 1)
 //            viewController.view.layer.masksToBounds = true
-//
+//            
 ////            self.addChild(viewController)
-//
+//            
 //            return viewController
 //        }()
-//        let newView = addView(uiview: drawerContainerViewController)
 //    }
+    func setupViewControllers() {
+        drawerContainerViewController = {
+            // Load Storyboard
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+
+            // Instantiate View Controller
+            let viewController = storyboard.instantiateViewController(withIdentifier: "DrawerContainerViewController") as! DrawerContainerViewController
+
+            // Add View Controller as Child View Controller
+            viewController.view.frame = drawerView.bounds
+            viewController.view.layer.cornerRadius = 10
+            viewController.view.layer.borderWidth = 1
+            viewController.view.layer.borderColor = #colorLiteral(red: 0.2134257277, green: 0.2134257277, blue: 0.2134257277, alpha: 1)
+            viewController.view.layer.masksToBounds = true
+
+//            self.addChild(viewController)
+
+            return viewController
+        }()
+        let newView = addView(uiview: drawerContainerViewController)
+    }
     
     func addView(uiview: DrawerContainerViewController) -> UIHostingController<ShoppingEditSwitches> {
 //        let bottomConstraint = (view.frame.height * 0.8) - view.frame.height
