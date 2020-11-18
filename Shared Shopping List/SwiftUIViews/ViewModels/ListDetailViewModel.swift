@@ -46,23 +46,41 @@ class ListDetailViewModel : ObservableObject {
             })
     }
     
-    func writeItem(name:String, store:String,userSentID:String,listID:String, uuid:String,completion: @escaping (Item) ->()) {
+    func writeItem(name:String, store:String,userSentID:String,listID:String, uuid:String/*,completion: @escaping (Item) ->()*/) -> Future<CodableItem,Error>{
         let item = ItemController.createItem(name: name, store: store, userSentID: userSentID, listID: listID, uuid: "")
-        ItemController.BackEnd.shared.createItem(item: item) { (item) in
-            guard let item = item else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            let citem = CodableItem(listID: item.listID, store: item.store, userSentId: item.userSentId, name: item.name, uuid: item.uuid)
-            DispatchQueue.main.async {
-                if self.contentDict[citem.store] == nil {
-                    self.contentDict[item.store] = [citem]
-                }else {
-                    self.contentDict[item.store]?.append(citem)
+        
+        return Future<CodableItem,Error> { promise in
+            ItemController.BackEnd.shared.createItem(item: item) { (item) in
+                guard let item = item else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");return}
+                let citem = CodableItem(listID: item.listID, store: item.store, userSentId: item.userSentId, name: item.name, uuid: item.uuid)
+                DispatchQueue.main.async {
+                    if self.contentDict[citem.store] == nil {
+                        self.contentDict[citem.store] = [citem]
+                    }else {
+                        self.contentDict[citem.store]?.append(citem)
+                    }
+                    promise(.success(citem))
                 }
             }
             
-            completion(item)
         }
+        
     }
     
-    
+    func deleteItem(item: CodableItem) -> Future<Item,Error>{
+        return Future<Item,Error> { promise in
+            
+            ItemController.BackEnd.shared.deleteItem(item: item) { [weak self] (item) in
+                guard let item = item else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                DispatchQueue.main.async { [weak self] in
+                    self?.contentDict[item.store]?.removeAll(where: {$0.uuid == item.uuid})
+                    if self?.contentDict[item.store]?.isEmpty == true {
+                        self?.contentDict[item.store] = nil
+                    }
+                    promise(.success(item))
+                }
+            }
+        }
+    }
 }
 

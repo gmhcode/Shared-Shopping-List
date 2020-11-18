@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIButton.appearance().layer.borderWidth = 1
 //        UIButton.appearance().layer.borderColor = ColorConstants.borderColor.cgColor
         //        self.layer.borderColor = ColorConstants.borderColor.cgColor
-//        Deletes Local hello my name is gregory michaek hughes
+//        Deletes Local hello my name is gregory michael hughes
 //        UserController.deleteAllUsers()
 //        ListController.deleteAllLists()
 //        ItemController.deleteAllItems()
@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let testClass = TestBackEndFuncs()
 //        testClass.deleteAllDataFromDatabases {
 ////            //Creates front and backend
+//
 //            testClass.createTestData()
 //        }
 

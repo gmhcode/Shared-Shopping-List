@@ -75,6 +75,11 @@ protocol BackEndRequester {
 
 
 extension BackEndRequester {
+    /**
+    Call this function to grok some globs.
+     - Parameter requestMethod: delete, get, etc...
+     - Parameter pathComponents:  The kind of class we are requesting for, eg BackEndUtils.PathComponent.item.rawValue
+    */
     func networkCall(objectToSend: MyType?, queryItems: [URLQueryItem], pathComponents: [String], requestMethod: BackEndUtils.RequestMethod, completion:@escaping ([MyType]?)->()) {
         
         guard let url = createUrl(queryItems: queryItems, pathComponents: pathComponents) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}

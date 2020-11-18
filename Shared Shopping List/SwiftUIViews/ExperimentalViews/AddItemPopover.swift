@@ -45,26 +45,42 @@ struct AddItemPopover: View {
                     TextField("Enter Item Name", text: $itemName)
                         .padding()
                 }
-                Button(action: {
-                    listDetailViewModel.writeItem(name: itemName, store: storeName, userSentID: mainUser.uuid, listID: listDetailViewModel.list.uuid, uuid: "") {_ in
-                        
-                    }
-                    
-                    addItem.toggle()
-                    
-                    
-                    
-                }, label: {
-                    HStack {
-                        Text("Add Item")
-                            .padding(20)
-                        
-                    }
-                }).overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.black, lineWidth: 2)
-                )
-                .padding(.top,20)
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        addItem.toggle()
+                    }, label: {
+                        HStack {
+                            Text("Cancel")
+                                .padding(20)
+                            
+                        }
+                    })
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.black, lineWidth: 2)
+                    )
+//                    .padding(.top,20)
+                    Spacer()
+                    Button(action: {
+                        if itemName.trimmingCharacters(in: .whitespaces) != "" {
+                            listDetailViewModel.writeItem(name: itemName, store: storeName, userSentID: mainUser.uuid, listID: listDetailViewModel.list.uuid, uuid: "")
+                            
+                            addItem.toggle()
+                        }
+                    }, label: {
+                        HStack {
+                            Text("Add Item")
+                                .padding(20)
+                            
+                        }
+                    }).overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.black, lineWidth: 2)
+                    )
+//                    .padding(.top,20)
+                    Spacer()
+                }.padding()
                 
             }
     }

@@ -12,6 +12,7 @@ struct ListDetailView: View {
     
     @ObservedObject var listDetailViewModel: ListDetailViewModel
     @State var addItem: Bool = false
+    @State var removingItems = false
     
     
     init(list: Listi) {
@@ -26,24 +27,49 @@ struct ListDetailView: View {
                 HStack {
                     Spacer()
                     Button(action: {
+                        removingItems = false
                         addItem.toggle()
                     }) {
                         Text("Add Item")
                     }
                     Spacer()
                     Button(action: {
-                        
+                        addItem = false
+                        removingItems.toggle()
                     }) {
-                        Text("Remove Item")
+                        Text("Remove Items")
                     }
                     Spacer()
                 }
                 List {
                     ForEach(listDetailViewModel.contentDict.keys.sorted(by: >)) { key in
                         Section(header: Text(key)) {
-                            ForEach(listDetailViewModel.contentDict[key] ?? []) { val in
-                                Text(val.name)
-                                
+                            if removingItems {
+                                ForEach(listDetailViewModel.contentDict[key] ?? []) { val in
+                                    HStack {
+                                        Text(val.name)
+                                        Spacer()
+                                        Button(action: {
+                                            listDetailViewModel.deleteItem(item: val)
+                                        }) {
+                                            Text("Remove").padding()
+                                                .overlay(
+                                                    RoundedRectangle(cornerRadius: 10)
+                                                        .stroke(Color.red, lineWidth: 2)
+                                                )
+                                        }.padding()
+                                        
+                                    }
+                                    
+                                }.overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.red, lineWidth: 2)
+                                )
+                            } else {
+                                ForEach(listDetailViewModel.contentDict[key] ?? []) { val in
+                                    Text(val.name)
+                                    
+                                }
                             }
                         }
                     }
@@ -57,9 +83,7 @@ struct ListDetailView: View {
                             .stroke(Color.black, lineWidth: 2)
                     )
             }
-            
         }
-        
     }
 }
 

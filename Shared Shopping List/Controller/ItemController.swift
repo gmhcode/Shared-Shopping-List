@@ -156,6 +156,15 @@ class ItemController {
             let params : [String:Any] = ["listID":item.listID,"store":item.store,"userSentId":item.userSentId,"name":item.name,"uuid":item.uuid]
             return params
         }
+        func deleteItem(item: CodableItem, completion:@escaping(Item?)->()) {
+            
+            networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.item.rawValue, item.uuid], requestMethod: .delete) { (items) in
+                guard let item = items?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
+                
+                print("createList: ", items as Any)
+                completion(item)
+            }
+        }
         
         func createItem(item: Item, completion:@escaping(Item?)->()) {
             
