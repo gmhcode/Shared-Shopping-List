@@ -9,7 +9,8 @@
 import UIKit
 
 class DrawerContainerViewController: UIViewController {
-
+    @IBOutlet weak var containerView: UIView!
+    
     @IBOutlet weak var arrowButton: DrawerButton!
     
     override func viewDidLoad() {

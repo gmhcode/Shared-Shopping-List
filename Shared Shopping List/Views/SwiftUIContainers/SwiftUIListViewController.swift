@@ -35,6 +35,8 @@ class SwiftUIListViewController: UIViewController {
         hostingView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: bottomConstraint).isActive = true
     }
     
+    
+    
     func navigateToListDetails(list: Listi) {
         navigationController?.pushViewController(SwiftUIListDetailsViewController(list: list), animated: true)
         

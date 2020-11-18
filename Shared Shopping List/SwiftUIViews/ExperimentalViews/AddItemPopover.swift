@@ -15,48 +15,48 @@ struct AddItemPopover: View {
     @State var list: String = "List Name"
     
     var body: some View {
-        VStack {
-            Text(list)
-                .font(.title)
-                .padding(.bottom,10)
-            HStack {
-                Text("Store")
-                    .padding(.leading)
-                Spacer()
-            }
-            TextField("Enter Store Name (if any)", text: $storeName)
-                .padding()
-                .padding(.bottom,30)
-            
-            HStack {
-                Text("Item")
-                    .padding(.leading)
-                Spacer()
-            }
-            if #available(iOS 14.0, *) {
-                TextField("Enter Item Name", text: $itemName)
-                    .padding()
-                    .onChange(of: itemName, perform: { value in
-                        print(itemName)
-                    })
-            } else {
-                TextField("Enter Item Name", text: $itemName)
-                    .padding()
-            }
-            Button(action: {
-                
-            }, label: {
+            VStack {
+                Text(list)
+                    .font(.title)
+                    .padding(.bottom,10)
                 HStack {
-                    Text("Add Item")
-                        .padding(20)
+                    Text("Store")
+                        .padding(.leading)
+                    Spacer()
                 }
-            }).overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.black, lineWidth: 2)
-            )
-            .padding(.top,20)
-            Spacer()
-        }
+                TextField("Enter Store Name (if any)", text: $storeName)
+                    .padding()
+                    .padding(.bottom,30)
+                
+                HStack {
+                    Text("Item")
+                        .padding(.leading)
+                    Spacer()
+                }
+                if #available(iOS 14.0, *) {
+                    TextField("Enter Item Name", text: $itemName)
+                        .padding()
+                        .onChange(of: itemName, perform: { value in
+                            print(itemName)
+                        })
+                } else {
+                    TextField("Enter Item Name", text: $itemName)
+                        .padding()
+                }
+                Button(action: {
+                    
+                }, label: {
+                    HStack {
+                        Text("Add Item")
+                            .padding(20)
+                    }
+                }).overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.black, lineWidth: 2)
+                )
+                .padding(.top,20)
+                
+            }
     }
 }
 

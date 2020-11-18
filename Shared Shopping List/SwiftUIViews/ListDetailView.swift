@@ -11,23 +11,31 @@ import SwiftUI
 struct ListDetailView: View {
     
     @ObservedObject var listDetailViewModel: ListDetailViewModel
-    
+    @State var addItem: Bool = true
     init(list: Listi) {
         listDetailViewModel = ListDetailViewModel(list: list)
     }
     
     
     var body: some View {
-        List {
-            ForEach(listDetailViewModel.contentDict.keys.sorted(by: >)) { key in
-                Section(header: Text(key)) {
-                    ForEach(listDetailViewModel.contentDict[key] ?? []) { val in
-                        Text(val.name)
-                        
+        ZStack {
+            
+            List {
+                ForEach(listDetailViewModel.contentDict.keys.sorted(by: >)) { key in
+                    Section(header: Text(key)) {
+                        ForEach(listDetailViewModel.contentDict[key] ?? []) { val in
+                            Text(val.name)
+                            
+                        }
                     }
                 }
             }
+            if addItem {
+                AddItemPopover(list: "asd")
+            }
+            
         }
+        
     }
 }
 

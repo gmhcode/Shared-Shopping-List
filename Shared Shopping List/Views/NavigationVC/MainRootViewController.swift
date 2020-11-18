@@ -28,6 +28,7 @@ class MainRootViewController: UINavigationController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        
 //        let contentView = UIHostingController(rootView: ContentView())
 //        navigationController?.pushViewController(contentView, animated: true)
     }
@@ -54,6 +55,43 @@ extension MainRootViewController {
             
             return viewController
         }()
+    }
+//    func setupViewControllers() {
+//        drawerContainerViewController = {
+//            // Load Storyboard
+//            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//
+//            // Instantiate View Controller
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "DrawerContainerViewController") as! DrawerContainerViewController
+//
+//            // Add View Controller as Child View Controller
+//            viewController.view.frame = drawerView.bounds
+//            viewController.view.layer.cornerRadius = 10
+//            viewController.view.layer.borderWidth = 1
+//            viewController.view.layer.borderColor = #colorLiteral(red: 0.2134257277, green: 0.2134257277, blue: 0.2134257277, alpha: 1)
+//            viewController.view.layer.masksToBounds = true
+//
+////            self.addChild(viewController)
+//
+//            return viewController
+//        }()
+//        let newView = addView(uiview: drawerContainerViewController)
+//    }
+    
+    func addView(uiview: DrawerContainerViewController) -> UIHostingController<ShoppingEditSwitches> {
+//        let bottomConstraint = (view.frame.height * 0.8) - view.frame.height
+        let hostingView = UIHostingController(rootView: ShoppingEditSwitches())
+        
+        uiview.addChild(hostingView)
+        uiview.view.addSubview(hostingView.view)
+        
+        
+        hostingView.view.translatesAutoresizingMaskIntoConstraints = false
+        hostingView.view.topAnchor.constraint(equalTo: uiview.view.topAnchor).isActive = true
+        hostingView.view.leftAnchor.constraint(equalTo: uiview.view.leftAnchor).isActive = true
+        hostingView.view.rightAnchor.constraint(equalTo: uiview.view.rightAnchor).isActive = true
+        hostingView.view.bottomAnchor.constraint(equalTo: uiview.view.bottomAnchor).isActive = true
+        return hostingView
     }
     
     // MARK: - SetDrawerFunctionality
