@@ -23,6 +23,12 @@ extension SList {
 }
 
 class CodableList : Codable, Identifiable {
+    internal init(uuid: String, title: String, listMasterID: String) {
+        self.uuid = uuid
+        self.title = title
+        self.listMasterID = listMasterID
+    }
+    
     let uuid : String
     let title : String
     let listMasterID : String

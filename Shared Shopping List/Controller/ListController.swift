@@ -23,7 +23,7 @@ class ListController {
         let persistentManager = PersistenceManager.shared
         let list = SList(context: persistentManager.context)
         
-        list.uuid = uuid
+        list.uuid = UUID().uuidString
         list.listMasterID = listMasterID
         list.title = title
         ListMemberController.createListMember(listID: list.uuid, userID: list.listMasterID, uuid: nil)
@@ -124,6 +124,7 @@ class ListController {
                 print("createList: ", list as Any)
                 completion(list)
             }
+           
 //           guard var url = theurl else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
 //            url.appendPathComponent(BackEndUtils.PathComponent.list.rawValue)
 //
@@ -155,7 +156,16 @@ class ListController {
 //            }
 //            completion(nil)
         }
+        func createCodableList(list: SList, completion:@escaping(CodableList?)->()) {
+            
+            networkCall(objectToSend: list, queryItems: [], pathComponents: [BackEndUtils.PathComponent.list.rawValue], requestMethod: .post) { (lists) in
+                guard let list = lists?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");completion(nil); return}
 
+                print("createList: ", list as Any)
+                let ll = CodableList(uuid: list.uuid, title: list.title, listMasterID: list.listMasterID)
+                completion(ll)
+            }
+        }
         func updateList(list: SList,completion:@escaping()->()) {
             
             

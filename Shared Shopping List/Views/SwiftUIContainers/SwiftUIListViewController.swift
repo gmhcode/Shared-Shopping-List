@@ -37,7 +37,7 @@ class SwiftUIListViewController: UIViewController {
     
     
     
-    func navigateToListDetails(list: Listi) {
+    func navigateToListDetails(list: CodableList) {
         navigationController?.pushViewController(SwiftUIListDetailsViewController(list: list), animated: true)
         
     }

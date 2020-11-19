@@ -13,25 +13,31 @@ struct ContentView: View {
     
     @ObservedObject var listVM = ListViewModel()
     @EnvironmentObject var viewRouter : ViewRouter
+//    @State var addList = false
     var body: some View {
         let color = 0.0
-        VStack {
-            Button(action: {
-                
-            }) {
-                Text("Add Member")
-            }
-            List(listVM.lists.indices, id:\.self) { index in
-                ListCell(title: listVM.lists[index].title, brightness: (color - (0.1 * Double(index))))
-                    .onTapGesture{
-                        SwiftUIListViewController.vc?.navigateToListDetails(list:listVM.lists[index])
-                    }
-                    .cornerRadius(10)
+        ZStack {
+            VStack {
+                Button(action: {
+                    listVM.createListView.toggle()
+                }) {
+                    Text("Add List")
                 }
-                .onAppear(perform: {
-                    UITableView.appearance().separatorColor = .clear
-                    print("🚛",listVM.lists.count)
-            })
+                List(listVM.lists.indices, id:\.self) { index in
+                    ListCell(title: listVM.lists[index].title, brightness: (color - (0.1 * Double(index))))
+                        .onTapGesture{
+                            SwiftUIListViewController.vc?.navigateToListDetails(list:listVM.lists[index])
+                        }
+                        .cornerRadius(10)
+                    }
+                    .onAppear(perform: {
+                        UITableView.appearance().separatorColor = .clear
+                        print("🚛",listVM.lists.count)
+                })
+            }
+            if listVM.createListView {
+                CreateListView(listVM: listVM)
+            }
         }
 //        .onTapGesture {
 ////                viewRouter.currentView = .view2

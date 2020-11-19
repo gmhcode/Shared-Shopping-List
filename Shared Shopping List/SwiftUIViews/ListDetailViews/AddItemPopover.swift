@@ -65,7 +65,7 @@ struct AddItemPopover: View {
                     Button(action: {
                         if itemName.trimmingCharacters(in: .whitespaces) != "" {
                             listDetailViewModel.writeItem(name: itemName, store: storeName, userSentID: mainUser.uuid, listID: listDetailViewModel.list.uuid, uuid: "")
-                            
+                            print("Hello")
                             listDetailViewModel.addItem.toggle()
                         }
                     }, label: {
@@ -88,7 +88,7 @@ struct AddItemPopover: View {
 
 struct AddItemPopover_Previews: PreviewProvider {
     static var previews: some View {
-        let s = Listi(uuid: "GregID0", title: "Greg's list 0", listMasterID: "gregid")
+        let s = CodableList(uuid: "GregID0", title: "Greg's list 0", listMasterID: "gregid")
         
         AddItemPopover(listDetailViewModel: ListDetailViewModel(list: s))
     }

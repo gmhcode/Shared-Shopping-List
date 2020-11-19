@@ -33,7 +33,7 @@ struct LDAddRemoveButtons: View {
 
 struct LDAddRemoveButtons_Previews: PreviewProvider {
     static var previews: some View {
-        let s = Listi(uuid: "GregID0", title: "Greg's list 0", listMasterID: "gregid")
+        let s = CodableList(uuid: "GregID0", title: "Greg's list 0", listMasterID: "gregid")
         var listDetailViewModel = ListDetailViewModel(list: s)
         LDAddRemoveButtons(listDetailViewModel: listDetailViewModel)
     }

@@ -9,9 +9,9 @@
 import UIKit
 import SwiftUI
 class SwiftUIListDetailsViewController: UIViewController {
-    var list : Listi
+    var list : CodableList
     
-    init(list:Listi) {
+    init(list:CodableList) {
         self.list = list
         super.init(nibName: nil, bundle: nil)
         
@@ -28,7 +28,7 @@ class SwiftUIListDetailsViewController: UIViewController {
         
         let bottomConstraint = (view.frame.height * 0.8) - view.frame.height
         
-        let s = Listi(uuid: "GregID0", title: "Greg's list 0", listMasterID: "gregid")
+        let s = CodableList(uuid: "GregID0", title: "Greg's list 0", listMasterID: "gregid")
         let hostingView = UIHostingController(rootView: ListDetailView(list: list))
         
         addChild(hostingView)

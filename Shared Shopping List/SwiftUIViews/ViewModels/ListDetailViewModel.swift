@@ -13,12 +13,12 @@ class ListDetailViewModel : ObservableObject {
     
     @Published var items: [CodableItem] = []
     @Published var contentDict : [String:[CodableItem]] = [:]
-    @Published var list : Listi
+    @Published var list : CodableList
     @Published var addItem: Bool = false
     @Published var removingItems = false
     var cancellable : AnyCancellable?
     
-    init(list:Listi) {
+    init(list:CodableList) {
         self.list = list
         fetchItems(by: list.uuid)
     }
@@ -48,25 +48,27 @@ class ListDetailViewModel : ObservableObject {
             })
     }
     
-    func writeItem(name:String, store:String,userSentID:String,listID:String, uuid:String/*,completion: @escaping (Item) ->()*/) -> Future<CodableItem,Error>{
+    func writeItem(name:String, store:String,userSentID:String,listID:String, uuid:String/*,completion: @escaping (Item) ->()*/) /*-> AnyCancellable*/{
         let item = ItemController.createItem(name: name, store: store, userSentID: userSentID, listID: listID, uuid: "")
         
-        return Future<CodableItem,Error> { promise in
+        cancellable = Future<CodableItem,Error> { promise in
             ItemController.BackEnd.shared.createItem(item: item) { (item) in
                 guard let item = item else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");return}
                 let citem = CodableItem(listID: item.listID, store: item.store, userSentId: item.userSentId, name: item.name, uuid: item.uuid)
-                DispatchQueue.main.async {
-                    if self.contentDict[citem.store] == nil {
-                        self.contentDict[citem.store] = [citem]
-                    }else {
-                        self.contentDict[citem.store]?.append(citem)
-                    }
-                    promise(.success(citem))
-                }
+               
+                promise(.success(citem))
             }
             
+        }.sink(receiveCompletion: {_ in }) { (item) in
+            DispatchQueue.main.async {
+                if self.contentDict[item.store] == nil {
+                    self.contentDict[item.store] = [item]
+                }else {
+                    self.contentDict[item.store]?.append(item)
+                }
+                print("Goodbye")
+            }
         }
-        
     }
     
     func deleteItem(item: CodableItem) -> Future<Item,Error>{

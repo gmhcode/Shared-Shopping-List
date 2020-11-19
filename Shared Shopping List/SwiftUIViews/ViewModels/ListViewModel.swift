@@ -10,7 +10,8 @@ import Foundation
 import Combine
 
 class ListViewModel: ObservableObject {
-    @Published var lists = [Listi]()
+    @Published var lists = [CodableList]()
+    @Published var createListView = false
     var cancellable : AnyCancellable?
 
     init() {
@@ -25,7 +26,7 @@ class ListViewModel: ObservableObject {
         self.cancellable = URLSession.shared.dataTaskPublisher(for: url)
             .map(\.data)
             .receive(on: RunLoop.main)
-            .decode(type: [Listi].self, decoder: JSONDecoder())
+            .decode(type: [CodableList].self, decoder: JSONDecoder())
             .mapError({ (er) -> Error in
                 print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
                 return er
@@ -58,7 +59,23 @@ class ListViewModel: ObservableObject {
 //                print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
 //            }
 //        }.resume()
-//
+//        let blah = createList(uuid: "", title: "", listMasterID: "")
+//        blah.sink
+    }
+    func createList(uuid: String, title: String, listMasterID: String) {
+        let list = ListController.createList(title: title, listMasterID: listMasterID, uuid: uuid)
+        cancellable = Future<CodableList,Error> { promise in
+            ListController.BackEnd.shared.createCodableList(list: list) { (cList) in
+                guard let list = cList else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                
+                promise(.success(list))
+            }
+        }.sink(receiveCompletion: {_ in}) { (list) in
+            DispatchQueue.main.async {
+                self.lists.append(list)
+            }
+            
+        }
     }
 }
 

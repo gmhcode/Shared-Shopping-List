@@ -13,7 +13,7 @@ struct ListDetailView: View {
     @ObservedObject var listDetailViewModel: ListDetailViewModel
     
     
-    init(list: Listi) {
+    init(list: CodableList) {
         listDetailViewModel = ListDetailViewModel(list: list)
     }
     
@@ -70,7 +70,7 @@ struct ListDetailView: View {
 struct ListDetailView_Previews: PreviewProvider {
     static var previews: some View {
         //        let ls = ListViewModel().lists[0]
-        let s = Listi(uuid: "GregID0", title: "Greg's list 0", listMasterID: "gregid")
+        let s = CodableList(uuid: "GregID0", title: "Greg's list 0", listMasterID: "gregid")
         ListDetailView(list: s)
     }
 }

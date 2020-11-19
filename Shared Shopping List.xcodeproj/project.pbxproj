@@ -28,6 +28,7 @@
 		904F52B7250078F60004EE99 /* ListControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904F52B6250078F60004EE99 /* ListControllerTests.swift */; };
 		905883E42567112E00FA1DB5 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905883E32567112E00FA1DB5 /* ItemCell.swift */; };
 		905883E82567145300FA1DB5 /* LDAddRemoveButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905883E72567145300FA1DB5 /* LDAddRemoveButtons.swift */; };
+		905883F625671A4100FA1DB5 /* CreateListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905883F525671A4100FA1DB5 /* CreateListView.swift */; };
 		905E142C2554A735004DDB75 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905E142B2554A735004DDB75 /* MotherView.swift */; };
 		905E14312554A8A4004DDB75 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905E14302554A8A4004DDB75 /* ViewRouter.swift */; };
 		905E14352554A941004DDB75 /* ListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905E14342554A941004DDB75 /* ListDetailView.swift */; };
@@ -98,6 +99,7 @@
 		904F52B6250078F60004EE99 /* ListControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListControllerTests.swift; sourceTree = "<group>"; };
 		905883E32567112E00FA1DB5 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		905883E72567145300FA1DB5 /* LDAddRemoveButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDAddRemoveButtons.swift; sourceTree = "<group>"; };
+		905883F525671A4100FA1DB5 /* CreateListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListView.swift; sourceTree = "<group>"; };
 		905E142B2554A735004DDB75 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		905E14302554A8A4004DDB75 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		905E14342554A941004DDB75 /* ListDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailView.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				908EEA8D2564BBE3000FFFF6 /* ShoppingEditSwitches.swift */,
+				905883F525671A4100FA1DB5 /* CreateListView.swift */,
 			);
 			path = ExperimentalViews;
 			sourceTree = "<group>";
@@ -277,6 +280,14 @@
 				905883E72567145300FA1DB5 /* LDAddRemoveButtons.swift */,
 			);
 			path = ListDetailViews;
+			sourceTree = "<group>";
+		};
+		905883EC256719DB00FA1DB5 /* ContentViewViews */ = {
+			isa = PBXGroup;
+			children = (
+				90DBE505254CFB1C00CCED55 /* ContentView.swift */,
+			);
+			path = ContentViewViews;
 			sourceTree = "<group>";
 		};
 		905E142F2554A895004DDB75 /* Routers */ = {
@@ -342,12 +353,12 @@
 		90DBE4FA254CFA5300CCED55 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				905883EC256719DB00FA1DB5 /* ContentViewViews */,
 				905883EB2567195D00FA1DB5 /* ListDetailViews */,
 				9044ECE6255B8C1E0055C1BB /* ExperimentalViews */,
 				905E142F2554A895004DDB75 /* Routers */,
 				90DBE4FC254CFA6B00CCED55 /* Cell */,
 				90DBE4FB254CFA6300CCED55 /* ViewModels */,
-				90DBE505254CFB1C00CCED55 /* ContentView.swift */,
 				905E142B2554A735004DDB75 /* MotherView.swift */,
 			);
 			path = SwiftUIViews;
@@ -494,6 +505,7 @@
 				9038DA5E24BD264900E6216D /* Item+CoreDataProperties.swift in Sources */,
 				9044ECDF255A1CCE0055C1BB /* ListDetailViewModel.swift in Sources */,
 				90FB0C1224C682E80064236D /* BackEndUtils.swift in Sources */,
+				905883F625671A4100FA1DB5 /* CreateListView.swift in Sources */,
 				905883E82567145300FA1DB5 /* LDAddRemoveButtons.swift in Sources */,
 				9044ECE3255A33970055C1BB /* Extensions.swift in Sources */,
 				905E14312554A8A4004DDB75 /* ViewRouter.swift in Sources */,
