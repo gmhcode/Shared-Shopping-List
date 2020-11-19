@@ -12,7 +12,7 @@ struct AddItemPopover: View {
     
     @State var storeName : String = ""
     @State var itemName : String = ""
-    @Binding var addItem : Bool
+//    @Binding var addItem : Bool
 //    @State var list: Listi
     @ObservedObject var listDetailViewModel: ListDetailViewModel
     
@@ -48,7 +48,7 @@ struct AddItemPopover: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        addItem.toggle()
+                        listDetailViewModel.addItem.toggle()
                     }, label: {
                         HStack {
                             Text("Cancel")
@@ -66,7 +66,7 @@ struct AddItemPopover: View {
                         if itemName.trimmingCharacters(in: .whitespaces) != "" {
                             listDetailViewModel.writeItem(name: itemName, store: storeName, userSentID: mainUser.uuid, listID: listDetailViewModel.list.uuid, uuid: "")
                             
-                            addItem.toggle()
+                            listDetailViewModel.addItem.toggle()
                         }
                     }, label: {
                         HStack {
@@ -90,6 +90,6 @@ struct AddItemPopover_Previews: PreviewProvider {
     static var previews: some View {
         let s = Listi(uuid: "GregID0", title: "Greg's list 0", listMasterID: "gregid")
         
-        AddItemPopover(addItem: .constant(false), listDetailViewModel: ListDetailViewModel(list: s))
+        AddItemPopover(listDetailViewModel: ListDetailViewModel(list: s))
     }
 }

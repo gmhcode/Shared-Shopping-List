@@ -11,8 +11,6 @@ import SwiftUI
 struct ListDetailView: View {
     
     @ObservedObject var listDetailViewModel: ListDetailViewModel
-    @State var addItem: Bool = false
-    @State var removingItems = false
     
     
     init(list: Listi) {
@@ -22,29 +20,12 @@ struct ListDetailView: View {
     
     var body: some View {
         ZStack {
-            
             VStack {
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        removingItems = false
-                        addItem.toggle()
-                    }) {
-                        Text("Add Item")
-                    }
-                    Spacer()
-                    Button(action: {
-                        addItem = false
-                        removingItems.toggle()
-                    }) {
-                        Text("Remove Items")
-                    }
-                    Spacer()
-                }
+                LDAddRemoveButtons(listDetailViewModel: listDetailViewModel)
                 List {
                     ForEach(listDetailViewModel.contentDict.keys.sorted(by: >)) { key in
                         Section(header: Text(key)) {
-                            if removingItems {
+                            if listDetailViewModel.removingItems {
                                 ForEach(listDetailViewModel.contentDict[key] ?? []) { val in
                                     HStack {
                                         Text(val.name)
@@ -58,16 +39,15 @@ struct ListDetailView: View {
                                                         .stroke(Color.red, lineWidth: 2)
                                                 )
                                         }.padding()
-                                        
                                     }
-                                    
                                 }.overlay(
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(Color.red, lineWidth: 2)
                                 )
                             } else {
                                 ForEach(listDetailViewModel.contentDict[key] ?? []) { val in
-                                    Text(val.name)
+                                    
+                                    ItemCell(item: val)
                                     
                                 }
                             }
@@ -75,8 +55,8 @@ struct ListDetailView: View {
                     }
                 }
             }
-            if addItem {
-                AddItemPopover(addItem: $addItem, listDetailViewModel: listDetailViewModel)
+            if listDetailViewModel.addItem {
+                AddItemPopover(listDetailViewModel: listDetailViewModel)
                     .background(Color.white)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
@@ -89,7 +69,7 @@ struct ListDetailView: View {
 
 struct ListDetailView_Previews: PreviewProvider {
     static var previews: some View {
-//        let ls = ListViewModel().lists[0]
+        //        let ls = ListViewModel().lists[0]
         let s = Listi(uuid: "GregID0", title: "Greg's list 0", listMasterID: "gregid")
         ListDetailView(list: s)
     }

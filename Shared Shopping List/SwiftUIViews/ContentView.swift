@@ -15,17 +15,24 @@ struct ContentView: View {
     @EnvironmentObject var viewRouter : ViewRouter
     var body: some View {
         let color = 0.0
-        List(listVM.lists.indices, id:\.self) { index in
-            ListCell(title: listVM.lists[index].title, brightness: (color - (0.1 * Double(index))))
-                .onTapGesture{
-                    SwiftUIListViewController.vc?.navigateToListDetails(list:listVM.lists[index])
-                }
-                .cornerRadius(10)
+        VStack {
+            Button(action: {
+                
+            }) {
+                Text("Add Member")
             }
-            .onAppear(perform: {
-                UITableView.appearance().separatorColor = .clear
-                print("🚛",listVM.lists.count)
+            List(listVM.lists.indices, id:\.self) { index in
+                ListCell(title: listVM.lists[index].title, brightness: (color - (0.1 * Double(index))))
+                    .onTapGesture{
+                        SwiftUIListViewController.vc?.navigateToListDetails(list:listVM.lists[index])
+                    }
+                    .cornerRadius(10)
+                }
+                .onAppear(perform: {
+                    UITableView.appearance().separatorColor = .clear
+                    print("🚛",listVM.lists.count)
             })
+        }
 //        .onTapGesture {
 ////                viewRouter.currentView = .view2
 //                SwiftUIListViewController.vc?.navigateToListDetails(listID: "123")

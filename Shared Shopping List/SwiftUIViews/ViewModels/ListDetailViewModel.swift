@@ -14,6 +14,8 @@ class ListDetailViewModel : ObservableObject {
     @Published var items: [CodableItem] = []
     @Published var contentDict : [String:[CodableItem]] = [:]
     @Published var list : Listi
+    @Published var addItem: Bool = false
+    @Published var removingItems = false
     var cancellable : AnyCancellable?
     
     init(list:Listi) {
