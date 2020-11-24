@@ -24,7 +24,7 @@ struct CreateListView: View {
                 Button(action: {
                     if listTitle.trimmingCharacters(in: .whitespaces) != ""  {
                         listVM.createList(uuid: "", title: listTitle, listMasterID: mainUser.name)
-                        listVM.createListView.toggle()
+                        listVM.showCreateListView.toggle()
                     }
                 }, label: {
                     Text("Add list")

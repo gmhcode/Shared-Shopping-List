@@ -245,7 +245,15 @@ class ListController {
                 completion()
             }
         }
-
+        func deleteCodableList(list:CodableList,completion:@escaping(CodableList)->()) {
+            networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.list.rawValue,list.uuid], requestMethod: .delete) { (lists) in
+                guard let list = lists?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                
+                print(lists as Any)
+                let cLIst = CodableList(uuid: list.uuid, title: list.title, listMasterID: list.listMasterID)
+                completion(cLIst)
+            }
+        }
         func deleteAllLists() {
             networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.lists.rawValue], requestMethod: .delete) { (lists) in
                 print(lists as Any)

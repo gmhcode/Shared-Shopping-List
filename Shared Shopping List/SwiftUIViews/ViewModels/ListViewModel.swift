@@ -11,11 +11,14 @@ import Combine
 
 class ListViewModel: ObservableObject {
     @Published var lists = [CodableList]()
-    @Published var createListView = false
+    @Published var showCreateListView = false
+    @Published var showDeleteListView = false
+    @Published var mostRecentList : CodableList?
     var cancellable : AnyCancellable?
 
     init() {
         fetchLists()
+        
     }
     
     func fetchLists() {
@@ -33,7 +36,11 @@ class ListViewModel: ObservableObject {
             })
             .catch{_ in Just([])}
             .sink(receiveCompletion: {_ in}, receiveValue: { list in
-                self.lists = list
+                if list.count > 0 {
+                    self.lists = list
+                    self.mostRecentList = self.lists[0]
+                }
+                
             })
 //            .mapError({ error in
 //                print(error)
@@ -76,6 +83,48 @@ class ListViewModel: ObservableObject {
             }
             
         }
+    }
+    
+//    func deleteList(list:CodableList) {
+//        lists.removeAll(where: {$0.uuid == list.uuid})
+//        cancellable = Future<CodableList,Error> { promise in
+//            ListController.BackEnd.shared.deleteCodableList(list: list) { (cList) in
+//
+//                promise(.success(cList))
+//            }
+//        }.sink(receiveCompletion: {_ in}) { [weak self] (list) in
+//            DispatchQueue.main.async {
+//                guard let strongSelf = self else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//                strongSelf.lists.removeAll(where: {$0.uuid == list.uuid})
+//            }
+//
+//        }
+//    }
+    func deleteList(list:CodableList) {
+        print("💥",list.title)
+        ListController.BackEnd.shared.deleteCodableList(list: list) { [weak self] (list) in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                strongSelf.lists.forEach({
+                    print("🔥", $0.title)
+                })
+                strongSelf.lists.forEach({
+                    print("uuid", $0.uuid)
+                })
+                strongSelf.lists.removeAll(where: {$0.uuid == list.uuid})
+//                    strongSelf.lists.filter({$0.uuid != list.uuid})
+                strongSelf.lists.forEach({
+                    print("🚵🏽‍♂️", $0.title)
+                })
+                strongSelf.lists.forEach({
+                    print("uuid", $0.uuid)
+                })
+            }
+        }
+    }
+    
+    func setMostRecentList(listName: CodableList) {
+        mostRecentList = listName
     }
 }
 

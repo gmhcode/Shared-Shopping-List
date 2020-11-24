@@ -18,25 +18,28 @@ struct ContentView: View {
         let color = 0.0
         ZStack {
             VStack {
-                Button(action: {
-                    listVM.createListView.toggle()
-                }) {
-                    Text("Add List")
-                }
+                Text(listVM.mostRecentList?.title ?? "  ")
+                CreateDeleteListButtons(listVM: listVM)
+                
                 List(listVM.lists.indices, id:\.self) { index in
+                    
                     ListCell(title: listVM.lists[index].title, brightness: (color - (0.1 * Double(index))))
                         .onTapGesture{
                             SwiftUIListViewController.vc?.navigateToListDetails(list:listVM.lists[index])
+                            listVM.setMostRecentList(listName: listVM.lists[index])
                         }
                         .cornerRadius(10)
                     }
                     .onAppear(perform: {
                         UITableView.appearance().separatorColor = .clear
-                        print("🚛",listVM.lists.count)
+//                        print("🚛",listVM.lists.count)
+//                        print(listVM.lists[index].title)
                 })
             }
-            if listVM.createListView {
+            if listVM.showCreateListView {
                 CreateListView(listVM: listVM)
+            }else if listVM.showDeleteListView {
+                DeleteListView(listVM: listVM)
             }
         }
 //        .onTapGesture {
@@ -65,7 +68,4 @@ class Listi: Codable, Identifiable {
         self.title = title
         self.listMasterID = listMasterID
     }
-    
-    
-   
 }

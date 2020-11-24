@@ -122,8 +122,8 @@
             filePath = "Shared Shopping List/Controller/ListController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "getParams(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -221,22 +221,6 @@
             startingLineNumber = "362"
             endingLineNumber = "362"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B0BFFD88-C9CA-4377-BCCE-50522339D1C6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Shared Shopping List/AppDelegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -585,7 +569,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "215CE303-64F4-4FB4-AA53-E2D064D21988"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared Shopping List/SwiftUIViews/ViewModels/ListDetailViewModel.swift"
@@ -595,6 +579,86 @@
             endingLineNumber = "23"
             landmarkName = "init(list:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5C2C654A-84F1-4AC5-B3C1-52B19B90B8C4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping List/SwiftUIViews/ContentViewViews/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8BBA72B2-AC2C-408E-9855-C16514651E1D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping List/SwiftUIViews/ViewModels/ListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "deleteList(list:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8BBA72B2-AC2C-408E-9855-C16514651E1D - f1bce6cbf6bbe129"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Shared_Shopping_List.CodableList) -&gt; () in Shared_Shopping_List.ListViewModel.deleteList(list: Shared_Shopping_List.CodableList) -&gt; ()"
+                  moduleName = "Shared Shopping List"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/greghughes/Desktop/Shared%20Shopping%20List/Shared%20Shopping%20List/SwiftUIViews/ViewModels/ListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "1240">
+               </Location>
+               <Location
+                  uuid = "8BBA72B2-AC2C-408E-9855-C16514651E1D - 6812d9c3b4616b1a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Shared_Shopping_List.CodableList) -&gt; Swift.Bool in closure #1 () -&gt; () in closure #1 (Shared_Shopping_List.CodableList) -&gt; () in Shared_Shopping_List.ListViewModel.deleteList(list: Shared_Shopping_List.CodableList) -&gt; ()"
+                  moduleName = "Shared Shopping List"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/greghughes/Desktop/Shared%20Shopping%20List/Shared%20Shopping%20List/SwiftUIViews/ViewModels/ListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B661F5E5-6228-401F-9652-63DF216704A3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared Shopping List/SwiftUIViews/ContentViewViews/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
