@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 let mainUser = CodableUser(uuid: "gregid", name: "Greg", email: "greg@greg.com")
+//let mainUser = CodableUser(uuid: "jid", name: "J", email: "j@j.com")
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

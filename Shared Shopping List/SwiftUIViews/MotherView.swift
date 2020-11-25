@@ -17,7 +17,7 @@ struct MotherView: View {
             ContentView()
 //            AddItemPopover()
         case .view2:
-            ListDetailView(list: ListViewModel().lists[0])
+            ListDetailView(list: ListViewModel().listAndItemsAndListMembers.lists[0])
         }
     }
 }

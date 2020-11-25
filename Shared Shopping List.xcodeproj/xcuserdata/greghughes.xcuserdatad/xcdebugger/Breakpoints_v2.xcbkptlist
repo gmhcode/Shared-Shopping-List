@@ -591,8 +591,8 @@
             filePath = "Shared Shopping List/SwiftUIViews/ContentViewViews/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -607,13 +607,13 @@
             filePath = "Shared Shopping List/SwiftUIViews/ViewModels/ListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "deleteList(list:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "8BBA72B2-AC2C-408E-9855-C16514651E1D - f1bce6cbf6bbe7bc"
+                  uuid = "8BBA72B2-AC2C-408E-9855-C16514651E1D - f1bce6cbf6bbe3ff"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -623,12 +623,12 @@
                   urlString = "file:///Users/greghughes/Desktop/Shared%20Shopping%20List/Shared%20Shopping%20List/SwiftUIViews/ViewModels/ListViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
                   offsetFromSymbolStart = "857">
                </Location>
                <Location
-                  uuid = "8BBA72B2-AC2C-408E-9855-C16514651E1D - a387c4e3e12cbb8d"
+                  uuid = "8BBA72B2-AC2C-408E-9855-C16514651E1D - a387c4e3e12cbfce"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -638,8 +638,8 @@
                   urlString = "file:///Users/greghughes/Desktop/Shared%20Shopping%20List/Shared%20Shopping%20List/SwiftUIViews/ViewModels/ListViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
                   offsetFromSymbolStart = "32">
                </Location>
             </Locations>
@@ -655,8 +655,8 @@
             filePath = "Shared Shopping List/SwiftUIViews/ContentViewViews/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -664,16 +664,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "21D9BD2E-2736-4DF1-8DA8-945188D03620"
-            shouldBeEnabled = "Yes"
+            uuid = "B65C565E-8338-41E5-A7D2-B4A7EC5C2705"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared Shopping List/SwiftUIViews/ViewModels/ListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "init()"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "fetchLists()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

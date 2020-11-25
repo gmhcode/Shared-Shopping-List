@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct ListCell: View {
-    let title : String
+    let list : CodableList
+    let itemCount : Int
     let brightness : Double
     var body: some View {
         
@@ -17,7 +18,7 @@ struct ListCell: View {
             HStack {
                 
                 VStack(alignment: .leading) {
-                    Text(title)
+                    Text(list.title)
                         .lineLimit(2)
                         .padding([.leading],10)
                         .multilineTextAlignment(.leading)
@@ -27,7 +28,7 @@ struct ListCell: View {
                         .font(.system(size: 20, weight: .heavy, design: .default))
                 }
                 Spacer()
-                Text("6")
+                Text("\(itemCount)")
                     .padding(.trailing,10)
                     .font(.system(size: 30, weight: .heavy, design: .default))
                     .foregroundColor(Color.white)
@@ -47,7 +48,8 @@ struct ListCell: View {
 
 struct ListCell_Previews: PreviewProvider {
     static var previews: some View {
-        ListCell(title: "Title", brightness: 0)
+        let list = CodableList(uuid: "123", title: "list title", listMasterID: "listMasteerID")
+        ListCell(list: list, itemCount: 1, brightness: 0)
     }
 }
 

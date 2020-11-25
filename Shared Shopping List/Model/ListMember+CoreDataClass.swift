@@ -14,3 +14,8 @@ import CoreData
 public class ListMember: NSManagedObject {
 
 }
+class CodableListMember: Codable {
+    var listID: String
+    var userID: String
+    var uuid: String
+}
