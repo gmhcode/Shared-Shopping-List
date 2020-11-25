@@ -10,6 +10,7 @@ import SwiftUI
 
 struct MotherView: View {
     @EnvironmentObject var viewRouter : ViewRouter
+    
     var body: some View {
         switch viewRouter.currentView {
         case .view1:

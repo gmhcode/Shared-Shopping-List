@@ -8,7 +8,7 @@
 
 import Foundation
 import Combine
-
+let listViewModel = ListViewModel()
 class ListViewModel: ObservableObject {
     @Published var lists = [CodableList]()
     @Published var showCreateListView = false
@@ -38,7 +38,9 @@ class ListViewModel: ObservableObject {
             .sink(receiveCompletion: {_ in}, receiveValue: { list in
                 if list.count > 0 {
                     self.lists = list
-                    self.mostRecentList = self.lists[0]
+                    if self.mostRecentList == nil {
+                        self.mostRecentList = self.lists[0]
+                    }
                 }
                 
             })
@@ -85,40 +87,13 @@ class ListViewModel: ObservableObject {
         }
     }
     
-//    func deleteList(list:CodableList) {
-//        lists.removeAll(where: {$0.uuid == list.uuid})
-//        cancellable = Future<CodableList,Error> { promise in
-//            ListController.BackEnd.shared.deleteCodableList(list: list) { (cList) in
-//
-//                promise(.success(cList))
-//            }
-//        }.sink(receiveCompletion: {_ in}) { [weak self] (list) in
-//            DispatchQueue.main.async {
-//                guard let strongSelf = self else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-//                strongSelf.lists.removeAll(where: {$0.uuid == list.uuid})
-//            }
-//
-//        }
-//    }
     func deleteList(list:CodableList) {
         print("💥",list.title)
         ListController.BackEnd.shared.deleteCodableList(list: list) { [weak self] (list) in
             DispatchQueue.main.async {
                 guard let strongSelf = self else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-                strongSelf.lists.forEach({
-                    print("🔥", $0.title)
-                })
-                strongSelf.lists.forEach({
-                    print("uuid", $0.uuid)
-                })
                 strongSelf.lists.removeAll(where: {$0.uuid == list.uuid})
-//                    strongSelf.lists.filter({$0.uuid != list.uuid})
-                strongSelf.lists.forEach({
-                    print("🚵🏽‍♂️", $0.title)
-                })
-                strongSelf.lists.forEach({
-                    print("uuid", $0.uuid)
-                })
+                strongSelf.mostRecentList = strongSelf.lists[0]
             }
         }
     }

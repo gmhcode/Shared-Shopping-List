@@ -11,9 +11,12 @@ import Combine
 
 struct ContentView: View {
     
-    @ObservedObject var listVM = ListViewModel()
-    @EnvironmentObject var viewRouter : ViewRouter
-//    @State var addList = false
+    @ObservedObject var listVM = listViewModel
+//    @EnvironmentObject var viewRouter : ViewRouter
+
+    
+
+
     var body: some View {
         let color = 0.0
         ZStack {
@@ -51,7 +54,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environmentObject(ViewRouter())
+        ContentView()
     }
 }
 
