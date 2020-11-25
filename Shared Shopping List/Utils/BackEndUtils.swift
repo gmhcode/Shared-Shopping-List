@@ -59,6 +59,7 @@ struct BackEndUtils {
         case item = "item"
         case items = "items"
         case query = "query"
+        case listMember = "listMember"
         
     }
 //    "http://192.168.1.2:8081"

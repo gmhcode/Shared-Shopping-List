@@ -26,9 +26,10 @@ struct ContentView: View {
                     
                     ListCell(list: listVM.listAndItemsAndListMembers.lists[index], itemCount: listVM.countListItems(list: listVM.listAndItemsAndListMembers.lists[index]), brightness: (color - (0.1 * Double(index))))
                         .onTapGesture{
-                             let list = listVM.listAndItemsAndListMembers.lists[index]
-                            SwiftUIListViewController.vc?.navigateToListDetails(list:list)
-                            listVM.setMostRecentList(list: listVM.listAndItemsAndListMembers.lists[index])
+                            let list = listVM.listAndItemsAndListMembers.lists[index]
+                                listVM.addUserToList(newUserID: "newGuy", list: list)
+//                            SwiftUIListViewController.vc?.navigateToListDetails(list:list)
+//                            listVM.setMostRecentList(list: listVM.listAndItemsAndListMembers.lists[index])
                         }
                         .cornerRadius(10)
                     }

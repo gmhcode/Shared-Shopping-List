@@ -324,8 +324,6 @@ class ListController {
 }
 extension ListController.BackEnd : BackEndRequester {
 
-    
-    
     typealias MyType = SList
     
     var parseFetched: ([[String : Any]]) -> [SList]? {

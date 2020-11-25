@@ -130,6 +130,13 @@ class ListViewModel: ObservableObject {
     func setMostRecentList(list: CodableList) {
         mostRecentList = list
     }
+    
+    func addUserToList(newUserID: String, list:CodableList) {
+        ListMemberController.BackEnd.shared.createCodableListMember(listID: list.uuid, userID: newUserID) {[weak self] (listMember) in
+            print("🌎 ", listMember.userID)
+            self?.listAndItemsAndListMembers.listMembers.append(listMember)
+        }
+    }
 }
 
 struct ListAndItemsAndListMembers: Codable {

@@ -15,6 +15,12 @@ public class ListMember: NSManagedObject {
 
 }
 class CodableListMember: Codable {
+    internal init(listID: String, userID: String, uuid: String) {
+        self.listID = listID
+        self.userID = userID
+        self.uuid = uuid
+    }
+    
     var listID: String
     var userID: String
     var uuid: String
