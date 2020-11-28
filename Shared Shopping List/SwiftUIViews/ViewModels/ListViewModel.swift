@@ -14,6 +14,8 @@ class ListViewModel: ObservableObject {
 
     @Published var showCreateListView = false
     @Published var showDeleteListView = false
+    @Published var addListMemberView = false
+    @Published var removeListMemberView = false
     @Published var mostRecentList : CodableList?
     @Published var listAndItemsAndListMembers = ListAndItemsAndListMembers(lists: [], items: [], listMembers: [])
     var cancellable : AnyCancellable?
@@ -62,7 +64,10 @@ class ListViewModel: ObservableObject {
 //                if self.listAndItemsAndListMembers.Lists.count > 0 {
                     self.listAndItemsAndListMembers = listAndItemsAndListMembers
                     if self.mostRecentList == nil {
-                        self.mostRecentList = self.listAndItemsAndListMembers.lists[0]
+                        if listAndItemsAndListMembers.lists.count > 0 {
+                            self.mostRecentList = self.listAndItemsAndListMembers.lists[0]
+                        }
+                       
                     }
 //                }
             })
@@ -130,11 +135,20 @@ class ListViewModel: ObservableObject {
     func setMostRecentList(list: CodableList) {
         mostRecentList = list
     }
-    
+    //THIS 
     func addUserToList(newUserID: String, list:CodableList) {
         ListMemberController.BackEnd.shared.createCodableListMember(listID: list.uuid, userID: newUserID) {[weak self] (listMember) in
             print("🌎 ", listMember.userID)
-            self?.listAndItemsAndListMembers.listMembers.append(listMember)
+            DispatchQueue.main.async {
+                self?.listAndItemsAndListMembers.lists.append(list)
+//                self?.listAndItemsAndListMembers.listMembers.append(listMember)
+            }
+        }
+    }
+    //THIS IS WORKING BUT WHEN fetchLists() IS CALLED AT CONTENTVIEWS INIT.. THE FETCH LIST ISNT CORRECTLY FETCHING THIS LIST.
+    func joinList(joinerPassword: String) {
+        ListController.BackEnd.shared.findListToJoin(joinerPassword: joinerPassword) { (list) in
+            self.addUserToList(newUserID: mainUser.uuid, list: list)
         }
     }
 }

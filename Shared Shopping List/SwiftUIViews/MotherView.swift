@@ -14,7 +14,10 @@ struct MotherView: View {
     var body: some View {
         switch viewRouter.currentView {
         case .view1:
-            ContentView()
+            ZStack {
+                ContentView()
+            }
+            
 //            AddItemPopover()
         case .view2:
             ListDetailView(list: ListViewModel().listAndItemsAndListMembers.lists[0])

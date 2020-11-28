@@ -23,7 +23,25 @@ class ListController {
         let persistentManager = PersistenceManager.shared
         let list = SList(context: persistentManager.context)
         
+//        cant do UUID().uuidString here because the back end function uses this to retrieve lists from back end
         list.uuid = UUID().uuidString
+        list.listMasterID = listMasterID
+        list.title = title
+        ListMemberController.createListMember(listID: list.uuid, userID: list.listMasterID, uuid: nil)
+        persistentManager.saveContext()
+        return list
+    }
+    static func createListFromBack(title: String, listMasterID: String, uuid: String) -> SList  {
+        
+        if let list = getList(id: uuid) {
+            return list
+        }
+        
+        let persistentManager = PersistenceManager.shared
+        let list = SList(context: persistentManager.context)
+        
+//        cant do UUID().uuidString here because the back end function uses this to retrieve lists from back end
+        list.uuid = uuid
         list.listMasterID = listMasterID
         list.title = title
         ListMemberController.createListMember(listID: list.uuid, userID: list.listMasterID, uuid: nil)
@@ -49,7 +67,7 @@ class ListController {
         }
         persistentManager.saveContext()
     }
-    
+
     
     ///Gets the List from the entered ID
     static func getList(id: String) -> SList? {
@@ -156,6 +174,18 @@ class ListController {
 //            }
 //            completion(nil)
         }
+        func findListToJoin(joinerPassword: String,completion:@escaping(CodableList)->()) {
+            
+            networkCall(objectToSend: nil, queryItems: [], pathComponents: [BackEndUtils.PathComponent.list.rawValue,joinerPassword], requestMethod: .get) { (lists) in
+                guard let list = lists?.first else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
+                print("createList: ", list as Any)
+                let ll = CodableList(uuid: list.uuid, title: list.title, listMasterID: list.listMasterID)
+                completion(ll)
+            }
+    //            gregid
+        }
+        
         func createCodableList(list: SList, completion:@escaping(CodableList?)->()) {
             
             networkCall(objectToSend: list, queryItems: [], pathComponents: [BackEndUtils.PathComponent.list.rawValue], requestMethod: .post) { (lists) in
@@ -294,7 +324,7 @@ class ListController {
                 guard let uuid = i["uuid"] as? String,
                     let listMasterID = i["listMasterID"] as? String,
                     let title = i["title"] as? String else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
-                let fetchedList = ListController.createList(title: title, listMasterID: listMasterID, uuid: uuid)
+                let fetchedList = ListController.createListFromBack(title: title, listMasterID: listMasterID, uuid: uuid)
                 returningLists.append(fetchedList)
 
             }

@@ -26,8 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UserController.deleteAllUsers()
 //        ListController.deleteAllLists()
 //        ItemController.deleteAllItems()
-////
-////        //Deletes back End
+//////
+//////        //Deletes back End
 //        let testClass = TestBackEndFuncs()
 //        testClass.deleteAllDataFromDatabases {
 ////            //Creates front and backend

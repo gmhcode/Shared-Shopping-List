@@ -56,6 +56,7 @@ class ListMemberController {
             }
             
         }
+
         
         func getListMembers(for lists: [SList], completion: @escaping ([CodableListMember]?)->()) {
             let url = URL(string: "http://localhost:8081/listMembers/withLists")!

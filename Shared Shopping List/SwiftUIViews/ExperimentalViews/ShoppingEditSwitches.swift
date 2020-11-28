@@ -15,24 +15,26 @@ struct ShoppingEditSwitches: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                VStack {
-                    Text("Go Shopping")
-                    Toggle(isOn: $isShopping) {
-                        
-                    }
-                    .labelsHidden()
-                }
-                Spacer()
-                VStack {
-                    Text("Edit List")
-                    Toggle(isOn: $isEditing) {
-                        
-                    }
-                    .labelsHidden()
-                }
-                Spacer()
+            VStack {
+                CreateDeleteListButtons(listVM: listViewModel).padding()
+                AddRemoveListMemberButtons(listVM: listViewModel)
+//                Spacer()
+//                VStack {
+//                    Text("Go Shopping")
+//                    Toggle(isOn: $isShopping) {
+//
+//                    }
+//                    .labelsHidden()
+//                }
+//                Spacer()
+//                VStack {
+//                    Text("Edit List")
+//                    Toggle(isOn: $isEditing) {
+//
+//                    }
+//                    .labelsHidden()
+//                }
+//                Spacer()
             }
             Spacer()
         }

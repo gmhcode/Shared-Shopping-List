@@ -27,9 +27,10 @@ struct ContentView: View {
                     ListCell(list: listVM.listAndItemsAndListMembers.lists[index], itemCount: listVM.countListItems(list: listVM.listAndItemsAndListMembers.lists[index]), brightness: (color - (0.1 * Double(index))))
                         .onTapGesture{
                             let list = listVM.listAndItemsAndListMembers.lists[index]
-                                listVM.addUserToList(newUserID: "newGuy", list: list)
-//                            SwiftUIListViewController.vc?.navigateToListDetails(list:list)
-//                            listVM.setMostRecentList(list: listVM.listAndItemsAndListMembers.lists[index])
+                            listVM.joinList(joinerPassword: "4321")
+//                            listVM.addUserToList(newUserID: "gregid", list: listVM.listAndItemsAndListMembers.lists[index])
+                            SwiftUIListViewController.vc?.navigateToListDetails(list:list)
+                            listVM.setMostRecentList(list: listVM.listAndItemsAndListMembers.lists[index])
                         }
                         .cornerRadius(10)
                     }
@@ -42,12 +43,12 @@ struct ContentView: View {
                 CreateListView(listVM: listVM)
             }else if listVM.showDeleteListView {
                 DeleteListView(listVM: listVM)
+            }else if listVM.addListMemberView {
+                
+            }else if listVM.removeListMemberView {
+                
             }
         }
-//        .onTapGesture {
-////                viewRouter.currentView = .view2
-//                SwiftUIListViewController.vc?.navigateToListDetails(listID: "123")
-//            }
     }
 }
 

@@ -22,6 +22,7 @@
 		9038DA5224BD24C100E6216D /* ListMember+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038DA4E24BD24C100E6216D /* ListMember+CoreDataProperties.swift */; };
 		9038DA5D24BD264900E6216D /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038DA5B24BD264900E6216D /* Item+CoreDataClass.swift */; };
 		9038DA5E24BD264900E6216D /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038DA5C24BD264900E6216D /* Item+CoreDataProperties.swift */; };
+		903BC2F0256F14C900835EA6 /* AddRemoveListMemberButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903BC2EF256F14C900835EA6 /* AddRemoveListMemberButtons.swift */; };
 		9044ECDF255A1CCE0055C1BB /* ListDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044ECDE255A1CCE0055C1BB /* ListDetailViewModel.swift */; };
 		9044ECE3255A33970055C1BB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044ECE2255A33970055C1BB /* Extensions.swift */; };
 		9044ECE8255B8C5F0055C1BB /* AddItemPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044ECE7255B8C5E0055C1BB /* AddItemPopover.swift */; };
@@ -39,6 +40,7 @@
 		907B830424B7FDF00098FCF0 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B830224B7FDEF0098FCF0 /* User+CoreDataClass.swift */; };
 		907B830524B7FDF00098FCF0 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B830324B7FDF00098FCF0 /* User+CoreDataProperties.swift */; };
 		907D7ADF25508C7C0017508C /* SwiftUIListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907D7ADE25508C7C0017508C /* SwiftUIListViewController.swift */; };
+		90891245256F1DE900367888 /* JoinListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90891244256F1DE900367888 /* JoinListView.swift */; };
 		90894C0A24B563E3006AFC40 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0924B563E3006AFC40 /* UserController.swift */; };
 		90894C0C24B566AA006AFC40 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0B24B566AA006AFC40 /* ListController.swift */; };
 		90894C1024B566DC006AFC40 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90894C0F24B566DC006AFC40 /* ItemController.swift */; };
@@ -95,6 +97,7 @@
 		9038DA4E24BD24C100E6216D /* ListMember+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListMember+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9038DA5B24BD264900E6216D /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9038DA5C24BD264900E6216D /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		903BC2EF256F14C900835EA6 /* AddRemoveListMemberButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRemoveListMemberButtons.swift; sourceTree = "<group>"; };
 		9044ECDE255A1CCE0055C1BB /* ListDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewModel.swift; sourceTree = "<group>"; };
 		9044ECE2255A33970055C1BB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9044ECE7255B8C5E0055C1BB /* AddItemPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemPopover.swift; sourceTree = "<group>"; };
@@ -112,6 +115,7 @@
 		907B830224B7FDEF0098FCF0 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		907B830324B7FDF00098FCF0 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		907D7ADE25508C7C0017508C /* SwiftUIListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIListViewController.swift; sourceTree = "<group>"; };
+		90891244256F1DE900367888 /* JoinListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinListView.swift; sourceTree = "<group>"; };
 		90894C0924B563E3006AFC40 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		90894C0B24B566AA006AFC40 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
 		90894C0F24B566DC006AFC40 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
@@ -272,8 +276,8 @@
 			children = (
 				908EEA8D2564BBE3000FFFF6 /* ShoppingEditSwitches.swift */,
 				905883F525671A4100FA1DB5 /* CreateListView.swift */,
-				90A5B468256861D30077542C /* CreateDeleteListButtons.swift */,
-				90A5B46C25688B4B0077542C /* DeleteListView.swift */,
+				903BC2EF256F14C900835EA6 /* AddRemoveListMemberButtons.swift */,
+				90891244256F1DE900367888 /* JoinListView.swift */,
 			);
 			path = ExperimentalViews;
 			sourceTree = "<group>";
@@ -321,6 +325,15 @@
 			path = SwiftUIContainers;
 			sourceTree = "<group>";
 		};
+		9089123D256F1D1300367888 /* GlobalViews */ = {
+			isa = PBXGroup;
+			children = (
+				90A5B46C25688B4B0077542C /* DeleteListView.swift */,
+				90A5B468256861D30077542C /* CreateDeleteListButtons.swift */,
+			);
+			path = GlobalViews;
+			sourceTree = "<group>";
+		};
 		9093567B24AC2AFD009E2F1E /* GlobalColors */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +372,7 @@
 		90DBE4FA254CFA5300CCED55 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				9089123D256F1D1300367888 /* GlobalViews */,
 				905883EC256719DB00FA1DB5 /* ContentViewViews */,
 				905883EB2567195D00FA1DB5 /* ListDetailViews */,
 				9044ECE6255B8C1E0055C1BB /* ExperimentalViews */,
@@ -498,6 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90891245256F1DE900367888 /* JoinListView.swift in Sources */,
 				9038DA5D24BD264900E6216D /* Item+CoreDataClass.swift in Sources */,
 				90BB9B2C24C7D94400B87479 /* TestingVC.swift in Sources */,
 				902BE26324CA8887008C9E59 /* NotificationController.swift in Sources */,
@@ -506,6 +521,7 @@
 				90C0389D24B2CD6A004C62F9 /* ListViewController.swift in Sources */,
 				90A0CEA124AD6C7500F0BC4B /* MainDrawerViewController.swift in Sources */,
 				9093567F24AC2BC2009E2F1E /* MainViewModel.swift in Sources */,
+				903BC2F0256F14C900835EA6 /* AddRemoveListMemberButtons.swift in Sources */,
 				90894C1024B566DC006AFC40 /* ItemController.swift in Sources */,
 				9070BA7A24BD27D1006101D1 /* List+CoreDataProperties.swift in Sources */,
 				9038DA5E24BD264900E6216D /* Item+CoreDataProperties.swift in Sources */,
