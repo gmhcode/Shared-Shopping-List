@@ -36,6 +36,7 @@
 		905E1457255A144F004DDB75 /* SwiftUIListDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905E1456255A144F004DDB75 /* SwiftUIListDetailsViewController.swift */; };
 		9070BA7924BD27D1006101D1 /* List+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9070BA7724BD27D1006101D1 /* List+CoreDataClass.swift */; };
 		9070BA7A24BD27D1006101D1 /* List+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9070BA7824BD27D1006101D1 /* List+CoreDataProperties.swift */; };
+		907352552575923D0077E5C3 /* RemoveListMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907352542575923D0077E5C3 /* RemoveListMemberView.swift */; };
 		907B830124B7F7150098FCF0 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B830024B7F7150098FCF0 /* PersistenceManager.swift */; };
 		907B830424B7FDF00098FCF0 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B830224B7FDEF0098FCF0 /* User+CoreDataClass.swift */; };
 		907B830524B7FDF00098FCF0 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B830324B7FDF00098FCF0 /* User+CoreDataProperties.swift */; };
@@ -111,6 +112,7 @@
 		905E1456255A144F004DDB75 /* SwiftUIListDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIListDetailsViewController.swift; sourceTree = "<group>"; };
 		9070BA7724BD27D1006101D1 /* List+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9070BA7824BD27D1006101D1 /* List+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		907352542575923D0077E5C3 /* RemoveListMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveListMemberView.swift; sourceTree = "<group>"; };
 		907B830024B7F7150098FCF0 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		907B830224B7FDEF0098FCF0 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		907B830324B7FDF00098FCF0 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				903BC2EF256F14C900835EA6 /* AddRemoveListMemberButtons.swift */,
+				907352542575923D0077E5C3 /* RemoveListMemberView.swift */,
 			);
 			path = ExperimentalViews;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				90DBE502254CFAF100CCED55 /* ListCell.swift in Sources */,
 				90A0CE9E24AD674A00F0BC4B /* MainRootViewController.swift in Sources */,
 				90A0CE9C24AC30BB00F0BC4B /* MainCollectionViewCell.swift in Sources */,
+				907352552575923D0077E5C3 /* RemoveListMemberView.swift in Sources */,
 				9095D41524E8B21500BD9E20 /* ListMemberController.swift in Sources */,
 				9038DA5224BD24C100E6216D /* ListMember+CoreDataProperties.swift in Sources */,
 				90DBE506254CFB1C00CCED55 /* ContentView.swift in Sources */,

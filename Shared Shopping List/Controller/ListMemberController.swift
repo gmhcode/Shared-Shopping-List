@@ -58,14 +58,16 @@ class ListMemberController {
         }
 
         
-        func getListMembers(for lists: [SList], completion: @escaping ([CodableListMember]?)->()) {
+        func getListMembers(for lists: [CodableList], completion: @escaping ([CodableListMember]?)->()) {
             let url = URL(string: "http://localhost:8081/listMembers/withLists")!
             
-            let convertedLists = ListController.BackEnd.shared.getParams(for: lists)
+            
+            
+            guard let json = try? JSONEncoder().encode(lists), let convertedLists = try? JSONSerialization.jsonObject(with: json, options: []) as? [[String: Any]] else{completion(nil); return}
             
             do {
                 let requestBody = try JSONSerialization.data(withJSONObject: convertedLists, options: .init())
-                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.get.rawValue, body: requestBody)
+                let request = BackEndUtils.requestGenerate(url: url, method: BackEndUtils.RequestMethod.post.rawValue, body: requestBody)
                 
                 URLSession.shared.dataTask(with: request) { (data, res, er) in
                     if let er = er {
@@ -75,8 +77,8 @@ class ListMemberController {
                     }
                     
                     guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil);return}
-                    let json = BackEndUtils.convertDataToJson(data: data)
-                    let listMembers = self.parseFetchedListMembers(listMembers: [json])
+                    let json = BackEndUtils.convertArrayDataToJson(data: data)
+                    let listMembers = self.parseFetchedListMembers(listMembers: json)
                     
                     completion(listMembers)
                 }.resume()
@@ -137,7 +139,7 @@ class ListMemberController {
         func getParams(listMember: CodableListMember?) -> [String:Any] {
             guard let listMember = listMember else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return [:]}
 
-            let params : [String:Any] = ["listID":listMember.listID,"userID":listMember.userID,"uuid":listMember.uuid]
+            let params : [String:Any] = ["listID":listMember.listID,"userID":listMember.userID,"uuid":listMember.uuid,"userName":listMember.userName]
             return params
         }
     }

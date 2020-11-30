@@ -127,6 +127,7 @@ class ListViewModel: ObservableObject {
             DispatchQueue.main.async {
                 guard let strongSelf = self else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
                 strongSelf.listAndItemsAndListMembers.lists.removeAll(where: {$0.uuid == list.uuid})
+                strongSelf.listAndItemsAndListMembers.listMembers.removeAll(where: {$0.listID == list.uuid})
                 strongSelf.mostRecentList = strongSelf.listAndItemsAndListMembers.lists[0]
             }
         }
@@ -139,10 +140,17 @@ class ListViewModel: ObservableObject {
     private func addUserToList(newUserID: String, list:CodableList, userName:String) {
         ListMemberController.BackEnd.shared.createCodableListMember(listID: list.uuid, userID: newUserID, userName: userName) {[weak self] (listMember) in
             print("🌎 ", listMember.userID)
-            DispatchQueue.main.async {
-                self?.listAndItemsAndListMembers.lists.append(list)
-//                self?.listAndItemsAndListMembers.listMembers.append(listMember)
+            //gets the listmember for the newly joined list
+            ListMemberController.BackEnd.shared.getListMembers(for: [list]) { (listMembers) in
+                guard let listMembers = listMembers else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                DispatchQueue.main.async {
+                    self?.listAndItemsAndListMembers.lists.append(list)
+                    self?.listAndItemsAndListMembers.listMembers.append(contentsOf: listMembers)
+                    
+                }
+                
             }
+            
         }
     }
     //THIS IS WORKING BUT WHEN fetchLists() IS CALLED AT CONTENTVIEWS INIT.. THE FETCH LIST ISNT CORRECTLY FETCHING THIS LIST.

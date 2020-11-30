@@ -14,7 +14,7 @@ import CoreData
 public class ListMember: NSManagedObject {
 
 }
-class CodableListMember: Codable {
+class CodableListMember: Codable, Identifiable {
     internal init(listID: String, userID: String, uuid: String, userName: String) {
         self.listID = listID
         self.userID = userID

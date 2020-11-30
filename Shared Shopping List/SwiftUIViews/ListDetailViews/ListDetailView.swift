@@ -64,6 +64,7 @@ struct ListDetailView: View {
                             .stroke(Color.black, lineWidth: 2)
                     )
             }
+//            RemoveListMemberView()
         }
     }
 }

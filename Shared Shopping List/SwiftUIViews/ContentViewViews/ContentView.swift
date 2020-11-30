@@ -27,7 +27,7 @@ struct ContentView: View {
                     ListCell(list: listVM.listAndItemsAndListMembers.lists[index], itemCount: listVM.countListItems(list: listVM.listAndItemsAndListMembers.lists[index]), brightness: (color - (0.1 * Double(index))))
                         .onTapGesture{
                             let list = listVM.listAndItemsAndListMembers.lists[index]
-                            listVM.joinList(joinerPassword: "4321")
+//                            listVM.joinList(joinerPassword: "4321")
                             
                             SwiftUIListViewController.vc?.navigateToListDetails(list:list)
                             listVM.setMostRecentList(list: listVM.listAndItemsAndListMembers.lists[index])

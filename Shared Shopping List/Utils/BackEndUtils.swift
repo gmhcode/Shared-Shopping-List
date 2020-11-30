@@ -30,6 +30,19 @@ struct BackEndUtils {
         }
         return [:]
     }
+    static func convertArrayDataToJson(data: Data) -> [[String:Any]] {
+        do {
+            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
+                print("data \(#file) \(#line) ",json)
+                return json
+            }
+        }catch let er{
+            
+            print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+            return [[:]]
+        }
+        return [[:]]
+    }
     
     static func deleteWholeDatabase(completion:@escaping()->()) {
         let preUrl = URL(string: currentServerUrl!.absoluteString + "/deleteAll")!
