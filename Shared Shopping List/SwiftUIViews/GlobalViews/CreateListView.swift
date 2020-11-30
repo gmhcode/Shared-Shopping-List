@@ -13,19 +13,32 @@ struct CreateListView: View {
     @State var listMaster = ""
     @ObservedObject var listVM : ListViewModel
     var body: some View {
-       
+        
         VStack (spacing: 30){
-                HStack {
-                    Text("list name")
-                    Spacer()
-                }
-                TextField("Enter your listName here", text: $listTitle)
-                
+            HStack {
+                Text("list name")
+                Spacer()
+            }
+            TextField("Enter your listName here", text: $listTitle)
+            
+            HStack {
+                Spacer()
+                Button(action: {
+                    listVM.showCreateListView.toggle()
+                }, label: {
+                    Text("Cancel")
+                }).padding(20)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.black, lineWidth: 2)
+                )
+                Spacer()
                 Button(action: {
                     if listTitle.trimmingCharacters(in: .whitespaces) != ""  {
                         listVM.createList(uuid: "", title: listTitle, listMasterID: mainUser.name)
                         listVM.showCreateListView.toggle()
                     }
+                    
                 }, label: {
                     Text("Add list")
                 }).padding(20)
@@ -33,18 +46,21 @@ struct CreateListView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.black, lineWidth: 2)
                 )
-                
+                Spacer()
             }
-            .background(Color.white)
-            .padding()
-            
-
+        }
+        .padding()
+        .background(Color.white)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.black, lineWidth: 2)
+        )
     }
 }
 
 struct CreateListView_Previews: PreviewProvider {
     static var previews: some View {
-        var listVM = ListViewModel()
+        let listVM = ListViewModel()
         CreateListView(listVM: listVM)
     }
 }

@@ -21,6 +21,7 @@ struct ListDetailView: View {
     var body: some View {
         ZStack {
             VStack {
+                Text(listViewModel.mostRecentList?.title ?? "  ")
                 LDAddRemoveButtons(listDetailViewModel: listDetailViewModel)
                 List {
                     ForEach(listDetailViewModel.contentDict.keys.sorted(by: >)) { key in

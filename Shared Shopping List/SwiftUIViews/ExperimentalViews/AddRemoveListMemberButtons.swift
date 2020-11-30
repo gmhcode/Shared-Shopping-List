@@ -14,9 +14,9 @@ struct AddRemoveListMemberButtons: View {
         HStack {
             Spacer()
             Button(action: {
-                listVM.addListMemberView.toggle()
+                listVM.showJoinListView.toggle()
             }) {
-                Text("Add Member")
+                Text("Join List")
             }.padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 10).strokeBorder(Color.black, lineWidth: 2)

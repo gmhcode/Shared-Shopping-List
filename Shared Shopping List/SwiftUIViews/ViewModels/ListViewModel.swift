@@ -14,7 +14,7 @@ class ListViewModel: ObservableObject {
 
     @Published var showCreateListView = false
     @Published var showDeleteListView = false
-    @Published var addListMemberView = false
+    @Published var showJoinListView = false
     @Published var removeListMemberView = false
     @Published var mostRecentList : CodableList?
     @Published var listAndItemsAndListMembers = ListAndItemsAndListMembers(lists: [], items: [], listMembers: [])
@@ -135,9 +135,9 @@ class ListViewModel: ObservableObject {
     func setMostRecentList(list: CodableList) {
         mostRecentList = list
     }
-    //THIS 
-    func addUserToList(newUserID: String, list:CodableList) {
-        ListMemberController.BackEnd.shared.createCodableListMember(listID: list.uuid, userID: newUserID) {[weak self] (listMember) in
+
+    private func addUserToList(newUserID: String, list:CodableList, userName:String) {
+        ListMemberController.BackEnd.shared.createCodableListMember(listID: list.uuid, userID: newUserID, userName: userName) {[weak self] (listMember) in
             print("🌎 ", listMember.userID)
             DispatchQueue.main.async {
                 self?.listAndItemsAndListMembers.lists.append(list)
@@ -148,7 +148,7 @@ class ListViewModel: ObservableObject {
     //THIS IS WORKING BUT WHEN fetchLists() IS CALLED AT CONTENTVIEWS INIT.. THE FETCH LIST ISNT CORRECTLY FETCHING THIS LIST.
     func joinList(joinerPassword: String) {
         ListController.BackEnd.shared.findListToJoin(joinerPassword: joinerPassword) { (list) in
-            self.addUserToList(newUserID: mainUser.uuid, list: list)
+            self.addUserToList(newUserID: mainUser.uuid, list: list, userName: mainUser.name)
         }
     }
 }

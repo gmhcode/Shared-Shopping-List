@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let testClass = TestBackEndFuncs()
 //        testClass.deleteAllDataFromDatabases {
 ////            //Creates front and backend
-//
+//            sleep(1)
 //            testClass.createTestData()
 //        }
 

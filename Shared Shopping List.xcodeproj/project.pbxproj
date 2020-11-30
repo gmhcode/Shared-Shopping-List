@@ -274,10 +274,7 @@
 		9044ECE6255B8C1E0055C1BB /* ExperimentalViews */ = {
 			isa = PBXGroup;
 			children = (
-				908EEA8D2564BBE3000FFFF6 /* ShoppingEditSwitches.swift */,
-				905883F525671A4100FA1DB5 /* CreateListView.swift */,
 				903BC2EF256F14C900835EA6 /* AddRemoveListMemberButtons.swift */,
-				90891244256F1DE900367888 /* JoinListView.swift */,
 			);
 			path = ExperimentalViews;
 			sourceTree = "<group>";
@@ -328,7 +325,10 @@
 		9089123D256F1D1300367888 /* GlobalViews */ = {
 			isa = PBXGroup;
 			children = (
+				908EEA8D2564BBE3000FFFF6 /* ShoppingEditSwitches.swift */,
 				90A5B46C25688B4B0077542C /* DeleteListView.swift */,
+				905883F525671A4100FA1DB5 /* CreateListView.swift */,
+				90891244256F1DE900367888 /* JoinListView.swift */,
 				90A5B468256861D30077542C /* CreateDeleteListButtons.swift */,
 			);
 			path = GlobalViews;

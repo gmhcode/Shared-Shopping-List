@@ -48,8 +48,8 @@ class ListMemberController {
     struct BackEnd {
         static let shared = BackEnd()
         
-        func createCodableListMember(listID:String,userID:String,completion:@escaping(CodableListMember)->()) {
-            let listmember = CodableListMember(listID: listID, userID: userID, uuid: "")
+        func createCodableListMember(listID:String,userID:String,userName: String, completion:@escaping(CodableListMember)->()) {
+            let listmember = CodableListMember(listID: listID, userID: userID, uuid: "", userName: userName)
             
             networkCall(objectToSend: listmember, queryItems: [], pathComponents: [BackEndUtils.PathComponent.listMember.rawValue], requestMethod: .post) { (listMember) in
                 completion(listmember)
@@ -119,8 +119,9 @@ class ListMemberController {
             for i in listMembers {
                 guard let uuid = i["uuid"] as? String,
                     let userID = i["userID"] as? String,
-                    let listID = i["listID"] as? String else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
-                let fetchedListMember = CodableListMember(listID: listID, userID: userID, uuid: uuid)
+                    let listID = i["listID"] as? String,
+                    let userName = i["userName"] as? String else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return nil}
+                let fetchedListMember = CodableListMember(listID: listID, userID: userID, uuid: uuid, userName: userName)
                     
 //                    ListMemberController.createListMember(listID: listID, userID: userID, uuid: uuid)
                 returningLists.append(fetchedListMember)

@@ -18,16 +18,24 @@ struct LDAddRemoveButtons: View {
                 listDetailViewModel.addItem.toggle()
             }) {
                 Text("Add Item")
-            }
+            }.padding()
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.black, lineWidth: 2)
+        )
             Spacer()
             Button(action: {
                 listDetailViewModel.addItem = false
                 listDetailViewModel.removingItems.toggle()
             }) {
                 Text("Remove Items")
-            }
+            }.padding()
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.black, lineWidth: 2)
+        )
             Spacer()
-        }
+        }.padding()
     }
 }
 

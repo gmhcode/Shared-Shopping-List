@@ -14,17 +14,29 @@ struct DeleteListView: View {
         VStack (spacing: 30){
             Text(listVM.mostRecentList != nil ? listVM.mostRecentList!.title : "No List Selected")
             
-                HStack {
-                    Text("Are you sure you want to delete this list?")
-                    Spacer()
-                }
-                    
+            HStack {
+                Text("Are you sure you want to delete this list?")
+                Spacer()
+            }
+            
+            HStack {
+                Spacer()
+                Button(action: {
+                    listVM.showDeleteListView.toggle()
+                }, label: {
+                    Text("Cancel")
+                }).padding(20)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.black, lineWidth: 2)
+                )
+                Spacer()
                 Button(action: {
                     guard let mostRecentList = listVM.mostRecentList else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
                     
                     //this should be "Delete List"
                     listVM.deleteList(list: mostRecentList)
-                        listVM.showDeleteListView.toggle()
+                    listVM.showDeleteListView.toggle()
                     
                 }, label: {
                     Text("Delete list")
@@ -33,12 +45,15 @@ struct DeleteListView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.black, lineWidth: 2)
                 )
-                
+                Spacer()
             }
-            .background(Color.white)
-            .padding()
-            
-
+        }
+        .padding()
+        .background(Color.white)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.black, lineWidth: 2)
+        )
     }
 }
 

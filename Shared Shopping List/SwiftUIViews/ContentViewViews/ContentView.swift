@@ -28,7 +28,7 @@ struct ContentView: View {
                         .onTapGesture{
                             let list = listVM.listAndItemsAndListMembers.lists[index]
                             listVM.joinList(joinerPassword: "4321")
-//                            listVM.addUserToList(newUserID: "gregid", list: listVM.listAndItemsAndListMembers.lists[index])
+                            
                             SwiftUIListViewController.vc?.navigateToListDetails(list:list)
                             listVM.setMostRecentList(list: listVM.listAndItemsAndListMembers.lists[index])
                         }
@@ -43,8 +43,8 @@ struct ContentView: View {
                 CreateListView(listVM: listVM)
             }else if listVM.showDeleteListView {
                 DeleteListView(listVM: listVM)
-            }else if listVM.addListMemberView {
-                
+            }else if listVM.showJoinListView {
+                JoinListView()
             }else if listVM.removeListMemberView {
                 
             }

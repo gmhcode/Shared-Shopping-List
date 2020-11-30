@@ -82,7 +82,15 @@ struct AddItemPopover: View {
                     Spacer()
                 }.padding()
                 
+                
             }
+            
+            .padding()
+            .background(Color.white)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.black, lineWidth: 2)
+            )
     }
 }
 
