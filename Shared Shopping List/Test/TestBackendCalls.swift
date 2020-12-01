@@ -13,7 +13,9 @@ class TestBackEndFuncs {
         
         
         var userArray: [User] = []
-        
+        UserController.BackEnd.shared.createUserFrontAndBack(name: "J", email: "j@j.com", uuid: "jid", completion: {user in
+            userArray.append(user)
+        })
         createGreg { (user) in
             userArray.append(user)
             self.createMiriam { (miriam) in
@@ -106,6 +108,8 @@ class TestBackEndFuncs {
         UserController.BackEnd.shared.createUserFrontAndBack(name: "Greg", email: "greg@greg.com", uuid: "gregid", completion: {user in
             completion(user)
         })
+        
+        CodableUser(uuid: "jid", name: "J", email: "j@j.com")
 //        UserController.BackEnd.shared.createUser(user: user, completion: {user in
 //            guard let user = user else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 //
