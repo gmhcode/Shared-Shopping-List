@@ -141,22 +141,30 @@ class ListViewModel: ObservableObject {
         ListMemberController.BackEnd.shared.createCodableListMember(listID: list.uuid, userID: newUserID, userName: userName) {[weak self] (listMember) in
             print("🌎 ", listMember.userID)
             //gets the listmember for the newly joined list
-            ListMemberController.BackEnd.shared.getListMembers(for: [list]) { (listMembers) in
-                guard let listMembers = listMembers else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-                DispatchQueue.main.async {
-                    self?.listAndItemsAndListMembers.lists.append(list)
-                    self?.listAndItemsAndListMembers.listMembers.append(contentsOf: listMembers)
-                    
-                }
-                
-            }
-            
+            self?.fetchLists()
+//            ListMemberController.BackEnd.shared.getListMembers(for: [list]) { (listMembers) in
+//                guard let listMembers = listMembers else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//                DispatchQueue.main.async {
+//                    self?.listAndItemsAndListMembers.lists.append(list)
+//                    self?.listAndItemsAndListMembers.listMembers.append(contentsOf: listMembers)
+//
+//                }
+//            }
         }
     }
     //THIS IS WORKING BUT WHEN fetchLists() IS CALLED AT CONTENTVIEWS INIT.. THE FETCH LIST ISNT CORRECTLY FETCHING THIS LIST.
     func joinList(joinerPassword: String) {
         ListController.BackEnd.shared.findListToJoin(joinerPassword: joinerPassword) { (list) in
             self.addUserToList(newUserID: mainUser.uuid, list: list, userName: mainUser.name)
+        }
+    }
+    func removeListMember(lm: CodableListMember) {
+        ListMemberController.BackEnd.shared.deleteListMember(listMember: lm) {
+            DispatchQueue.main.async {
+                self.mostRecentList = self.listAndItemsAndListMembers.lists.count > 0 ? self.listAndItemsAndListMembers.lists[0] : nil
+                self.fetchLists()
+            }
+            
         }
     }
 }
